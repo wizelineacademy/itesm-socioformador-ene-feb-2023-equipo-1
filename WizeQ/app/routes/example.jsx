@@ -89,15 +89,15 @@ const ChatbotRowMessage = styled.div`
 
 const Message = styled.div`
   padding: 5px 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   margin: 5px 10px;
   max-width: 80%;
   word-break: break-word;
 
   &.user {
     background-color: #fff;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
     align-self: flex-end;
     color: #000;
     text-align: right;
@@ -105,7 +105,7 @@ const Message = styled.div`
 
   &.bot {
     background-color: #213246;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
     color: #fff;
   }
 
@@ -122,6 +122,7 @@ const Input = styled.input`
   flex: 1;
   padding: 10px;
   border: none;
+  outline: none;
 `;
 
 const Button = styled.button`
@@ -150,6 +151,10 @@ function Chatbot() {
     { text: 'Hola', user: false },
     { text: 'Hola, ¿cómo estás?', user: true },
     { text: 'Estoy bien, gracias. ¿Y tú?', user: false },
+    { text: 'Bien.', user: true },
+    { text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', user: false },
+    { text: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...', user: true },
+    { text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', user: false },
   ]);
 
   const handleInput = (e) => {
