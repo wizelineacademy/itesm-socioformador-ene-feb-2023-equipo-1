@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import { json, redirect } from '@remix-run/node';
 import { useLoaderData, useSubmit } from '@remix-run/react';
@@ -90,6 +90,13 @@ function CreateQuestion() {
       data,
       { method: 'post', action: '/questions/new' },
     );
+  };
+
+  const [chatbotVisible, setChatbotVisible] = useState(false);
+
+  const handleChatbotToggle = () => {
+    setChatbotVisible(!chatbotVisible);
+    console.log(chatbotVisible);
   };
 
   return (

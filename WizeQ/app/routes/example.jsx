@@ -15,6 +15,7 @@ const ChatbotContainer = styled.div`
   background-color: #E1EAF4;
   display: flex;
   flex-direction: column;
+  visibility: ${props => props.visible ? 'visible' : 'hidden'};
 `;
 
 const ChatbotHeader = styled.div`
@@ -54,7 +55,7 @@ const IconUser = styled.img`
   margin: 5px 0px;
 `
 
-const BotName = styled.text`
+const BotName = styled.div`
   display: flex;
   align-items: center;
   font-weight: bold;
@@ -145,6 +146,7 @@ const Button = styled.button`
 
 function Chatbot() {
   // const [messages, setMessages] = useState([]);
+
   const messagesEndRef = useRef(null);
 
   const [messages, setMessages] = useState([
@@ -167,43 +169,60 @@ function Chatbot() {
 
   useEffect(() => {
     const scrollToBottom = () => {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     };
     scrollToBottom();
-    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
+
+  const [chatbotVisible, setChatbotVisible] = useState(false);
+
+  const handleChatbotToggle = () => {
+    setChatbotVisible(!chatbotVisible);
+    console.log(chatbotVisible);
+  };
 
   return (
 
-    <ChatbotContainer>
+    <div>
 
-      <ChatbotHeader>
-        <IconBot style={{position: 'absolute'}}/>
-        <BotName> AnswerBot </BotName>
-        <CloseButton> ✕ </CloseButton>
-      </ChatbotHeader>
+      <button onClick={handleChatbotToggle}> Mostrar chatbot </button>
+      
+      <ChatbotContainer visible={chatbotVisible}>
 
-      <ChatbotMessages>
-        {messages.map((message, index) => (
-          message.user ? 
-            <ChatbotRowMessage style={{justifyContent: 'flex-end'}}>
-              <Message key={index} className='user' ref={messagesEndRef}> {message.text} </Message>
-              <IconUser src='/build/_assets/placeholder_user_img-ZWAQNLBE.png'/> 
+        <ChatbotHeader>
+          <IconBot style={{position: 'absolute'}}/>
+          <BotName> AnswerBot </BotName>
+          <CloseButton onClick={handleChatbotToggle}> ✕ </CloseButton>
+        </ChatbotHeader>
+
+        <ChatbotMessages>
+          {messages.map((message, index) => (
+            message.user ? 
+              <ChatbotRowMessage style={{justifyContent: 'flex-end'}}>
+                <Message key={index} className='user' ref={messagesEndRef}> {message.text} </Message>
+                <IconUser src='/build/_assets/placeholder_user_img-ZWAQNLBE.png'/> 
+              </ChatbotRowMessage>
+            : 
+            <ChatbotRowMessage style={{justifyContent: 'flex-start'}}>
+              <IconBot/>
+              <Message key={index} className='bot' ref={messagesEndRef}> {message.text} </Message>
             </ChatbotRowMessage>
-          : 
-          <ChatbotRowMessage style={{justifyContent: 'flex-start'}}>
-            <IconBot/>
-            <Message key={index} className='bot' ref={messagesEndRef}> {message.text} </Message>
-          </ChatbotRowMessage>
-        ))}
-      </ChatbotMessages>
+          ))}
+        </ChatbotMessages>
 
-      <ChatbotInput onSubmit={handleInput}>
-        <Input type="text" placeholder="Enter your question..." />
-        <Button type="submit"/>
-      </ChatbotInput>
+        <ChatbotInput onSubmit={handleInput}>
+          <Input type="text" placeholder="Enter your question..." />
+          <Button type="submit"/>
+        </ChatbotInput>
 
-    </ChatbotContainer>
+      </ChatbotContainer>
+
+    </div>
 
   );
 
