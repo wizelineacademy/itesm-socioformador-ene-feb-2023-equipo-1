@@ -2,19 +2,21 @@ import styled from 'styled-components';
 import botImage from 'app/images/logo_answerbot.png';
 import postIcon from 'app/images/post-icon.png'
 
+/////////////////////////////////////////// AnswerBot Button ///////////////////////////////////////////
+
 export const BotButton = styled.button`
     background-color: #213246;
     border: none;
-    width: 150px;
-    height: 150px;
+    width: 8.4vw;
+    height: 8.4vw;
     margin: 75% 0 0 0;
     float: right;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     position: relative;
-    transition: width 0.3s ease-in-out;
     visibility: ${props => props.visible ? 'visible' : 'hidden'};
+    transition: width 0.3s ease-in-out;
 
     & > .message {
         opacity: 0;
@@ -23,7 +25,7 @@ export const BotButton = styled.button`
     }
 
     &:hover {
-        width: 360px;
+        width: 20.16vw;
 
         & > .message {
             opacity: 1;
@@ -31,33 +33,79 @@ export const BotButton = styled.button`
             transition: opacity 0.25s ease-in-out;
             transition-delay: 0.2s;
         }
+
+        @media screen and (min-width: 1150px) and (min-height: 1150px) {
+            width: 13vw;
+        }
+
+        @media screen and (max-width: 2000px) {
+            width: 18vw;
+        }
+    }
+
+    @media screen and (max-width: 1300px) {
+        margin: 50% 0 0 0;
+    }
+
+    @media screen and (max-width: 1025px) and (max-height: 960px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 1150px) and (min-height: 1150px) {
+        width: 6.5vw;
+        height: 6.5vw;
     }
 `;
 
+
 export const BotIcon = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #fff;
-  border: none;
-  background-image: url(${botImage});
-  background-size: 75%;
-  background-repeat: no-repeat;
-  background-position: center;
-  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  position: absolute;
-  left: 27.5px;
-  transform: translateY(-50%);
+    width: 5.6vw;
+    height: 5.6vw;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    background-image: url(${botImage});
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 1.5vw;
+    transform: translateY(-50%);
+  
+    @media screen and (min-width: 1150px) and (min-height: 1150px) {
+        width: 4vw;
+        height: 4vw;
+    }
 `
+
 
 export const BotMessage = styled.div`
     color: #fff;
-    font-size: 20px;
+    font-size: 1.3vw;
     font-weight: bold;
     position: absolute;
     right: 8%;
     transform: translateY(-50%);
+
+    @media screen and (max-width: 1900px) {
+        left: 50%;
+    }
+
+    @media screen and (max-width: 2017px) {
+        right: 2.15vw;
+    }
+
+    @media screen and (max-width: 1000px) {
+        left: 50%;
+        font-size: 64.5%;
+    }
+
 `;
+
+
+/////////////////////////////////////////// ChatBot ///////////////////////////////////////////
+
 
 export const ChatbotContainer = styled.div`
     position: fixed;
@@ -71,7 +119,12 @@ export const ChatbotContainer = styled.div`
     background-color: #E1EAF4;
     display: flex;
     flex-direction: column;
+    transition: visibility 0.3s ease-in-out;
     visibility: ${props => props.visible ? 'visible' : 'hidden'};
+
+    @media screen and (max-width: 1025px) and (max-height: 960px) {
+        display: none;
+    }
 `;
 
 export const ChatbotHeader = styled.div`
@@ -117,6 +170,10 @@ export const BotName = styled.div`
     font-weight: bold;
     color: #fff;
     padding: 0 85px;
+
+    @media screen and (min-width: 2975px) {
+        padding: 0 75px;
+    }
 `
 
 export const CloseButton = styled.button`
@@ -128,7 +185,7 @@ export const CloseButton = styled.button`
     transition: transform 0.3s ease-in-out;
 
     &:hover {
-    transform: scale(1.4);
+        transform: scale(1.4);
     }
 `
 
