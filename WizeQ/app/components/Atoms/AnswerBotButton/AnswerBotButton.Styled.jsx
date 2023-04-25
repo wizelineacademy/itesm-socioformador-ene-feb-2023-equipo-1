@@ -34,20 +34,25 @@ export const BotButton = styled.button`
             transition-delay: 0.2s;
         }
 
-        @media screen and (min-width: 1150px) and (min-height: 1150px) {
-            width: 13vw;
+        @media screen and (max-width: 3025px) and (min-height: 1150px) {
+            width: 14vw;
         }
 
-        @media screen and (max-width: 2000px) {
+        @media screen and (max-width: 2400px) and (min-height: 1750px) {
+            width: 17vw;
+        }
+
+        @media screen and (max-width: 2000px) and (min-height: 1750px) {
             width: 18vw;
         }
+
     }
 
     @media screen and (max-width: 1300px) {
         margin: 50% 0 0 0;
     }
 
-    @media screen and (max-width: 1025px) and (max-height: 960px) {
+    @media screen and (max-width: 1025px) and (max-height: 1060px) {
         display: none;
     }
 
@@ -88,8 +93,9 @@ export const BotMessage = styled.div`
     right: 8%;
     transform: translateY(-50%);
 
-    @media screen and (max-width: 1900px) {
-        left: 50%;
+    @media screen and (max-width: 2000px) and (min-height: 500px) {
+        font-size: 16px;
+        left: 45%;
     }
 
     @media screen and (max-width: 2017px) {
@@ -98,7 +104,12 @@ export const BotMessage = styled.div`
 
     @media screen and (max-width: 1000px) {
         left: 50%;
-        font-size: 64.5%;
+        font-size: 20px;
+    }
+
+    @media screen and (max-width: 1500px) {
+        left: 50%;
+        font-size: 100%;
     }
 
 `;
