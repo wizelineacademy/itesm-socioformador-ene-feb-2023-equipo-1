@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/components/Slogan/Slogan.jsx", "../../../app/components/Slogan/Slogan.Styled.jsx", "../../../app/components/Slogan/index.js"],
+  "sourcesContent": ["import React from 'react';\r\nimport * as Styled from './Slogan.Styled';\r\n\r\nfunction Slogan() {\r\n  return (\r\n    <Styled.SloganContainer>\r\n      <p>\r\n        Your\r\n        {' '}\r\n        <span>safespace</span>\r\n        {' '}\r\n        to search answers,\r\n        ask questions, and learn about\r\n        <span>Wizeline</span>\r\n      </p>\r\n    </Styled.SloganContainer>\r\n  );\r\n}\r\n\r\nexport default Slogan;\r\n", "/* eslint-disable import/prefer-default-export */\r\nimport styled from 'styled-components';\r\n\r\n// eslint-disable-next-line import/prefer-default-export\r\nexport const SloganContainer = styled.div`\r\n  p {\r\n    font-weight: 100;\r\n    width: fit-content;\r\n    font-size: 15px;\r\n    padding: 0 40px;\r\n    span:first-child {\r\n      color: var(--color-secondary);\r\n      font-weight: 600;\r\n    }\r\n    span:last-child {\r\n      color: var(--color-primary);\r\n      font-weight: 600;\r\n    }\r\n  }\r\n`;\r\n", "export { default } from './Slogan';\r\n"],
+  "mappings": ";;;;;;;;;;AAAA;AAAA,mBAAkB;;;ACAlB;AAIO,IAAM,kBAAkB,sCAAO;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;ADDtC,kBAAkB;AAChB,SACE,mDAAQ,iBAAR,MACE,mDAAC,KAAD,MAAG,QAEA,KACD,mDAAC,QAAD,MAAM,cACL,KAAI,qDAGL,mDAAC,QAAD,MAAM;AAAA;AAMd,IAAO,iBAAQ;;;AEnBf;",
+  "names": []
+}

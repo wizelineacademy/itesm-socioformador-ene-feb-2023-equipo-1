@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../app/entry.client.jsx"],
+  "sourcesContent": ["import React from 'react';\r\nimport { RemixBrowser } from '@remix-run/react';\r\nimport { hydrate } from 'react-dom';\r\n\r\nhydrate(<RemixBrowser />, document);\r\n"],
+  "mappings": ";;;;;;;;;;;;;AAAA;AAAA,mBAAkB;AAElB,uBAAwB;AAExB,8BAAQ,mDAAC,cAAD,OAAkB;",
+  "names": []
+}
