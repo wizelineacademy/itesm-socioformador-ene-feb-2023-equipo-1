@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import { json, redirect } from '@remix-run/node';
 import { useLoaderData, useSubmit } from '@remix-run/react';
@@ -14,6 +14,7 @@ import {
 import listDepartments from 'app/controllers/departments/list';
 import createQuestion from 'app/controllers/questions/create';
 import Notifications from 'app/components/Notifications';
+import AnswerBotButton from 'app/components/Atoms/AnswerBotButton';
 
 export const loader = async ({ request }) => {
   await requireAuth(request);
@@ -91,6 +92,13 @@ function CreateQuestion() {
     );
   };
 
+  const [chatbotVisible, setChatbotVisible] = useState(false);
+
+  const handleChatbotToggle = () => {
+    setChatbotVisible(!chatbotVisible);
+    console.log(chatbotVisible);
+  };
+
   return (
     <>
       <Notifications />
@@ -122,6 +130,7 @@ function CreateQuestion() {
               }
             </Styled.Recommendations>
           </Styled.RecommendationsContainer>
+          <AnswerBotButton/>
         </Styled.QuestionRecommendations>
       </Styled.QuestionDiv>
     </>
