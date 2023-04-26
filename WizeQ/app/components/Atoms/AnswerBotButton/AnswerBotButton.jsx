@@ -42,6 +42,31 @@ function AnswerBotButton() {
         console.log(chatbotVisible);
     };
 
+    const [likedButtons, setLikedButtons] = useState({});
+    const [dislikedButtons, setDislikedButtons] = useState({});
+
+    const handleLikeClick = (index) => {
+        setLikedButtons((prevLikedButtons) => ({
+          ...prevLikedButtons,
+          [index]: !prevLikedButtons[index],
+        }));
+        setDislikedButtons((prevDislikedButtons) => ({
+          ...prevDislikedButtons,
+          [index]: false,
+        }));
+    };
+    
+    const handleDislikeClick = (index) => {
+        setDislikedButtons((prevDislikedButtons) => ({
+            ...prevDislikedButtons,
+            [index]: !prevDislikedButtons[index],
+        }));
+        setLikedButtons((prevLikedButtons) => ({
+            ...prevLikedButtons,
+            [index]: false,
+        }));
+    };
+
     return (
         <div>
             <Styled.BotButton visible={!chatbotVisible} onClick={handleChatbotToggle}>
@@ -64,20 +89,51 @@ function AnswerBotButton() {
                 {messages.map((message, index) => (
                     message.user ? 
                     <Styled.ChatbotRowMessage style={{justifyContent: 'flex-end'}}>
-                        <Styled.Message key={index} className='user' ref={messagesEndRef}> {message.text} </Styled.Message>
-                        <Styled.IconUser src='/build/_assets/placeholder_user_img-ZWAQNLBE.png'/> 
+                        <Styled.Message 
+                            key={index}
+                            className='user'
+                            ref={messagesEndRef}>
+                            {message.text}
+                        </Styled.Message>
+                        <Styled.IconUser src='/build/_assets/placeholder_user_img-ZWAQNLBE.png'/>
                     </Styled.ChatbotRowMessage>
                     :
-                    <Styled.ChatbotRowMessage style={{justifyContent: 'flex-start'}}>
-                        <Styled.IconBot/>
-                        <Styled.Message key={index} className='bot' ref={messagesEndRef}> {message.text} </Styled.Message>
-                    </Styled.ChatbotRowMessage>
+                    <div>
+                        <Styled.ChatbotRowMessage style={{justifyContent: 'flex-start'}}>
+                            <Styled.IconBot/>
+                            <Styled.Message
+                                key={index}
+                                className='bot'
+                                ref={messagesEndRef}>
+                                {message.text}
+                            </Styled.Message>
+                        </Styled.ChatbotRowMessage>
+                        {index !== 0 ?
+                            <Styled.likeButton
+                                key={`like-${index}`}
+                                liked={likedButtons[index]}
+                                onClick={() => handleLikeClick(index)}
+                            />
+                            :
+                            <></>
+                        }
+                        { index !== 0 ?
+                            <Styled.dislikeButton
+                                key={`dislike-${index}`}
+                                disliked={dislikedButtons[index]}
+                                onClick={() => handleDislikeClick(index)}
+                            />
+                            :
+                            <></>
+                        }
+                    </div>
+                    
                 ))}
                 </Styled.ChatbotMessages>
 
                 <Styled.ChatbotInput onSubmit={handleInput}>
                 <Styled.Input type="text" placeholder="Enter your question..." />
-                <Styled.Button type="submit"/>
+                <Styled.sendButton type="submit"/>
                 </Styled.ChatbotInput>
             </Styled.ChatbotContainer>
         </div>
