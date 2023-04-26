@@ -1,6 +1,6 @@
 export const pdfConv = async (conversation) => {
   console.log(conversation)
-  return fetch('http://127.0.0.1:8080/pdf_conversation_gpt', {
+  return fetch('http://127.0.0.1:3000/api/pdf_conversation_gpt', {
     method: 'POST',
     body: JSON.stringify(conversation),
     headers: {

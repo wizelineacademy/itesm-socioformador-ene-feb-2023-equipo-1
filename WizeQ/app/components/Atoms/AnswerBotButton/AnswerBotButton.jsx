@@ -1,31 +1,27 @@
 import * as Styled from 'app/components/Atoms/AnswerBotButton/AnswerBotButton.Styled';
-import { useEffect, useRef, useState } from 'react';
-import pdfConv from '~/controllers/answerBot';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import {pdfConv} from 'app/controllers/answerBot/pdfConv';
 
 function AnswerBotButton() {
 
+    const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\nCite each reference using [number] notation (every result has this number at the beginning).\nCitation should be done at the end of each sentence. If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'No se encontro respuesta'. Don't write 'Answer:'Directly start the answer.\n"
+
     const messagesEndRef = useRef(null);
 
-    const [messages, setMessages] = useState([]);
-
-    // const [messages, setMessages] = useState([
-    //     { text: 'Hola', user: false },
-    //     { text: 'Hola, ¿cómo estás?', user: true },
-    //     { text: 'Estoy bien, gracias. ¿Y tú?', user: false },
-    //     { text: 'Bien.', user: true },
-    //     { text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', user: false },
-    //     { text: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...', user: true },
-    //     { text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', user: false },
-    // ]);
+    const [messages, setMessages] = useState([{role: "system", content: instructions}, {role: "system", content: "Hello! Ask me any question and I'll see how I can help you."}]);
 
     const handleInput = async (e) => {
         e.preventDefault();
         const input = e.target.querySelector('input');
         const message = input.value;
-        setMessages([...messages, { text: message, user: true}]);
-        const response = await pdfConv(messages);
-        console.log(response);
         input.value = '';
+        setMessages([...messages, {role: "user", content: message}]);
+        const chatHistory = [...messages, {role: "user", content: message}];
+        const filteredMessages = chatHistory.filter((message, index) => index !== 1);
+        const response = await pdfConv(filteredMessages);
+        const answer = response.text
+        setMessages([...messages, {role: "user", content: message}, {role: "system", content: answer}]);
+        console.log(response);
     };
 
     useEffect(() => {
@@ -66,16 +62,16 @@ function AnswerBotButton() {
                 </Styled.ChatbotHeader>
 
                 <Styled.ChatbotMessages>
-                {messages.map((message, index) => (
-                    message.user ? 
+                {messages.slice(1).map((message, index) => (
+                    message.role == "user" ? 
                     <Styled.ChatbotRowMessage style={{justifyContent: 'flex-end'}}>
-                        <Styled.Message key={index} className='user' ref={messagesEndRef}> {message.text} </Styled.Message>
+                        <Styled.Message key={index} className='user' ref={messagesEndRef}> {message.content} </Styled.Message>
                         <Styled.IconUser src='/build/_assets/placeholder_user_img-ZWAQNLBE.png'/> 
                     </Styled.ChatbotRowMessage>
                     :
                     <Styled.ChatbotRowMessage style={{justifyContent: 'flex-start'}}>
                         <Styled.IconBot/>
-                        <Styled.Message key={index} className='bot' ref={messagesEndRef}> {message.text} </Styled.Message>
+                        <Styled.Message key={index} className='bot' ref={messagesEndRef}> {message.content} </Styled.Message>
                     </Styled.ChatbotRowMessage>
                 ))}
                 </Styled.ChatbotMessages>

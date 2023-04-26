@@ -12,7 +12,7 @@ import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-openai.api_key = "**************"
+openai.api_key = "*****************************"
 
 app = Flask(__name__)
 
@@ -47,7 +47,7 @@ def pdf_to_text(path, start_page=1, end_page=None):
     text_list = []
 
     for i in tqdm(range(start_page-1, end_page)):
-        text = doc.load_page(i).get_text("text")
+        text = doc.load_page(i).get_text("content")
         text = preprocess(text)
         text_list.append(text)
 
@@ -135,15 +135,15 @@ def generate_text(messages, model="gpt-3.5-turbo"):
 def generate_answer(conversation):
     #download_pdf('corpus.pdf')
     load_recommender('corpus.pdf')
-    topn_chunks = recommender(conversation[-1]["text"])
-    userInput = conversation[-1]["text"]
+    topn_chunks = recommender(conversation[-1]["content"])
+    userInput = conversation[-1]["content"]
     prompt = ""
     prompt += 'search results:\n\n'
     for c in topn_chunks:
         prompt += c + '\n\n'
     
     prompt += f"Query: {userInput}\n\n"
-    conversation[-1]["text"] = prompt
+    conversation[-1]["content"] = prompt
     answer = generate_text(conversation)
     return answer
 
@@ -155,30 +155,30 @@ def main():
               "don't add any additional information. Make sure the answer is correct and don't output false content."\
               "If the text does not relate to the query, simply state 'No se encontro respuesta'. Don't write 'Answer:'"\
               "Directly start the answer.\n"
-    conversation = [{"user": false, "text": instructions}]
+    conversation = [{"role": "system", "content": instructions}]
     unserInput = input()
-    conversation.append({"user": true, "text": unserInput})
+    conversation.append({"role": "user", "content": unserInput})
     conversation.append(generate_answer(conversation))
-    print(conversation[-1]["text"])
+    print(conversation[-1]["content"])
     while (unserInput != "exit conversation"):
-        conversation.append({"user": true, "text": unserInput})
+        conversation.append({"role": "user", "content": unserInput})
         conversation.append(generate_answer(conversation))
-        print(conversation[-1]["text"])
+        print(conversation[-1]["content"])
         unserInput = input()'''
     #print(generate_answer("What is the purpose of this book?"))
 
     conversation = json.loads(sys.argv[1])
     conversation.append(generate_answer(conversation))
-    print(conversation[-1]["text"])
+    print(conversation[-1]["content"])
 
 @app.route('/api/pdf_conversation_gpt', methods=['POST'])
 def submit_conversation():
     conversation = request.json
     print(conversation)
     conversation.append(generate_answer(conversation))
-    print(conversation[-1]["text"])
+    print(conversation[-1]["content"])
     return jsonify(conversation)
 
-CORS(app, origins='http://localhost:8080')
+CORS(app, origins='http://localhost:3000')
 if __name__ == '__main__':
-    app.run(port=8080,debug=True)
+    app.run(port=3000,debug=True)
