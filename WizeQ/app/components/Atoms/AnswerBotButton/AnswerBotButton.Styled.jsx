@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import botImage from 'app/images/logo_answerbot.png';
-import postIcon from 'app/images/post-icon.png'
+import postIcon from 'app/images/post-icon.png';
+
+import likeIcon from 'app/images/like.png';
+import dislikeIcon from 'app/images/dislike.png';
+
+import likeHoverIcon from 'app/images/likeHover.png';
+import dislikeHoverIcon from 'app/images/dislikeHover.png';
+
+import likeClickIcon from 'app/images/likeClick.png';
+import dislikeClickIcon from 'app/images/dislikeClick.png';
 
 /////////////////////////////////////////// AnswerBot Button ///////////////////////////////////////////
 
@@ -114,9 +123,7 @@ export const BotMessage = styled.div`
 
 `;
 
-
 /////////////////////////////////////////// ChatBot ///////////////////////////////////////////
-
 
 export const ChatbotContainer = styled.div`
     position: fixed;
@@ -212,25 +219,26 @@ export const ChatbotRowMessage = styled.div`
 `
 
 export const Message = styled.div`
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    margin: 5px 10px;
+    margin: 5px 7.5px;
     max-width: 80%;
     word-break: break-word;
 
     &.user {
-    background-color: #fff;
-    border-top-left-radius: 10px;
-    align-self: flex-end;
-    color: #000;
-    text-align: right;
+        background-color: #fff;
+        border-top-left-radius: 10px;
+        align-self: flex-end;
+        color: #000;
+        text-align: right;
+        
     }
 
     &.bot {
-    background-color: #213246;
-    border-top-right-radius: 10px;
-    color: #fff;
+        background-color: #213246;
+        border-top-right-radius: 10px;
+        color: #fff;
     }
 `;
 
@@ -248,7 +256,7 @@ export const Input = styled.input`
     outline: none;
 `;
 
-export const Button = styled.button`
+export const sendButton = styled.button`
     width: 30px;
     height: 30px;
     border-radius: 25%;
@@ -263,5 +271,41 @@ export const Button = styled.button`
 
     &:hover {
     background-color: #F2F2F1;
+    }
+`;
+
+/////////////////////////////////////////// Feedback ///////////////////////////////////////////
+
+export const likeButton = styled.button`
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    background-image: url(${props => props.liked ? likeClickIcon : likeIcon});
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 0 2.5% 12.5%;
+    padding: 0 5px;
+    transition: background-image 0.3s ease-in-out;
+
+    &:hover {
+        background-image: url(${props => props.liked ? likeClickIcon : likeHoverIcon});
+    }
+`;
+
+export const dislikeButton = styled.button`
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    background-image: url(${props => props.disliked ? dislikeClickIcon : dislikeIcon});
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 0.3s ease-in-out;
+
+    &:hover {
+        background-image: url(${props => props.disliked ? dislikeClickIcon : dislikeHoverIcon});
     }
 `;
