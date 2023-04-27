@@ -96,7 +96,7 @@ function AnswerBotButton() {
                 </Styled.ChatbotHeader>
 
                 <Styled.ChatbotMessages>
-                {messages.map((message, index) => (
+                {messages.slice(1).map((message, index) => (
                     message.role == "user" ? 
                     <Styled.ChatbotRowMessage style={{justifyContent: 'flex-end'}}>
                         <Styled.Message 
