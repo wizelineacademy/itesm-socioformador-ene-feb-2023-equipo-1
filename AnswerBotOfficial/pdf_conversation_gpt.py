@@ -12,7 +12,7 @@ import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-openai.api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+openai.api_key = "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"
 
 app = Flask(__name__)
 

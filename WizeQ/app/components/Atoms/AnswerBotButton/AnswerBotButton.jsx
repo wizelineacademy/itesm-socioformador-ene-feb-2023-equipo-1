@@ -1,10 +1,145 @@
 import * as Styled from 'app/components/Atoms/AnswerBotButton/AnswerBotButton.Styled';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import {pdfConv} from 'app/controllers/answerBot/pdfConv';
+import useUser from 'app/utils/hooks/useUser';
+import { ContentState, convertFromRaw, EditorState } from 'draft-js';
+import { useFetcher } from '@remix-run/react';
+import {
+    DEFAULT_LOCATION,
+    ANONYMOUS_USER,
+    HTML_CODE_WARNING,
+    MINIMUM_QUESTION_LENGTH,
+    MAXIMUM_QUESTION_LENGTH,
+    NO_DEPARTMENT_SELECTED_TOOLTIP_MESSAGE,
+    MIN_CHARS_QUESTION_INPUT_TOOLTIP_MESSAGE,
+    DEFAULT_MESSAGE_END_QUESTION_INPUT_TOOLTIP,
+    NO_LOCATIONS_AVAILABLE_TOOLTIP_MESSAGE,
+    NONE_LOCATION,
+    DEFAULT_LOCATION_MESSAGE,
+    ALL_LOCATIONS_MESSAGE,
+    LOCATION_WARNING,
+    NO_DEPARTMENT_SELECTED_ID,
+    NOT_ASSIGNED_DEPARTMENT_ID,
+  } from 'app/utils/constants';
+import { markdownToDraft } from 'markdown-draft-js';
+import PropTypes from 'prop-types';
 
-function AnswerBotButton() {
+function AnswerBotButton({
+    postQuestion,
+    locations,
+    departments,
+    initialValue,
+    initialDepartment,
+    initialIsAnonymous,
+}) {
 
-    const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n"
+    const { full_name, picture } = useUser();
+    const fetcher = useFetcher();
+    const initialState = {
+        inputValue: initialValue,
+        isAnonymous: initialIsAnonymous,
+        showSubmitWithModal: false,
+        dropDownTitle: postQuestion,
+        warnings: [],
+        location: NONE_LOCATION,
+        closed: false,
+        isAsking: false,
+        profilePicture: picture,
+        assignedDepartment: initialDepartment,
+        fullLocation: '',
+        isShowPreview: false,
+        askBtbEnabled: false,
+        assignedEmployee: undefined,
+        employeesByDepartment: [],
+    };
+    const [state, setState] = useState(initialState);
+    const [editorState, setEditorState] = useState(
+        () => EditorState.createWithContent(convertFromRaw(markdownToDraft(state.inputValue))),
+    );
+
+    const selectPostingAs = (username) => {
+        const isAnonymous = (username === ANONYMOUS_USER.username);
+        const profilePicture = isAnonymous ? ANONYMOUS_USER.profilePicture : picture;
+        setState({
+          ...state,
+          dropDownTitle: username,
+          profilePicture,
+          isAnonymous,
+        });
+    };
+
+    useEffect(() => {
+        selectPostingAs(full_name);
+    }, [full_name]);
+
+    const clearTextArea = () => {
+        setEditorState(() => EditorState.push(editorState, ContentState.createFromText(''), 'remove-range'));
+    };
+
+    const onSubmitWithModalSuccess = async () => {
+        const {
+          location, isAnonymous, inputValue, assignedDepartment,
+        } = state;
+        setState({ ...state, showSubmitWithModal: false });
+        const question = {
+          isAnonymous,
+          question: inputValue,
+          location: location === NONE_LOCATION ? DEFAULT_LOCATION : location,
+          assignedDepartment: assignedDepartment.department_id || 'wizeq',
+          assigned_to_employee_id: state.assignedEmployee ? state.assignedEmployee.id : undefined,
+        };
+        // console.log("inputValue onSubmitWithModalSuccess: ",inputValue)
+        console.log(question)
+    
+        try {
+          await postQuestion(question);
+          setState(initialState);
+          clearTextArea();
+        } catch (error) {
+          throw error;
+        }
+    };
+
+    const onSubmit = () => {
+        const {
+          location,
+          isAnonymous,
+          inputValue,
+        } = state;
+        const trimmed = inputValue;
+        const sanitizedInput = inputValue;
+    
+        setState({
+          ...state,
+          isAsking: true,
+        });
+
+        console.log("isAnonymous: ", isAnonymous)
+        console.log("!isAnonymous: ", !isAnonymous)
+        console.log("inputValue onSubmit: ",inputValue)
+        // if (!isAnonymous) {
+        //   setState({
+        //     ...state,
+        //     showSubmitWithModal: true,
+        //     isAsking: false,
+        //   });
+        //   return;
+        // }
+        console.log("yes")
+        onSubmitWithModalSuccess();
+    };
+
+    const onSubmitWithModalClose = () => {
+        setState({
+          ...state,
+          showSubmitWithModal: false,
+          warnings: [],
+        });
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\nCite each reference using [number] notation (every result has this number at the beginning).\nCitation should be done at the end of each sentence. If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n"
 
     const messagesEndRef = useRef(null);
 
@@ -21,7 +156,7 @@ function AnswerBotButton() {
         const response = await pdfConv(filteredMessages);
         const answer = response.text
         setMessages([...messages, {role: "user", content: message}, {role: "system", content: answer}]);
-        console.log(response);
+        // console.log(response);
     };
 
     useEffect(() => {
@@ -61,8 +196,14 @@ function AnswerBotButton() {
             [index]: !likedButtons[index],
         }));
     };
+
+    const onInputChange = (inputValue) => {
+        setState({ ...state, inputValue });
+    };
     
     const handleDislikeClick = (index) => {
+        console.log(messages[index].content);
+        onInputChange(messages[index].content)
         setDislikedButtons((prevDislikedButtons) => ({
             ...prevDislikedButtons,
             [index]: !prevDislikedButtons[index],
@@ -75,6 +216,8 @@ function AnswerBotButton() {
             ...prevShowThanksMessage,
             [index]: !dislikedButtons[index],
         }));
+        onSubmit();
+
     };
 
     return (
@@ -147,5 +290,48 @@ function AnswerBotButton() {
         </div>
     );
 }
+
+
+
+
+
+
+
+
+AnswerBotButton.propTypes = {
+    postQuestion: PropTypes.func.isRequired,
+    profile: PropTypes.shape({
+      name: PropTypes.string,
+      picture: PropTypes.string,
+    }),
+    locations: PropTypes.arrayOf(
+      PropTypes.shape({
+        code: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    departments: PropTypes.arrayOf(
+      PropTypes.shape(),
+    ),
+    initialValue: PropTypes.string,
+    initialDepartment: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      department_id: PropTypes.number.isRequired,
+    }),
+    initialIsAnonymous: PropTypes.bool,
+};
+  
+AnswerBotButton.defaultProps = {
+    profile: {
+        name: '',
+        picture: '',
+    },
+    initialValue: 'Hello! Ask me any question and I\'ll see how I can help you.',
+    departments: [],
+    initialDepartment: {department_id: 17, name: "Wizeline Questions Staff", is_active: true},
+    initialIsAnonymous: false,
+};
+
+
 
 export default AnswerBotButton;

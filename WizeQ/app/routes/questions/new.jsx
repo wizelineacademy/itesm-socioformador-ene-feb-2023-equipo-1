@@ -130,7 +130,13 @@ function CreateQuestion() {
               }
             </Styled.Recommendations>
           </Styled.RecommendationsContainer>
-          <AnswerBotButton/>
+          <AnswerBotButton
+            maximumQuestionLength={MAXIMUM_QUESTION_LENGTH}
+            minimumQuestionLength={MINIMUM_ANSWER_LENGTH}
+            postQuestion={postQuestion}
+            locations={locations}
+            departments={departments}
+          />
         </Styled.QuestionRecommendations>
       </Styled.QuestionDiv>
     </>

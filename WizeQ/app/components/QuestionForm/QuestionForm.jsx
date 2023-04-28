@@ -174,6 +174,9 @@ function QuestionForm({
   };
 
   const onLocationChange = (selectedLocation) => {
+    console.log(selectedLocation)
+    console.log(selectedLocation.code)
+    console.log(locations.find((loc) => loc.code === selectedLocation.code).name)
     setState({
       ...state,
       location: selectedLocation.code,
@@ -210,6 +213,7 @@ function QuestionForm({
   };
 
   const handleDepartmentSelectChange = (selectedDepartment) => {
+    console.log(selectedDepartment)
     setState({
       ...state,
       assignedDepartment: selectedDepartment,
