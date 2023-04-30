@@ -92,13 +92,6 @@ function CreateQuestion() {
     );
   };
 
-  const [chatbotVisible, setChatbotVisible] = useState(false);
-
-  const handleChatbotToggle = () => {
-    setChatbotVisible(!chatbotVisible);
-    console.log(chatbotVisible);
-  };
-
   return (
     <>
       <Notifications />

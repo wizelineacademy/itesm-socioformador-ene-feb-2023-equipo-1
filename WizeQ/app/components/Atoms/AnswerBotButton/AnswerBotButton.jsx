@@ -1,6 +1,6 @@
 import * as Styled from 'app/components/Atoms/AnswerBotButton/AnswerBotButton.Styled';
 import { useEffect, useRef, useState, useCallback } from 'react';
-import {pdfConv} from 'app/controllers/answerBot/pdfConv';
+import pdfConv from 'app/controllers/answerBot/pdfConv';
 
 function AnswerBotButton() {
 
@@ -21,7 +21,7 @@ function AnswerBotButton() {
         const response = await pdfConv(filteredMessages);
         const answer = response.text
         setMessages([...messages, {role: "user", content: message}, {role: "system", content: answer}]);
-        console.log(response);
+        // console.log(response);
     };
 
     useEffect(() => {
@@ -40,7 +40,7 @@ function AnswerBotButton() {
 
     const handleChatbotToggle = () => {
         setChatbotVisible(!chatbotVisible);
-        console.log(chatbotVisible);
+        // console.log(chatbotVisible);
     };
 
     const [likedButtons, setLikedButtons] = useState({});

@@ -12,15 +12,11 @@ import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-openai.api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+openai.api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "
+
 
 app = Flask(__name__)
-
-def download_pdf(output_path):
-    '''
-    download file from URL and save it to `output_path`
-    '''
-    urllib.request.urlretrieve("https://d2l.ai/d2l-en.pdf", output_path)
 
 
 def preprocess(text):
@@ -75,6 +71,7 @@ def text_to_chunks(texts, word_length=150, start_page=1):
             chunks.append(chunk)
     return chunks
 
+
 class SemanticSearch:
     
     def __init__(self):
@@ -109,8 +106,7 @@ class SemanticSearch:
             embeddings.append(emb_batch)
         embeddings = np.vstack(embeddings)
         return embeddings
-    
-    
+
 
 recommender = SemanticSearch()
 
@@ -133,7 +129,6 @@ def generate_text(messages, model="gpt-3.5-turbo"):
 
 
 def generate_answer(conversation):
-    #download_pdf('corpus.pdf')
     load_recommender('corpus.pdf')
     topn_chunks = recommender(conversation[-1]["content"])
     userInput = conversation[-1]["content"]
@@ -147,29 +142,6 @@ def generate_answer(conversation):
     answer = generate_text(conversation)
     return answer
 
-def main():
-    '''instructions = "Instructions: Compose a comprehensive reply to the query using the search results given."\
-              "Cite each reference using [number] notation (every result has this number at the beginning)."\
-              "Citation should be done at the end of each sentence. If the search results mention multiple subjects"\
-              "with the same name, create separate answers for each. Only include information found in the results and"\
-              "don't add any additional information. Make sure the answer is correct and don't output false content."\
-              "If the text does not relate to the query, simply state 'No se encontro respuesta'. Don't write 'Answer:'"\
-              "Directly start the answer.\n"
-    conversation = [{"role": "system", "content": instructions}]
-    unserInput = input()
-    conversation.append({"role": "user", "content": unserInput})
-    conversation.append(generate_answer(conversation))
-    print(conversation[-1]["content"])
-    while (unserInput != "exit conversation"):
-        conversation.append({"role": "user", "content": unserInput})
-        conversation.append(generate_answer(conversation))
-        print(conversation[-1]["content"])
-        unserInput = input()'''
-    #print(generate_answer("What is the purpose of this book?"))
-
-    conversation = json.loads(sys.argv[1])
-    conversation.append(generate_answer(conversation))
-    print(conversation[-1]["content"])
 
 @app.route('/api/pdf_conversation_gpt', methods=['POST'])
 def submit_conversation():
