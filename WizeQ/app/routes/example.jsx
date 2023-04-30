@@ -15,7 +15,7 @@ const ChatbotContainer = styled.div`
   background-color: #E1EAF4;
   display: flex;
   flex-direction: column;
-  visibility: ${props => props.visible ? 'visible' : 'hidden'};
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 `;
 
 const ChatbotHeader = styled.div`
@@ -42,7 +42,7 @@ const IconBot = styled.img`
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
   left: 5%;
   margin: 5px 0px;
-`
+`;
 
 const IconUser = styled.img`
   width: 25px;
@@ -53,7 +53,7 @@ const IconUser = styled.img`
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
   margin-right: 10px;
   margin: 5px 0px;
-`
+`;
 
 const BotName = styled.div`
   display: flex;
@@ -61,7 +61,7 @@ const BotName = styled.div`
   font-weight: bold;
   color: #fff;
   padding: 0 85px;
-`
+`;
 
 const CloseButton = styled.button`
   color: #fff;
@@ -75,7 +75,7 @@ const CloseButton = styled.button`
     transform: scale(1.4);
   }
 
-`
+`;
 
 const ChatbotMessages = styled.div`
   flex: 1;
@@ -86,7 +86,7 @@ const ChatbotMessages = styled.div`
 const ChatbotRowMessage = styled.div`
   display: flex;
   alignItems: center;
-`
+`;
 
 const Message = styled.div`
   padding: 5px 10px;
@@ -163,7 +163,7 @@ function Chatbot() {
     e.preventDefault();
     const input = e.target.querySelector('input');
     const message = input.value;
-    setMessages([...messages, { text: message, user: true}]);
+    setMessages([...messages, { text: message, user: true }]);
     input.value = '';
   };
 
@@ -183,41 +183,52 @@ function Chatbot() {
 
   const handleChatbotToggle = () => {
     setChatbotVisible(!chatbotVisible);
-    console.log(chatbotVisible);
+    // console.log(chatbotVisible);
   };
 
   return (
 
     <div>
 
-      <button onClick={handleChatbotToggle}> Mostrar chatbot </button>
-      
+      <button type="button" onClick={handleChatbotToggle}> Mostrar chatbot </button>
+
       <ChatbotContainer visible={chatbotVisible}>
 
         <ChatbotHeader>
-          <IconBot style={{position: 'absolute'}}/>
+          <IconBot style={{ position: 'absolute' }} />
           <BotName> AnswerBot </BotName>
           <CloseButton onClick={handleChatbotToggle}> ✕ </CloseButton>
         </ChatbotHeader>
 
         <ChatbotMessages>
-          {messages.map((message, index) => (
-            message.user ? 
-              <ChatbotRowMessage style={{justifyContent: 'flex-end'}}>
-                <Message key={index} className='user' ref={messagesEndRef}> {message.text} </Message>
-                <IconUser src='/build/_assets/placeholder_user_img-ZWAQNLBE.png'/> 
-              </ChatbotRowMessage>
-            : 
-            <ChatbotRowMessage style={{justifyContent: 'flex-start'}}>
-              <IconBot/>
-              <Message key={index} className='bot' ref={messagesEndRef}> {message.text} </Message>
-            </ChatbotRowMessage>
+          {messages.map((message) => (
+            message.user
+              ? (
+                <ChatbotRowMessage style={{ justifyContent: 'flex-end' }}>
+                  <Message key={`message ${message.id}`} className="user" ref={messagesEndRef}>
+                    {' '}
+                    {message.text}
+                    {' '}
+                  </Message>
+                  <IconUser src="/build/_assets/placeholder_user_img-ZWAQNLBE.png" />
+                </ChatbotRowMessage>
+              )
+              : (
+                <ChatbotRowMessage style={{ justifyContent: 'flex-start' }}>
+                  <IconBot />
+                  <Message key={`message ${message.id}`} className="bot" ref={messagesEndRef}>
+                    {' '}
+                    {message.text}
+                    {' '}
+                  </Message>
+                </ChatbotRowMessage>
+              )
           ))}
         </ChatbotMessages>
 
         <ChatbotInput onSubmit={handleInput}>
           <Input type="text" placeholder="Enter your question..." />
-          <Button type="submit"/>
+          <Button type="submit" />
         </ChatbotInput>
 
       </ChatbotContainer>
@@ -225,7 +236,6 @@ function Chatbot() {
     </div>
 
   );
-
 }
 
 export default Chatbot;

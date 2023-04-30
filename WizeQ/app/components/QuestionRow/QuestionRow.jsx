@@ -141,10 +141,10 @@ function QuestionRow(props) {
                 question
               </Styled.ButtonTooltipMessage>
               <Switch
-            id={`question-${question.question_id}`}
-            checked={question.is_enabled}
-            onChange={handleStatusClick}
-          />
+                id={`question-${question.question_id}`}
+                checked={question.is_enabled}
+                onChange={handleStatusClick}
+              />
             </Styled.DisableControls>
 
           )}
