@@ -19,13 +19,13 @@ function Notifications() {
     } = data;
 
     if (error) {
-      console.error(error.detail);
+      // console.error(error.detail);
       toast.error(error.message, DEFAULT_TOAST_CONFIG);
     }
 
     if (errors && Array.isArray(errors)) {
       errors.forEach((_error) => {
-        console.error(_error.detail);
+        // console.error(_error.detail);
         toast.error(_error.message, DEFAULT_TOAST_CONFIG);
       });
     }
