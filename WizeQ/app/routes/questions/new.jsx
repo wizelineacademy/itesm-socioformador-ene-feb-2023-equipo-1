@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import { json, redirect } from '@remix-run/node';
 import { useLoaderData, useSubmit } from '@remix-run/react';
@@ -123,7 +123,7 @@ function CreateQuestion() {
               }
             </Styled.Recommendations>
           </Styled.RecommendationsContainer>
-          <AnswerBotButton/>
+          <AnswerBotButton />
         </Styled.QuestionRecommendations>
       </Styled.QuestionDiv>
     </>

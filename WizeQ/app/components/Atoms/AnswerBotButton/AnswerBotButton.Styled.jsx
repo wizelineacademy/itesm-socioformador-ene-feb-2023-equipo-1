@@ -11,7 +11,7 @@ import dislikeHoverIcon from 'app/images/dislikeHover.png';
 import likeClickIcon from 'app/images/likeClick.png';
 import dislikeClickIcon from 'app/images/dislikeClick.png';
 
-/////////////////////////////////////////// AnswerBot Button ///////////////////////////////////////////
+/// ///////////////////////////////////// AnswerBot Button /////////////////////////////////////
 
 export const BotButton = styled.button`
     background-color: #213246;
@@ -24,7 +24,7 @@ export const BotButton = styled.button`
     border-bottom-left-radius: 25px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     position: relative;
-    visibility: ${props => props.visible ? 'visible' : 'hidden'};
+    visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
     transition: width 0.3s ease-in-out;
 
     & > .message {
@@ -71,7 +71,6 @@ export const BotButton = styled.button`
     }
 `;
 
-
 export const BotIcon = styled.img`
     width: 5.6vw;
     height: 5.6vw;
@@ -91,8 +90,7 @@ export const BotIcon = styled.img`
         width: 4vw;
         height: 4vw;
     }
-`
-
+`;
 
 export const BotMessage = styled.div`
     color: #fff;
@@ -123,7 +121,7 @@ export const BotMessage = styled.div`
 
 `;
 
-/////////////////////////////////////////// ChatBot ///////////////////////////////////////////
+/// ////////////////////////////////////// ChatBot /////////////////////////////////////////
 
 export const ChatbotContainer = styled.div`
     position: fixed;
@@ -138,7 +136,7 @@ export const ChatbotContainer = styled.div`
     display: flex;
     flex-direction: column;
     transition: visibility 0.3s ease-in-out;
-    visibility: ${props => props.visible ? 'visible' : 'hidden'};
+    visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 
     @media screen and (max-width: 1025px) and (max-height: 960px) {
         display: none;
@@ -169,7 +167,7 @@ export const IconBot = styled.img`
     box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
     left: 5%;
     margin: 5px 0px;
-`
+`;
 
 export const IconUser = styled.img`
     width: 25px;
@@ -180,7 +178,7 @@ export const IconUser = styled.img`
     box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin-right: 10px;
     margin: 5px 0px;
-`
+`;
 
 export const BotName = styled.div`
     display: flex;
@@ -192,7 +190,7 @@ export const BotName = styled.div`
     @media screen and (min-width: 2975px) {
         padding: 0 75px;
     }
-`
+`;
 
 export const CloseButton = styled.button`
     color: #fff;
@@ -205,7 +203,7 @@ export const CloseButton = styled.button`
     &:hover {
         transform: scale(1.4);
     }
-`
+`;
 
 export const ChatbotMessages = styled.div`
     flex: 1;
@@ -216,7 +214,7 @@ export const ChatbotMessages = styled.div`
 export const ChatbotRowMessage = styled.div`
     display: flex;
     alignItems: center;
-`
+`;
 
 export const Message = styled.div`
     padding: 10px 10px;
@@ -256,7 +254,7 @@ export const Input = styled.input`
     outline: none;
 `;
 
-export const sendButton = styled.button`
+export const SendButton = styled.button`
     width: 30px;
     height: 30px;
     border-radius: 25%;
@@ -274,14 +272,14 @@ export const sendButton = styled.button`
     }
 `;
 
-/////////////////////////////////////////// Feedback ///////////////////////////////////////////
+/// ////////////////////////////////////// Feedback /////////////////////////////////////////
 
-export const likeButton = styled.button`
+export const LikeButton = styled.button`
     width: 20px;
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${props => props.liked ? likeClickIcon : likeIcon});
+    background-image: url(${(props) => (props.liked ? likeClickIcon : likeIcon)});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
@@ -290,22 +288,22 @@ export const likeButton = styled.button`
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${props => props.liked ? likeClickIcon : likeHoverIcon});
+        background-image: url(${(props) => (props.liked ? likeClickIcon : likeHoverIcon)});
     }
 `;
 
-export const dislikeButton = styled.button`
+export const DislikeButton = styled.button`
     width: 20px;
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${props => props.disliked ? dislikeClickIcon : dislikeIcon});
+    background-image: url(${(props) => (props.disliked ? dislikeClickIcon : dislikeIcon)});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${props => props.disliked ? dislikeClickIcon : dislikeHoverIcon});
+        background-image: url(${(props) => (props.disliked ? dislikeClickIcon : dislikeHoverIcon)});
     }
 `;
