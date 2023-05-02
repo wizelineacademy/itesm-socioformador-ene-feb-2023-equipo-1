@@ -541,6 +541,37 @@ INSERT INTO `users` VALUES (1,'Patricio Gutierrez Castaño','patricio.gutierrez@
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+--
+-- Table structure for table `AnswerBot`
+--
+
+DROP TABLE IF EXISTS `AnswerBot`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AnswerBot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_question_id` int(11) DEFAULT NULL,
+  `question_by_user` VARCHAR(500) NOT NULL,
+  `answer_by_bot` VARCHAR(3000) NOT NULL,
+  `answer_status` int(1) NOT NULL DEFAULT 0,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `assigned_department` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `AnswerBot_post_question_id_fkey` (`post_question_id`),
+  KEY `AnswerBot_assigned_department_fkey` (`assigned_department`),
+  KEY `AnswerBot_user_id_fkey` (`user_id`),
+  CONSTRAINT `AnswerBot_post_question_id_fkey` FOREIGN KEY (`post_question_id`) REFERENCES `Questions`(`question_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `AnswerBot_assigned_department_fkey` FOREIGN KEY (`assigned_department`) REFERENCES `Departments`(`department_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `AnswerBot_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `users`(`employee_id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+LOCK TABLES `AnswerBot` WRITE;
+
+INSERT INTO AnswerBot VALUES (1, NULL, 'Hi, how are you?', 'Fine, and you?', 0, '2023-05-02 12:00:00', NULL, 46656);
+
+UNLOCK TABLES;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

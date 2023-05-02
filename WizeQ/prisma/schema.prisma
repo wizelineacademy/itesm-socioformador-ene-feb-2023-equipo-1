@@ -63,10 +63,11 @@ model Comments {
 }
 
 model Departments {
-  department_id Int         @id @default(autoincrement())
-  name          String      @db.VarChar(255)
-  is_active     Boolean     @default(true)
-  Questions     Questions[]
+  department_id     Int         @id @default(autoincrement())
+  name              String      @db.VarChar(255)
+  is_active         Boolean     @default(true)
+  Questions         Questions[]
+  QuestionsToBot    AnswerBot[]
 }
 
 model DraftAnswers {
@@ -144,6 +145,7 @@ model Questions {
   Sentiments                   Sentiments[]
   Votes                        Votes[]
   Answers                      Answers[]
+  QuestionsToBot               AnswerBot[]
   Department                   Departments?   @relation(fields: [assigned_department], references: [department_id])
 
   @@index([assigned_to_employee_id], map: "assigned_to_employee_id_foreign_idx")
@@ -189,8 +191,24 @@ model users {
   Assigned             Questions[]            @relation("AssignedQuestion")
   Created              Questions[]            @relation("CreatedQuestion")
   Answers              Answers[]
-  CommentsApproved    Comments[]             @relation("Comments_approvedByTousers")
-  CommentsCreated     Comments[]             @relation("Comments_userEmailTousers")
+  CommentsApproved     Comments[]             @relation("Comments_approvedByTousers")
+  CommentsCreated      Comments[]             @relation("Comments_userEmailTousers")
+  BotQuestionCreated   AnswerBot[]
 
   @@index([email], map: "users_email")
+}
+
+model AnswerBot {
+  id                        Int            @id @default(autoincrement())
+  post_question_id          Int?           @db.Int
+  question_by_user          String         @db.VarChar(500)
+  answer_by_bot             String         @db.VarChar(3000)
+  answer_status             Int            @default(0)
+  date_created              DateTime       @default(now()) @db.DateTime(0)
+  assigned_department       Int?           @db.Int
+  user_id                   Int?           @db.Int
+
+  question_fk               Questions?    @relation(fields: [post_question_id], references: [question_id])
+  department_fk             Departments?  @relation(fields: [assigned_department], references: [department_id])
+  user_fk                   users?        @relation(fields: [user_id], references: [employee_id])
 }
