@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLoaderData, useSubmit } from '@remix-run/react';
+import { json, redirect } from '@remix-run/node';
 import styled from 'styled-components';
+import createAnswerByBot from 'app/controllers/answerBot/create';
+import {
+  commitSession, getAuthenticatedUser, getSession, requireAuth,
+} from 'app/session.server';
 // import userImg from 'build/_assets/placeholder_user_img-ZWAQNLBE.png'
 // import botImg from 'build/_assets/logo_answerbot.png'
 
@@ -144,8 +150,95 @@ const Button = styled.button`
   }
 `;
 
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  // values passed as strings
+  const form = Object.fromEntries(formData.entries());
+  const { assignedDepartment, assigned_to_employee_id: assignedEmployeeId } = form;
+  const user = await getAuthenticatedUser(request);
+  const parsedDepartment = parseInt(assignedDepartment, 10);
+  const assignedEmployeeValue = assignedEmployeeId !== 'undefined' ? parseInt(assignedEmployeeId, 10) : undefined;
+
+  const payload = {
+    question_by_user: form.question_by_user,
+    answer_by_bot: form.answer_by_bot,
+    answer_status: form.answer_status,
+    assigned_department: form.assigned_department,
+    user_id: form.user_id,
+  };
+
+  const response = await createAnswerByBot(payload);
+
+  if (response.successMessage) {
+    const session = await getSession(request);
+    const { question, successMessage } = response;
+    session.flash('globalSuccess', successMessage);
+    const destination = `/example`;
+
+    return redirect(destination, {
+      headers: {
+        'Set-Cookie': await commitSession(session),
+      },
+    });
+  }
+
+  return json(response);
+};
+
+
+
+
 function Chatbot() {
+
+  const formRef = useRef();
+  const submit = useSubmit();
+
+  const initialState = {
+    question_by_user: 'Question by user 2',
+    answer_by_bot: 'Answer by bot 2',
+    answer_status: 0,
+    assigned_department: 17,
+    user_id: 46656,
+  };
+
   // const [messages, setMessages] = useState([]);
+
+  const onSubmitWithModalSuccess = async () => {
+    const {
+      location, isAnonymous, inputValue, assignedDepartment,
+    } = state;
+    setState({ ...state, showSubmitWithModal: false });
+    const question = {
+      isAnonymous,
+      question: inputValue,
+      location: location === NONE_LOCATION ? DEFAULT_LOCATION : location,
+      assignedDepartment: assignedDepartment.department_id || 'wizeq',
+      assigned_to_employee_id: state.assignedEmployee ? state.assignedEmployee.id : undefined,
+    };
+    // console.log("inputValue onSubmitWithModalSuccess: ",inputValue)
+    console.log(question)
+
+    try {
+      await postQuestion(question);
+      setState(initialState);
+      clearTextArea();
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const postQuestion = (question) => {
+    const data = new FormData(formRef.current);
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(question)) {
+      data.set(key, value);
+    }
+
+    submit(
+      data,
+      { method: 'post', action: '/example' },
+    );
+  };
 
   const messagesEndRef = useRef(null);
 
@@ -165,6 +258,7 @@ function Chatbot() {
     const message = input.value;
     setMessages([...messages, { text: message, user: true }]);
     input.value = '';
+    postQuestion(initialState);
   };
 
   useEffect(() => {
