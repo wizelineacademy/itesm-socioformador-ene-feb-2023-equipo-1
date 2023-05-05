@@ -16,20 +16,11 @@ export const createAnswerBotSchema = Joi.object().keys({
 });
 
 export const modifyAnswerBotQuestionPost = Joi.object().keys({
+  id: JOI_ID_VALIDATION,
   post_question_id: Joi.number().integer().min(1).allow(null),
 });
 
 export const modifyAnswerBotFeedback = Joi.object().keys({
+  id: JOI_ID_VALIDATION,
   answer_status: Joi.number().integer().min(-1).max(1).required(),
 });
-
-
-
-// `id` int(11) NOT NULL AUTO_INCREMENT,
-// `post_question_id` int(11) DEFAULT NULL,
-// `question_by_user` VARCHAR(500) NOT NULL,
-// `answer_by_bot` VARCHAR(3000) NOT NULL,
-// `answer_status` int(1) NOT NULL DEFAULT 0,
-// `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-// `assigned_department` int(11) DEFAULT NULL,
-// `user_id` int(11) DEFAULT NULL

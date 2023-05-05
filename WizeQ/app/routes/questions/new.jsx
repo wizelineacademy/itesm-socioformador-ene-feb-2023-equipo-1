@@ -13,8 +13,10 @@ import {
 } from 'app/session.server';
 import listDepartments from 'app/controllers/departments/list';
 import createQuestion from 'app/controllers/questions/create';
+import createAnswerByBot from 'app/controllers/answerBot/create';
 import Notifications from 'app/components/Notifications';
 import AnswerBotButton from 'app/components/Atoms/AnswerBotButton';
+import ACTIONS from 'app/utils/actions';
 
 export const loader = async ({ request }) => {
   await requireAuth(request);
@@ -29,36 +31,78 @@ export const loader = async ({ request }) => {
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
-  // values passed as strings
-  const form = Object.fromEntries(formData.entries());
-  const { assignedDepartment, assigned_to_employee_id: assignedEmployeeId } = form;
+  const formAction = formData.get('action');
+  let response;
+  let payload;
+  let assignedDepartment;
+
   const user = await getAuthenticatedUser(request);
-  const parsedDepartment = parseInt(assignedDepartment, 10);
-  const assignedEmployeeValue = assignedEmployeeId !== 'undefined' ? parseInt(assignedEmployeeId, 10) : undefined;
+  const form = Object.fromEntries(formData.entries());
 
-  const payload = {
-    question: form.question,
-    created_by_employee_id: form.isAnonymous === 'true' ? null : user.employee_id,
-    is_anonymous: form.isAnonymous === 'true',
-    assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
-    assigned_to_employee_id: Number.isNaN(assignedEmployeeValue) ? null : assignedEmployeeValue,
-    location: form.location,
-    accessToken: user.accessToken,
-  };
+  // console.log(formAction);
+  // console.log(user.employee_id);
 
-  const response = await createQuestion(payload);
+  // values passed as strings
+  switch (formAction) {
+    case ACTIONS.CREATE_QUESTION_ANSWER:
+      const { assignedDepartment, assigned_to_employee_id: assignedEmployeeId } = form;
+      const parsedDepartment = parseInt(assignedDepartment, 10);
+      const assignedEmployeeValue = assignedEmployeeId !== 'undefined' ? parseInt(assignedEmployeeId, 10) : undefined;
 
-  if (response.successMessage) {
-    const session = await getSession(request);
-    const { question, successMessage } = response;
-    session.flash('globalSuccess', successMessage);
-    const destination = `/questions/${question.question_id}`;
+      payload = {
+        question: form.question,
+        created_by_employee_id: form.isAnonymous === 'true' ? null : user.employee_id,
+        is_anonymous: form.isAnonymous === 'true',
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        assigned_to_employee_id: Number.isNaN(assignedEmployeeValue) ? null : assignedEmployeeValue,
+        location: form.location,
+        accessToken: user.accessToken,
+      };
 
-    return redirect(destination, {
-      headers: {
-        'Set-Cookie': await commitSession(session),
-      },
-    });
+      response = await createQuestion(payload);
+
+      if (response.successMessage) {
+        const session = await getSession(request);
+        const { question, successMessage } = response;
+        session.flash('globalSuccess', successMessage);
+        const destination = `/questions/${question.question_id}`;
+
+        return redirect(destination, {
+          headers: {
+            'Set-Cookie': await commitSession(session),
+          },
+        });
+      }
+      break;
+    case ACTIONS.CREATE_QUESTION_ANSWERBOT:
+      const { assignedDepaQA } = form;
+      const parsedDepaQA = parseInt(assignedDepaQA, 10);
+
+      payload = {
+        question_by_user: form.question_by_user,
+        answer_by_bot: form.answer_by_bot,
+        answer_status: form.answer_status,
+        assigned_department: Number.isNaN(parsedDepaQA) ? null : parsedDepaQA,
+        user_id: user.employee_id,
+      };
+
+      response = await createAnswerByBot(payload);
+
+      if (response.successMessage) {
+        const session = await getSession(request);
+        const { successMessage } = response;
+        session.flash('globalSuccess', successMessage);
+        const destination = `/questions/new`;
+    
+        return redirect(destination, {
+          headers: {
+            'Set-Cookie': await commitSession(session),
+          },
+        });
+      }
+      break;
+    default:
+      break;
   }
 
   return json(response);
@@ -81,10 +125,31 @@ function CreateQuestion() {
 
   const postQuestion = (question) => {
     const data = new FormData(formRef.current);
+
+    data.set('action', ACTIONS.CREATE_QUESTION_ANSWER);
+
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(question)) {
       data.set(key, value);
     }
+
+    submit(
+      data,
+      { method: 'post', action: '/questions/new' },
+    );
+  };
+
+  const postAnswerBotQuestion = (question) => {
+    const data = new FormData(formRef.current);
+
+    data.set('action', ACTIONS.CREATE_QUESTION_ANSWERBOT);
+
+    for (const [key, value] of Object.entries(question)) {
+      data.set(key, value);
+    }
+
+    console.log(question)
+    console.log(data.get("question_by_user"))
 
     submit(
       data,
@@ -123,7 +188,11 @@ function CreateQuestion() {
               }
             </Styled.Recommendations>
           </Styled.RecommendationsContainer>
-          <AnswerBotButton />
+          <AnswerBotButton
+            postAnswerBotQuestion={postAnswerBotQuestion}
+            departments={departments}
+
+          />
         </Styled.QuestionRecommendations>
       </Styled.QuestionDiv>
     </>

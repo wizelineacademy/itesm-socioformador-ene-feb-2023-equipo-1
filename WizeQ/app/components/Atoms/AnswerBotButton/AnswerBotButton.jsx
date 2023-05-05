@@ -1,8 +1,31 @@
 import * as Styled from 'app/components/Atoms/AnswerBotButton/AnswerBotButton.Styled';
 import React, { useEffect, useRef, useState } from 'react';
 import pdfConv from 'app/controllers/answerBot/pdfConv';
+// import { useSubmit } from '@remix-run/react';
+// import { json, redirect } from '@remix-run/node';
+// import createAnswerByBot from 'app/controllers/answerBot/create';
+// import { commitSession, getAuthenticatedUser, getSession } from 'app/session.server';
+import { NO_DEPARTMENT_SELECTED_ID } from 'app/utils/constants';
+import PropTypes from 'prop-types';
 
-function AnswerBotButton() {
+function AnswerBotButton({
+  postAnswerBotQuestion,
+  initialValueQuestion,
+  initialValueAnswer,
+  initialAnswerStatus,
+  departments,
+  initialDepartment,
+}) {
+  //////////////// Post Q&A AnswerBot ////////////////
+  const initialState = {
+    question_by_user: initialValueQuestion,
+    answer_by_bot: initialValueAnswer,
+    answer_status: initialAnswerStatus,
+    assignedDepaQA: initialDepartment,
+  };
+
+  //////////////// Send Question to AnswerBot ////////////////
+
   const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
 
   const messagesEndRef = useRef(null);
@@ -11,16 +34,32 @@ function AnswerBotButton() {
 
   const handleInput = async (e) => {
     e.preventDefault();
+
     const input = e.target.querySelector('input');
     const message = input.value;
     input.value = '';
     setMessages([...messages, { role: 'user', content: message }]);
+
     const chatHistory = [...messages, { role: 'user', content: message }];
     const filteredMessages = chatHistory.filter((mess, index) => index !== 1);
     const response = await pdfConv(filteredMessages);
     const answer = response.text;
     setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: answer }]);
     // console.log(response);
+
+    const newQuestion = {
+      question_by_user: message,
+      answer_by_bot: answer,
+      answer_status: 0,
+      assignedDepaQA: 17,
+    };
+
+    try {
+      await postAnswerBotQuestion(newQuestion);
+      setState(initialState);
+    } catch (error) {
+      throw error;
+    }
   };
 
   useEffect(() => {
@@ -41,6 +80,8 @@ function AnswerBotButton() {
     setChatbotVisible(!chatbotVisible);
     // console.log(chatbotVisible);
   };
+
+  //////////////// Feedback to AnswerBot ////////////////
 
   const [likedButtons, setLikedButtons] = useState({});
   const [dislikedButtons, setDislikedButtons] = useState({});
@@ -75,6 +116,8 @@ function AnswerBotButton() {
       [index]: !dislikedButtons[index],
     }));
   };
+
+  //////////////// Components ////////////////
 
   return (
     <div>
@@ -150,5 +193,29 @@ function AnswerBotButton() {
     </div>
   );
 }
+
+AnswerBotButton.propTypes = {
+  postAnswerBotQuestion: PropTypes.func.isRequired,
+  initialValueQuestion: PropTypes.string,
+  initialValueAnswer: PropTypes.string,
+  initialAnswerStatus: PropTypes.number,
+  departments: PropTypes.arrayOf(
+    PropTypes.shape(),
+  ),
+  initialDepartment: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    department_id: PropTypes.number.isRequired,
+  }),
+};
+
+AnswerBotButton.defaultProps = {
+  initialValueQuestion: 'Question by user inside component',
+  initialValueAnswer: 'Answer by bot inside component',
+  initialAnswerStatus: 0,
+  departments: [],
+  initialDepartment: { name: 'hey', department_id: 17 },
+};
+
+
 
 export default AnswerBotButton;
