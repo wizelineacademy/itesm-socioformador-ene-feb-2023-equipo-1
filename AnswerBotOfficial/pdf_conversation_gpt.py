@@ -74,7 +74,7 @@ def loadPDF(pdf_context, start_page=1):
 
 # ========================================= MAIN =========================================
 
-openai.api_key = "*****************************"
+openai.api_key = "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"
 
 application = Flask(__name__)
 
@@ -89,6 +89,5 @@ def submit_conversation():
     print(conversation[-1]["content"])
     return jsonify(conversation)
 
-CORS(application, origins='http://localhost:3000')
-if __name__ == '__main__':
-    application.run(port=3000,debug=True)
+CORS(application)
+application.run(host='0.0.0.0',port=4000)
