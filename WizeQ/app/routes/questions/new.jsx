@@ -14,6 +14,8 @@ import {
 import listDepartments from 'app/controllers/departments/list';
 import createQuestion from 'app/controllers/questions/create';
 import createAnswerByBot from 'app/controllers/answerBot/create';
+import updateFeedback from 'app/controllers/answerBot/modifyStatus';
+import updatePostFeed from 'app/controllers/answerBot/modifyIDQuestion'
 import Notifications from 'app/components/Notifications';
 import AnswerBotButton from 'app/components/Atoms/AnswerBotButton';
 import ACTIONS from 'app/utils/actions';
@@ -101,6 +103,68 @@ export const action = async ({ request }) => {
         });
       }
       break;
+    case ACTIONS.UPDATE_FEEDBACK_ANSWERBOT:
+      const { assignedDepaFeed } = form;
+      const parsedDepaFeed = parseInt(assignedDepaFeed, 10);
+
+      payload = {
+        question_by_user: form.question_by_user,
+        answer_by_bot: form.answer_by_bot,
+        answer_status: form.answer_status,
+        assigned_department: Number.isNaN(parsedDepaFeed) ? null : parsedDepaFeed,
+        user_id: user.employee_id,
+      };
+
+      // console.log(payload)
+
+      response = await updateFeedback(payload);
+
+      if (response.successMessage) {
+        const session = await getSession(request);
+        const { successMessage } = response;
+        session.flash('globalSuccess', successMessage);
+        const destination = `/questions/new`;
+    
+        return redirect(destination, {
+          headers: {
+            'Set-Cookie': await commitSession(session),
+          },
+        });
+      }
+      break;
+
+    case ACTIONS.UPDATE_POST_ANSWERBOT:
+      const { assignedDepaPost, assigned_to_employee_id: assigned_to_employee } = form;
+      const parsedDepaPost = parseInt(assignedDepaPost, 10);
+      const assignedEmployeeValueFeed = assigned_to_employee !== 'undefined' ? parseInt(assigned_to_employee, 10) : undefined;
+
+      payload = {
+        question: form.question,
+        created_by_employee_id: form.isAnonymous === 'true' ? null : user.employee_id,
+        is_anonymous: form.isAnonymous === 'true',
+        assigned_department: Number.isNaN(parsedDepaPost) ? null : parsedDepaPost,
+        assigned_to_employee_id: Number.isNaN(assignedEmployeeValueFeed) ? null : assignedEmployeeValueFeed,
+        location: form.location,
+        accessToken: user.accessToken,
+      };
+
+      response = await createQuestion(payload);
+
+      console.log(response.question.question_id)
+
+      payload = {
+        post_question_id: response.question.question_id,
+        question_by_user: form.question,
+        answer_by_bot: form.answer,
+        answer_status: form.status,
+        assigned_department: form.assignedDepaPost,
+        user_id: user.employee_id,
+      };
+
+      response = await updatePostFeed(payload);
+
+      break;
+
     default:
       break;
   }
@@ -148,8 +212,43 @@ function CreateQuestion() {
       data.set(key, value);
     }
 
-    console.log(question)
-    console.log(data.get("question_by_user"))
+    // console.log(question)
+    // console.log(data.get("question_by_user"))
+
+    submit(
+      data,
+      { method: 'post', action: '/questions/new' },
+    );
+  };
+
+  const updateAnswerBotFeedback = (question) => {
+    const data = new FormData(formRef.current);
+
+    data.set('action', ACTIONS.UPDATE_FEEDBACK_ANSWERBOT);
+
+    for (const [key, value] of Object.entries(question)) {
+      data.set(key, value);
+    }
+
+    // console.log(question)
+    // console.log(data.get("question_by_user"))
+
+    submit(
+      data,
+      { method: 'post', action: '/questions/new' },
+    );
+  };
+
+  const updatePostFeed = (question) => {
+    const data = new FormData(formRef.current);
+
+    data.set('action', ACTIONS.UPDATE_POST_ANSWERBOT);
+
+    for (const [key, value] of Object.entries(question)) {
+      data.set(key, value);
+    }
+
+    // console.log(question)
 
     submit(
       data,
@@ -190,6 +289,9 @@ function CreateQuestion() {
           </Styled.RecommendationsContainer>
           <AnswerBotButton
             postAnswerBotQuestion={postAnswerBotQuestion}
+            updateAnswerBotFeedback={updateAnswerBotFeedback}
+            postQuestion={postQuestion}
+            updatePostFeed={updatePostFeed}
             departments={departments}
 
           />

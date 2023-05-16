@@ -5,11 +5,14 @@ import pdfConv from 'app/controllers/answerBot/pdfConv';
 // import { json, redirect } from '@remix-run/node';
 // import createAnswerByBot from 'app/controllers/answerBot/create';
 // import { commitSession, getAuthenticatedUser, getSession } from 'app/session.server';
-import { NO_DEPARTMENT_SELECTED_ID } from 'app/utils/constants';
+import { NO_DEPARTMENT_SELECTED_ID, DEFAULT_LOCATION } from 'app/utils/constants';
 import PropTypes from 'prop-types';
 
 function AnswerBotButton({
   postAnswerBotQuestion,
+  updateAnswerBotFeedback,
+  postQuestion,
+  updatePostFeed,
   initialValueQuestion,
   initialValueAnswer,
   initialAnswerStatus,
@@ -31,6 +34,7 @@ function AnswerBotButton({
   const messagesEndRef = useRef(null);
 
   const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you." }]);
+  const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, id: 0 }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you.", id: 0 }]);
 
   const handleInput = async (e) => {
     e.preventDefault();
@@ -56,10 +60,10 @@ function AnswerBotButton({
 
     try {
       await postAnswerBotQuestion(newQuestion);
-      setState(initialState);
     } catch (error) {
-      throw error;
+      console.error(error);
     }
+
   };
 
   useEffect(() => {
@@ -87,7 +91,7 @@ function AnswerBotButton({
   const [dislikedButtons, setDislikedButtons] = useState({});
   const [showThanksMessage, setShowThanksMessage] = useState({});
 
-  const handleLikeClick = (index) => {
+  const handleLikeClick = async (index) => {
     setLikedButtons((prevLikedButtons) => ({
       ...prevLikedButtons,
       [index]: !prevLikedButtons[index],
@@ -100,9 +104,26 @@ function AnswerBotButton({
       ...prevShowThanksMessage,
       [index]: !likedButtons[index],
     }));
+
+    const newQuestion = {
+      question_by_user: messages[index].content,
+      answer_by_bot: messages[index+1].content,
+      answer_status: 1,
+      assignedDepaFeed: 17,
+    };
+
+    console.log(messagesID[index])
+    console.log(messagesID[index+1])
+
+    try {
+      await updateAnswerBotFeedback(newQuestion);
+    } catch (error) {
+      throw error;
+    }
+
   };
 
-  const handleDislikeClick = (index) => {
+  const handleDislikeClick = async (index) => {
     setDislikedButtons((prevDislikedButtons) => ({
       ...prevDislikedButtons,
       [index]: !prevDislikedButtons[index],
@@ -115,6 +136,32 @@ function AnswerBotButton({
       ...prevShowThanksMessage,
       [index]: !dislikedButtons[index],
     }));
+
+    const newQuestion = {
+      question_by_user: messages[index].content,
+      answer_by_bot: messages[index+1].content,
+      answer_status: -1,
+      assignedDepaFeed: 17,
+    };
+    
+    const question = {
+      question: messages[index].content,
+      answer: messages[index+1].content,
+      status: -1,
+      isAnonymous: false,
+      assignedDepaPost: 17,
+      assigned_to_employee_id: 'undefined',
+      location: DEFAULT_LOCATION,
+    };
+
+    try {
+      await updateAnswerBotFeedback(newQuestion);
+      // await postQuestion(question)
+      await updatePostFeed(question)
+    } catch (error) {
+      throw error;
+    }
+
   };
 
   //////////////// Components ////////////////
@@ -196,6 +243,9 @@ function AnswerBotButton({
 
 AnswerBotButton.propTypes = {
   postAnswerBotQuestion: PropTypes.func.isRequired,
+  updateAnswerBotFeedback: PropTypes.func.isRequired,
+  postQuestion: PropTypes.func.isRequired,
+  updatePostFeed: PropTypes.func.isRequired,
   initialValueQuestion: PropTypes.string,
   initialValueAnswer: PropTypes.string,
   initialAnswerStatus: PropTypes.number,
