@@ -15,7 +15,7 @@ import listDepartments from 'app/controllers/departments/list';
 import createQuestion from 'app/controllers/questions/create';
 import createAnswerByBot from 'app/controllers/answerBot/create';
 import updateFeedback from 'app/controllers/answerBot/modifyStatus';
-import updatePostFeed from 'app/controllers/answerBot/modifyIDQuestion'
+import updatePostID from 'app/controllers/answerBot/modifyIDQuestion'
 import Notifications from 'app/components/Notifications';
 import AnswerBotButton from 'app/components/Atoms/AnswerBotButton';
 import ACTIONS from 'app/utils/actions';
@@ -148,20 +148,41 @@ export const action = async ({ request }) => {
         accessToken: user.accessToken,
       };
 
+      console.log('createQuestion',payload)
+
       response = await createQuestion(payload);
 
-      console.log(response.question.question_id)
+      console.log('id:', response.question.question_id)
 
-      payload = {
-        post_question_id: response.question.question_id,
-        question_by_user: form.question,
-        answer_by_bot: form.answer,
-        answer_status: form.status,
-        assigned_department: form.assignedDepaPost,
-        user_id: user.employee_id,
-      };
+      if (response.successMessage) {
 
-      response = await updatePostFeed(payload);
+        payload = {
+          post_question_id: response.question.question_id,
+          question_by_user: form.question,
+          answer_by_bot: form.answer,
+          answer_status: form.status,
+          assigned_department: form.assignedDepaPost,
+          user_id: user.employee_id,
+        };
+
+        console.log('updatePost',payload);
+
+        response = await updatePostID(payload);
+    
+        if (response.successMessage) {
+          console.log('finish',response.feedback);
+          const session = await getSession(request);
+          const { successMessage } = response;
+          session.flash('globalSuccess', successMessage);
+          const destination = `/questions/new`;
+      
+          return redirect(destination, {
+            headers: {
+              'Set-Cookie': await commitSession(session),
+            },
+          });
+        }
+      }
 
       break;
 
@@ -239,7 +260,7 @@ function CreateQuestion() {
     );
   };
 
-  const updatePostFeed = (question) => {
+  const updateAnswerBotPostID = (question) => {
     const data = new FormData(formRef.current);
 
     data.set('action', ACTIONS.UPDATE_POST_ANSWERBOT);
@@ -290,8 +311,7 @@ function CreateQuestion() {
           <AnswerBotButton
             postAnswerBotQuestion={postAnswerBotQuestion}
             updateAnswerBotFeedback={updateAnswerBotFeedback}
-            postQuestion={postQuestion}
-            updatePostFeed={updatePostFeed}
+            updateAnswerBotPostID={updateAnswerBotPostID}
             departments={departments}
 
           />

@@ -40,7 +40,7 @@ const updateFeedback = async (body) => {
     });
   }
 
-  console.log(value);
+  // console.log(value);
 
   return {
     successMessage: 'The feedback to bot has been updated succesfully!',

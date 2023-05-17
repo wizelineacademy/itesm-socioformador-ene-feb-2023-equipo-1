@@ -11,22 +11,10 @@ import PropTypes from 'prop-types';
 function AnswerBotButton({
   postAnswerBotQuestion,
   updateAnswerBotFeedback,
-  postQuestion,
-  updatePostFeed,
-  initialValueQuestion,
-  initialValueAnswer,
-  initialAnswerStatus,
+  updateAnswerBotPostID,
   departments,
   initialDepartment,
 }) {
-  //////////////// Post Q&A AnswerBot ////////////////
-  const initialState = {
-    question_by_user: initialValueQuestion,
-    answer_by_bot: initialValueAnswer,
-    answer_status: initialAnswerStatus,
-    assignedDepaQA: initialDepartment,
-  };
-
   //////////////// Send Question to AnswerBot ////////////////
 
   const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
@@ -112,8 +100,8 @@ function AnswerBotButton({
       assignedDepaFeed: 17,
     };
 
-    console.log(messagesID[index])
-    console.log(messagesID[index+1])
+    // console.log(messagesID[index])
+    // console.log(messagesID[index+1])
 
     try {
       await updateAnswerBotFeedback(newQuestion);
@@ -143,7 +131,20 @@ function AnswerBotButton({
       answer_status: -1,
       assignedDepaFeed: 17,
     };
-    
+
+    // console.log(messagesID[index])
+    // console.log(messagesID[index+1])
+
+    try {
+      await updateAnswerBotFeedback(newQuestion);
+    } catch (error) {
+      throw error;
+    }
+
+  };
+
+  const handlePost = async (index) => {
+
     const question = {
       question: messages[index].content,
       answer: messages[index+1].content,
@@ -155,9 +156,7 @@ function AnswerBotButton({
     };
 
     try {
-      await updateAnswerBotFeedback(newQuestion);
-      // await postQuestion(question)
-      await updatePostFeed(question)
+      await updateAnswerBotPostID(question)
     } catch (error) {
       throw error;
     }
@@ -224,6 +223,11 @@ function AnswerBotButton({
                           onClick={() => handleDislikeClick(index)}
                         />
                         { showThanksMessage[index] ? <span style={{ padding: '5px' }}> Thanks for the feedback! </span> : <> </> }
+                        { dislikedButtons[index] ? 
+                          <button key={`button-${message.id}`} onClick={() => handlePost(index)}> Post Question </button>
+                          : 
+                          <> </> 
+                        }
                       </div>
                     )
                     : <> </>}
@@ -244,11 +248,7 @@ function AnswerBotButton({
 AnswerBotButton.propTypes = {
   postAnswerBotQuestion: PropTypes.func.isRequired,
   updateAnswerBotFeedback: PropTypes.func.isRequired,
-  postQuestion: PropTypes.func.isRequired,
-  updatePostFeed: PropTypes.func.isRequired,
-  initialValueQuestion: PropTypes.string,
-  initialValueAnswer: PropTypes.string,
-  initialAnswerStatus: PropTypes.number,
+  updateAnswerBotPostID: PropTypes.func.isRequired,
   departments: PropTypes.arrayOf(
     PropTypes.shape(),
   ),
@@ -259,9 +259,6 @@ AnswerBotButton.propTypes = {
 };
 
 AnswerBotButton.defaultProps = {
-  initialValueQuestion: 'Question by user inside component',
-  initialValueAnswer: 'Answer by bot inside component',
-  initialAnswerStatus: 0,
   departments: [],
   initialDepartment: { name: 'hey', department_id: 17 },
 };

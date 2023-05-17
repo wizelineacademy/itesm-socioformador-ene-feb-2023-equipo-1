@@ -25,7 +25,7 @@ const createAnswerByBot = async (body) => {
     },
   });
 
-  console.log(value);
+  // console.log(value);
 
   return {
     successMessage: 'The question to bot has been created succesfully!',

@@ -21,7 +21,7 @@ const updatePost = async (body) => {
   
   const findQABot = await db.AnswerBot.findFirst({
     where: {
-        post_question_id: null,
+      post_question_id: null,
       ...rest,
     },
     orderBy: {
@@ -29,8 +29,10 @@ const updatePost = async (body) => {
     },
   });
 
+  let upToDate;
+
   if (findQABot) {
-    await db.AnswerBot.update({
+    upToDate = await db.AnswerBot.update({
       where: {
         id: findQABot.id,
       },
@@ -40,11 +42,11 @@ const updatePost = async (body) => {
     });
   }
 
-  console.log(value);
+  // console.log(value);
 
   return {
-    successMessage: 'The feedback to bot has been updated succesfully!',
-    feedback: findQABot,
+    successMessage: 'The id of the question made to bot has been linked succesfully!',
+    feedback: upToDate,
   };
 
 };
