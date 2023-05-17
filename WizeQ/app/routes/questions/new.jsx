@@ -161,7 +161,7 @@ export const action = async ({ request }) => {
           question_by_user: form.question,
           answer_by_bot: form.answer,
           answer_status: form.status,
-          assigned_department: form.assignedDepaPost,
+          assigned_department: Number.isNaN(parsedDepaPost) ? null : parsedDepaPost,
           user_id: user.employee_id,
         };
 

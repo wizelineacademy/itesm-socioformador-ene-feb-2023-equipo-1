@@ -307,3 +307,28 @@ export const DislikeButton = styled.button`
         background-image: url(${(props) => (props.disliked ? dislikeClickIcon : dislikeHoverIcon)});
     }
 `;
+
+export const TextFeedback = styled.span`
+    padding: 5px 31px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+`;
+export const PublishButton = styled.button`
+    margin: 0 0 2.5% 10%;
+    background-color: #fff;
+    color: #213246;
+    border: 1px solid #213246;
+    padding: 8px 25px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: #213246;
+        color: #fff;
+    }
+`;

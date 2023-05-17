@@ -13,7 +13,6 @@ function AnswerBotButton({
   updateAnswerBotFeedback,
   updateAnswerBotPostID,
   departments,
-  initialDepartment,
 }) {
   //////////////// Send Question to AnswerBot ////////////////
 
@@ -22,7 +21,7 @@ function AnswerBotButton({
   const messagesEndRef = useRef(null);
 
   const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you." }]);
-  const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, id: 0 }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you.", id: 0 }]);
+  const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, depa: null }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you.", depa: null }]);
 
   const handleInput = async (e) => {
     e.preventDefault();
@@ -37,14 +36,24 @@ function AnswerBotButton({
     const response = await pdfConv(filteredMessages);
     const answer = response.text;
     setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: answer }]);
-    // console.log(response);
+    console.log(response);
+    console.log(departments);
+
+    const depaName = response.department;
+    console.log('department = ', depaName)
+
+    const department = departments.find((c) => c.name === depaName);
+    console.log('department2 = ', department)
+    setMessagesID([...messagesID, { role: 'user', content: message, depa: department?.department_id || 'wizeq' }, { role: 'system', content: answer, depa: department?.department_id || 'wizeq' }]);
 
     const newQuestion = {
       question_by_user: message,
       answer_by_bot: answer,
       answer_status: 0,
-      assignedDepaQA: 17,
+      assignedDepaQA: department?.department_id || 'wizeq',
     };
+
+    console.log(newQuestion)
 
     try {
       await postAnswerBotQuestion(newQuestion);
@@ -53,6 +62,10 @@ function AnswerBotButton({
     }
 
   };
+
+  useEffect(() => {
+    console.log(messagesID)
+  }, [messagesID]);
 
   useEffect(() => {
     const scrollToBottom = () => {
@@ -70,38 +83,26 @@ function AnswerBotButton({
 
   const handleChatbotToggle = () => {
     setChatbotVisible(!chatbotVisible);
-    // console.log(chatbotVisible);
   };
 
   //////////////// Feedback to AnswerBot ////////////////
 
-  const [likedButtons, setLikedButtons] = useState({});
-  const [dislikedButtons, setDislikedButtons] = useState({});
   const [showThanksMessage, setShowThanksMessage] = useState({});
 
   const handleLikeClick = async (index) => {
-    setLikedButtons((prevLikedButtons) => ({
-      ...prevLikedButtons,
-      [index]: !prevLikedButtons[index],
-    }));
-    setDislikedButtons((prevDislikedButtons) => ({
-      ...prevDislikedButtons,
-      [index]: false,
-    }));
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
-      [index]: !likedButtons[index],
+      [index]: true,
     }));
 
     const newQuestion = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
       answer_status: 1,
-      assignedDepaFeed: 17,
+      assignedDepaFeed: messagesID[index+1].depa,
     };
 
-    // console.log(messagesID[index])
-    // console.log(messagesID[index+1])
+    console.log(newQuestion)
 
     try {
       await updateAnswerBotFeedback(newQuestion);
@@ -112,28 +113,25 @@ function AnswerBotButton({
   };
 
   const handleDislikeClick = async (index) => {
-    setDislikedButtons((prevDislikedButtons) => ({
-      ...prevDislikedButtons,
-      [index]: !prevDislikedButtons[index],
-    }));
-    setLikedButtons((prevLikedButtons) => ({
-      ...prevLikedButtons,
-      [index]: false,
-    }));
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
-      [index]: !dislikedButtons[index],
+      [index]: false,
     }));
+
+   
+    if (!showThanksMessage[index]) {
+      setShowThanksMessage((prevShowThanksMessage) => ({
+        ...prevShowThanksMessage,
+        [index]: "Would you like to share your question with the community?",
+      }));
+    }
 
     const newQuestion = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
       answer_status: -1,
-      assignedDepaFeed: 17,
+      assignedDepaFeed: messagesID[index+1].depa,
     };
-
-    // console.log(messagesID[index])
-    // console.log(messagesID[index+1])
 
     try {
       await updateAnswerBotFeedback(newQuestion);
@@ -143,14 +141,13 @@ function AnswerBotButton({
 
   };
 
-  const handlePost = async (index) => {
-
+  const handlePublishQuestion = async (index) => {
     const question = {
       question: messages[index].content,
       answer: messages[index+1].content,
       status: -1,
       isAnonymous: false,
-      assignedDepaPost: 17,
+      assignedDepaPost: messagesID[index+1].depa,
       assigned_to_employee_id: 'undefined',
       location: DEFAULT_LOCATION,
     };
@@ -209,28 +206,34 @@ function AnswerBotButton({
                       {message.content}
                     </Styled.Message>
                   </Styled.ChatbotRowMessage>
-                  {index !== 0
-                    ? (
-                      <div>
+                  {index !== 0 && (
+                  <div>
+                    {!showThanksMessage[index] && (
+                      <>
                         <Styled.LikeButton
-                          key={`like-${message.id}`}
-                          liked={likedButtons[index]}
+                          key={`like-${index}`}
                           onClick={() => handleLikeClick(index)}
                         />
                         <Styled.DislikeButton
-                          key={`dislike-${message.id}`}
-                          disliked={dislikedButtons[index]}
+                          key={`dislike-${index}`}
                           onClick={() => handleDislikeClick(index)}
                         />
-                        { showThanksMessage[index] ? <span style={{ padding: '5px' }}> Thanks for the feedback! </span> : <> </> }
-                        { dislikedButtons[index] ? 
-                          <button key={`button-${message.id}`} onClick={() => handlePost(index)}> Post Question </button>
-                          : 
-                          <> </> 
-                        }
-                      </div>
-                    )
-                    : <> </>}
+                      </>
+                    )}
+                    {showThanksMessage[index] && (
+                      <Styled.TextFeedback>
+                        {showThanksMessage[index] === true
+                          ? 'Thanks for the feedback!'
+                          : showThanksMessage[index]}
+                      </Styled.TextFeedback>
+                    )}
+                    {showThanksMessage[index] === "Would you like to share your question with the community?" && (
+                      <Styled.PublishButton onClick={() => handlePublishQuestion(index)}>
+                        Post question
+                      </Styled.PublishButton>
+                    )}
+                  </div>
+                )}
                 </div>
               )
           ))}
@@ -252,15 +255,10 @@ AnswerBotButton.propTypes = {
   departments: PropTypes.arrayOf(
     PropTypes.shape(),
   ),
-  initialDepartment: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    department_id: PropTypes.number.isRequired,
-  }),
 };
 
 AnswerBotButton.defaultProps = {
   departments: [],
-  initialDepartment: { name: 'hey', department_id: 17 },
 };
 
 

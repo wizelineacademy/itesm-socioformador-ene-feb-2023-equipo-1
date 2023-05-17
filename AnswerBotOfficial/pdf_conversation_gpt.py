@@ -19,6 +19,36 @@ openai.api_key = "********************"
 app = Flask(__name__)
 
 
+keywords = {
+    'Founders': ['startup', 'entrepreneurship', 'incubator', 'funding'],
+    'Academy': ['education', 'curriculum', 'learning', 'teaching', 'training', 'certification'],
+    'Business Operations': ['process', 'improvement', 'efficiency', 'management', 'control'],
+    'Engineering': ['CAD', 'development', 'system', 'engineering'],
+    'Facilities': ['maintenance', 'building', 'efficiency', 'security', 'planning'],
+    'Finance & Accounting': ['financial', 'budgeting', 'forecasting', 'taxation'],
+    'Marketing': ['advertising', 'branding', 'content', 'market'],
+    'People Operations': ['recruitment', 'employee', 'onboarding', 'talent'],
+    'Product': ['product', 'innovation', 'prototyping', 'features'],
+    'Sales': ['prospecting', 'networking', 'closing', 'pipeline'],
+    'UX Design': ['wireframes', 'prototyping', 'interface', 'aesthetics'],
+    'IT & Security Engineering': ['cybersecurity', 'network', 'encryption', 'authentication'],
+    'CEO / Exec Staff': ['leadership', 'strategy', 'vision', 'growth'],
+    'Delivery': ['supply-chain', 'inventory', 'shipping', 'distribution'],
+    'Solutions': ['integration', 'customization', 'automation', 'optimization'],
+    'User Experience': ['usability', 'accessibility', 'interaction', 'persona'],
+    'Wizeline Questions Staff': ['feedback', 'satisfaction', 'performance', 'communication', 'test'],
+    'Legal': ['compliance', 'litigation', 'contracts', 'regulations'],
+}
+
+
+def find_department(query, keywords):
+    for department, kws in keywords.items():
+        for kw in kws:
+            if kw in query:
+                return department
+    return 'I don\'t know whom to assign it.'
+
+
 def preprocess(text):
     '''
     preprocess chunks
@@ -130,8 +160,10 @@ def generate_text(messages, model="gpt-3.5-turbo"):
 
 def generate_answer(conversation):
     load_recommender('corpus.pdf')
-    topn_chunks = recommender(conversation[-1]["content"])
     userInput = conversation[-1]["content"]
+    topn_chunks = recommender(userInput)
+    department = find_department(userInput, keywords)
+    
     prompt = ""
     prompt += 'search results:\n\n'
     for c in topn_chunks:
@@ -140,16 +172,18 @@ def generate_answer(conversation):
     prompt += f"Query: {userInput}\n\n"
     conversation[-1]["content"] = prompt
     answer = generate_text(conversation)
-    return answer
+    return answer, department
 
 
 @app.route('/api/pdf_conversation_gpt', methods=['POST'])
 def submit_conversation():
     conversation = request.json
     print(conversation)
-    conversation.append(generate_answer(conversation))
+    answer, department = generate_answer(conversation)
+    conversation.append(answer)
     print(conversation[-1]["content"])
-    return jsonify(conversation)
+    print(department)
+    return jsonify({'conversation': conversation, 'department': department})
 
 CORS(app, origins='http://localhost:3000')
 if __name__ == '__main__':
