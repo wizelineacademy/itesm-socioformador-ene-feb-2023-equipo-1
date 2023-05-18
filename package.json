@@ -3,8 +3,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
-    "postbuild": "",
-    "dev": "remix build && run-p \"dev:*\"",
+    "postbuild": "scripts/sync-email-templates.sh",
+    "dev": "remix build && scripts/sync-email-templates.sh && run-p \"dev:*\"",
     "dev:node": "cross-env NODE_ENV=development nodemon ./server.js --watch ./server.js",
     "dev:remix": "remix watch",
     "lint": "eslint '**/*.js'",
@@ -16,7 +16,7 @@
     "start": "cross-env NODE_ENV=production node ./server.js",
     "test:integration": "dotenv -e .env.test.integration -- ./scripts/integration-test.sh",
     "test:integration:watch": "dotenv -e .env.test.integration -- npx jest --runInBand --watchAll --testPathPattern=tests/integration/*",
-    "test:unit": "scripts/unit-test.sh",
+    "test:unit": "./scripts/unit-test.sh",
     "test:cypress:run": "dotenv -e .env.test.integration -- cross-env start-server-and-test dev http://localhost:3000 \"npx cypress run --project tests\"",
     "test:cypress:open": "dotenv -e .env.test.integration -- start-server-and-test dev http://localhost:3000 \"npx cypress open --project tests\""
   },
