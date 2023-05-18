@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import pdfConv from 'app/controllers/answerBot/pdfConv';
 import { DEFAULT_LOCATION } from 'app/utils/constants';
 import PropTypes from 'prop-types';
+import useUser from 'app/utils/hooks/useUser';
 
 function AnswerBotButton({
   postAnswerBotQuestion,
@@ -170,6 +171,14 @@ function AnswerBotButton({
     }, 2500);
   };
 
+  /////////////////// User ///////////////////
+
+  const profile = useUser();
+
+  if (!profile) {
+    return;
+  }
+
   //////////////// Components ////////////////
 
   return (
@@ -201,7 +210,7 @@ function AnswerBotButton({
                 >
                   {message.content}
                 </Styled.Message>
-                <Styled.IconUser src="/build/_assets/placeholder_user_img-ZWAQNLBE.png" />
+                <Styled.IconUser src={profile.profile_picture} />
               </Styled.ChatbotRowMessage>
             )
               : (
