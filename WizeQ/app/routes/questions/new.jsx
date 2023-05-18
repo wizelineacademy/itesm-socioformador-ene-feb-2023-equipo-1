@@ -12,12 +12,14 @@ import {
   commitSession, getAuthenticatedUser, getSession, requireAuth,
 } from 'app/session.server';
 import listDepartments from 'app/controllers/departments/list';
+import listQuestions from 'app/controllers/questions/list';
 import createQuestion from 'app/controllers/questions/create';
 import createAnswerByBot from 'app/controllers/answerBot/create';
 import updateFeedback from 'app/controllers/answerBot/modifyStatus';
 import updatePostID from 'app/controllers/answerBot/modifyIDQuestion'
 import Notifications from 'app/components/Notifications';
 import AnswerBotButton from 'app/components/Atoms/AnswerBotButton';
+import FAQs from 'app/components/FAQs/FAQs';
 import ACTIONS from 'app/utils/actions';
 
 export const loader = async ({ request }) => {
@@ -25,9 +27,15 @@ export const loader = async ({ request }) => {
 
   const locations = await listLocations();
   const departments = await listDepartments();
+  const questionsFAQ = await listQuestions({
+    orderBy: "popular",
+    dateRange: "this_month",
+    limit: 10,
+  });
   return json({
     locations,
     departments,
+    questionsFAQ,
   });
 };
 
@@ -194,7 +202,7 @@ export const action = async ({ request }) => {
 };
 
 function CreateQuestion() {
-  const { locations, departments } = useLoaderData();
+  const { questionsFAQ, locations, departments } = useLoaderData();
   const submit = useSubmit();
   const formRef = useRef();
 
@@ -283,6 +291,7 @@ function CreateQuestion() {
       <Styled.QuestionDiv>
         <Styled.QuestionSlogan>
           <Slogan />
+          <FAQs questionsFAQ={questionsFAQ}/>
         </Styled.QuestionSlogan>
         <Styled.QuestionInput>
           <QuestionForm
