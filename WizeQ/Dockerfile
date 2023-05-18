@@ -1,4 +1,4 @@
-FROM node:14.18.2
+FROM --platform=linux/aamd64 node:14.18.2
 WORKDIR /usr/server/app
 
 ADD package.json package-lock.json ./
@@ -9,4 +9,4 @@ RUN npm run build
 
 RUN npx prisma generate
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]

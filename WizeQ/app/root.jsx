@@ -91,7 +91,7 @@ export default function App() {
 
 // eslint-disable-next-line react/prop-types
 export function ErrorBoundary({ error }) {
-  console.error(error);
+  // console.error(error);
   return (
     <html lang="es">
       <head>
