@@ -1,4 +1,5 @@
 import * as Styled from "app/components/AdminSideBar/AdminSideBar.Styled.jsx";
+import React, { useEffect, useState } from "react";
 
 const navigation = [
 	{ name: "General", href: "#", current: false },
@@ -12,17 +13,16 @@ const navigation = [
 	{ name: "Management", href: "#", current: false },
 ];
 
-function SideBar() {
+function SideBar({ departments }) {
 	return (
 		<Styled.MainContainer>
 			<Styled.DepContainer>
 				<Styled.TitleDep>Departaments</Styled.TitleDep>
 
 				<Styled.ListDep>
-					{navigation.map((item) => (
+					{departments.map((item) => (
 						<Styled.DepSelect
 							key={item.name}
-							href={item.href}
 							aria-current={item.current ? "page" : undefined}>
 							{item.name}
 						</Styled.DepSelect>
