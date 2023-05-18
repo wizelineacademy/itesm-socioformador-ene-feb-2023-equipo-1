@@ -297,19 +297,19 @@ export const DislikeButton = styled.button`
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${(props) => (props.disliked ? dislikeClickIcon : dislikeIcon)});
+    background-image: url(${dislikeIcon});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${(props) => (props.disliked ? dislikeClickIcon : dislikeHoverIcon)});
+        background-image: url(${dislikeHoverIcon});
     }
 `;
 
 export const TextFeedback = styled.span`
-    padding: 5px 31px;
+    padding: ${(props) => (props.padding === 'na' ? '0px 0px' : '5px 31px')};
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;

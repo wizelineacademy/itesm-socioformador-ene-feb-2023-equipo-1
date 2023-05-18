@@ -1,11 +1,7 @@
 import * as Styled from 'app/components/Atoms/AnswerBotButton/AnswerBotButton.Styled';
 import React, { useEffect, useRef, useState } from 'react';
 import pdfConv from 'app/controllers/answerBot/pdfConv';
-// import { useSubmit } from '@remix-run/react';
-// import { json, redirect } from '@remix-run/node';
-// import createAnswerByBot from 'app/controllers/answerBot/create';
-// import { commitSession, getAuthenticatedUser, getSession } from 'app/session.server';
-import { NO_DEPARTMENT_SELECTED_ID, DEFAULT_LOCATION } from 'app/utils/constants';
+import { DEFAULT_LOCATION } from 'app/utils/constants';
 import PropTypes from 'prop-types';
 
 function AnswerBotButton({
@@ -43,7 +39,6 @@ function AnswerBotButton({
     console.log('department = ', depaName)
 
     const department = departments.find((c) => c.name === depaName);
-    console.log('department2 = ', department)
     setMessagesID([...messagesID, { role: 'user', content: message, depa: department?.department_id || 'wizeq' }, { role: 'system', content: answer, depa: department?.department_id || 'wizeq' }]);
 
     const newQuestion = {
@@ -60,7 +55,6 @@ function AnswerBotButton({
     } catch (error) {
       console.error(error);
     }
-
   };
 
   useEffect(() => {
@@ -110,6 +104,12 @@ function AnswerBotButton({
       throw error;
     }
 
+    setTimeout(() => {
+      setShowThanksMessage((prevShowThanksMessage) => ({
+        ...prevShowThanksMessage,
+        [index]: 'na',
+      }));
+    }, 2500);
   };
 
   const handleDislikeClick = async (index) => {
@@ -138,7 +138,6 @@ function AnswerBotButton({
     } catch (error) {
       throw error;
     }
-
   };
 
   const handlePublishQuestion = async (index) => {
@@ -158,6 +157,17 @@ function AnswerBotButton({
       throw error;
     }
 
+    setShowThanksMessage((prevShowThanksMessage) => ({
+      ...prevShowThanksMessage,
+      [index]: true,
+    }));
+
+    setTimeout(() => {
+      setShowThanksMessage((prevShowThanksMessage) => ({
+        ...prevShowThanksMessage,
+        [index]: 'na',
+      }));
+    }, 2500);
   };
 
   //////////////// Components ////////////////
@@ -221,10 +231,10 @@ function AnswerBotButton({
                       </>
                     )}
                     {showThanksMessage[index] && (
-                      <Styled.TextFeedback>
+                      <Styled.TextFeedback padding={showThanksMessage[index]}>
                         {showThanksMessage[index] === true
                           ? 'Thanks for the feedback!'
-                          : showThanksMessage[index]}
+                          : showThanksMessage[index] === 'na' ? '' : showThanksMessage[index]}
                       </Styled.TextFeedback>
                     )}
                     {showThanksMessage[index] === "Would you like to share your question with the community?" && (
@@ -260,7 +270,5 @@ AnswerBotButton.propTypes = {
 AnswerBotButton.defaultProps = {
   departments: [],
 };
-
-
 
 export default AnswerBotButton;
