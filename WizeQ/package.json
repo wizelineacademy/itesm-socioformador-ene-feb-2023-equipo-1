@@ -16,7 +16,7 @@
     "start": "cross-env NODE_ENV=production node ./server.js",
     "test:integration": "dotenv -e .env.test.integration -- ./scripts/integration-test.sh",
     "test:integration:watch": "dotenv -e .env.test.integration -- npx jest --runInBand --watchAll --testPathPattern=tests/integration/*",
-    "test:unit": ".\\scripts\\unit-test.sh",
+    "test:unit": "scripts\\unit-test.sh",
     "test:cypress:run": "dotenv -e .env.test.integration -- cross-env start-server-and-test dev http://localhost:3000 \"npx cypress run --project tests\"",
     "test:cypress:open": "dotenv -e .env.test.integration -- start-server-and-test dev http://localhost:3000 \"npx cypress open --project tests\""
   },
