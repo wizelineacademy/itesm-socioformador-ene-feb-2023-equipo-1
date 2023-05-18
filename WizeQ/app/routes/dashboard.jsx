@@ -111,12 +111,43 @@ function Dashboard() {
 							<Styled.ContMargin>
 								<Styled.Title>Answerbot Feedback</Styled.Title>
 
-								<Styled.UList>
-									<Styled.TextBoldList>Total Questions: 30</Styled.TextBoldList>
-
-									<Styled.TextBoldList>Postive: 24</Styled.TextBoldList>
-									<Styled.TextBoldList>Negative: 6</Styled.TextBoldList>
-								</Styled.UList>
+								<Table stripped hover>
+									<thead>
+										<tr>
+											<Styled.TextBold width="250">Question</Styled.TextBold>
+											<Styled.TextBold width="250">Answer</Styled.TextBold>
+											<Styled.TextBold width="170">Feedback</Styled.TextBold>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<Styled.Text>What is Wizeline?</Styled.Text>
+											<Styled.Text>Wizeline is a ....</Styled.Text>
+											<Styled.TextA>Good</Styled.TextA>
+										</tr>
+										<tr>
+											<Styled.Text>
+												What are the available projects?
+											</Styled.Text>
+											<Styled.Text>There are ....</Styled.Text>
+											<Styled.TextU>Bad</Styled.TextU>
+										</tr>
+										<tr>
+											<Styled.Text>
+												Where are the Wizeline offices located?
+											</Styled.Text>
+											<Styled.Text>They are located in ...</Styled.Text>
+											<Styled.TextA>Good</Styled.TextA>
+										</tr>
+										<tr>
+											<Styled.Text>
+												Are there any job openings at the moment?
+											</Styled.Text>
+											<Styled.Text>There aren't any openings at...</Styled.Text>
+											<Styled.TextA>Good</Styled.TextA>
+										</tr>
+									</tbody>
+								</Table>
 							</Styled.ContMargin>
 						</Styled.TopContainers>
 					</Styled.DividerContainer>
@@ -152,7 +183,7 @@ function Dashboard() {
 										</Styled.Text>
 										<Styled.Text>Logistics and Operations</Styled.Text>
 										<Styled.Text>March, 5</Styled.Text>
-										<Styled.TextB>Answerbot</Styled.TextB>
+										<Styled.TextA>Answered</Styled.TextA>
 									</tr>
 									<tr>
 										<Styled.Text>
