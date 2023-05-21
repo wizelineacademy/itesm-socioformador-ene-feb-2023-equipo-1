@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { json } from "@remix-run/node";
 import * as Styled from "app/styles/Dashboard.Styled.jsx";
-import { requireAuth } from "app/session.server";
+import { requireAuth, getAuthenticatedUser } from "app/session.server";
 import AdminSideBar from "app/components/AdminSideBar";
 import { Table } from "react-bootstrap";
 import { useLoaderData } from '@remix-run/react';
 import listQuestions from "app/controllers/questions/list";
 import listDepartments from 'app/controllers/departments/list';
+import listAnswerBot from "app/controllers/answerBot/list";
 
 export const loader = async ({ request }) => {
     await requireAuth(request);
+	const user = await getAuthenticatedUser(request);
 
     const url = new URL(request.url);
 
@@ -17,12 +19,18 @@ export const loader = async ({ request }) => {
   
     const questionsFAQ = await listQuestions({
         department: Number.isNaN(department) ? undefined : department,
-        limit: 5,
+        limit: 4,
     });
 
     const questionsOF = await listQuestions({
         department: Number.isNaN(department) ? undefined : department,
-        limit: 5,
+		status: 'not_answered',
+        limit: 4,
+    });
+
+	const questionsBot = await listAnswerBot({
+        department: Number.isNaN(department) ? undefined : department,
+		limit: 4,
     });
 
     const departments = await listDepartments();
@@ -32,6 +40,7 @@ export const loader = async ({ request }) => {
     return json({
       questionsFAQ,
       questionsOF,
+	  questionsBot,
       departments,
     });
 };
@@ -51,7 +60,7 @@ const months = [
 
 function Dashboard() {
     
-    const { questionsFAQ, departments } = useLoaderData();
+    const { questionsFAQ, questionsOF, questionsBot, departments } = useLoaderData();
 
     const [selectedDepartment, setSelectedDepartment] = useState(departments[0].department_id);
   
@@ -62,7 +71,9 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        console.log('questions: ', questionsFAQ);
+        console.log('qFAQ: ', questionsFAQ);
+        console.log('qOF: ', questionsOF);
+        console.log('qABF: ', questionsBot);
         console.log('departments: ', departments);
         console.log('selected department: ', selectedDepartment);
     }, []);
@@ -83,24 +94,15 @@ function Dashboard() {
 								<Styled.Title>Open Forums</Styled.Title>
 								<Table hover>
 									<tbody>
+									{questionsOF.map((question,index) => (
 										<tr>
-											<Styled.Text>What is Wizeline?</Styled.Text>
-										</tr>
-										<tr>
-											<Styled.Text>
-												What are the available projects?
+											<Styled.Text 
+												key={`questionOP-${index}`}
+												title={question.question}>
+												{question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question}
 											</Styled.Text>
 										</tr>
-										<tr>
-											<Styled.Text>
-												Where are the Wizeline offices located?
-											</Styled.Text>
-										</tr>
-										<tr>
-											<Styled.Text>
-												Are there any job openings at the moment?
-											</Styled.Text>
-										</tr>
+									))}
 									</tbody>
 								</Table>
 							</Styled.ContMargin>
@@ -119,32 +121,23 @@ function Dashboard() {
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<Styled.Text>What is Wizeline?</Styled.Text>
-											<Styled.Text>Wizeline is a ....</Styled.Text>
-											<Styled.TextA>Good</Styled.TextA>
-										</tr>
-										<tr>
-											<Styled.Text>
-												What are the available projects?
-											</Styled.Text>
-											<Styled.Text>There are ....</Styled.Text>
-											<Styled.TextU>Bad</Styled.TextU>
-										</tr>
-										<tr>
-											<Styled.Text>
-												Where are the Wizeline offices located?
-											</Styled.Text>
-											<Styled.Text>They are located in ...</Styled.Text>
-											<Styled.TextA>Good</Styled.TextA>
-										</tr>
-										<tr>
-											<Styled.Text>
-												Are there any job openings at the moment?
-											</Styled.Text>
-											<Styled.Text>There aren't any openings at...</Styled.Text>
-											<Styled.TextA>Good</Styled.TextA>
-										</tr>
+										{questionsBot.map((question,index) => (
+											<tr>
+												<Styled.Text 
+													key={`questionAB-${index}`} 
+													title={question.question_by_user}> 
+													{question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user}
+												</Styled.Text>
+												<Styled.Text 
+													key={`answerAB-${index}`} 
+													title={question.answer_by_bot}> 
+													{question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
+												</Styled.Text>
+												{question.answer_status === -1 && <Styled.TextU key={`statusAB-${index}`}> Bad </Styled.TextU>}
+												{question.answer_status === 0 && <Styled.Text key={`statusAB-${index}`}> N/A </Styled.Text>}
+												{question.answer_status === 1 && <Styled.TextA key={`statusAB-${index}`}> Good </Styled.TextA>}
+											</tr>
+										))}
 									</tbody>
 								</Table>
 							</Styled.ContMargin>
@@ -166,13 +159,17 @@ function Dashboard() {
 								<tbody>
                                 {questionsFAQ.map((question,index) => (
 									<tr>
-										<Styled.Text key={`question-${index}`}> {question.question} </Styled.Text>
+										<Styled.Text 
+											key={`questionFAQ-${index}`} 
+											title={question.question}> 
+											{question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question}
+										</Styled.Text>
 										<Styled.Text key={`department-${index}`}> {question.assigned_department !== null ? departments.find(depa => depa.department_id === question.assigned_department)?.name : 'Not Assigned'} </Styled.Text>
 										<Styled.Text key={`date-${index}`}> {formatDate(question.createdAt)} </Styled.Text>
                                         {question.Answers.length > 0 ?
-                                            <Styled.TextA key={`status-${index}`}> Answered </Styled.TextA>
+                                            <Styled.TextA key={`statusFAQ-${index}`}> Answered </Styled.TextA>
                                             :
-                                            <Styled.TextU key={`status-${index}`}> Unanswered </Styled.TextU>
+                                            <Styled.TextU key={`statusFAQ-${index}`}> Unanswered </Styled.TextU>
                                         }
 									</tr>
                                 ))}

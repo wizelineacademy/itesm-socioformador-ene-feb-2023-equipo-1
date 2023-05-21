@@ -38,7 +38,6 @@ export const Question = styled.a`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-//   max-height: calc(1.2em * 3);
 
   &:hover {
     color: #213246;
