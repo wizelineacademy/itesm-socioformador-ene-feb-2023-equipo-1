@@ -1,6 +1,6 @@
-# Wizeline Questions (Remix)
+# itesm-socioformador-ene-feb-2023-equipo-1 (Wizeline Questions)
 
-_Team Bookmarks_
+_Wizeline Questions repository to implement a helpful chatbot and a dashboard for administrators_
 
 _👥 [Slack] - 🏁 [Project Board] 📘 [Wiki]_
 
