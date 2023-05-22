@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
 	background-color: #f7fafc; /* Slate-100 */
-	margin-left: 15%;
+	margin-left: 18%;
 
 	@media (min-width: 1536px) {
 		margin-left: 40px; /* 2xl:ml-40 */

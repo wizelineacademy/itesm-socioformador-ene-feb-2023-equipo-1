@@ -1,19 +1,7 @@
 import * as Styled from "app/components/AdminSideBar/AdminSideBar.Styled.jsx";
 import React, { useEffect, useState } from "react";
 
-const navigation = [
-	{ name: "General", href: "#", current: false },
-	{ name: "Software", href: "#", current: false },
-	{ name: "Marketing", href: "#", current: false },
-	{ name: "Administrative", href: "#", current: false },
-	{ name: "HR", href: "#", current: false },
-	{ name: "Finance", href: "#", current: false },
-	{ name: "Logistics", href: "#", current: false },
-	{ name: "Projects", href: "#", current: false },
-	{ name: "Management", href: "#", current: false },
-];
-
-function SideBar({ departments }) {
+function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
 	return (
 		<Styled.MainContainer>
 			<Styled.DepContainer>
@@ -23,7 +11,9 @@ function SideBar({ departments }) {
 					{departments.map((item) => (
 						<Styled.DepSelect
 							key={item.name}
-							aria-current={item.current ? "page" : undefined}>
+							aria-current={item.current ? "page" : undefined}
+							onClick={() => handleSelectDepartment(item.department_id)}
+							selected={item.department_id === selectedDepartment}>
 							{item.name}
 						</Styled.DepSelect>
 					))}

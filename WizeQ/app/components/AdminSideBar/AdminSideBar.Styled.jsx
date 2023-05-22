@@ -7,6 +7,8 @@ export const MainContainer = styled.div`
 	inset-y: 0;
 	display: flex;
 	overflow-y: scroll;
+	padding-right: 5px;
+	background-color: white;
 `;
 
 export const DepContainer = styled.div`
@@ -35,18 +37,19 @@ export const ListDep = styled.ul`
 export const DepSelect = styled.li`
 	@import url("https://fonts.googleapis.com/css?family=Inter");
 	text-align: left;
-	margin-top: 25%;
+	margin-top: 15%;
 	/* background-color: #1f2937;  Gray-900 */
 	color: #17202a;
 	font-weight: 600;
 	letter-spacing: 1px;
+	word-break: break-all;
 
 	&:hover {
 		background-color: #213246; /* Gray-700 */
 		color: white;
 		border-radius: 0.375rem; /* Rounded-md */
-		padding-left: 0.75rem; /* Px-3 */
-		padding-right: 0.75rem; /* Px-3 */
+		padding-left: 0.5rem; /* Px-3 */
+		padding-right: 0.5rem; /* Px-3 */
 		padding-top: 0.5rem; /* Py-2 */
 		padding-bottom: 0.5rem; /* Py-2 */
 	}
