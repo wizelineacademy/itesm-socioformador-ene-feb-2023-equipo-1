@@ -52,5 +52,6 @@ export const DepSelect = styled.li`
 		padding-right: 0.5rem; /* Px-3 */
 		padding-top: 0.5rem; /* Py-2 */
 		padding-bottom: 0.5rem; /* Py-2 */
+		cursor: pointer;
 	}
 `;
