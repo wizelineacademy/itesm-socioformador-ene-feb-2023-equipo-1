@@ -18,7 +18,7 @@ import createAnswerByBot from 'app/controllers/answerBot/create';
 import updateFeedback from 'app/controllers/answerBot/modifyStatus';
 import updatePostID from 'app/controllers/answerBot/modifyIDQuestion'
 import Notifications from 'app/components/Notifications';
-import AnswerBotButton from 'app/components/Atoms/AnswerBotButton';
+import AnswerBot from 'app/components/AnswerBot';
 import FAQs from 'app/components/FAQs/FAQs';
 import ACTIONS from 'app/utils/actions';
 
@@ -317,7 +317,7 @@ function CreateQuestion() {
               }
             </Styled.Recommendations>
           </Styled.RecommendationsContainer>
-          <AnswerBotButton
+          <AnswerBot
             postAnswerBotQuestion={postAnswerBotQuestion}
             updateAnswerBotFeedback={updateAnswerBotFeedback}
             updateAnswerBotPostID={updateAnswerBotPostID}
