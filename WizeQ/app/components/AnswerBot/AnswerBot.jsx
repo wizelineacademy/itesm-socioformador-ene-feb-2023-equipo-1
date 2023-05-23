@@ -1,7 +1,6 @@
 import * as Styled from 'app/components/AnswerBot/AnswerBot.Styled';
 import React, { useEffect, useRef, useState } from 'react';
 import pdfConv from 'app/controllers/answerBot/pdfConv';
-import { DEFAULT_LOCATION } from 'app/utils/constants';
 import PropTypes from 'prop-types';
 import useUser from 'app/utils/hooks/useUser';
 
@@ -13,55 +12,76 @@ function AnswerBot({
 }) {
   //////////////// Send Question to AnswerBot ////////////////
 
+  // Instrucciones (query principal)
   const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
 
   const messagesEndRef = useRef(null);
 
   const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you." }]);
   const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, depa: null }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you.", depa: null }]);
+  
+  const [inputValue, setInputValue] = useState('');
+  const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
 
+  // To send the user's question to the bot, be able to receive an answer and register a new record in the AnswerBot table.
   const handleInput = async (e) => {
     e.preventDefault();
 
+    // Extracts the input.
     const input = e.target.querySelector('input');
     const message = input.value;
-    input.value = '';
-    setMessages([...messages, { role: 'user', content: message }]);
 
-    const chatHistory = [...messages, { role: 'user', content: message }];
-    const filteredMessages = chatHistory.filter((mess, index) => index !== 1);
-    const response = await pdfConv(filteredMessages);
-    const answer = response.text;
-    setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: answer }]);
-    console.log(response);
-    console.log(departments);
+    // Verifies that the input is greater than 13 characters in order to proceed with the process.
+    if (message.length > 13) {
+      input.value = '';
 
-    const depaName = response.department;
-    console.log('department = ', depaName)
+      // Update specific variables for chatbot effects.
+      setInputValue(input.value)
+      setIsWaitingForResponse(true);
+      setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: '' }]);
 
-    const department = departments.find((c) => c.name === depaName);
-    setMessagesID([...messagesID, { role: 'user', content: message, depa: department?.department_id || 'wizeq' }, { role: 'system', content: answer, depa: department?.department_id || 'wizeq' }]);
+      // Concatenate the user's question to the chat history and send it to the bot model.
+      const chatHistory = [...messages, { role: 'user', content: message }];
+      // Except the welcome message.
+      const filteredMessages = chatHistory.filter((mess, index) => index !== 1);
+      const response = await pdfConv(filteredMessages);
 
-    const newQuestion = {
-      question_by_user: message,
-      answer_by_bot: answer,
-      answer_status: 0,
-      assignedDepaQA: department?.department_id || 'wizeq',
-    };
+      // Extract answer from bot response.
+      const answer = response.text;
+      setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: answer }]);
+      setIsWaitingForResponse(false);
 
-    console.log(newQuestion)
+      // Extract department from bot response.
+      const depaName = response.department;
+      const department = departments.find((c) => c.name === depaName);
+      setMessagesID([...messagesID, { role: 'user', content: message, depa: department?.department_id || 'wizeq' }, { role: 'system', content: answer, depa: department?.department_id || 'wizeq' }]);
 
-    try {
-      await postAnswerBotQuestion(newQuestion);
-    } catch (error) {
-      console.error(error);
+      // Create the payload.
+      const newQuestion = {
+        question_by_user: message,
+        answer_by_bot: answer,
+        assignedDepaQA: department?.department_id || 'wizeq',
+      };
+
+      // Create a new record.
+      try {
+        await postAnswerBotQuestion(newQuestion);
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
-  useEffect(() => {
-    console.log(messagesID)
-  }, [messagesID]);
+  // Updates the variable every time the value of the input is changed.
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
+  // useEffect(() => {
+  //   console.log(messagesID)
+  // }, [messagesID]);
+
+  // To update the view of the chatbot box to the last message.
   useEffect(() => {
     const scrollToBottom = () => {
       if (messagesEndRef.current) {
@@ -76,6 +96,7 @@ function AnswerBot({
 
   const [chatbotVisible, setChatbotVisible] = useState(false);
 
+  // To open and close the chatbot.
   const handleChatbotToggle = () => {
     setChatbotVisible(!chatbotVisible);
   };
@@ -84,27 +105,33 @@ function AnswerBot({
 
   const [showThanksMessage, setShowThanksMessage] = useState({});
 
+  // To update the response feedback to positive.
   const handleLikeClick = async (index) => {
+
+    // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
       [index]: true,
     }));
 
-    const newQuestion = {
+    // Create the payload.
+    const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
       answer_status: 1,
       assignedDepaFeed: messagesID[index+1].depa,
     };
 
-    console.log(newQuestion)
+    // console.log(updateFeedback)
 
+    // Update the status of the record.
     try {
-      await updateAnswerBotFeedback(newQuestion);
+      await updateAnswerBotFeedback(updateFeedback);
     } catch (error) {
       throw error;
     }
 
+    // Set a time to fade the gratitude message.
     setTimeout(() => {
       setShowThanksMessage((prevShowThanksMessage) => ({
         ...prevShowThanksMessage,
@@ -113,13 +140,16 @@ function AnswerBot({
     }, 2500);
   };
 
+  // To update the response feedback to negative.
   const handleDislikeClick = async (index) => {
+
+    // Don't show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
       [index]: false,
     }));
 
-   
+    // Show a message if the user would like to share the question in the forum.
     if (!showThanksMessage[index]) {
       setShowThanksMessage((prevShowThanksMessage) => ({
         ...prevShowThanksMessage,
@@ -127,42 +157,45 @@ function AnswerBot({
       }));
     }
 
-    const newQuestion = {
+    // Create the payload.
+    const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
       answer_status: -1,
       assignedDepaFeed: messagesID[index+1].depa,
     };
 
+    // Update the status of the record.
     try {
-      await updateAnswerBotFeedback(newQuestion);
+      await updateAnswerBotFeedback(updateFeedback);
     } catch (error) {
       throw error;
     }
   };
 
+  // To post a question and be able to link it to the record made in the AnswerBot table.
   const handlePublishQuestion = async (index) => {
-    const question = {
+    // Create the payload.
+    const updatePostID = {
       question: messages[index].content,
       answer: messages[index+1].content,
-      status: -1,
-      isAnonymous: false,
       assignedDepaPost: messagesID[index+1].depa,
-      assigned_to_employee_id: 'undefined',
-      location: DEFAULT_LOCATION,
     };
 
+    // Update the id of the posted question with the answerbot's
     try {
-      await updateAnswerBotPostID(question)
+      await updateAnswerBotPostID(updatePostID)
     } catch (error) {
       throw error;
     }
 
+    // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
       [index]: true,
     }));
 
+    // Set a time to fade the gratitude message.
     setTimeout(() => {
       setShowThanksMessage((prevShowThanksMessage) => ({
         ...prevShowThanksMessage,
@@ -221,8 +254,11 @@ function AnswerBot({
                       key={`message-${message.id}`}
                       className="bot"
                       ref={messagesEndRef}
+                      isWaiting={isWaitingForResponse && index + 2 === messages.length}
                     >
                       {message.content}
+                      {console.log(messages.length)}
+                      {console.log('actual: ', index)}
                     </Styled.Message>
                   </Styled.ChatbotRowMessage>
                   {index !== 0 && (
@@ -259,8 +295,14 @@ function AnswerBot({
         </Styled.ChatbotMessages>
 
         <Styled.ChatbotInput onSubmit={handleInput}>
-          <Styled.Input type="text" placeholder="Enter your question..." />
-          <Styled.SendButton type="submit" />
+          <Styled.Input
+            type="text"
+            placeholder="Enter your question..."
+            onChange={handleChange}
+            disabled={isWaitingForResponse}
+            enabled={!isWaitingForResponse}
+            title='Type at least 14 characters'/>
+          <Styled.SendButton type="submit" inputLength={inputValue.length} disabled={isWaitingForResponse}/>
         </Styled.ChatbotInput>
       </Styled.ChatbotContainer>
     </div>

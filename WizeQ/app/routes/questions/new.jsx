@@ -5,7 +5,7 @@ import { useLoaderData, useSubmit } from '@remix-run/react';
 import * as Styled from 'app/styles/CreateQuestion.Styled';
 import Slogan from 'app/components/Slogan';
 import { MAXIMUM_QUESTION_LENGTH, MINIMUM_ANSWER_LENGTH, NOT_ASSIGNED_DEPARTMENT_ID } from 'app/utils/backend/constants';
-import { RECOMMENDATIONS_QUESTION } from 'app/utils/constants';
+import { RECOMMENDATIONS_QUESTION, DEFAULT_LOCATION } from 'app/utils/constants';
 import QuestionForm from 'app/components/QuestionForm';
 import listLocations from 'app/controllers/locations/list';
 import {
@@ -84,20 +84,25 @@ export const action = async ({ request }) => {
         });
       }
       break;
+
+    // Create a new record in AnswerBot table.
     case ACTIONS.CREATE_QUESTION_ANSWERBOT:
+      // Extract and format department.
       const { assignedDepaQA } = form;
       const parsedDepaQA = parseInt(assignedDepaQA, 10);
 
+      // Create the payload.
       payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
-        answer_status: form.answer_status,
         assigned_department: Number.isNaN(parsedDepaQA) ? null : parsedDepaQA,
         user_id: user.employee_id,
       };
 
+      // Post the payload.
       response = await createAnswerByBot(payload);
 
+      // If the result is successful, it shows it on the screen.
       if (response.successMessage) {
         const session = await getSession(request);
         const { successMessage } = response;
@@ -111,10 +116,14 @@ export const action = async ({ request }) => {
         });
       }
       break;
+
+    // Update feedback.
     case ACTIONS.UPDATE_FEEDBACK_ANSWERBOT:
+      // Extract and format department.
       const { assignedDepaFeed } = form;
       const parsedDepaFeed = parseInt(assignedDepaFeed, 10);
 
+      // Create the payload.
       payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
@@ -123,10 +132,10 @@ export const action = async ({ request }) => {
         user_id: user.employee_id,
       };
 
-      // console.log(payload)
-
+      // Update the record with the payload.
       response = await updateFeedback(payload);
 
+      // If the result is successful, it shows it on the screen.
       if (response.successMessage) {
         const session = await getSession(request);
         const { successMessage } = response;
@@ -141,42 +150,42 @@ export const action = async ({ request }) => {
       }
       break;
 
+    // Update post id.
     case ACTIONS.UPDATE_POST_ANSWERBOT:
-      const { assignedDepaPost, assigned_to_employee_id: assigned_to_employee } = form;
+      // Extract and format department.
+      const { assignedDepaPost } = form;
       const parsedDepaPost = parseInt(assignedDepaPost, 10);
-      const assignedEmployeeValueFeed = assigned_to_employee !== 'undefined' ? parseInt(assigned_to_employee, 10) : undefined;
 
+      // Create the payload.
       payload = {
         question: form.question,
-        created_by_employee_id: form.isAnonymous === 'true' ? null : user.employee_id,
-        is_anonymous: form.isAnonymous === 'true',
+        created_by_employee_id: user.employee_id,
+        is_anonymous: false,
         assigned_department: Number.isNaN(parsedDepaPost) ? null : parsedDepaPost,
-        assigned_to_employee_id: Number.isNaN(assignedEmployeeValueFeed) ? null : assignedEmployeeValueFeed,
-        location: form.location,
+        assigned_to_employee_id: null,
+        location: DEFAULT_LOCATION,
         accessToken: user.accessToken,
       };
 
-      console.log('createQuestion',payload)
-
+      // Create a question in the forum.
       response = await createQuestion(payload);
 
-      console.log('id:', response.question.question_id)
-
+      // If the result is successful, proceed to continue.
       if (response.successMessage) {
 
+        // Create another payload.
         payload = {
           post_question_id: response.question.question_id,
           question_by_user: form.question,
           answer_by_bot: form.answer,
-          answer_status: form.status,
           assigned_department: Number.isNaN(parsedDepaPost) ? null : parsedDepaPost,
           user_id: user.employee_id,
         };
 
-        console.log('updatePost',payload);
-
+        // Update the AnswerBot record with the new payload.
         response = await updatePostID(payload);
     
+        // If the result is successful, it shows it on the screen.
         if (response.successMessage) {
           console.log('finish',response.feedback);
           const session = await getSession(request);
@@ -232,6 +241,7 @@ function CreateQuestion() {
     );
   };
 
+  // Creates a FormData to submit and create a new record.
   const postAnswerBotQuestion = (question) => {
     const data = new FormData(formRef.current);
 
@@ -241,15 +251,13 @@ function CreateQuestion() {
       data.set(key, value);
     }
 
-    // console.log(question)
-    // console.log(data.get("question_by_user"))
-
     submit(
       data,
       { method: 'post', action: '/questions/new' },
     );
   };
 
+  // Creates a FormData to submit and update feedback for an existing record.
   const updateAnswerBotFeedback = (question) => {
     const data = new FormData(formRef.current);
 
@@ -259,15 +267,13 @@ function CreateQuestion() {
       data.set(key, value);
     }
 
-    // console.log(question)
-    // console.log(data.get("question_by_user"))
-
     submit(
       data,
       { method: 'post', action: '/questions/new' },
     );
   };
 
+  // Creates a FormData to submit and update the post id for an existing record.
   const updateAnswerBotPostID = (question) => {
     const data = new FormData(formRef.current);
 
@@ -276,8 +282,6 @@ function CreateQuestion() {
     for (const [key, value] of Object.entries(question)) {
       data.set(key, value);
     }
-
-    // console.log(question)
 
     submit(
       data,

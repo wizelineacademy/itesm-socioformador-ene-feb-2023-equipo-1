@@ -1,11 +1,12 @@
 import { DEFAULT_ERROR_MESSAGE } from 'app/utils/backend/constants';
-import { createAnswerBotSchema } from 'app/utils/backend/validators/answerBot';
+import { modifyStatusBotSchema } from 'app/utils/backend/validators/answerBot';
 import { db } from 'app/utils/db.server';
 
 const updateFeedback = async (body) => {
+  // Validates the received data.
+  const { error, value } = modifyStatusBotSchema.validate(body);
 
-  const { error, value } = createAnswerBotSchema.validate(body);
-
+  // Error and exception handling for validation.
   if (error) {
     return {
       errors: [
@@ -17,34 +18,46 @@ const updateFeedback = async (body) => {
     };
   }
 
+  // Destructuring, rest has all the remaining values of the data.
   const { answer_status, ...rest } = value;
   
+  // Find the record that matches the submitted values.
   const findFeed = await db.AnswerBot.findFirst({
     where: {
       answer_status: 0,
       ...rest,
     },
     orderBy: {
-        date_created: 'desc',
+      date_created: 'desc',
     },
   });
 
-  if (findFeed) {
-    await db.AnswerBot.update({
-      where: {
-        id: findFeed.id,
-      },
-      data: {
-        answer_status: answer_status,
-      },
-    });
+  // Error and exception handling in case there is no record to update.
+  if (!findFeed) {
+    return {
+      errors: [
+        {
+          message: DEFAULT_ERROR_MESSAGE,
+          detail: 'The record to update the feedback does not exist.',
+        },
+      ],
+    };
   }
 
-  // console.log(value);
+  // If the record exists, update the feedback.
+  const updateFeed = await db.AnswerBot.update({
+    where: {
+      id: findFeed.id,
+    },
+    data: {
+      answer_status: answer_status,
+    },
+  });
 
+  // Returns a success message of the operation performed.
   return {
     successMessage: 'The feedback to bot has been updated succesfully!',
-    feedback: findFeed,
+    feedback: updateFeed,
   };
 
 };

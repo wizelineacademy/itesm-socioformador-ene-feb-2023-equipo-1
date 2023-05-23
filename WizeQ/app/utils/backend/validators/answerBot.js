@@ -6,7 +6,16 @@ import {
   MAXIMUM_ANSWER_LENGTH,
 } from 'app/utils/backend/constants';
 
-export const createAnswerBotSchema = Joi.object().keys({
+// Validate that the data is correct to create a new record.
+export const createBotSchema = Joi.object().keys({
+  question_by_user: Joi.string().min(MINIMUM_QUESTION_LENGTH).max(MAXIMUM_QUESTION_LENGTH).required(),
+  answer_by_bot: Joi.string().min(MINIMUM_ANSWER_LENGTH).max(MAXIMUM_ANSWER_LENGTH).required(),
+  assigned_department: Joi.number().integer().min(1).allow(null),
+  user_id: Joi.number().integer().min(1).allow(null),
+});
+
+// Validate that the data is correct to update the response status.
+export const modifyStatusBotSchema = Joi.object().keys({
   question_by_user: Joi.string().min(MINIMUM_QUESTION_LENGTH).max(MAXIMUM_QUESTION_LENGTH).required(),
   answer_by_bot: Joi.string().min(MINIMUM_ANSWER_LENGTH).max(MAXIMUM_ANSWER_LENGTH).required(),
   answer_status: Joi.number().integer().min(-1).max(1).required(),
@@ -14,11 +23,11 @@ export const createAnswerBotSchema = Joi.object().keys({
   user_id: Joi.number().integer().min(1).allow(null),
 });
 
-export const modifyAnswerBotQuestionPost = Joi.object().keys({
+// Validate that the data is correct to update the id of the post question.
+export const modifyBotPostQuestion = Joi.object().keys({
   post_question_id: Joi.number().integer().min(1).allow(null),
   question_by_user: Joi.string().min(MINIMUM_QUESTION_LENGTH).max(MAXIMUM_QUESTION_LENGTH).required(),
   answer_by_bot: Joi.string().min(MINIMUM_ANSWER_LENGTH).max(MAXIMUM_ANSWER_LENGTH).required(),
-  answer_status: Joi.number().integer().min(-1).max(1).required(),
   assigned_department: Joi.number().integer().min(1).allow(null),
   user_id: Joi.number().integer().min(1).allow(null),
 });

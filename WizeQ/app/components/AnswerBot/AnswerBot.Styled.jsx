@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+
 import botImage from 'app/images/logo_answerbot.png';
 import postIcon from 'app/images/post-icon.png';
 
@@ -7,9 +8,6 @@ import dislikeIcon from 'app/images/dislike.png';
 
 import likeHoverIcon from 'app/images/likeHover.png';
 import dislikeHoverIcon from 'app/images/dislikeHover.png';
-
-import likeClickIcon from 'app/images/likeClick.png';
-import dislikeClickIcon from 'app/images/dislikeClick.png';
 
 /// ///////////////////////////////////// AnswerBot Button /////////////////////////////////////
 
@@ -100,24 +98,24 @@ export const BotMessage = styled.div`
     right: 8%;
     transform: translateY(-50%);
 
-    @media screen and (max-width: 2000px) and (min-height: 500px) {
-        font-size: 16px;
-        left: 45%;
-    }
+    // @media screen and (max-width: 2000px) and (min-height: 500px) {
+    //     font-size: 16px;
+    //     left: 45%;
+    // }
 
-    @media screen and (max-width: 2017px) {
-        right: 2.15vw;
-    }
+    // @media screen and (max-width: 2017px) {
+    //     right: 2.15vw;
+    // }
 
-    @media screen and (max-width: 1000px) {
-        left: 50%;
-        font-size: 20px;
-    }
+    // @media screen and (max-width: 1000px) {
+    //     left: 50%;
+    //     font-size: 20px;
+    // }
 
-    @media screen and (max-width: 1500px) {
-        left: 50%;
-        font-size: 100%;
-    }
+    // @media screen and (max-width: 1500px) {
+    //     left: 50%;
+    //     font-size: 100%;
+    // }
 
 `;
 
@@ -216,6 +214,18 @@ export const ChatbotRowMessage = styled.div`
     alignItems: center;
 `;
 
+const blinkAnimation = keyframes`
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+`;
+
 export const Message = styled.div`
     padding: 10px 10px;
     border-bottom-right-radius: 10px;
@@ -237,6 +247,17 @@ export const Message = styled.div`
         background-color: #213246;
         border-top-right-radius: 10px;
         color: #fff;
+
+        ${(props) => props.isWaiting && css`
+          position: relative;
+          overflow: hidden;
+
+          &:after {
+            content: '...';
+            animation: ${blinkAnimation} 1s infinite alternate;
+            animation-delay: ${props.index * 0.2}s;
+          }
+        `}
     }
 `;
 
@@ -252,6 +273,7 @@ export const Input = styled.input`
     padding: 10px;
     border: none;
     outline: none;
+    cursor: ${(props) => (props.enabled ? 'text' : 'not-allowed')};
 `;
 
 export const SendButton = styled.button`
@@ -265,10 +287,12 @@ export const SendButton = styled.button`
     background-repeat: no-repeat;
     background-position: center;
     margin: 5px 5px;
+    opacity: ${(props) => (props.inputLength > 13 ? 1 : 0.3)};
+    cursor: ${(props) => (props.inputLength > 13 ? 'pointer' : 'not-allowed')};
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-    background-color: #F2F2F1;
+        background-color: ${(props) => (props.inputLength > 13 ? '#F2F2F1' : '#fff') };
     }
 `;
 
@@ -279,7 +303,7 @@ export const LikeButton = styled.button`
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${(props) => (props.liked ? likeClickIcon : likeIcon)});
+    background-image: url(${likeIcon});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
@@ -288,7 +312,7 @@ export const LikeButton = styled.button`
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${(props) => (props.liked ? likeClickIcon : likeHoverIcon)});
+        background-image: url(${likeHoverIcon});
     }
 `;
 

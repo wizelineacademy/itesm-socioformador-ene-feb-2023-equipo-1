@@ -1,11 +1,12 @@
 import { DEFAULT_ERROR_MESSAGE } from 'app/utils/backend/constants';
-import { createAnswerBotSchema } from 'app/utils/backend/validators/answerBot';
+import { createBotSchema } from 'app/utils/backend/validators/answerBot';
 import { db } from 'app/utils/db.server';
 
 const createAnswerByBot = async (body) => {
+  // Validates the received data.
+  const { error, value } = createBotSchema.validate(body);
 
-  const { error, value } = createAnswerBotSchema.validate(body);
-
+  // Error and exception handling for validation.
   if (error) {
     return {
       errors: [
@@ -17,16 +18,17 @@ const createAnswerByBot = async (body) => {
     };
   }
 
+  // Destructuring, rest has all the remaining values of the data.
   const { ...rest } = value;
 
+  // Create a new record.
   const created = await db.AnswerBot.create({
     data: {
       ...rest,
     },
   });
 
-  // console.log(value);
-
+  // Returns a success message of the operation performed.
   return {
     successMessage: 'The question to bot has been created succesfully!',
     question: created,
