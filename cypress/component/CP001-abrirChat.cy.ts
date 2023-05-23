@@ -1,7 +1,8 @@
-import AnswerBotButton from 'app/components/Atoms/AnswerBotButton';
+import { FaBeer } from "react-icons/fa";
 
-describe('CP001-abrirChat.cy.ts', () => {
+describe('prueba de icono', () => {
   it('playground', () => {
-    //cy.mount(<AnswerBotButton />)
+    cy.mount(<FaBeer/>)
+    cy.get('svg').should('be.visible')
   })
 })

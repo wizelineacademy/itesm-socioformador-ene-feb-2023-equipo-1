@@ -5,6 +5,7 @@
     "build": "remix build",
     "postbuild": "sh scripts/sync-email-templates.sh",
     "dev": "remix build && sh scripts/sync-email-templates.sh && run-p \"dev:*\"",
+    "dev:node": "cross-env NODE_ENV=development nodemon ./server.js --watch ./server.js",
     "dev:remix": "remix watch",
     "lint": "eslint '**/*.js'",
     "prestart": "npx prisma migrate deploy",
