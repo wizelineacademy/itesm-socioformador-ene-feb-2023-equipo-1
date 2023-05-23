@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { json } from "@remix-run/node";
 import * as Styled from "app/styles/Dashboard.Styled.jsx";
-import { requireAuth, getAuthenticatedUser } from "app/session.server";
+import { requireAuth } from "app/session.server";
 import AdminSideBar from "app/components/AdminSideBar";
 import { Table } from "react-bootstrap";
 import { useLoaderData } from '@remix-run/react';
@@ -9,34 +9,44 @@ import listQuestions from "app/controllers/questions/list";
 import listDepartments from 'app/controllers/departments/list';
 import listAnswerBot from "app/controllers/answerBot/list";
 
-export const loader = async ({ request }) => {
-    await requireAuth(request);
-	const user = await getAuthenticatedUser(request);
 
+// Process and load the data.
+export const loader = async ({ request }) => {
+	// Make sure the user is authenticated before continuing.
+    await requireAuth(request);
+
+	// To access the request URL.
     const url = new URL(request.url);
 
+	// Extract the "department" parameter from the URL.
     const department = Number.parseInt(url.searchParams.get('department'), 10);
   
+	// Get a list of FAQ questions.
     const questionsFAQ = await listQuestions({
         department: Number.isNaN(department) ? undefined : department,
-        limit: 4,
+        limit: 5,
     });
 
+	// Get a list of unanswered questions.
     const questionsOF = await listQuestions({
         department: Number.isNaN(department) ? undefined : department,
 		status: 'not_answered',
-        limit: 4,
+        limit: 8,
     });
 
+	// Get a list of bot questions.
 	const questionsBot = await listAnswerBot({
         department: Number.isNaN(department) ? undefined : department,
-		limit: 4,
+		limit: 5,
     });
 
+	// Get a list of the departments.
     const departments = await listDepartments();
+	// Add 2 more departments in the options.
     departments.unshift({ department_id: 0, name: 'Not Assigned'});
     departments.unshift({ department_id: undefined, name: 'All'});
   
+	// Returns the results in a json.
     return json({
       questionsFAQ,
       questionsOF,
@@ -45,38 +55,35 @@ export const loader = async ({ request }) => {
     });
 };
 
+// Format for the month.
 const months = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-  ];
+];
   
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const month = months[date.getMonth()];
-    const day = date.getDate();
-  
-    return `${month} ${day}`;
+// Format for date.
+const formatDate = (dateString) => {
+	const date = new Date(dateString);
+	const month = months[date.getMonth()];
+	const day = date.getDate();
+
+	return `${month} ${day}`;
 };
 
 function Dashboard() {
     
+	// Load the data.
     const { questionsFAQ, questionsOF, questionsBot, departments } = useLoaderData();
 
+	// For the department selector.
     const [selectedDepartment, setSelectedDepartment] = useState(departments[0].department_id);
   
+	// Change the current value of the department selector and send it to the loader.
     const handleSelectDepartment = department => {
       setSelectedDepartment(department);
       const queryParams = new URLSearchParams({ department });
       window.location.search = queryParams.toString();
     }
-
-    useEffect(() => {
-        console.log('qFAQ: ', questionsFAQ);
-        console.log('qOF: ', questionsOF);
-        console.log('qABF: ', questionsBot);
-        console.log('departments: ', departments);
-        console.log('selected department: ', selectedDepartment);
-    }, []);
 
 	return (
 		<>

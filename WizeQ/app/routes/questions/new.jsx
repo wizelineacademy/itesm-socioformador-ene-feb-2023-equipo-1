@@ -42,21 +42,21 @@ export const loader = async ({ request }) => {
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const formAction = formData.get('action');
-  let response;
-  let payload;
-  let assignedDepartment;
 
   const user = await getAuthenticatedUser(request);
   const form = Object.fromEntries(formData.entries());
 
-  // console.log(formAction);
-  // console.log(user.employee_id);
+  // Extract and format department.
+  const { assignedDepartment } = form;
+  const parsedDepartment = parseInt(assignedDepartment, 10);
+
+  let response;
+  let payload;
 
   // values passed as strings
   switch (formAction) {
     case ACTIONS.CREATE_QUESTION_ANSWER:
-      const { assignedDepartment, assigned_to_employee_id: assignedEmployeeId } = form;
-      const parsedDepartment = parseInt(assignedDepartment, 10);
+      const { assigned_to_employee_id: assignedEmployeeId } = form;
       const assignedEmployeeValue = assignedEmployeeId !== 'undefined' ? parseInt(assignedEmployeeId, 10) : undefined;
 
       payload = {
@@ -87,15 +87,11 @@ export const action = async ({ request }) => {
 
     // Create a new record in AnswerBot table.
     case ACTIONS.CREATE_QUESTION_ANSWERBOT:
-      // Extract and format department.
-      const { assignedDepaQA } = form;
-      const parsedDepaQA = parseInt(assignedDepaQA, 10);
-
       // Create the payload.
       payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
-        assigned_department: Number.isNaN(parsedDepaQA) ? null : parsedDepaQA,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         user_id: user.employee_id,
       };
 
@@ -119,16 +115,12 @@ export const action = async ({ request }) => {
 
     // Update feedback.
     case ACTIONS.UPDATE_FEEDBACK_ANSWERBOT:
-      // Extract and format department.
-      const { assignedDepaFeed } = form;
-      const parsedDepaFeed = parseInt(assignedDepaFeed, 10);
-
       // Create the payload.
       payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
         answer_status: form.answer_status,
-        assigned_department: Number.isNaN(parsedDepaFeed) ? null : parsedDepaFeed,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         user_id: user.employee_id,
       };
 
@@ -152,16 +144,12 @@ export const action = async ({ request }) => {
 
     // Update post id.
     case ACTIONS.UPDATE_POST_ANSWERBOT:
-      // Extract and format department.
-      const { assignedDepaPost } = form;
-      const parsedDepaPost = parseInt(assignedDepaPost, 10);
-
       // Create the payload.
       payload = {
         question: form.question,
         created_by_employee_id: user.employee_id,
         is_anonymous: false,
-        assigned_department: Number.isNaN(parsedDepaPost) ? null : parsedDepaPost,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         assigned_to_employee_id: null,
         location: DEFAULT_LOCATION,
         accessToken: user.accessToken,
@@ -178,7 +166,7 @@ export const action = async ({ request }) => {
           post_question_id: response.question.question_id,
           question_by_user: form.question,
           answer_by_bot: form.answer,
-          assigned_department: Number.isNaN(parsedDepaPost) ? null : parsedDepaPost,
+          assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
           user_id: user.employee_id,
         };
 

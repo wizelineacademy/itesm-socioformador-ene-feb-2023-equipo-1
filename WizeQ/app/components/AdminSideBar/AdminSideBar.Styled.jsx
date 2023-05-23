@@ -35,7 +35,8 @@ export const ListDep = styled.ul`
 export const DepSelect = styled.li`
 	@import url("https://fonts.googleapis.com/css?family=Inter");
 	text-align: left;
-	margin-top: 25%;
+	margin-top: 7.5%;
+	// margin-top: 20%;
 	/* background-color: #1f2937;  Gray-900 */
 	color: #17202a;
 	font-weight: 600;
@@ -45,8 +46,8 @@ export const DepSelect = styled.li`
 		background-color: #213246; /* Gray-700 */
 		color: white;
 		border-radius: 0.375rem; /* Rounded-md */
-		padding-left: 0.75rem; /* Px-3 */
-		padding-right: 0.75rem; /* Px-3 */
+		// padding-left: 0.75rem; /* Px-3 */
+		// padding-right: 0.75rem; /* Px-3 */
 		padding-top: 0.5rem; /* Py-2 */
 		padding-bottom: 0.5rem; /* Py-2 */
 	}

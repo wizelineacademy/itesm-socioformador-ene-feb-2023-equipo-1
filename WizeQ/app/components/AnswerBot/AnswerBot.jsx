@@ -15,11 +15,13 @@ function AnswerBot({
   // Instrucciones (query principal)
   const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
 
-  const messagesEndRef = useRef(null);
-
+  // The chat history in the chatbot.
   const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you." }]);
+  // To save the id of the assigned department.
   const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, depa: null }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you.", depa: null }]);
   
+  // Variables for chatbot effects.
+  const messagesEndRef = useRef(null);
   const [inputValue, setInputValue] = useState('');
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
 
@@ -60,7 +62,7 @@ function AnswerBot({
       const newQuestion = {
         question_by_user: message,
         answer_by_bot: answer,
-        assignedDepaQA: department?.department_id || 'wizeq',
+        assignedDepartment: department?.department_id || 'wizeq',
       };
 
       // Create a new record.
@@ -119,7 +121,7 @@ function AnswerBot({
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
       answer_status: 1,
-      assignedDepaFeed: messagesID[index+1].depa,
+      assignedDepartment: messagesID[index].depa,
     };
 
     // console.log(updateFeedback)
@@ -162,7 +164,7 @@ function AnswerBot({
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
       answer_status: -1,
-      assignedDepaFeed: messagesID[index+1].depa,
+      assignedDepartment: messagesID[index].depa,
     };
 
     // Update the status of the record.
@@ -179,7 +181,7 @@ function AnswerBot({
     const updatePostID = {
       question: messages[index].content,
       answer: messages[index+1].content,
-      assignedDepaPost: messagesID[index+1].depa,
+      assignedDepartment: messagesID[index].depa,
     };
 
     // Update the id of the posted question with the answerbot's
@@ -257,8 +259,6 @@ function AnswerBot({
                       isWaiting={isWaitingForResponse && index + 2 === messages.length}
                     >
                       {message.content}
-                      {console.log(messages.length)}
-                      {console.log('actual: ', index)}
                     </Styled.Message>
                   </Styled.ChatbotRowMessage>
                   {index !== 0 && (
