@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 
 export const FAQContainer = styled.div`
-    margin: 30px 40px 0;
-    width: 260px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    flex-direction: column;
+  margin: 30px 40px 0;
+  width: 17vw;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  flex-direction: column;
 `;
 
 export const FAQHeader = styled.div`
-    background-color: #f5f5f5;
-    font-size: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    text-align: center;
-    font-weight: bold;
-    padding: 10px 0;
+  background-color: #f5f5f5;
+  font-size: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
 `;
 
 export const FAQList = styled.div`

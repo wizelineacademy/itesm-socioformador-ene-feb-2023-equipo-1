@@ -32,7 +32,7 @@ export const BotButton = styled.button`
     }
 
     &:hover {
-        width: 20.16vw;
+        width: 19vw;
 
         & > .message {
             opacity: 1;
@@ -40,32 +40,23 @@ export const BotButton = styled.button`
             transition: opacity 0.25s ease-in-out;
             transition-delay: 0.2s;
         }
-
-        @media screen and (max-width: 3025px) and (min-height: 1150px) {
+        
+        @media screen and (min-width: 1600px) {
             width: 14vw;
         }
 
-        @media screen and (max-width: 2400px) and (min-height: 1750px) {
-            width: 17vw;
+        @media screen and (min-width: 2000px) {
+            width: 13vw;
         }
-
-        @media screen and (max-width: 2000px) and (min-height: 1750px) {
-            width: 18vw;
-        }
-
     }
 
-    @media screen and (max-width: 1300px) {
-        margin: 50% 0 0 0;
-    }
-
-    @media screen and (max-width: 1025px) and (max-height: 1060px) {
+    @media screen and (max-width: 1025px) {
         display: none;
     }
 
-    @media screen and (min-width: 1150px) and (min-height: 1150px) {
-        width: 6.5vw;
-        height: 6.5vw;
+    @media screen and (min-width: 1600px) {
+        width: 6vw;
+        height: 6vw;
     }
 `;
 
@@ -83,39 +74,36 @@ export const BotIcon = styled.img`
     position: absolute;
     left: 1.5vw;
     transform: translateY(-50%);
-  
-    @media screen and (min-width: 1150px) and (min-height: 1150px) {
+
+    @media screen and (min-width: 1600px) {
         width: 4vw;
         height: 4vw;
+        left: 1.25vw;
     }
 `;
 
 export const BotMessage = styled.div`
     color: #fff;
-    font-size: 1.3vw;
+    font-size: 115%;
     font-weight: bold;
     position: absolute;
-    right: 8%;
+    right: 1.3vw;
+    padding-left: 7.85vw;
     transform: translateY(-50%);
 
-    // @media screen and (max-width: 2000px) and (min-height: 500px) {
-    //     font-size: 16px;
-    //     left: 45%;
-    // }
+    @media screen and (max-width: 1240px) {
+        font-size: 100%;
+        right: 1.1vw;
+    }
 
-    // @media screen and (max-width: 2017px) {
-    //     right: 2.15vw;
-    // }
+    @media screen and (max-width: 1100px) {
+        font-size: 85%;
+    }
 
-    // @media screen and (max-width: 1000px) {
-    //     left: 50%;
-    //     font-size: 20px;
-    // }
-
-    // @media screen and (max-width: 1500px) {
-    //     left: 50%;
-    //     font-size: 100%;
-    // }
+    @media screen and (min-width: 1600px) {
+        font-size: 90%;
+        padding-left: 5vw;
+    }
 
 `;
 
@@ -136,7 +124,11 @@ export const ChatbotContainer = styled.div`
     transition: visibility 0.3s ease-in-out;
     visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 
-    @media screen and (max-width: 1025px) and (max-height: 960px) {
+    @media screen and (max-width: 1025px) {
+        display: none;
+    }
+
+    @media screen and (max-height: 450px) {
         display: none;
     }
 `;

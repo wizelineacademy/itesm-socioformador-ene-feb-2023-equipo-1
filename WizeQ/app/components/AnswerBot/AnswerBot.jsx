@@ -79,10 +79,6 @@ function AnswerBot({
     setInputValue(e.target.value);
   };
 
-  // useEffect(() => {
-  //   console.log(messagesID)
-  // }, [messagesID]);
-
   // To update the view of the chatbot box to the last message.
   useEffect(() => {
     const scrollToBottom = () => {
@@ -123,8 +119,6 @@ function AnswerBot({
       answer_status: 1,
       assignedDepartment: messagesID[index].depa,
     };
-
-    // console.log(updateFeedback)
 
     // Update the status of the record.
     try {
@@ -265,14 +259,18 @@ function AnswerBot({
                   <div>
                     {!showThanksMessage[index] && (
                       <>
-                        <Styled.LikeButton
-                          key={`like-${index}`}
-                          onClick={() => handleLikeClick(index)}
-                        />
-                        <Styled.DislikeButton
-                          key={`dislike-${index}`}
-                          onClick={() => handleDislikeClick(index)}
-                        />
+                      {(index !== messages.length-2 || !isWaitingForResponse) && (
+                        <>
+                          <Styled.LikeButton
+                            key={`like-${index}`}
+                            onClick={() => handleLikeClick(index)}
+                          />
+                          <Styled.DislikeButton
+                            key={`dislike-${index}`}
+                            onClick={() => handleDislikeClick(index)}
+                          />
+                         </>
+                        )}
                       </>
                     )}
                     {showThanksMessage[index] && (

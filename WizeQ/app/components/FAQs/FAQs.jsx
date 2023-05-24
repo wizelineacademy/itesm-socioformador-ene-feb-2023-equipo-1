@@ -1,12 +1,7 @@
 import * as Styled from 'app/components/FAQs/FAQs.Styled';
-import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function FAQs({questionsFAQ}) {
-
-    useEffect(() => {
-        console.log(questionsFAQ)
-    }, []);
  
     return (
       <Styled.FAQContainer>
