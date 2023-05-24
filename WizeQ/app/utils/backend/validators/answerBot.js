@@ -14,11 +14,11 @@ export const createBotSchema = Joi.object().keys({
   user_id: Joi.number().integer().min(1).allow(null),
 });
 
-// Validate that the data is correct to update the response status.
-export const modifyStatusBotSchema = Joi.object().keys({
+// Validate that the data is correct to update the response feedback.
+export const modifyFeedbackBotSchema = Joi.object().keys({
   question_by_user: Joi.string().min(MINIMUM_QUESTION_LENGTH).max(MAXIMUM_QUESTION_LENGTH).required(),
   answer_by_bot: Joi.string().min(MINIMUM_ANSWER_LENGTH).max(MAXIMUM_ANSWER_LENGTH).required(),
-  answer_status: Joi.number().integer().min(-1).max(1).required(),
+  answer_feedback: Joi.number().integer().min(-1).max(1).required(),
   assigned_department: Joi.number().integer().min(1).allow(null),
   user_id: Joi.number().integer().min(1).allow(null),
 });

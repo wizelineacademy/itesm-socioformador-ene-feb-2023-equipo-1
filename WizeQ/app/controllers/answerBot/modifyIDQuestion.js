@@ -26,7 +26,7 @@ const updatePost = async (body) => {
   const findQABot = await db.AnswerBot.findFirst({
     where: {
       post_question_id: null,
-      answer_status: -1,
+      answer_feedback: -1,
       ...rest,
     },
     orderBy: {

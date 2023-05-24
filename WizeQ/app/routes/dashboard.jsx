@@ -140,9 +140,9 @@ function Dashboard() {
 													title={question.answer_by_bot}> 
 													{question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
 												</Styled.Text>
-												{question.answer_status === -1 && <Styled.TextU key={`statusAB-${index}`}> Bad </Styled.TextU>}
-												{question.answer_status === 0 && <Styled.Text key={`statusAB-${index}`}> N/A </Styled.Text>}
-												{question.answer_status === 1 && <Styled.TextA key={`statusAB-${index}`}> Good </Styled.TextA>}
+												{question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${index}`}> Bad </Styled.TextU>}
+												{question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${index}`}> N/A </Styled.Text>}
+												{question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${index}`}> Good </Styled.TextA>}
 											</tr>
 										))}
 									</tbody>

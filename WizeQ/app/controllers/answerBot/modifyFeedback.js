@@ -1,10 +1,10 @@
 import { DEFAULT_ERROR_MESSAGE } from 'app/utils/backend/constants';
-import { modifyStatusBotSchema } from 'app/utils/backend/validators/answerBot';
+import { modifyFeedbackBotSchema } from 'app/utils/backend/validators/answerBot';
 import { db } from 'app/utils/db.server';
 
 const updateFeedback = async (body) => {
   // Validates the received data.
-  const { error, value } = modifyStatusBotSchema.validate(body);
+  const { error, value } = modifyFeedbackBotSchema.validate(body);
 
   // Error and exception handling for validation.
   if (error) {
@@ -19,12 +19,12 @@ const updateFeedback = async (body) => {
   }
 
   // Destructuring, rest has all the remaining values of the data.
-  const { answer_status, ...rest } = value;
+  const { answer_feedback, ...rest } = value;
   
   // Find the record that matches the submitted values.
   const findFeed = await db.AnswerBot.findFirst({
     where: {
-      answer_status: 0,
+      answer_feedback: 0,
       ...rest,
     },
     orderBy: {
@@ -50,7 +50,7 @@ const updateFeedback = async (body) => {
       id: findFeed.id,
     },
     data: {
-      answer_status: answer_status,
+      answer_feedback: answer_feedback,
     },
   });
 

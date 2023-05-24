@@ -15,7 +15,7 @@ import listDepartments from 'app/controllers/departments/list';
 import listQuestions from 'app/controllers/questions/list';
 import createQuestion from 'app/controllers/questions/create';
 import createAnswerByBot from 'app/controllers/answerBot/create';
-import updateFeedback from 'app/controllers/answerBot/modifyStatus';
+import updateFeedback from 'app/controllers/answerBot/modifyFeedback';
 import updatePostID from 'app/controllers/answerBot/modifyIDQuestion'
 import Notifications from 'app/components/Notifications';
 import AnswerBot from 'app/components/AnswerBot';
@@ -119,7 +119,7 @@ export const action = async ({ request }) => {
       payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
-        answer_status: form.answer_status,
+        answer_feedback: form.answer_feedback,
         assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         user_id: user.employee_id,
       };
@@ -151,6 +151,7 @@ export const action = async ({ request }) => {
         is_anonymous: false,
         assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         assigned_to_employee_id: null,
+        bot_enabled: true,
         location: DEFAULT_LOCATION,
         accessToken: user.accessToken,
       };

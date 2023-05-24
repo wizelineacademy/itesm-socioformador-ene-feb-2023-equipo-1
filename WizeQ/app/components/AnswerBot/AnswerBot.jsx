@@ -116,11 +116,11 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
-      answer_status: 1,
+      answer_feedback: 1,
       assignedDepartment: messagesID[index].depa,
     };
 
-    // Update the status of the record.
+    // Update the feedback of the record.
     try {
       await updateAnswerBotFeedback(updateFeedback);
     } catch (error) {
@@ -157,11 +157,11 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index+1].content,
-      answer_status: -1,
+      answer_feedback: -1,
       assignedDepartment: messagesID[index].depa,
     };
 
-    // Update the status of the record.
+    // Update the feedback of the record.
     try {
       await updateAnswerBotFeedback(updateFeedback);
     } catch (error) {

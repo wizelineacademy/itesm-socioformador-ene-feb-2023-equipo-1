@@ -137,6 +137,7 @@ model Questions {
   num_votes                    Int?           @default(0)
   is_pinned                    Boolean        @default(false)
   is_enabled                   Boolean        @default(true)
+  bot_enabled                  Boolean        @default(false)
   Locations                    Locations?     @relation(fields: [location], references: [code], onDelete: NoAction, onUpdate: NoAction, map: "Questions_ibfk_1")
   assigned_to                  users?         @relation("AssignedQuestion", fields: [assigned_to_employee_id], references: [employee_id], onDelete: NoAction, onUpdate: NoAction, map: "assigned_to_employee_id_foreign_idx")
   created_by                   users?         @relation("CreatedQuestion", fields: [created_by_employee_id], references: [employee_id], onDelete: NoAction, onUpdate: NoAction, map: "created_by_employee_id_foreign_idx")
@@ -203,7 +204,7 @@ model AnswerBot {
   post_question_id          Int?           @db.Int
   question_by_user          String         @db.VarChar(500)
   answer_by_bot             String         @db.VarChar(3000)
-  answer_status             Int            @default(0)
+  answer_feedback           Int            @default(0)
   date_created              DateTime       @default(now()) @db.DateTime(0)
   assigned_department       Int?           @db.Int
   user_id                   Int?           @db.Int
