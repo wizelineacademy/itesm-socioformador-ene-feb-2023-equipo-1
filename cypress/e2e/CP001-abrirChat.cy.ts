@@ -1,13 +1,5 @@
 //import AnswerBotButton from "app/components/Atoms/AnswerBotButton/AnswerBotButton.jsx";
 
-describe('prueba de icono', () => {
-  it('playground', () => {
-    import { FaBeer } from "react-icons/fa";
-    cy.mount(<FaBeer></FaBeer>)
-    cy.get('svg').should('be.visible')
-  })
-})
-
 describe('CP001 - Abir el chat de Answerbot', () => {
   it('Se puede abrir el chat del Answerbot en la página', () => {
     cy.visit('http://localhost:3000/') //Redirects to login
