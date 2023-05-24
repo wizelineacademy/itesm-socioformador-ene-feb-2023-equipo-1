@@ -9,6 +9,7 @@
       "jsx-a11y",
       "import"
   ],
+  "ignorePatterns": ["big.js"],
   "rules": {
     "linebreak-style": "off",
     "import/no-unresolved": "off",
