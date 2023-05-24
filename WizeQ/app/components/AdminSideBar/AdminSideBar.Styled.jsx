@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
+	background-color: red;
 	margin-top: 1px;
-	height: 100vh;
+	height: 115vh;
+	width: 265px;
 	position: absolute;
 	inset-y: 0;
 	display: flex;
@@ -16,6 +18,7 @@ export const DepContainer = styled.div`
 	display: inline-block;
 	padding-left: 25px;
 	padding-right: 15px;
+	margin-right: 10px;
 `;
 
 export const TitleDep = styled.div`
@@ -30,15 +33,17 @@ export const TitleDep = styled.div`
 export const ListDep = styled.ul`
 	list-style-type: none;
 	padding: 0;
-	padding-left: 15px;
+	padding-left: 10px;
 	margin-top: 20%;
 `;
 
 export const DepSelect = styled.li`
-	@import url("https://fonts.googleapis.com/css?family=Inter");
 	text-align: left;
-	margin-top: 15%;
-	/* background-color: #1f2937;  Gray-900 */
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
 	color: #17202a;
 	font-weight: 600;
 	letter-spacing: 1px;
@@ -48,10 +53,6 @@ export const DepSelect = styled.li`
 		background-color: #213246; /* Gray-700 */
 		color: white;
 		border-radius: 0.375rem; /* Rounded-md */
-		padding-left: 0.5rem; /* Px-3 */
-		padding-right: 0.5rem; /* Px-3 */
-		padding-top: 0.5rem; /* Py-2 */
-		padding-bottom: 0.5rem; /* Py-2 */
 		cursor: pointer;
 	}
 `;

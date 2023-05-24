@@ -20,7 +20,6 @@ export const loader = async ({ request }) => {
 
 	const questionsFAQ = await listQuestions({
 		department: Number.isNaN(department) ? undefined : department,
-		limit: 4,
 	});
 
 	const questionsOF = await listQuestions({
@@ -182,6 +181,7 @@ function Dashboard() {
 										<Styled.TextBold width="170">Status</Styled.TextBold>
 									</tr>
 								</thead>
+
 								<tbody>
 									{questionsFAQ.map((question, index) => (
 										<tr>
