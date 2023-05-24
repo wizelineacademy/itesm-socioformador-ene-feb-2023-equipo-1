@@ -139,19 +139,19 @@ function AnswerBot({
   // To update the response feedback to negative.
   const handleDislikeClick = async (index) => {
 
-    // Don't show thanks message.
+    // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
-      [index]: false,
+      [index]: true,
     }));
 
     // Show a message if the user would like to share the question in the forum.
-    if (!showThanksMessage[index]) {
+    setTimeout(() => {
       setShowThanksMessage((prevShowThanksMessage) => ({
         ...prevShowThanksMessage,
         [index]: "Would you like to share your question with the community?",
       }));
-    }
+    }, 1500);
 
     // Create the payload.
     const updateFeedback = {
@@ -188,7 +188,7 @@ function AnswerBot({
     // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
-      [index]: true,
+      [index]: "Your question has been published successfully.",
     }));
 
     // Set a time to fade the gratitude message.
