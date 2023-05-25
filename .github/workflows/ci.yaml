@@ -38,7 +38,8 @@ jobs:
       name: ⚫️ Cypress
       runs-on: ubuntu-latest
       env:
-        DATABASE_URL: postgresql://lab_user:lab_pass@localhost/lab_test
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        PORT: 3000
         SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
         BASE_URL: http://localhost:3000
         AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
@@ -67,4 +68,4 @@ jobs:
           run: npm run dev
 
         - name: 🌳 Cypress run
-          uses: cypress-io/github-action@v5
+          run: npm run test:cypress:run
