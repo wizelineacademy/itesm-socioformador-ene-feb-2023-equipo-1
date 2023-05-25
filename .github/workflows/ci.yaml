@@ -65,7 +65,7 @@ jobs:
           uses: bahmutov/npm-install@v1
 
         - name: ⚙️ Build and Run
-          run: npm run dev
+          run: npm run build
 
         - name: 🌳 Cypress run
           run: npm run test:cypress:run
