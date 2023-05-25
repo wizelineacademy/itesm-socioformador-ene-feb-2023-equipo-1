@@ -94,9 +94,5 @@ jobs:
             npm ci # install
             npm run build
 
-            echo "*** Step: *** Start pm2 service"
-            pm2 start ecosystem.config.js
-            pm2 save
-
             echo "*** Step: ** Cleanup"
             rm -rf ~/projectlab/tmp
