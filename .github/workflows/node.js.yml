@@ -1,33 +1,97 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
-
+name: 🚀 Deploy
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+      - dev
+    tags:
+      - "*"
+permissions:
+  actions: write
+  contents: read
 
 jobs:
-  build:
-
+  deploy:
+    name: 🚀 Deploy
     runs-on: ubuntu-latest
+    environment: dev
+    # needs: [lint, typecheck, vitest, cypress]
+    # only build/deploy main branch on pushes
+    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    env:
+      NODE_ENV: production
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        
-    - name: Running Node commands
-      run: |
-        npm ci
-        npm run build --if-present
+      - name: 🛑 Cancel Previous Runs
+        if: ${{ env.GITHUB_ACTOR != 'nektos/act' }}
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Prepare Server For Build
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.LIGHTSAIL_IP }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp
+            mkdir -p ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp
+
+      - name: Copy Files To Lightsail Instance
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          server: ${{ secrets.LIGHTSAIL_IP }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          local_path: "./*"
+          remote_path: "/home/admin/itesm-socioformador-ene-feb-2023-equipo-1/tmp"
+          args: "-o ConnectTimeout=60"
+
+      - name: Configure Server
+        uses: appleboy/ssh-action@master
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          PORT: ${{ secrets.PORT }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        with:
+          timeout: 60s
+          command_timeout: 30m
+          envs: BASE_URL,PORT,DATABASE_URL,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
+          host: ${{ secrets.LIGHTSAIL_IP }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            # ignore failure on pm2 stop (first time?)
+            pm2 stop all || true
+
+            echo "*** Step: *** Replace app folders"
+            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+            mkdir -p ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+            cp -R ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp/. ~/itesm-socioformador-ene-feb-2023-equipo-1/app/
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+
+            echo "*** Step: *** Create .env file"
+            echo BASE_URL="$BASE_URL" >> .env
+            echo PORT="$PORT" >> .env
+            echo DATABASE_URL="$DATABASE_URL" >> .env
+            echo SESSION_SECRET="$SESSION_SECRET" >> .env
+            echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
+            echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
+            echo AUTH0_CLIENT_SECRET="$AUTH0_CLIENT_SECRET" >> .env
+            echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
+
+            echo "*** Step: *** npm ci and build"
+            npm ci # install
+            npm run build
+
+            echo "*** Step: ** Cleanup"
+            rm -rf ~/projectlab/tmp

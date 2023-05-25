@@ -1,6 +1,9 @@
+import os
 import re
+from pathlib import Path
 import fitz
 import openai
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from tqdm.auto import tqdm
@@ -74,7 +77,10 @@ def loadPDF(pdf_context, start_page=1):
 
 # ========================================= MAIN =========================================
 
-openai.api_key = "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"
+dotenv_path = Path('../.env')
+load_dotenv(dotenv_path=dotenv_path)
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 application = Flask(__name__)
 
@@ -89,7 +95,5 @@ def submit_conversation():
     print(conversation[-1]["content"])
     return jsonify(conversation)
 
-CORS(application, origins='http://3.213.188.151:4000')
-application.run(port=4000,debug=True)
-if __name__ == '__main__':
-    application.run(debug=True)
+CORS(application)
+application.run(host='0.0.0.0',port=4000)

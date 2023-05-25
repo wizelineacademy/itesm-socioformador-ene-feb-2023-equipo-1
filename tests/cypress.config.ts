@@ -4,6 +4,7 @@ import destroyDb from "./tearDownDb";
 
 export default defineConfig({
   e2e: {
+    chromeWebSecurity: false,
     experimentalStudio: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
