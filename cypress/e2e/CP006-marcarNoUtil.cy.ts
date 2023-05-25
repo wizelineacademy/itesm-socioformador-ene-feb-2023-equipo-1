@@ -11,7 +11,7 @@ describe('CP005 - Marcar respuesta como útil', () => {
     cy.get('.sc-gYMRRK').click() //Click AnswerBot button
     cy.get('.sc-DdwlG').type('What should I do if I test positive?') //Write question
     cy.get('.sc-dwVMhp').click() //Click 'Send' button
-    cy.get('.sc-hKdnnL').click() //Click 'Dislike' button
+    cy.get('.sc-hKdnnL', {timeout:50000}).click() //Click 'Dislike' button
     cy.get(':nth-child(3) > :nth-child(2) > span') //Veryify that the answer was marked as not useful
   })
 })

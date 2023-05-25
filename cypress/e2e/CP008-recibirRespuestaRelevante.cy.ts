@@ -11,6 +11,6 @@ describe('CP008 - Recibir una respuesta relevante en el chat', () => {
     cy.get('.sc-gYMRRK').click() //Click AnswerBot button
     cy.get('.sc-DdwlG').type('How many days should I isolate if I have COVID?') //Write question
     cy.get('.sc-dwVMhp').click() //Click 'Send' button
-    cy.get(':nth-child(3) > .sc-egNfGp > .sc-hFrEEg')
+    cy.get(':nth-child(3) > .sc-egNfGp > .sc-hFrEEg', {timeout:50000})
   })
 })
