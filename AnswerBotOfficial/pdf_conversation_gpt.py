@@ -95,7 +95,5 @@ def submit_conversation():
     print(conversation[-1]["content"])
     return jsonify(conversation)
 
-CORS(application, origins='http://3.213.188.151:4000')
-application.run(port=4000,debug=True)
-if __name__ == '__main__':
-    application.run(debug=True)
+CORS(application)
+application.run(host='0.0.0.0',port=4000)
