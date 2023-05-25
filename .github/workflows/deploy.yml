@@ -54,19 +54,18 @@ jobs:
       - name: Configure Server
         uses: appleboy/ssh-action@master
         env:
-          DB_URL: ${{ secrets.DB_URL }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          PORT: ${{ secrets.PORT }}
-          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           BASE_URL: ${{ secrets.BASE_URL }}
-          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          PORT: ${{ secrets.PORT }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         with:
           timeout: 60s
           command_timeout: 30m
-          envs: DB_URL,DATABASE_URL,PORT,SESSION_SECRET,BASE_URL,AUTH0_CLIENT_ID,AUTH0_DOMAIN,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
+          envs: BASE_URL,PORT,DATABASE_URL,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
           host: ${{ secrets.LIGHTSAIL_IP }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -82,13 +81,14 @@ jobs:
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
 
             echo "*** Step: *** Create .env file"
+            echo BASE_URL="$BASE_URL" >> .env
+            echo PORT="$PORT" >> .env
             echo DATABASE_URL="$DATABASE_URL" >> .env
             echo SESSION_SECRET="$SESSION_SECRET" >> .env
-            echo BASE_URL="$BASE_URL" >> .env
             echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
             echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
             echo AUTH0_CLIENT_SECRET="$AUTH0_CLIENT_SECRET" >> .env
-            echo GOOGLE_APPLICATION_CREDENTIALS="$GOOGLE_APPLICATION_CREDENTIALS" >> .env
+            echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
 
             echo "*** Step: *** npm ci and build"
             npm ci # install
