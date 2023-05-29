@@ -16,12 +16,12 @@ export const BotButton = styled.button`
     border: none;
     width: 8.4vw;
     height: 8.4vw;
-    margin: 75% 0 0 0;
-    float: right;
+    right: 0px;
+    position: fixed;
+    top: 70%;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-    position: relative;
     visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
     transition: width 0.3s ease-in-out;
 

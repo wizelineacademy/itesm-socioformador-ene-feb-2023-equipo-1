@@ -29,7 +29,7 @@ export const loader = async ({ request }) => {
   const departments = await listDepartments();
   const questionsFAQ = await listQuestions({
     orderBy: "popular",
-    dateRange: "this_month",
+    dateRange: "this_week",
     limit: 10,
   });
   return json({
