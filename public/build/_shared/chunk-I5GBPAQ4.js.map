@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/utils/hooks/useUser.js"],
+  "sourcesContent": ["import useFindLoaderMatch from 'app/utils/hooks/useFindLoaderMatch';\n\nfunction useUser() {\n  const loader = useFindLoaderMatch('root');\n  if (!loader || !loader.data) return undefined;\n  return loader.data.profile;\n}\n\nexport default useUser;\n"],
+  "mappings": ";;;;;;;;AAAA;AAEA,mBAAmB;AACjB,QAAM,SAAS,2BAAmB;AAClC,MAAI,CAAC,UAAU,CAAC,OAAO;AAAM,WAAO;AACpC,SAAO,OAAO,KAAK;AAAA;AAGrB,IAAO,kBAAQ;",
+  "names": []
+}
