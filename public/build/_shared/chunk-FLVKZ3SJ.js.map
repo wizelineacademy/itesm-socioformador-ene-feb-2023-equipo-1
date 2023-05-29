@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/components/Slogan/Slogan.jsx", "../../../app/components/Slogan/Slogan.Styled.jsx", "../../../app/components/Slogan/index.js"],
+  "sourcesContent": ["import React from 'react';\nimport * as Styled from './Slogan.Styled';\n\nfunction Slogan() {\n  return (\n    <Styled.SloganContainer>\n      <p>\n        Your\n        {' '}\n        <span>safespace</span>\n        {' '}\n        to search answers,\n        ask questions, and learn about\n        <span>Wizeline</span>\n      </p>\n    </Styled.SloganContainer>\n  );\n}\n\nexport default Slogan;\n", "/* eslint-disable import/prefer-default-export */\nimport styled from 'styled-components';\n\n// eslint-disable-next-line import/prefer-default-export\nexport const SloganContainer = styled.div`\n  p {\n    font-weight: 100;\n    width: fit-content;\n    font-size: 15px;\n    padding: 0 40px;\n    span:first-child {\n      color: var(--color-secondary);\n      font-weight: 600;\n    }\n    span:last-child {\n      color: var(--color-primary);\n      font-weight: 600;\n    }\n  }\n`;\n", "export { default } from './Slogan';\n"],
+  "mappings": ";;;;;;;;;;AAAA;AAAA,mBAAkB;;;ACAlB;AAIO,IAAM,kBAAkB,sCAAO;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;ADDtC,kBAAkB;AAChB,SACE,mDAAQ,iBAAR,MACE,mDAAC,KAAD,MAAG,QAEA,KACD,mDAAC,QAAD,MAAM,cACL,KAAI,qDAGL,mDAAC,QAAD,MAAM;AAAA;AAMd,IAAO,iBAAQ;;;AEnBf;",
+  "names": []
+}

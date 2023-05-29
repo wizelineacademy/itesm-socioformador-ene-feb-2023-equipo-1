@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/utils/hooks/useFindLoaderMatch.js"],
+  "sourcesContent": ["import { useMatches } from '@remix-run/react';\n\nfunction useFindLoaderMatch(id) {\n  const matches = useMatches();\n  const found = matches.find((route) => route.id === id);\n  return found;\n}\n\nexport default useFindLoaderMatch;\n"],
+  "mappings": ";;;;;;;;AAAA;AAEA,4BAA4B,IAAI;AAC9B,QAAM,UAAU;AAChB,QAAM,QAAQ,QAAQ,KAAK,CAAC,UAAU,MAAM,OAAO;AACnD,SAAO;AAAA;AAGT,IAAO,6BAAQ;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/utils/cookies.js"],
+  "sourcesContent": ["export function setCookie(name, value) {\n  document.cookie = `${name}=${value}`;\n}\n\nexport function getCookie(name) {\n  if (typeof window !== 'undefined') {\n    // your code with access to window or document object here\n    const cname = `${name}=`;\n    const decodedCookie = decodeURIComponent(document.cookie);\n    const ca = decodedCookie.split(';');\n    // eslint-disable-next-line no-plusplus\n    for (let i = 0; i < ca.length; i++) {\n      let c = ca[i];\n      while (c.charAt(0) === ' ') {\n        c = c.substring(1);\n      }\n      if (c.indexOf(cname) === 0) {\n        return c.substring(cname.length, c.length);\n      }\n    }\n  }\n\n  return '';\n}\n"],
+  "mappings": ";;;;;AAAA;AAAO,mBAAmB,MAAM,OAAO;AACrC,WAAS,SAAS,GAAG,QAAQ;AAAA;AAGxB,mBAAmB,MAAM;AAC9B,MAAI,OAAO,WAAW,aAAa;AAEjC,UAAM,QAAQ,GAAG;AACjB,UAAM,gBAAgB,mBAAmB,SAAS;AAClD,UAAM,KAAK,cAAc,MAAM;AAE/B,aAAS,IAAI,GAAG,IAAI,GAAG,QAAQ,KAAK;AAClC,UAAI,IAAI,GAAG;AACX,aAAO,EAAE,OAAO,OAAO,KAAK;AAC1B,YAAI,EAAE,UAAU;AAAA;AAElB,UAAI,EAAE,QAAQ,WAAW,GAAG;AAC1B,eAAO,EAAE,UAAU,MAAM,QAAQ,EAAE;AAAA;AAAA;AAAA;AAKzC,SAAO;AAAA;",
+  "names": []
+}
