@@ -9,7 +9,9 @@
       "jsx-a11y",
       "import"
   ],
+  "ignorePatterns": ["**/node_modules/*.js"],
   "rules": {
+    "linebreak-style": "off",
     "import/no-unresolved": "off",
     "react/jsx-filename-extension": [
       1,
