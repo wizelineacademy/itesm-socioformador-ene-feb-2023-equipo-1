@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from tqdm.auto import tqdm
+import slack
+from slackeventsapi import SlackEventAdapter
 
 def preprocess(text):
     '''
@@ -84,6 +86,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 application = Flask(__name__)
 
+slack_event_adapter = SlackEventAdapter(os.environ['SLACK_SIGNING_SECRET'], '/slack/events', application)
+client = slack.WebClient(os.environ['SLACK_TOKEN'])
+
+client.chat_postMessage(channel='#general', text="Hello from your app! 🎉")
+
 pdf_context = {"role": "system", "content": ""}
 pdf_context = loadPDF(pdf_context)
 print("PDF Loaded...")
@@ -94,6 +101,17 @@ def submit_conversation():
     conversation.append(generate_answer(conversation))
     print(conversation[-1]["content"])
     return jsonify(conversation)
+
+@slack_event_adapter.on('message')
+def message(payload):
+    event = payload.get('event', {})
+    channel_id = event.get('channel')
+    user_id = event.get('user')
+    text = event.get('text')
+    conversation = [{"role": "user", "content": text}]
+    response = generate_answer(conversation)
+    print(response)
+    client.chat_postMessage(channel=channel_id, text=response)
 
 CORS(application)
 application.run(host='0.0.0.0',port=4000)
