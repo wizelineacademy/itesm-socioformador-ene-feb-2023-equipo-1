@@ -16,17 +16,32 @@ const buildWhereDepartment = (department) => {
   return { assigned_department: department };
 };
 
+// Filter the search by a range of dates.
+const buildWhereDateRange = (dateRange) => {
+  if (dateRange && dateRange.startDate && dateRange.endDate) {
+    return {
+      date_created: {
+        lte: new Date(dateRange.endDate),
+        gte: new Date(dateRange.startDate),
+      },
+    };
+  }
+
+  return {};
+};
+
 // Get the list of records from the AnswerBot table.
 const listAnswerBot = async (params) => {
   try {
 
     // Destructuring.
-    const { department, limit } = params;
+    const { department, dateRange, limit } = params;
 
     // Finds all records that match the submitted values.
     const getAnswers = await db.AnswerBot.findMany({
       where: {
         ...buildWhereDepartment(department),
+        ...buildWhereDateRange(dateRange),
       },
       take: limit || DEFAULT_LIMIT,
     });

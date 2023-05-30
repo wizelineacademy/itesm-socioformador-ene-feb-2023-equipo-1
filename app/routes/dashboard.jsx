@@ -22,6 +22,7 @@ export const loader = async ({ request }) => {
 	// Extract the "department" parameter from the URL.
     const department = Number.parseInt(url.searchParams.get('department'), 10);
 
+	// Gets the date range of the current month.
 	const dateRange = dateRangeConversion('this_month');
   
 	// Get a list of FAQ questions.
@@ -42,6 +43,7 @@ export const loader = async ({ request }) => {
 	// Get a list of bot questions.
 	const questionsBot = await listAnswerBot({
         department: Number.isNaN(department) ? undefined : department,
+		dateRange,
 		limit: 5,
     });
 
