@@ -331,6 +331,7 @@ export const TextFeedback = styled.span`
     align-items: flex-start;
     text-align: left;
 `;
+
 export const PublishButton = styled.button`
     margin: 0 0 2.5% 10%;
     background-color: #fff;

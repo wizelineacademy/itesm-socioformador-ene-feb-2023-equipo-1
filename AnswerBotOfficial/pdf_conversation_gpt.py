@@ -117,6 +117,8 @@ application = Flask(__name__)
 
 pdf_context = {"role": "system", "content": ""}
 pdf_context = loadPDF(pdf_context)
+global department
+department = ""
 print("PDF Loaded...")
 
 @application.route('/api/pdf_conversation_gpt', methods=['POST'])
