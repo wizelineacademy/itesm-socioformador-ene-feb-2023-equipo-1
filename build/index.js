@@ -22109,53 +22109,53 @@ init_react();
 // app/components/AdminSideBar/AdminSideBar.Styled.jsx
 init_react();
 var import_styled_components47 = __toESM(require("styled-components")), MainContainer2 = import_styled_components47.default.div`
-	margin-top: 1px;
-	height: 100vh;
-	position: absolute;
-	inset-y: 0;
-	display: flex;
-	overflow-y: scroll;
+  margin-top: 1px;
+  height: 100vh;
+  position: absolute;
+  inset-y: 0;
+  display: flex;
+  overflow-y: scroll;
 `, DepContainer = import_styled_components47.default.div`
-	position: relative;
-	display: inline-block;
-	padding-left: 25px;
-	padding-right: 15px;
+  position: relative;
+  display: inline-block;
+  padding-left: 25px;
+  padding-right: 15px;
 `, TitleDep = import_styled_components47.default.div`
-	color: #17202a; /* Indigo-800 */
-	font-weight: bold;
-	font-size: large;
-	margin-left: 8px;
-	margin-right: 8px;
-	margin-top: 18%;
+  color: #17202a; /* Indigo-800 */
+  font-weight: bold;
+  font-size: large;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 18%;
 `, ListDep = import_styled_components47.default.ul`
-	list-style-type: none;
-	padding: 0;
-	padding-left: 15px;
-	margin-top: 20%;
+  list-style-type: none;
+  padding: 0;
+  padding-left: 15px;
+  margin-top: 20%;
 `, DepSelect = import_styled_components47.default.li`
-	@import url("https://fonts.googleapis.com/css?family=Inter");
-	text-align: left;
-	margin-top: 7.5%;
-	// margin-top: 20%;
-	/* background-color: #1f2937;  Gray-900 */
-	color: #17202a;
-	font-weight: 600;
-	letter-spacing: 1px;
+  @import url("https://fonts.googleapis.com/css?family=Inter");
+  text-align: left;
+  margin-top: 7.5%;
+  color: #17202a;
+  font-weight: 600;
+  letter-spacing: 1px;
 
-	&:hover {
-		background-color: #213246; /* Gray-700 */
-		color: white;
-		border-radius: 0.375rem; /* Rounded-md */
-		// padding-left: 0.75rem; /* Px-3 */
-		// padding-right: 0.75rem; /* Px-3 */
-		padding-top: 0.5rem; /* Py-2 */
-		padding-bottom: 0.5rem; /* Py-2 */
-	}
+  &:hover {
+    background-color: #213246; /* Gray-700 */
+    color: white;
+    border-radius: 0.375rem; /* Rounded-md */
+    padding-top: 0.5rem; /* Py-2 */
+    padding-bottom: 0.5rem; /* Py-2 */
+  }
 `;
 
 // app/components/AdminSideBar/AdminSideBar.jsx
-var import_react81 = __toESM(require("react"));
-function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
+var import_prop_types49 = __toESM(require("prop-types")), import_react81 = __toESM(require("react"));
+function SideBar({
+  departments,
+  selectedDepartment,
+  handleSelectDepartment
+}) {
   return /* @__PURE__ */ import_react81.default.createElement(MainContainer2, null, /* @__PURE__ */ import_react81.default.createElement(DepContainer, null, /* @__PURE__ */ import_react81.default.createElement(TitleDep, null, "Departaments"), /* @__PURE__ */ import_react81.default.createElement(ListDep, null, departments.map((item) => /* @__PURE__ */ import_react81.default.createElement(DepSelect, {
     key: item.name,
     "aria-current": item.current ? "page" : void 0,
@@ -22163,6 +22163,15 @@ function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
     selected: item.department_id === selectedDepartment
   }, item.name)))));
 }
+SideBar.propTypes = {
+  departments: import_prop_types49.default.arrayOf(import_prop_types49.default.shape()),
+  selectedDepartment: import_prop_types49.default.number,
+  handleSelectDepartment: import_prop_types49.default.func.isRequired
+};
+SideBar.defaultProps = {
+  departments: [],
+  selectedDepartment: 0
+};
 var AdminSideBar_default = SideBar;
 
 // app/routes/dashboard.jsx
@@ -22328,7 +22337,7 @@ __export(contact_exports, {
   loader: () => loader8
 });
 init_react();
-var import_react86 = __toESM(require("react")), import_prop_types50 = __toESM(require("prop-types")), import_node7 = require("@remix-run/node");
+var import_react86 = __toESM(require("react")), import_prop_types51 = __toESM(require("prop-types")), import_node7 = require("@remix-run/node");
 
 // app/components/Footer.jsx
 init_react();
@@ -22569,7 +22578,7 @@ var ic_slack_default = "/build/_assets/ic_slack-AAKJHCWL.svg";
 
 // app/components/ContactGoto.jsx
 init_react();
-var import_react85 = __toESM(require("react")), import_prop_types49 = __toESM(require("prop-types"));
+var import_react85 = __toESM(require("react")), import_prop_types50 = __toESM(require("prop-types"));
 function ContactGoto(props) {
   let {
     icon,
@@ -22586,10 +22595,10 @@ function ContactGoto(props) {
   }, goto));
 }
 ContactGoto.propTypes = {
-  icon: import_prop_types49.default.string.isRequired,
-  text: import_prop_types49.default.string.isRequired,
-  goto: import_prop_types49.default.string.isRequired,
-  dir: import_prop_types49.default.string.isRequired
+  icon: import_prop_types50.default.string.isRequired,
+  text: import_prop_types50.default.string.isRequired,
+  goto: import_prop_types50.default.string.isRequired,
+  dir: import_prop_types50.default.string.isRequired
 };
 var ContactGoto_default = ContactGoto;
 
@@ -22675,8 +22684,8 @@ function Contact(props) {
   }))), /* @__PURE__ */ import_react86.default.createElement(ContactInputDiv, null, (() => state.isSubmitted ? state.isSubmitted ? renderSuccessMessage() : null : renderContactForm())()), /* @__PURE__ */ import_react86.default.createElement(Footer_default, null));
 }
 Contact.propTypes = {
-  sendContact: import_prop_types50.default.func.isRequired,
-  warningAlert: import_prop_types50.default.func.isRequired
+  sendContact: import_prop_types51.default.func.isRequired,
+  warningAlert: import_prop_types51.default.func.isRequired
 };
 var contact_default = Contact;
 
@@ -22962,7 +22971,7 @@ init_react();
 
 // app/components/AdminUsersTable/AdminUsersTable.jsx
 init_react();
-var import_react91 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types"));
+var import_react91 = __toESM(require("react")), import_prop_types53 = __toESM(require("prop-types"));
 
 // app/images/logomark_medium.png
 var logomark_medium_default = "/build/_assets/logomark_medium-U2FGMSIX.png";
@@ -23162,7 +23171,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
 
 // app/components/Modals/EditUserModal/EditUserModal.jsx
 init_react();
-var import_react89 = __toESM(require("react")), import_prop_types51 = __toESM(require("prop-types")), import_react90 = require("@remix-run/react");
+var import_react89 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types")), import_react90 = require("@remix-run/react");
 
 // app/components/Modals/EditUserModal/EditUserModal.Styled.jsx
 init_react();
@@ -23294,16 +23303,16 @@ function EditUserModal({ user, onClose }) {
   })));
 }
 EditUserModal.propTypes = {
-  user: import_prop_types51.default.shape({
-    employee_id: import_prop_types51.default.number,
-    full_name: import_prop_types51.default.string,
-    email: import_prop_types51.default.string,
-    job_title: import_prop_types51.default.string,
-    is_admin: import_prop_types51.default.bool,
-    profile_picture: import_prop_types51.default.node,
-    departments: import_prop_types51.default.shape([])
+  user: import_prop_types52.default.shape({
+    employee_id: import_prop_types52.default.number,
+    full_name: import_prop_types52.default.string,
+    email: import_prop_types52.default.string,
+    job_title: import_prop_types52.default.string,
+    is_admin: import_prop_types52.default.bool,
+    profile_picture: import_prop_types52.default.node,
+    departments: import_prop_types52.default.shape([])
   }),
-  onClose: import_prop_types51.default.func
+  onClose: import_prop_types52.default.func
 };
 EditUserModal.defaultProps = {
   user: {
@@ -23414,11 +23423,11 @@ function AdminUsersTable({
   }) : null));
 }
 AdminUsersTable.propTypes = {
-  users: import_prop_types52.default.arrayOf(import_prop_types52.default.shape()),
-  currentPage: import_prop_types52.default.number.isRequired,
-  totalPages: import_prop_types52.default.number.isRequired,
-  isLoading: import_prop_types52.default.bool.isRequired,
-  size: import_prop_types52.default.number.isRequired
+  users: import_prop_types53.default.arrayOf(import_prop_types53.default.shape()),
+  currentPage: import_prop_types53.default.number.isRequired,
+  totalPages: import_prop_types53.default.number.isRequired,
+  isLoading: import_prop_types53.default.bool.isRequired,
+  size: import_prop_types53.default.number.isRequired
 };
 AdminUsersTable.defaultProps = {
   users: []
@@ -23430,7 +23439,7 @@ init_react();
 
 // app/components/UserSearchBar/UserSearchBar.jsx
 init_react();
-var import_prop_types53 = __toESM(require("prop-types")), import_react93 = __toESM(require("react"));
+var import_prop_types54 = __toESM(require("prop-types")), import_react93 = __toESM(require("react"));
 
 // app/components/UserSearchBar/UserSearchBar.Styled.jsx
 init_react();
@@ -23506,7 +23515,7 @@ function UserSearchBar({ onSearch }) {
   }, /* @__PURE__ */ import_react93.default.createElement(ClearIcon2, null)));
 }
 UserSearchBar.propTypes = {
-  onSearch: import_prop_types53.default.func.isRequired
+  onSearch: import_prop_types54.default.func.isRequired
 };
 
 // app/controllers/users/list.js
@@ -23736,7 +23745,7 @@ init_react();
 
 // app/components/ListQuestions/ListQuestions.jsx
 init_react();
-var import_react107 = __toESM(require("react")), import_react108 = require("@remix-run/react"), import_prop_types59 = __toESM(require("prop-types"));
+var import_react107 = __toESM(require("react")), import_react108 = require("@remix-run/react"), import_prop_types60 = __toESM(require("prop-types"));
 
 // app/components/ListQuestions/ListQuestions.Styled.jsx
 init_react();
@@ -23851,7 +23860,7 @@ init_react();
 
 // app/components/QuestionCard/QuestionCard.jsx
 init_react();
-var import_react99 = __toESM(require("react")), import_prop_types54 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
+var import_react99 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
 
 // app/images/ic_comment_non-selected.svg
 var ic_comment_non_selected_default = "/build/_assets/ic_comment_non-selected-7NOYX3FA.svg";
@@ -23941,36 +23950,36 @@ function QuestionCard(props) {
   }, renderButtons()))), renderAnswer(renderAnswerProps), renderCommentAnswer());
 }
 QuestionCard.propTypes = {
-  question: import_prop_types54.default.shape({
-    question_id: import_prop_types54.default.number.isRequired,
-    question: import_prop_types54.default.string.isRequired,
-    user_hash: import_prop_types54.default.string,
-    can_edit: import_prop_types54.default.bool,
-    created_by_user: import_prop_types54.default.shape({
-      email: import_prop_types54.default.string,
-      employee_id: import_prop_types54.default.number,
-      full_name: import_prop_types54.default.string,
-      is_admin: import_prop_types54.default.bool,
-      job_title: import_prop_types54.default.string,
-      profile_picture: import_prop_types54.default.string
+  question: import_prop_types55.default.shape({
+    question_id: import_prop_types55.default.number.isRequired,
+    question: import_prop_types55.default.string.isRequired,
+    user_hash: import_prop_types55.default.string,
+    can_edit: import_prop_types55.default.bool,
+    created_by_user: import_prop_types55.default.shape({
+      email: import_prop_types55.default.string,
+      employee_id: import_prop_types55.default.number,
+      full_name: import_prop_types55.default.string,
+      is_admin: import_prop_types55.default.bool,
+      job_title: import_prop_types55.default.string,
+      profile_picture: import_prop_types55.default.string
     }),
-    Answers: import_prop_types54.default.arrayOf(import_prop_types54.default.shape()),
-    createdAt: import_prop_types54.default.string.isRequired,
-    location: import_prop_types54.default.string.isRequired,
-    numComments: import_prop_types54.default.number.isRequired,
-    hasVoted: import_prop_types54.default.bool.isRequired,
-    hasCommentApproved: import_prop_types54.default.bool.isRequired,
-    hasCommunityAnswer: import_prop_types54.default.bool.isRequired,
-    Comments: import_prop_types54.default.arrayOf(import_prop_types54.default.shape()),
-    numLikes: import_prop_types54.default.number.isRequired,
-    numDisklike: import_prop_types54.default.number.isRequired,
-    hasLike: import_prop_types54.default.bool.isRequired,
-    hasDislike: import_prop_types54.default.bool.isRequired
+    Answers: import_prop_types55.default.arrayOf(import_prop_types55.default.shape()),
+    createdAt: import_prop_types55.default.string.isRequired,
+    location: import_prop_types55.default.string.isRequired,
+    numComments: import_prop_types55.default.number.isRequired,
+    hasVoted: import_prop_types55.default.bool.isRequired,
+    hasCommentApproved: import_prop_types55.default.bool.isRequired,
+    hasCommunityAnswer: import_prop_types55.default.bool.isRequired,
+    Comments: import_prop_types55.default.arrayOf(import_prop_types55.default.shape()),
+    numLikes: import_prop_types55.default.number.isRequired,
+    numDisklike: import_prop_types55.default.number.isRequired,
+    hasLike: import_prop_types55.default.bool.isRequired,
+    hasDislike: import_prop_types55.default.bool.isRequired
   }).isRequired,
-  onVoteClick: import_prop_types54.default.func.isRequired,
-  currentUserEmail: import_prop_types54.default.string,
-  searchTerm: import_prop_types54.default.string,
-  processingFormSubmission: import_prop_types54.default.bool
+  onVoteClick: import_prop_types55.default.func.isRequired,
+  currentUserEmail: import_prop_types55.default.string,
+  searchTerm: import_prop_types55.default.string,
+  processingFormSubmission: import_prop_types55.default.bool
 };
 QuestionCard.defaultProps = {
   currentUserEmail: "",
@@ -24075,7 +24084,7 @@ init_react();
 
 // app/components/Atoms/InfiniteScrollList/InfiniteScrollList.jsx
 init_react();
-var import_react102 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types"));
+var import_react102 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
 function InfiniteScrollList({ onFetch, children }) {
   let endOfListRef = (0, import_react102.useRef)(), scrollContainer = null, fetchScrollLimit = 500, onScroll = ([entity]) => {
     entity.isIntersecting && onFetch();
@@ -24091,8 +24100,8 @@ function InfiniteScrollList({ onFetch, children }) {
   }));
 }
 InfiniteScrollList.propTypes = {
-  onFetch: import_prop_types55.default.func.isRequired,
-  children: import_prop_types55.default.node
+  onFetch: import_prop_types56.default.func.isRequired,
+  children: import_prop_types56.default.node
 };
 InfiniteScrollList.defaultProps = {
   children: null
@@ -24104,7 +24113,7 @@ init_react();
 
 // app/components/Filters/Filters.jsx
 init_react();
-var import_react104 = __toESM(require("react")), import_prop_types57 = __toESM(require("prop-types")), import_react105 = require("@remix-run/react");
+var import_react104 = __toESM(require("react")), import_prop_types58 = __toESM(require("prop-types")), import_react105 = require("@remix-run/react");
 
 // app/images/ic_filter.svg
 var ic_filter_default = "/build/_assets/ic_filter-UC4LYVWR.svg";
@@ -24237,7 +24246,7 @@ init_react();
 
 // app/components/CustomDropdown/CustomDropdown.jsx
 init_react();
-var import_react103 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
+var import_react103 = __toESM(require("react")), import_prop_types57 = __toESM(require("prop-types"));
 
 // app/components/CustomDropdown/CustomDropdown.Styled.jsx
 init_react();
@@ -24381,21 +24390,21 @@ function CustomDropdown(props) {
   }, props.elements.length > 0 && renderElements(props.elements)));
 }
 CustomDropdown.propTypes = {
-  elements: import_prop_types56.default.arrayOf().isRequired,
-  text: import_prop_types56.default.string,
-  label: import_prop_types56.default.string.isRequired,
-  dropdownClass: import_prop_types56.default.string,
-  menuClass: import_prop_types56.default.string,
-  onClickFunc: import_prop_types56.default.func,
-  onSelectFunc: import_prop_types56.default.func,
-  selectedValue: import_prop_types56.default.oneOfType([
-    import_prop_types56.default.number,
-    import_prop_types56.default.string
+  elements: import_prop_types57.default.arrayOf().isRequired,
+  text: import_prop_types57.default.string,
+  label: import_prop_types57.default.string.isRequired,
+  dropdownClass: import_prop_types57.default.string,
+  menuClass: import_prop_types57.default.string,
+  onClickFunc: import_prop_types57.default.func,
+  onSelectFunc: import_prop_types57.default.func,
+  selectedValue: import_prop_types57.default.oneOfType([
+    import_prop_types57.default.number,
+    import_prop_types57.default.string
   ]),
-  isHighlighted: import_prop_types56.default.bool,
-  showSelected: import_prop_types56.default.bool,
-  accessValueName: import_prop_types56.default.string.isRequired,
-  disabled: import_prop_types56.default.bool
+  isHighlighted: import_prop_types57.default.bool,
+  showSelected: import_prop_types57.default.bool,
+  accessValueName: import_prop_types57.default.string.isRequired,
+  disabled: import_prop_types57.default.bool
 };
 CustomDropdown.defaultProps = {
   text: "",
@@ -24545,8 +24554,8 @@ function Filters2(props) {
   }, /* @__PURE__ */ import_react104.default.createElement(CustomDropdown_default, __spreadValues({}, departmentFilterConfig))), /* @__PURE__ */ import_react104.default.createElement(FiltersField, null, /* @__PURE__ */ import_react104.default.createElement(CustomDropdown_default, __spreadValues({}, getLocationFilterConfig())))))));
 }
 Filters2.propTypes = {
-  clearFilters: import_prop_types57.default.func.isRequired,
-  modifyQuery: import_prop_types57.default.func.isRequired
+  clearFilters: import_prop_types58.default.func.isRequired,
+  modifyQuery: import_prop_types58.default.func.isRequired
 };
 var Filters_default = Filters2;
 
@@ -24571,7 +24580,7 @@ function getCookie(name) {
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.jsx
 init_react();
-var import_react106 = __toESM(require("react")), import_prop_types58 = __toESM(require("prop-types"));
+var import_react106 = __toESM(require("react")), import_prop_types59 = __toESM(require("prop-types"));
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.Styled.jsx
 init_react();
@@ -24686,8 +24695,8 @@ function ValuesMessageModal({ show, onClose }) {
   }, "Accept"))))) : null;
 }
 ValuesMessageModal.propTypes = {
-  onClose: import_prop_types58.default.func.isRequired,
-  show: import_prop_types58.default.bool.isRequired
+  onClose: import_prop_types59.default.func.isRequired,
+  show: import_prop_types59.default.bool.isRequired
 };
 var ValuesMessageModal_default = ValuesMessageModal;
 
@@ -24746,8 +24755,8 @@ function ListQuestions({
   }))), /* @__PURE__ */ import_react107.default.createElement(GoToTopButton_default, null), valuesMessageModal, /* @__PURE__ */ import_react107.default.createElement(AnswerBot_default, null));
 }
 ListQuestions.propTypes = {
-  questions: import_prop_types59.default.arrayOf(import_prop_types59.default.shape()),
-  onFetchMore: import_prop_types59.default.func.isRequired
+  questions: import_prop_types60.default.arrayOf(import_prop_types60.default.shape()),
+  onFetchMore: import_prop_types60.default.func.isRequired
 };
 ListQuestions.defaultProps = {
   questions: []
@@ -24982,7 +24991,7 @@ var login_default = Login;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
 init_react();
-var assets_manifest_default = { version: "60c6e473", entry: { module: "/build/entry.client-UTWZFDXQ.js", imports: ["/build/_shared/chunk-PBFK4UZR.js", "/build/_shared/chunk-3MAIR26M.js", "/build/_shared/chunk-4DA2OAD7.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-JOZAPGXY.js", imports: ["/build/_shared/chunk-ZXCMUZUW.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-YEW73CUG.js", "/build/_shared/chunk-OHU2FFVR.js", "/build/_shared/chunk-H2YFZVAH.js", "/build/_shared/chunk-I5GBPAQ4.js", "/build/_shared/chunk-6B3OXNYQ.js", "/build/_shared/chunk-NKKDRQ4D.js", "/build/_shared/chunk-Z5KDSXRE.js", "/build/_shared/chunk-P6WCU7WC.js", "/build/_shared/chunk-THD6T3BE.js", "/build/_shared/chunk-2VQ64DF4.js", "/build/_shared/chunk-Q745UF6A.js", "/build/_shared/chunk-EDO2VLX7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-P4GIKTEV.js", imports: ["/build/_shared/chunk-A7JC27CZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-JFALEPBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-Y4OAOHMY.js", imports: ["/build/_shared/chunk-A7JC27CZ.js", "/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-4HCGMZKU.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-GQILXCD6.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-DQBQ3TGF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-MPZIBLEV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-3MKFYS2S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-YZON65DX.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-EVINGICU.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-FCPWXMGL.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-FLVKZ3SJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-X5CHNUMG.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-SUYIXHS5.js", imports: ["/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-WKQRGAN4.js", imports: ["/build/_shared/chunk-EVINGICU.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-60C6E473.js" };
+var assets_manifest_default = { version: "4b567ec3", entry: { module: "/build/entry.client-UTWZFDXQ.js", imports: ["/build/_shared/chunk-PBFK4UZR.js", "/build/_shared/chunk-3MAIR26M.js", "/build/_shared/chunk-4DA2OAD7.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-JOZAPGXY.js", imports: ["/build/_shared/chunk-ZXCMUZUW.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-YEW73CUG.js", "/build/_shared/chunk-OHU2FFVR.js", "/build/_shared/chunk-H2YFZVAH.js", "/build/_shared/chunk-I5GBPAQ4.js", "/build/_shared/chunk-6B3OXNYQ.js", "/build/_shared/chunk-NKKDRQ4D.js", "/build/_shared/chunk-Z5KDSXRE.js", "/build/_shared/chunk-P6WCU7WC.js", "/build/_shared/chunk-THD6T3BE.js", "/build/_shared/chunk-2VQ64DF4.js", "/build/_shared/chunk-Q745UF6A.js", "/build/_shared/chunk-EDO2VLX7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-P4GIKTEV.js", imports: ["/build/_shared/chunk-A7JC27CZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-JFALEPBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-Y4OAOHMY.js", imports: ["/build/_shared/chunk-A7JC27CZ.js", "/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-4HCGMZKU.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-GQILXCD6.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-DQBQ3TGF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-NVX4XK65.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-3MKFYS2S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-YZON65DX.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-EVINGICU.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-FCPWXMGL.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-FLVKZ3SJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-X5CHNUMG.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-SUYIXHS5.js", imports: ["/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-TDXXJX4M.js", imports: ["/build/_shared/chunk-EVINGICU.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-4B567EC3.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
