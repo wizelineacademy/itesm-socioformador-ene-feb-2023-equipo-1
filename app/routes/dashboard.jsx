@@ -8,6 +8,7 @@ import { useLoaderData } from '@remix-run/react';
 import listQuestions from "app/controllers/questions/list";
 import listDepartments from 'app/controllers/departments/list';
 import listAnswerBot from "app/controllers/answerBot/list";
+import dateRangeConversion from 'app/utils/dateRangeConversion';
 
 
 // Process and load the data.
@@ -20,10 +21,13 @@ export const loader = async ({ request }) => {
 
 	// Extract the "department" parameter from the URL.
     const department = Number.parseInt(url.searchParams.get('department'), 10);
+
+	const dateRange = dateRangeConversion('this_month');
   
 	// Get a list of FAQ questions.
     const questionsFAQ = await listQuestions({
         department: Number.isNaN(department) ? undefined : department,
+		dateRange,
         limit: 5,
     });
 
@@ -31,6 +35,7 @@ export const loader = async ({ request }) => {
     const questionsOF = await listQuestions({
         department: Number.isNaN(department) ? undefined : department,
 		status: 'not_answered',
+		dateRange,
         limit: 8,
     });
 
