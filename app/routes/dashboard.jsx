@@ -8,43 +8,54 @@ import { useLoaderData } from "@remix-run/react";
 import listQuestions from "app/controllers/questions/list";
 import listDepartments from "app/controllers/departments/list";
 
-import OpenForumButton from "app/components/OpenForumButton";
+import listAnswerBot from "app/controllers/answerBot/list";
 
+// Process and load the data.
 export const loader = async ({ request }) => {
+	// Make sure the user is authenticated before continuing.
 	await requireAuth(request);
-	const user = await getAuthenticatedUser(request);
 
+	// To access the request URL.
 	const url = new URL(request.url);
 
+	// Extract the "department" parameter from the URL.
 	const department = Number.parseInt(url.searchParams.get("department"), 10);
 
+	// Get a list of FAQ questions.
 	const questionsFAQ = await listQuestions({
 		department: Number.isNaN(department) ? undefined : department,
+		limit: 5,
 	});
 
+	// Get a list of unanswered questions.
 	const questionsOF = await listQuestions({
 		department: Number.isNaN(department) ? undefined : department,
 		status: "not_answered",
-		limit: 4,
+		limit: 8,
 	});
 
-	/*const questionsBot = await listAnswerBot({
+	// Get a list of bot questions.
+	const questionsBot = await listAnswerBot({
 		department: Number.isNaN(department) ? undefined : department,
-		limit: 4,
-	});*/
+		limit: 5,
+	});
 
+	// Get a list of the departments.
 	const departments = await listDepartments();
+	// Add 2 more departments in the options.
 	departments.unshift({ department_id: 0, name: "Not Assigned" });
 	departments.unshift({ department_id: undefined, name: "All" });
 
+	// Returns the results in a json.
 	return json({
 		questionsFAQ,
 		questionsOF,
-		//questionsBot,
+		questionsBot,
 		departments,
 	});
 };
 
+// Format for the month.
 const months = [
 	"Jan",
 	"Feb",
@@ -60,6 +71,7 @@ const months = [
 	"Dec",
 ];
 
+// Format for date.
 const formatDate = (dateString) => {
 	const date = new Date(dateString);
 	const month = months[date.getMonth()];
@@ -69,25 +81,21 @@ const formatDate = (dateString) => {
 };
 
 function Dashboard() {
-	const { questionsFAQ, questionsOF, departments } = useLoaderData();
+	// Load the data.
+	const { questionsFAQ, questionsOF, questionsBot, departments } =
+		useLoaderData();
 
+	// For the department selector.
 	const [selectedDepartment, setSelectedDepartment] = useState(
 		departments[0].department_id
 	);
 
+	// Change the current value of the department selector and send it to the loader.
 	const handleSelectDepartment = (department) => {
 		setSelectedDepartment(department);
 		const queryParams = new URLSearchParams({ department });
 		window.location.search = queryParams.toString();
 	};
-
-	useEffect(() => {
-		console.log("qFAQ: ", questionsFAQ);
-		console.log("qOF: ", questionsOF);
-
-		console.log("departments: ", departments);
-		console.log("selected department: ", selectedDepartment);
-	}, []);
 
 	return (
 		<>
@@ -115,7 +123,14 @@ function Dashboard() {
 														: question.question}
 												</Styled.Text>
 												<td>
-													<OpenForumButton />
+													<Styled.Button>
+														<Styled.ButtonText
+															href={`http://localhost:3000/questions/${question.question_id}`}
+															key={index}
+															title={question.question}>
+															Answer it →
+														</Styled.ButtonText>
+													</Styled.Button>
 												</td>
 											</tr>
 										))}
@@ -137,32 +152,42 @@ function Dashboard() {
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<Styled.Text>What is Wizeline?</Styled.Text>
-											<Styled.Text>Wizeline is a ....</Styled.Text>
-											<Styled.TextA>Good</Styled.TextA>
-										</tr>
-										<tr>
-											<Styled.Text>
-												What are the available projects?
-											</Styled.Text>
-											<Styled.Text>There are ....</Styled.Text>
-											<Styled.TextU>Bad</Styled.TextU>
-										</tr>
-										<tr>
-											<Styled.Text>
-												Where are the Wizeline offices located?
-											</Styled.Text>
-											<Styled.Text>They are located in ...</Styled.Text>
-											<Styled.TextA>Good</Styled.TextA>
-										</tr>
-										<tr>
-											<Styled.Text>
-												Are there any job openings at the moment?
-											</Styled.Text>
-											<Styled.Text>There aren't any openings at...</Styled.Text>
-											<Styled.TextA>Good</Styled.TextA>
-										</tr>
+										{questionsBot.map((question, index) => (
+											<tr>
+												<Styled.Text
+													key={`questionAB-${index}`}
+													title={question.question_by_user}>
+													{question.question_by_user.length > 50
+														? `${question.question_by_user.substring(0, 50)}...`
+														: question.question_by_user}
+												</Styled.Text>
+												<Styled.Text
+													key={`answerAB-${index}`}
+													title={question.answer_by_bot}>
+													{question.answer_by_bot.length > 50
+														? `${question.answer_by_bot.substring(0, 50)}...`
+														: question.answer_by_bot}
+												</Styled.Text>
+												{question.answer_feedback === -1 && (
+													<Styled.TextU key={`feedbackAB-${index}`}>
+														{" "}
+														Bad{" "}
+													</Styled.TextU>
+												)}
+												{question.answer_feedback === 0 && (
+													<Styled.Text key={`feedbackAB-${index}`}>
+														{" "}
+														N/A{" "}
+													</Styled.Text>
+												)}
+												{question.answer_feedback === 1 && (
+													<Styled.TextA key={`feedbackAB-${index}`}>
+														{" "}
+														Good{" "}
+													</Styled.TextA>
+												)}
+											</tr>
+										))}
 									</tbody>
 								</Table>
 							</Styled.ContMargin>
@@ -181,7 +206,6 @@ function Dashboard() {
 										<Styled.TextBold width="170">Status</Styled.TextBold>
 									</tr>
 								</thead>
-
 								<tbody>
 									{questionsFAQ.map((question, index) => (
 										<tr>
