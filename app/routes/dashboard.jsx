@@ -28,7 +28,6 @@ export const loader = async ({ request }) => {
   const questionsFAQ = await listQuestions({
     department: Number.isNaN(department) ? undefined : department,
     dateRange,
-    limit: 5,
   });
 
   // Get a list of unanswered questions.
@@ -38,14 +37,12 @@ export const loader = async ({ request }) => {
     commentStatus: 'not_approved',
     commentVote: 'not_approved',
     dateRange,
-    limit: 8,
   });
 
   // Get a list of bot questions.
   const questionsBot = await listAnswerBot({
     department: Number.isNaN(department) ? undefined : department,
     dateRange,
-    limit: 5,
   });
 
   // Get a list of the departments.

@@ -1,6 +1,5 @@
 import { db } from 'app/utils/db.server';
 import { ALL_DEPARTMENTS, NOT_ASSIGNED_DEPARTMENT_ID } from 'app/utils/backend/filterConstants';
-import { DEFAULT_LIMIT } from 'app/utils/backend/constants';
 
 // Filter the search and selection of departments.
 const buildWhereDepartment = (department) => {
@@ -33,7 +32,7 @@ const buildWhereDateRange = (dateRange) => {
 const listAnswerBot = async (params) => {
   try {
     // Destructuring.
-    const { department, dateRange, limit } = params;
+    const { department, dateRange } = params;
 
     // Finds all records that match the submitted values.
     const getAnswers = await db.AnswerBot.findMany({
@@ -41,7 +40,6 @@ const listAnswerBot = async (params) => {
         ...buildWhereDepartment(department),
         ...buildWhereDateRange(dateRange),
       },
-      take: limit || DEFAULT_LIMIT,
     });
 
     // Returns the search result.
