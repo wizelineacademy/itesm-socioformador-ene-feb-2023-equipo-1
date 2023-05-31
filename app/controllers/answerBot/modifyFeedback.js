@@ -19,7 +19,7 @@ const updateFeedback = async (body) => {
   }
 
   // Destructuring, rest has all the remaining values of the data.
-  const { answerFeedback, ...rest } = value;
+  const { answer_feedback, ...rest } = value;
 
   // Find the record that matches the submitted values.
   const findFeed = await db.AnswerBot.findFirst({
@@ -50,7 +50,7 @@ const updateFeedback = async (body) => {
       id: findFeed.id,
     },
     data: {
-      answer_feedback: answerFeedback,
+      answer_feedback,
     },
   });
 

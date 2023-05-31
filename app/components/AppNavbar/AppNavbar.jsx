@@ -63,12 +63,15 @@ function AppNavbar() {
         />
       </Navbar.Collapse>
       <Styled.SearchBarNavContainer>
-        <Navbar.Collapse in={open} id="example-collapse-text" style={{ width: '100%', padding: '10px', overflow: 'visible' }}>
+        <Navbar.Collapse
+          in={open}
+          id="example-collapse-text"
+          style={{ width: '100%', padding: '10px', overflow: 'visible' }}
+        >
           <SearchBarNav />
         </Navbar.Collapse>
       </Styled.SearchBarNavContainer>
     </Styled.AppNav>
-
   );
 }
 

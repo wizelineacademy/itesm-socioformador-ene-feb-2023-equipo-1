@@ -6,12 +6,14 @@ function FAQs({ questionsFAQ }) {
   return (
     <Styled.FAQContainer>
 
-      <Styled.FAQHeader>FAQ&apos;s</Styled.FAQHeader>
+      <Styled.FAQHeader>FAQ's</Styled.FAQHeader>
 
-      {questionsFAQ.map((faq) => (
+      {questionsFAQ.map((faq, index) => (
         <Styled.FAQList>
-          <Styled.Question href={`http://localhost:3000/questions/${faq.question_id}`} key={faq.id} title={faq.question}>
+          <Styled.Question href={`http://localhost:3000/questions/${faq.question_id}`} key={index} title={faq.question}>
+            {' '}
             {faq.question}
+            {' '}
           </Styled.Question>
         </Styled.FAQList>
       ))}

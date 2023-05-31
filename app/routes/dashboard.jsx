@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { json } from '@remix-run/node';
 import * as Styled from 'app/styles/Dashboard.Styled.jsx';
-import { requireAuth } from 'app/session.server';
+import { requireAuth, getAuthenticatedUser } from 'app/session.server';
 import AdminSideBar from 'app/components/AdminSideBar';
 import { Table } from 'react-bootstrap';
 import { useLoaderData } from '@remix-run/react';
@@ -9,64 +9,58 @@ import listQuestions from 'app/controllers/questions/list';
 import listDepartments from 'app/controllers/departments/list';
 import listAnswerBot from 'app/controllers/answerBot/list';
 import dateRangeConversion from 'app/utils/dateRangeConversion';
+import OpenForumButton from 'app/components/OpenForumButton';
 
-// Process and load the data.
 export const loader = async ({ request }) => {
-  // Make sure the user is authenticated before continuing.
   await requireAuth(request);
+  const user = await getAuthenticatedUser(request);
 
-  // To access the request URL.
   const url = new URL(request.url);
 
-  // Extract the "department" parameter from the URL.
   const department = Number.parseInt(url.searchParams.get('department'), 10);
 
-  // Gets the date range of the current month.
-  const dateRange = dateRangeConversion('this_month');
-
-  // Get a list of FAQ questions.
   const questionsFAQ = await listQuestions({
     department: Number.isNaN(department) ? undefined : department,
-    dateRange,
   });
 
-  // Get a list of unanswered questions.
   const questionsOF = await listQuestions({
     department: Number.isNaN(department) ? undefined : department,
     status: 'not_answered',
-    commentStatus: 'not_approved',
-    commentVote: 'not_approved',
-    dateRange,
+    limit: 4,
   });
 
-  // Get a list of bot questions.
-  const questionsBot = await listAnswerBot({
-    department: Number.isNaN(department) ? undefined : department,
-    dateRange,
-  });
+  /* const questionsBot = await listAnswerBot({
+		department: Number.isNaN(department) ? undefined : department,
+		limit: 4,
+	}); */
 
-  // Get a list of the departments.
   const departments = await listDepartments();
-  // Add 2 more departments in the options.
   departments.unshift({ department_id: 0, name: 'Not Assigned' });
   departments.unshift({ department_id: undefined, name: 'All' });
 
-  // Returns the results in a json.
   return json({
     questionsFAQ,
     questionsOF,
-    questionsBot,
+    // questionsBot,
     departments,
   });
 };
 
-// Format for the month.
 const months = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
-// Format for date.
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const month = months[date.getMonth()];
@@ -76,20 +70,25 @@ const formatDate = (dateString) => {
 };
 
 function Dashboard() {
-  // Load the data.
-  const {
-    questionsFAQ, questionsOF, questionsBot, departments,
-  } = useLoaderData();
+  const { questionsFAQ, questionsOF, departments } = useLoaderData();
 
-  // For the department selector.
-  const [selectedDepartment, setSelectedDepartment] = useState(departments[0].department_id);
+  const [selectedDepartment, setSelectedDepartment] = useState(
+    departments[0].department_id,
+  );
 
-  // Change the current value of the department selector and send it to the loader.
   const handleSelectDepartment = (department) => {
     setSelectedDepartment(department);
     const queryParams = new URLSearchParams({ department });
     window.location.search = queryParams.toString();
   };
+
+  useEffect(() => {
+    console.log('qFAQ: ', questionsFAQ);
+    console.log('qOF: ', questionsOF);
+
+    console.log('departments: ', departments);
+    console.log('selected department: ', selectedDepartment);
+  }, []);
 
   return (
     <>
@@ -107,14 +106,19 @@ function Dashboard() {
                 <Styled.Title>Open Forums</Styled.Title>
                 <Table hover>
                   <tbody>
-                    {questionsOF.map((question) => (
+                    {questionsOF.map((question, index) => (
                       <tr>
                         <Styled.Text
-                          key={`questionOP-${question.id}`}
+                          key={`questionOP-${index}`}
                           title={question.question}
                         >
-                          {question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question}
+                          {question.question.length > 100
+													  ? `${question.question.substring(0, 100)}...`
+													  : question.question}
                         </Styled.Text>
+                        <td>
+                          <OpenForumButton />
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -135,25 +139,32 @@ function Dashboard() {
                     </tr>
                   </thead>
                   <tbody>
-                    {questionsBot.map((question) => (
-                      <tr>
-                        <Styled.Text
-                          key={`questionAB-${question.id}`}
-                          title={question.question_by_user}
-                        >
-                          {question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user}
-                        </Styled.Text>
-                        <Styled.Text
-                          key={`answerAB-${question.id}`}
-                          title={question.answer_by_bot}
-                        >
-                          {question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
-                        </Styled.Text>
-                        {question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${question.id}`}> Bad </Styled.TextU>}
-                        {question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${question.id}`}> N/A </Styled.Text>}
-                        {question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${question.id}`}> Good </Styled.TextA>}
-                      </tr>
-                    ))}
+                    <tr>
+                      <Styled.Text>What is Wizeline?</Styled.Text>
+                      <Styled.Text>Wizeline is a ....</Styled.Text>
+                      <Styled.TextA>Good</Styled.TextA>
+                    </tr>
+                    <tr>
+                      <Styled.Text>
+                        What are the available projects?
+                      </Styled.Text>
+                      <Styled.Text>There are ....</Styled.Text>
+                      <Styled.TextU>Bad</Styled.TextU>
+                    </tr>
+                    <tr>
+                      <Styled.Text>
+                        Where are the Wizeline offices located?
+                      </Styled.Text>
+                      <Styled.Text>They are located in ...</Styled.Text>
+                      <Styled.TextA>Good</Styled.TextA>
+                    </tr>
+                    <tr>
+                      <Styled.Text>
+                        Are there any job openings at the moment?
+                      </Styled.Text>
+                      <Styled.Text>There aren't any openings at...</Styled.Text>
+                      <Styled.TextA>Good</Styled.TextA>
+                    </tr>
                   </tbody>
                 </Table>
               </Styled.ContMargin>
@@ -172,31 +183,46 @@ function Dashboard() {
                     <Styled.TextBold width="170">Status</Styled.TextBold>
                   </tr>
                 </thead>
+
                 <tbody>
-                  {questionsFAQ.map((question) => (
+                  {questionsFAQ.map((question, index) => (
                     <tr>
                       <Styled.Text
-                        key={`questionFAQ-${question.id}`}
+                        key={`questionFAQ-${index}`}
                         title={question.question}
                       >
-                        {question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question}
+                        {question.question.length > 50
+												  ? `${question.question.substring(0, 50)}...`
+												  : question.question}
                       </Styled.Text>
-                      <Styled.Text key={`department-${question.id}`}>
+                      <Styled.Text key={`department-${index}`}>
                         {' '}
-                        {question.assigned_department !== null ? departments.find((depa) => depa.department_id === question.assigned_department)?.name : 'Not Assigned'}
+                        {question.assigned_department !== null
+												  ? departments.find(
+												    (depa) => depa.department_id
+																=== question.assigned_department,
+													  )?.name
+												  : 'Not Assigned'}
                         {' '}
                       </Styled.Text>
-                      <Styled.Text key={`date-${question.id}`}>
+                      <Styled.Text key={`date-${index}`}>
                         {' '}
                         {formatDate(question.createdAt)}
                         {' '}
                       </Styled.Text>
-                      {question.Answers.length > 0
-                      || question.Comments.some((comment) => comment.approvedBy !== null)
-                      || question.Comments.some((comment) => comment.CommentVote.length > 0
-                        && comment.CommentVote.some((vote) => vote.value >= 10))
-                        ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>
-                        : <Styled.TextU key={`statusFAQ-${question.id}`}> Unanswered </Styled.TextU>}
+                      {question.Answers.length > 0 ? (
+                        <Styled.TextA key={`statusFAQ-${index}`}>
+                          {' '}
+                          Answered
+                          {' '}
+                        </Styled.TextA>
+                      ) : (
+                        <Styled.TextU key={`statusFAQ-${index}`}>
+                          {' '}
+                          Unanswered
+                          {' '}
+                        </Styled.TextU>
+                      )}
                     </tr>
                   ))}
                 </tbody>

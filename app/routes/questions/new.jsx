@@ -175,6 +175,7 @@ export const action = async ({ request }) => {
 
         // If the result is successful, it shows it on the screen.
         if (response.successMessage) {
+          console.log('finish', response.feedback);
           const session = await getSession(request);
           const { successMessage } = response;
           session.flash('globalSuccess', successMessage);

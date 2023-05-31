@@ -1,16 +1,17 @@
+/* eslint-disable no-tabs */
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  background-color: #f7fafc; /* Slate-100 */
-  margin-left: 15%;
+	height: 115vh;
+	background-color: #f7fafc; /* Slate-100 */
+	margin: 0;
+	margin-left: 18%;
+	@media (min-width: 1536px) {
+		margin-left: 40px; /* 2xl:ml-40 */
+	}
 
-  @media (min-width: 1536px) {
-    margin-left: 40px; /* 2xl:ml-40 */
-  }
-
-  height: 100vh;
-  padding-top: 8px; /* Pt-8 */
-  align-content: stretch; /* Content-stretch */
+	padding-top: 8px; /* Pt-8 */
+	align-content: stretch; /* Content-stretch */
 `;
 
 export const NextContainer = styled.div`
@@ -54,21 +55,21 @@ export const TopContainers = styled.div`
 `;
 
 export const BottomContainer = styled.div`
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  margin-top: 20px;
-  border: 1px solid #d1d5db; /* ring-gray-200 */
-  box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.05);
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 0px 3px rgba(59, 130, 246, 0.5);
-  }
-  border-radius: 0.375rem; /* rounded-md */
-  margin-left: 2px; /* ml-2 */
-  margin-right: 1px; /* mr-1 */
-  height: 90%;
+	overflow-y: scroll;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	margin-top: 20px;
+	border: 1px solid #d1d5db; /* ring-gray-200 */
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.05);
+	&:focus {
+		outline: none;
+		box-shadow: 0px 0px 0px 3px rgba(59, 130, 246, 0.5);
+	}
+	border-radius: 0.375rem; /* rounded-md */
+	margin-left: 2px; /* ml-2 */
+	margin-right: 1px; /* mr-1 */
+	height: 300px;
 `;
 
 export const ContMargin = styled.div`
@@ -91,16 +92,20 @@ export const Title = styled.h2`
 `;
 
 export const Text = styled.td`
-  color: #17202a;
-  font-weight: 400;
-  letter-spacing: 1px;
+	color: #17202a;
+
+	font-weight: 400;
+	letter-spacing: 1px;
 `;
 
 export const TextBold = styled.th`
-  color: #17202a;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-size: medium;
+	color: #17202a;
+	font-weight: 600;
+	letter-spacing: 1px;
+	font-size: medium;
+	position: sticky;
+	top: 0;
+	background-color: white;
 `;
 
 export const TextBoldList = styled.li`
@@ -124,7 +129,7 @@ export const TextA = styled.td`
 `;
 
 export const TextB = styled.td`
-  color: #4766b6;
-  font-weight: 400;
-  letter-spacing: 1px;
+	color: #4766b6;
+	font-weight: 400;
+	letter-spacing: 1px;
 `;

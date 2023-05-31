@@ -1,19 +1,26 @@
+/* eslint-disable no-tabs */
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  margin-top: 1px;
-  height: 100vh;
-  position: absolute;
-  inset-y: 0;
-  display: flex;
-  overflow-y: scroll;
+	// eslint-disable-next-line no-tabs
+	background-color: red;
+	margin-top: 1px;
+	height: 115vh;
+	width: 265px;
+	position: absolute;
+	inset-y: 0;
+	display: flex;
+	overflow-y: scroll;
+	padding-right: 5px;
+	background-color: white;
 `;
 
 export const DepContainer = styled.div`
-  position: relative;
-  display: inline-block;
-  padding-left: 25px;
-  padding-right: 15px;
+	position: relative;
+	display: inline-block;
+	padding-left: 25px;
+	padding-right: 15px;
+	margin-right: 10px;
 `;
 
 export const TitleDep = styled.div`
@@ -26,25 +33,28 @@ export const TitleDep = styled.div`
 `;
 
 export const ListDep = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  padding-left: 15px;
-  margin-top: 20%;
+	list-style-type: none;
+	padding: 0;
+	padding-left: 10px;
+	margin-top: 20%;
 `;
 
 export const DepSelect = styled.li`
-  @import url("https://fonts.googleapis.com/css?family=Inter");
-  text-align: left;
-  margin-top: 7.5%;
-  color: #17202a;
-  font-weight: 600;
-  letter-spacing: 1px;
+	text-align: left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	color: #17202a;
+	font-weight: 600;
+	letter-spacing: 1px;
+	word-break: break-all;
 
-  &:hover {
-    background-color: #213246; /* Gray-700 */
-    color: white;
-    border-radius: 0.375rem; /* Rounded-md */
-    padding-top: 0.5rem; /* Py-2 */
-    padding-bottom: 0.5rem; /* Py-2 */
-  }
+	&:hover {
+		background-color: #213246; /* Gray-700 */
+		color: white;
+		border-radius: 0.375rem; /* Rounded-md */
+		cursor: pointer;
+	}
 `;
