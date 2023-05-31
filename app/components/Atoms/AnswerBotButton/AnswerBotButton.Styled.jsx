@@ -1,5 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
-
+import styled from 'styled-components';
 import botImage from 'app/images/logo_answerbot.png';
 import postIcon from 'app/images/post-icon.png';
 
@@ -9,6 +8,9 @@ import dislikeIcon from 'app/images/dislike.png';
 import likeHoverIcon from 'app/images/likeHover.png';
 import dislikeHoverIcon from 'app/images/dislikeHover.png';
 
+import likeClickIcon from 'app/images/likeClick.png';
+import dislikeClickIcon from 'app/images/dislikeClick.png';
+
 /// ///////////////////////////////////// AnswerBot Button /////////////////////////////////////
 
 export const BotButton = styled.button`
@@ -16,12 +18,12 @@ export const BotButton = styled.button`
     border: none;
     width: 8.4vw;
     height: 8.4vw;
-    right: 0px;
-    position: fixed;
-    top: 70%;
+    margin: 75% 0 0 0;
+    float: right;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    position: relative;
     visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
     transition: width 0.3s ease-in-out;
 
@@ -32,7 +34,7 @@ export const BotButton = styled.button`
     }
 
     &:hover {
-        width: 19vw;
+        width: 20.16vw;
 
         & > .message {
             opacity: 1;
@@ -40,23 +42,32 @@ export const BotButton = styled.button`
             transition: opacity 0.25s ease-in-out;
             transition-delay: 0.2s;
         }
-        
-        @media screen and (min-width: 1600px) {
+
+        @media screen and (max-width: 3025px) and (min-height: 1150px) {
             width: 14vw;
         }
 
-        @media screen and (min-width: 2000px) {
-            width: 13vw;
+        @media screen and (max-width: 2400px) and (min-height: 1750px) {
+            width: 17vw;
         }
+
+        @media screen and (max-width: 2000px) and (min-height: 1750px) {
+            width: 18vw;
+        }
+
     }
 
-    @media screen and (max-width: 1025px) {
+    @media screen and (max-width: 1300px) {
+        margin: 50% 0 0 0;
+    }
+
+    @media screen and (max-width: 1025px) and (max-height: 1060px) {
         display: none;
     }
 
-    @media screen and (min-width: 1600px) {
-        width: 6vw;
-        height: 6vw;
+    @media screen and (min-width: 1150px) and (min-height: 1150px) {
+        width: 6.5vw;
+        height: 6.5vw;
     }
 `;
 
@@ -74,35 +85,38 @@ export const BotIcon = styled.img`
     position: absolute;
     left: 1.5vw;
     transform: translateY(-50%);
-
-    @media screen and (min-width: 1600px) {
+  
+    @media screen and (min-width: 1150px) and (min-height: 1150px) {
         width: 4vw;
         height: 4vw;
-        left: 1.25vw;
     }
 `;
 
 export const BotMessage = styled.div`
     color: #fff;
-    font-size: 115%;
+    font-size: 1.3vw;
     font-weight: bold;
     position: absolute;
-    right: 1.3vw;
-    padding-left: 7.85vw;
+    right: 8%;
     transform: translateY(-50%);
 
-    @media screen and (max-width: 1240px) {
+    @media screen and (max-width: 2000px) and (min-height: 500px) {
+        font-size: 16px;
+        left: 45%;
+    }
+
+    @media screen and (max-width: 2017px) {
+        right: 2.15vw;
+    }
+
+    @media screen and (max-width: 1000px) {
+        left: 50%;
+        font-size: 20px;
+    }
+
+    @media screen and (max-width: 1500px) {
+        left: 50%;
         font-size: 100%;
-        right: 1.1vw;
-    }
-
-    @media screen and (max-width: 1100px) {
-        font-size: 85%;
-    }
-
-    @media screen and (min-width: 1600px) {
-        font-size: 90%;
-        padding-left: 5vw;
     }
 
 `;
@@ -124,11 +138,7 @@ export const ChatbotContainer = styled.div`
     transition: visibility 0.3s ease-in-out;
     visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 
-    @media screen and (max-width: 1025px) {
-        display: none;
-    }
-
-    @media screen and (max-height: 450px) {
+    @media screen and (max-width: 1025px) and (max-height: 960px) {
         display: none;
     }
 `;
@@ -206,18 +216,6 @@ export const ChatbotRowMessage = styled.div`
     alignItems: center;
 `;
 
-const blinkAnimation = keyframes`
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.2;
-  }
-`;
-
 export const Message = styled.div`
     padding: 10px 10px;
     border-bottom-right-radius: 10px;
@@ -239,17 +237,6 @@ export const Message = styled.div`
         background-color: #213246;
         border-top-right-radius: 10px;
         color: #fff;
-
-        ${(props) => props.isWaiting && css`
-          position: relative;
-          overflow: hidden;
-
-          &:after {
-            content: '...';
-            animation: ${blinkAnimation} 1s infinite alternate;
-            animation-delay: ${props.index * 0.2}s;
-          }
-        `}
     }
 `;
 
@@ -265,7 +252,6 @@ export const Input = styled.input`
     padding: 10px;
     border: none;
     outline: none;
-    cursor: ${(props) => (props.enabled ? 'text' : 'not-allowed')};
 `;
 
 export const SendButton = styled.button`
@@ -279,12 +265,10 @@ export const SendButton = styled.button`
     background-repeat: no-repeat;
     background-position: center;
     margin: 5px 5px;
-    opacity: ${(props) => (props.inputLength > 13 ? 1 : 0.3)};
-    cursor: ${(props) => (props.inputLength > 13 ? 'pointer' : 'not-allowed')};
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-        background-color: ${(props) => (props.inputLength > 13 ? '#F2F2F1' : '#fff')};
+    background-color: #F2F2F1;
     }
 `;
 
@@ -295,7 +279,7 @@ export const LikeButton = styled.button`
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${likeIcon});
+    background-image: url(${(props) => (props.liked ? likeClickIcon : likeIcon)});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
@@ -304,7 +288,7 @@ export const LikeButton = styled.button`
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${likeHoverIcon});
+        background-image: url(${(props) => (props.liked ? likeClickIcon : likeHoverIcon)});
     }
 `;
 
@@ -313,39 +297,13 @@ export const DislikeButton = styled.button`
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${dislikeIcon});
+    background-image: url(${(props) => (props.disliked ? dislikeClickIcon : dislikeIcon)});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${dislikeHoverIcon});
-    }
-`;
-
-export const TextFeedback = styled.span`
-    padding: ${(props) => (props.padding === 'na' ? '0px 0px' : '5px 31px')};
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-`;
-
-export const PublishButton = styled.button`
-    margin: 0 0 2.5% 10%;
-    background-color: #fff;
-    color: #213246;
-    border: 1px solid #213246;
-    padding: 8px 25px;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-    &:hover {
-        background-color: #213246;
-        color: #fff;
+        background-image: url(${(props) => (props.disliked ? dislikeClickIcon : dislikeHoverIcon)});
     }
 `;

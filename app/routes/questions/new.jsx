@@ -16,7 +16,7 @@ import listQuestions from 'app/controllers/questions/list';
 import createQuestion from 'app/controllers/questions/create';
 import createAnswerByBot from 'app/controllers/answerBot/create';
 import updateFeedback from 'app/controllers/answerBot/modifyFeedback';
-import updatePostID from 'app/controllers/answerBot/modifyIDQuestion'
+import updatePostID from 'app/controllers/answerBot/modifyIDQuestion';
 import Notifications from 'app/components/Notifications';
 import AnswerBot from 'app/components/AnswerBot';
 import FAQs from 'app/components/FAQs/FAQs';
@@ -28,8 +28,8 @@ export const loader = async ({ request }) => {
   const locations = await listLocations();
   const departments = await listDepartments();
   const questionsFAQ = await listQuestions({
-    orderBy: "popular",
-    dateRange: "this_week",
+    orderBy: 'popular',
+    dateRange: 'this_week',
     limit: 10,
   });
   return json({
@@ -103,8 +103,8 @@ export const action = async ({ request }) => {
         const session = await getSession(request);
         const { successMessage } = response;
         session.flash('globalSuccess', successMessage);
-        const destination = `/questions/new`;
-    
+        const destination = '/questions/new';
+
         return redirect(destination, {
           headers: {
             'Set-Cookie': await commitSession(session),
@@ -132,8 +132,8 @@ export const action = async ({ request }) => {
         const session = await getSession(request);
         const { successMessage } = response;
         session.flash('globalSuccess', successMessage);
-        const destination = `/questions/new`;
-    
+        const destination = '/questions/new';
+
         return redirect(destination, {
           headers: {
             'Set-Cookie': await commitSession(session),
@@ -161,7 +161,6 @@ export const action = async ({ request }) => {
 
       // If the result is successful, proceed to continue.
       if (response.successMessage) {
-
         // Create another payload.
         payload = {
           post_question_id: response.question.question_id,
@@ -173,15 +172,15 @@ export const action = async ({ request }) => {
 
         // Update the AnswerBot record with the new payload.
         response = await updatePostID(payload);
-    
+
         // If the result is successful, it shows it on the screen.
         if (response.successMessage) {
-          console.log('finish',response.feedback);
+          console.log('finish', response.feedback);
           const session = await getSession(request);
           const { successMessage } = response;
           session.flash('globalSuccess', successMessage);
-          const destination = `/questions/new`;
-      
+          const destination = '/questions/new';
+
           return redirect(destination, {
             headers: {
               'Set-Cookie': await commitSession(session),
@@ -284,7 +283,7 @@ function CreateQuestion() {
       <Styled.QuestionDiv>
         <Styled.QuestionSlogan>
           <Slogan />
-          <FAQs questionsFAQ={questionsFAQ}/>
+          <FAQs questionsFAQ={questionsFAQ} />
         </Styled.QuestionSlogan>
         <Styled.QuestionInput>
           <QuestionForm

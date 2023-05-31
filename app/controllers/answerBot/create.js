@@ -33,7 +33,6 @@ const createAnswerByBot = async (body) => {
     successMessage: 'The question to bot has been created succesfully!',
     question: created,
   };
-
 };
 
 export default createAnswerByBot;

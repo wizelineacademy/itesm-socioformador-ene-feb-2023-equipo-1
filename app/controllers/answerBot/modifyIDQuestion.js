@@ -3,7 +3,6 @@ import { modifyBotPostQuestion } from 'app/utils/backend/validators/answerBot';
 import { db } from 'app/utils/db.server';
 
 const updatePost = async (body) => {
-
   // Validates the received data.
   const { error, value } = modifyBotPostQuestion.validate(body);
 
@@ -21,7 +20,7 @@ const updatePost = async (body) => {
 
   // Destructuring, rest has all the remaining values of the data.
   const { post_question_id, ...rest } = value;
-  
+
   // Find the record that matches the submitted values.
   const findQABot = await db.AnswerBot.findFirst({
     where: {
@@ -52,7 +51,7 @@ const updatePost = async (body) => {
       id: findQABot.id,
     },
     data: {
-      post_question_id: post_question_id,
+      post_question_id,
     },
   });
 
@@ -61,7 +60,6 @@ const updatePost = async (body) => {
     successMessage: 'The question has been posted on the forum successfully!',
     detail: upToDate,
   };
-
 };
 
 export default updatePost;
