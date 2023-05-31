@@ -35,6 +35,8 @@ export const loader = async ({ request }) => {
   const questionsOF = await listQuestions({
     department: Number.isNaN(department) ? undefined : department,
     status: 'not_answered',
+    commentStatus: 'not_approved',
+    commentVote: 'not_approved',
     dateRange,
     limit: 8,
   });
@@ -193,6 +195,9 @@ function Dashboard() {
                         {' '}
                       </Styled.Text>
                       {question.Answers.length > 0
+                      || question.Comments.some((comment) => comment.approvedBy !== null)
+                      || question.Comments.some((comment) => comment.CommentVote.length > 0
+                        && comment.CommentVote.some((vote) => vote.value >= 10))
                         ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>
                         : <Styled.TextU key={`statusFAQ-${question.id}`}> Unanswered </Styled.TextU>}
                     </tr>

@@ -1,1 +1,0 @@
-import{i as c}from"/build/_shared/chunk-XNUFYIVR.js";c();function s(t,o){document.cookie=`${t}=${o}`}function u(t){if(typeof window!="undefined"){let o=`${t}=`,i=decodeURIComponent(document.cookie).split(";");for(let n=0;n<i.length;n++){let e=i[n];for(;e.charAt(0)===" ";)e=e.substring(1);if(e.indexOf(o)===0)return e.substring(o.length,e.length)}}return""}export{s as a,u as b};
