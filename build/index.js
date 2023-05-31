@@ -21557,11 +21557,7 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
         answer_by_bot: answer,
         assignedDepartment: (department == null ? void 0 : department.department_id) || "wizeq"
       };
-      try {
-        await postAnswerBotQuestion(newQuestion);
-      } catch (error) {
-        console.error(error);
-      }
+      await postAnswerBotQuestion(newQuestion);
     }
   }, handleChange = (e) => {
     setInputValue(e.target.value);
@@ -21583,12 +21579,7 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
       answer_feedback: 1,
       assignedDepartment: messagesID[index2].depa
     };
-    try {
-      await updateAnswerBotFeedback(updateFeedback2);
-    } catch (error) {
-      throw error;
-    }
-    setTimeout(() => {
+    await updateAnswerBotFeedback(updateFeedback2), setTimeout(() => {
       setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
         [index2]: "na"
       }));
@@ -21607,23 +21598,14 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
       answer_feedback: -1,
       assignedDepartment: messagesID[index2].depa
     };
-    try {
-      await updateAnswerBotFeedback(updateFeedback2);
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotFeedback(updateFeedback2);
   }, handlePublishQuestion = async (index2) => {
     let updatePostID = {
       question: messages[index2].content,
       answer: messages[index2 + 1].content,
       assignedDepartment: messagesID[index2].depa
     };
-    try {
-      await updateAnswerBotPostID(updatePostID);
-    } catch (error) {
-      throw error;
-    }
-    setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+    await updateAnswerBotPostID(updatePostID), setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
       [index2]: "Your question has been published successfully."
     })), setTimeout(() => {
       setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
@@ -21631,57 +21613,56 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
       }));
     }, 2500);
   }, profile = useUser_default();
-  if (!!profile)
-    return /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(BotButton, {
-      visible: !chatbotVisible,
-      onClick: handleChatbotToggle
-    }, /* @__PURE__ */ import_react78.default.createElement(BotIcon, null), /* @__PURE__ */ import_react78.default.createElement(BotMessage, {
-      className: "message"
-    }, "Hi, I'm AnswerBot!", /* @__PURE__ */ import_react78.default.createElement("br", null), "Ask me anything!")), /* @__PURE__ */ import_react78.default.createElement(ChatbotContainer, {
-      visible: chatbotVisible
-    }, /* @__PURE__ */ import_react78.default.createElement(ChatbotHeader, null, /* @__PURE__ */ import_react78.default.createElement(IconBot, {
-      style: { position: "absolute" }
-    }), /* @__PURE__ */ import_react78.default.createElement(BotName, null, " AnswerBot "), /* @__PURE__ */ import_react78.default.createElement(CloseButton2, {
-      onClick: handleChatbotToggle
-    }, " \u2715 ")), /* @__PURE__ */ import_react78.default.createElement(ChatbotMessages, null, messages.slice(1).map((message, index2) => message.role === "user" ? /* @__PURE__ */ import_react78.default.createElement(ChatbotRowMessage, {
-      style: { justifyContent: "flex-end" }
-    }, /* @__PURE__ */ import_react78.default.createElement(Message, {
-      key: `message-${message.id}`,
-      className: "user",
-      ref: messagesEndRef
-    }, message.content), /* @__PURE__ */ import_react78.default.createElement(IconUser, {
-      src: profile.profile_picture
-    })) : /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(ChatbotRowMessage, {
-      style: { justifyContent: "flex-start" }
-    }, /* @__PURE__ */ import_react78.default.createElement(IconBot, null), /* @__PURE__ */ import_react78.default.createElement(Message, {
-      key: `message-${message.id}`,
-      className: "bot",
-      ref: messagesEndRef,
-      isWaiting: isWaitingForResponse && index2 + 2 === messages.length
-    }, message.content)), index2 !== 0 && /* @__PURE__ */ import_react78.default.createElement("div", null, !showThanksMessage[index2] && /* @__PURE__ */ import_react78.default.createElement(import_react78.default.Fragment, null, (index2 !== messages.length - 2 || !isWaitingForResponse) && /* @__PURE__ */ import_react78.default.createElement(import_react78.default.Fragment, null, /* @__PURE__ */ import_react78.default.createElement(LikeButton, {
-      key: `like-${index2}`,
-      onClick: () => handleLikeClick(index2)
-    }), /* @__PURE__ */ import_react78.default.createElement(DislikeButton, {
-      key: `dislike-${index2}`,
-      onClick: () => handleDislikeClick(index2)
-    }))), showThanksMessage[index2] && /* @__PURE__ */ import_react78.default.createElement(TextFeedback, {
-      padding: showThanksMessage[index2]
-    }, showThanksMessage[index2] === !0 ? "Thanks for the feedback!" : showThanksMessage[index2] === "na" ? "" : showThanksMessage[index2]), showThanksMessage[index2] === "Would you like to share your question with the community?" && /* @__PURE__ */ import_react78.default.createElement(PublishButton, {
-      onClick: () => handlePublishQuestion(index2)
-    }, "Post question"))))), /* @__PURE__ */ import_react78.default.createElement(ChatbotInput, {
-      onSubmit: handleInput
-    }, /* @__PURE__ */ import_react78.default.createElement(Input3, {
-      type: "text",
-      placeholder: "Enter your question...",
-      onChange: handleChange,
-      disabled: isWaitingForResponse,
-      enabled: !isWaitingForResponse,
-      title: "Type at least 14 characters"
-    }), /* @__PURE__ */ import_react78.default.createElement(SendButton, {
-      type: "submit",
-      inputLength: inputValue.length,
-      disabled: isWaitingForResponse
-    }))));
+  return /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(BotButton, {
+    visible: !chatbotVisible,
+    onClick: handleChatbotToggle
+  }, /* @__PURE__ */ import_react78.default.createElement(BotIcon, null), /* @__PURE__ */ import_react78.default.createElement(BotMessage, {
+    className: "message"
+  }, "Hi, I'm AnswerBot!", /* @__PURE__ */ import_react78.default.createElement("br", null), "Ask me anything!")), /* @__PURE__ */ import_react78.default.createElement(ChatbotContainer, {
+    visible: chatbotVisible
+  }, /* @__PURE__ */ import_react78.default.createElement(ChatbotHeader, null, /* @__PURE__ */ import_react78.default.createElement(IconBot, {
+    style: { position: "absolute" }
+  }), /* @__PURE__ */ import_react78.default.createElement(BotName, null, " AnswerBot "), /* @__PURE__ */ import_react78.default.createElement(CloseButton2, {
+    onClick: handleChatbotToggle
+  }, " \u2715 ")), /* @__PURE__ */ import_react78.default.createElement(ChatbotMessages, null, messages.slice(1).map((message, index2) => message.role === "user" ? /* @__PURE__ */ import_react78.default.createElement(ChatbotRowMessage, {
+    style: { justifyContent: "flex-end" }
+  }, /* @__PURE__ */ import_react78.default.createElement(Message, {
+    key: `message-${message.id}`,
+    className: "user",
+    ref: messagesEndRef
+  }, message.content), /* @__PURE__ */ import_react78.default.createElement(IconUser, {
+    src: profile.profile_picture
+  })) : /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(ChatbotRowMessage, {
+    style: { justifyContent: "flex-start" }
+  }, /* @__PURE__ */ import_react78.default.createElement(IconBot, null), /* @__PURE__ */ import_react78.default.createElement(Message, {
+    key: `message-${message.id}`,
+    className: "bot",
+    ref: messagesEndRef,
+    isWaiting: isWaitingForResponse && index2 + 2 === messages.length
+  }, message.content)), index2 !== 0 && /* @__PURE__ */ import_react78.default.createElement("div", null, !showThanksMessage[index2] && (index2 !== messages.length - 2 || !isWaitingForResponse) && /* @__PURE__ */ import_react78.default.createElement(import_react78.default.Fragment, null, /* @__PURE__ */ import_react78.default.createElement(LikeButton, {
+    key: `like-${message.id}`,
+    onClick: () => handleLikeClick(index2)
+  }), /* @__PURE__ */ import_react78.default.createElement(DislikeButton, {
+    key: `dislike-${message.id}`,
+    onClick: () => handleDislikeClick(index2)
+  })), showThanksMessage[index2] && /* @__PURE__ */ import_react78.default.createElement(TextFeedback, {
+    padding: showThanksMessage[index2]
+  }, showThanksMessage[index2] === !0 && "Thanks for the feedback!", showThanksMessage[index2] === "na" && "", !(showThanksMessage[index2] === "Thanks for the feedback!" || showThanksMessage[index2] === "na") && showThanksMessage[index2]), showThanksMessage[index2] === "Would you like to share your question with the community?" && /* @__PURE__ */ import_react78.default.createElement(PublishButton, {
+    onClick: () => handlePublishQuestion(index2)
+  }, "Post question"))))), /* @__PURE__ */ import_react78.default.createElement(ChatbotInput, {
+    onSubmit: handleInput
+  }, /* @__PURE__ */ import_react78.default.createElement(Input3, {
+    type: "text",
+    placeholder: "Enter your question...",
+    onChange: handleChange,
+    disabled: isWaitingForResponse,
+    enabled: !isWaitingForResponse,
+    title: "Type at least 14 characters"
+  }), /* @__PURE__ */ import_react78.default.createElement(SendButton, {
+    type: "submit",
+    inputLength: inputValue.length,
+    disabled: isWaitingForResponse
+  }))));
 }
 AnswerBot.propTypes = {
   postAnswerBotQuestion: import_prop_types47.default.func.isRequired,
@@ -24991,7 +24972,7 @@ var login_default = Login;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
 init_react();
-var assets_manifest_default = { version: "4b567ec3", entry: { module: "/build/entry.client-UTWZFDXQ.js", imports: ["/build/_shared/chunk-PBFK4UZR.js", "/build/_shared/chunk-3MAIR26M.js", "/build/_shared/chunk-4DA2OAD7.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-JOZAPGXY.js", imports: ["/build/_shared/chunk-ZXCMUZUW.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-YEW73CUG.js", "/build/_shared/chunk-OHU2FFVR.js", "/build/_shared/chunk-H2YFZVAH.js", "/build/_shared/chunk-I5GBPAQ4.js", "/build/_shared/chunk-6B3OXNYQ.js", "/build/_shared/chunk-NKKDRQ4D.js", "/build/_shared/chunk-Z5KDSXRE.js", "/build/_shared/chunk-P6WCU7WC.js", "/build/_shared/chunk-THD6T3BE.js", "/build/_shared/chunk-2VQ64DF4.js", "/build/_shared/chunk-Q745UF6A.js", "/build/_shared/chunk-EDO2VLX7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-P4GIKTEV.js", imports: ["/build/_shared/chunk-A7JC27CZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-JFALEPBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-Y4OAOHMY.js", imports: ["/build/_shared/chunk-A7JC27CZ.js", "/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-4HCGMZKU.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-GQILXCD6.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-DQBQ3TGF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-NVX4XK65.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-3MKFYS2S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-YZON65DX.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-EVINGICU.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-FCPWXMGL.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-FLVKZ3SJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-X5CHNUMG.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-SUYIXHS5.js", imports: ["/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-TDXXJX4M.js", imports: ["/build/_shared/chunk-EVINGICU.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-4B567EC3.js" };
+var assets_manifest_default = { version: "0b70df06", entry: { module: "/build/entry.client-UTWZFDXQ.js", imports: ["/build/_shared/chunk-PBFK4UZR.js", "/build/_shared/chunk-3MAIR26M.js", "/build/_shared/chunk-4DA2OAD7.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-JOZAPGXY.js", imports: ["/build/_shared/chunk-ZXCMUZUW.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-YEW73CUG.js", "/build/_shared/chunk-OHU2FFVR.js", "/build/_shared/chunk-H2YFZVAH.js", "/build/_shared/chunk-I5GBPAQ4.js", "/build/_shared/chunk-6B3OXNYQ.js", "/build/_shared/chunk-NKKDRQ4D.js", "/build/_shared/chunk-Z5KDSXRE.js", "/build/_shared/chunk-P6WCU7WC.js", "/build/_shared/chunk-THD6T3BE.js", "/build/_shared/chunk-2VQ64DF4.js", "/build/_shared/chunk-Q745UF6A.js", "/build/_shared/chunk-EDO2VLX7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-P4GIKTEV.js", imports: ["/build/_shared/chunk-A7JC27CZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-JFALEPBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-Y4OAOHMY.js", imports: ["/build/_shared/chunk-A7JC27CZ.js", "/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-4HCGMZKU.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-GQILXCD6.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-DQBQ3TGF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-NVX4XK65.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-3MKFYS2S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-ATX2IB2Z.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-H5C4XGQY.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-FCPWXMGL.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-FLVKZ3SJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-X5CHNUMG.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-SUYIXHS5.js", imports: ["/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-E56HZMU5.js", imports: ["/build/_shared/chunk-H5C4XGQY.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-0B70DF06.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

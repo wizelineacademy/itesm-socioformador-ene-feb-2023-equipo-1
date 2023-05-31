@@ -284,7 +284,7 @@ export const SendButton = styled.button`
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-        background-color: ${(props) => (props.inputLength > 13 ? '#F2F2F1' : '#fff') };
+        background-color: ${(props) => (props.inputLength > 13 ? '#F2F2F1' : '#fff')};
     }
 `;
 
