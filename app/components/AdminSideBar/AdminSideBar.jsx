@@ -1,7 +1,8 @@
 import * as Styled from "app/components/AdminSideBar/AdminSideBar.Styled.jsx";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
+
 	return (
 		<Styled.MainContainer>
 			<Styled.DepContainer>
@@ -13,7 +14,8 @@ function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
 							key={item.name}
 							aria-current={item.current ? "page" : undefined}
 							onClick={() => handleSelectDepartment(item.department_id)}
-							selected={item.department_id === selectedDepartment}>
+							selected={item.department_id === selectedDepartment}
+							>
 							{item.name}
 						</Styled.DepSelect>
 					))}

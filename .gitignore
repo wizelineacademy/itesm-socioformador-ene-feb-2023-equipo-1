@@ -1,12 +1,13 @@
 node_modules
+build
+public/build
 
 /.cache
-/build
-/public/build
 .env
 .DS_Store
 **/.DS_Store
 
 # Cypress
 *.mp4
-/tests/cypress/screenshots/*
+tests/cypress/screenshots/*
+cypress/screenshots/*

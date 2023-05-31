@@ -10,6 +10,7 @@
 /tests/performance/**
 /tmp/**
 /tools/internal-rules/node_modules/**
+/node_modules/**
 test.js
 !.eslintrc.js
 server.js
