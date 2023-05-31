@@ -8,11 +8,16 @@ describe('CP001 - Abir el chat de Answerbot', () => {
     cy.get('#password').type('A01197723$')
     cy.get('.c79fd81e4 > .cda1ae149').click() //Clicks on continue button
     cy.reload() //Reload page to get main page
-    cy.get('#btnAccept').click() //Remove pop-up
+    cy.get('#btnAccept').then($button => {
+      if ($button.is(':visible')){
+        cy.get('#btnAccept').click() //Remove pop-up
+      }
+    })
     cy.get('#ask-button').click() //Click ' Ask Question' button
-    cy.get('.sc-gYMRRK').click() //Click AnswerBot button
-    cy.get('.sc-DdwlG') //Text input field correctly displayed
-    cy.get('.sc-ddcaxn') //Messages field correctly displayed
-    cy.get('.sc-dwVMhp') //Send button correctly displayed
+    cy.wait(3000)
+    cy.get('.sc-gITdmR').click() //Click AnswerBot button
+    cy.get('.sc-dWINGa') //Text input field correctly displayed
+    cy.get('.sc-eGAhfa') //Messages field correctly displayed
+    cy.get('.sc-jGprRt') //Send button correctly displayed
   })
 })

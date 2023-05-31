@@ -6,11 +6,16 @@ describe('CP008 - Recibir una respuesta relevante en el chat', () => {
     cy.get('#password').type('A01197723$')
     cy.get('.c79fd81e4 > .cda1ae149').click() //Clicks on continue button
     cy.reload() //Reload page to get main page
-    cy.get('#btnAccept').click() //Remove pop-up
+    cy.get('#btnAccept').then($button => {
+      if ($button.is(':visible')){
+        cy.get('#btnAccept').click() //Remove pop-up
+      }
+    })
     cy.get('#ask-button').click() //Click ' Ask Question' button
-    cy.get('.sc-gYMRRK').click() //Click AnswerBot button
-    cy.get('.sc-DdwlG').type('How many days should I isolate if I have COVID?') //Write question
-    cy.get('.sc-dwVMhp').click() //Click 'Send' button
-    cy.get(':nth-child(3) > .sc-egNfGp > .sc-hFrEEg', {timeout:50000})
+    cy.wait(3000)
+    cy.get('.sc-gITdmR').click() //Click AnswerBot button
+    cy.get('.sc-dWINGa').type('How many days should I isolate if I have COVID?') //Write question
+    cy.get('.sc-jGprRt').click() //Click 'Send' button
+    cy.get(':nth-child(3) > .sc-hAsxaJ > .sc-kYWVYA', {timeout:50000})
   })
 })
