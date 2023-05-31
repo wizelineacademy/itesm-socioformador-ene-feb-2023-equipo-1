@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import Joi from 'joi';
 import {
   MAXIMUM_QUESTION_LENGTH,
@@ -18,7 +19,8 @@ export const createBotSchema = Joi.object().keys({
 export const modifyFeedbackBotSchema = Joi.object().keys({
   question_by_user: Joi.string().min(MINIMUM_QUESTION_LENGTH).max(MAXIMUM_QUESTION_LENGTH).required(),
   answer_by_bot: Joi.string().min(MINIMUM_ANSWER_LENGTH).max(MAXIMUM_ANSWER_LENGTH).required(),
-  answer_feedback: Joi.number().integer().min(-1).max(1).required(),
+  answer_feedback: Joi.number().integer().min(-1).max(1)
+    .required(),
   assigned_department: Joi.number().integer().min(1).allow(null),
   user_id: Joi.number().integer().min(1).allow(null),
 });

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Table } from "react-bootstrap";
+/* eslint-disable no-tabs */
+import styled from 'styled-components';
 
 export const MainContainer = styled.div`
 	height: 115vh;

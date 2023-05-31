@@ -2,7 +2,6 @@ import { db } from 'app/utils/db.server';
 import { ALL_DEPARTMENTS, NOT_ASSIGNED_DEPARTMENT_ID } from 'app/utils/backend/filterConstants';
 import { DEFAULT_LIMIT } from 'app/utils/backend/constants';
 
-
 // Filter the search and selection of departments.
 const buildWhereDepartment = (department) => {
   if (department === undefined || department === ALL_DEPARTMENTS) return {};
@@ -19,7 +18,6 @@ const buildWhereDepartment = (department) => {
 // Get the list of records from the AnswerBot table.
 const listAnswerBot = async (params) => {
   try {
-
     // Destructuring.
     const { department, limit } = params;
 
@@ -32,8 +30,8 @@ const listAnswerBot = async (params) => {
     });
 
     // Returns the search result.
-    return getAnswers; 
-    
+    return getAnswers;
+
     // Error and exception handling.
   } catch (error) {
     console.error(error);

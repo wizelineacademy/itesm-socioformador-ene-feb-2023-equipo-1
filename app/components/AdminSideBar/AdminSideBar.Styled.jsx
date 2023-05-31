@@ -1,6 +1,8 @@
-import styled from "styled-components";
+/* eslint-disable no-tabs */
+import styled from 'styled-components';
 
 export const MainContainer = styled.div`
+	// eslint-disable-next-line no-tabs
 	background-color: red;
 	margin-top: 1px;
 	height: 115vh;

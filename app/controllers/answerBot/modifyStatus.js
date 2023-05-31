@@ -3,7 +3,6 @@ import { createAnswerBotSchema } from 'app/utils/backend/validators/answerBot';
 import { db } from 'app/utils/db.server';
 
 const updateFeedback = async (body) => {
-
   const { error, value } = createAnswerBotSchema.validate(body);
 
   if (error) {
@@ -18,14 +17,14 @@ const updateFeedback = async (body) => {
   }
 
   const { answer_status, ...rest } = value;
-  
+
   const findFeed = await db.AnswerBot.findFirst({
     where: {
       answer_status: 0,
       ...rest,
     },
     orderBy: {
-        date_created: 'desc',
+      date_created: 'desc',
     },
   });
 
@@ -35,7 +34,7 @@ const updateFeedback = async (body) => {
         id: findFeed.id,
       },
       data: {
-        answer_status: answer_status,
+        answer_status,
       },
     });
   }
@@ -46,7 +45,6 @@ const updateFeedback = async (body) => {
     successMessage: 'The feedback to bot has been updated succesfully!',
     feedback: findFeed,
   };
-
 };
 
-export default updateFeedback; 
+export default updateFeedback;
