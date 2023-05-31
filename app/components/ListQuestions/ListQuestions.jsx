@@ -165,7 +165,6 @@ function ListQuestions({
       </Styled.RightWrapper>
       <GoToTopButton />
       {valuesMessageModal}
-      <AnswerBot />
     </Styled.Container>
   );
 }

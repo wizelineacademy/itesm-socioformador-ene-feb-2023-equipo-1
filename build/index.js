@@ -5038,59 +5038,59 @@ var logo_white_default = "/build/_assets/logo-white-OWKWHN6A.png";
 init_react();
 var import_styled_components2 = __toESM(require("styled-components")), import_react_bootstrap = require("react-bootstrap"), import_ai = require("react-icons/ai"), AppNav = (0, import_styled_components2.default)(import_react_bootstrap.Navbar).attrs(() => ({
   fluid: !0
-}))` 
-  background-color: #203449;
-  border-color: #203449;
-  border-radius: 0;
-  margin-bottom: 0;
-  padding: 5px;
-  width: 100%;
-  .dropdown.btn-group {
-    float: left;
-    margin-left: 30px;
-  }
+}))`
+	background-color: #203449;
+	border-color: #203449;
+	border-radius: 0;
+	margin-bottom: 0;
+	padding: 5px;
+	width: 100%;
+	.dropdown.btn-group {
+		float: left;
+		margin-left: 30px;
+	}
 `, ButtonBootstrap = (0, import_styled_components2.default)(import_react_bootstrap.Button)`
-  background-color: transparent;
-  display: none;
-  border: 1px solid transparent;
-  border-radius: 25px;
-  position: absolute;
-  right: 65px;
-  top: 8px;
+	background-color: transparent;
+	display: none;
+	border: 1px solid transparent;
+	border-radius: 25px;
+	position: absolute;
+	right: 65px;
+	top: 8px;
 
-  &:hover,
-  &.hover {
-    background-color: #4d5d6d;
-    border: 1px solid transparent;
-  }
-  &:focus,
-  &.focus {
-    background-color: #4d5d6d;
-    border: 1px solid transparent;
-  }
-  &:active:hover,
-  &:active:focus {
-    background-color: #4d5d6d;
-    border: 1px solid transparent;
-    color: transparent;
-  }
-  @media (max-width: 768px) {
-    display: block;
-  }
+	&:hover,
+	&.hover {
+		background-color: #4d5d6d;
+		border: 1px solid transparent;
+	}
+	&:focus,
+	&.focus {
+		background-color: #4d5d6d;
+		border: 1px solid transparent;
+	}
+	&:active:hover,
+	&:active:focus {
+		background-color: #4d5d6d;
+		border: 1px solid transparent;
+		color: transparent;
+	}
+	@media (max-width: 768px) {
+		display: block;
+	}
 `, SearchBarNavContainer = import_styled_components2.default.div`
-  display: none;
-  @media (max-width: 768px) {
-    display: flex;
-    width: 100%;
-  }
+	display: none;
+	@media (max-width: 768px) {
+		display: flex;
+		width: 100%;
+	}
 `, IconWrapper = import_styled_components2.default.div`
-  width: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	width: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `, SearchIcon = (0, import_styled_components2.default)(import_ai.AiOutlineSearch)`
-  font-size: 30px;
-  color: #fff;
+	font-size: 30px;
+	color: #fff;
 `;
 
 // app/components/UserControls/index.js
@@ -22060,16 +22060,16 @@ var import_react83 = __toESM(require("react")), import_node6 = require("@remix-r
 // app/styles/Dashboard.Styled.jsx
 init_react();
 var import_styled_components46 = __toESM(require("styled-components")), MainContainer = import_styled_components46.default.div`
-  background-color: #f7fafc; /* Slate-100 */
-  margin-left: 15%;
+	height: 115vh;
+	background-color: #f7fafc; /* Slate-100 */
+	margin: 0;
+	margin-left: 18%;
+	@media (min-width: 1536px) {
+		margin-left: 40px; /* 2xl:ml-40 */
+	}
 
-  @media (min-width: 1536px) {
-    margin-left: 40px; /* 2xl:ml-40 */
-  }
-
-  height: 100vh;
-  padding-top: 8px; /* Pt-8 */
-  align-content: stretch; /* Content-stretch */
+	padding-top: 8px; /* Pt-8 */
+	align-content: stretch; /* Content-stretch */
 `, NextContainer = import_styled_components46.default.div`
   margin-left: 1%;
 
@@ -22105,21 +22105,21 @@ var import_styled_components46 = __toESM(require("styled-components")), MainCont
     box-shadow: 0px 0px 0px 3px rgba(59, 130, 246, 0.5);
   }
 `, BottomContainer = import_styled_components46.default.div`
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  margin-top: 20px;
-  border: 1px solid #d1d5db; /* ring-gray-200 */
-  box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.05);
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 0px 3px rgba(59, 130, 246, 0.5);
-  }
-  border-radius: 0.375rem; /* rounded-md */
-  margin-left: 2px; /* ml-2 */
-  margin-right: 1px; /* mr-1 */
-  height: 90%;
+	overflow-y: scroll;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	margin-top: 20px;
+	border: 1px solid #d1d5db; /* ring-gray-200 */
+	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.05);
+	&:focus {
+		outline: none;
+		box-shadow: 0px 0px 0px 3px rgba(59, 130, 246, 0.5);
+	}
+	border-radius: 0.375rem; /* rounded-md */
+	margin-left: 2px; /* ml-2 */
+	margin-right: 1px; /* mr-1 */
+	height: 300px;
 `, ContMargin = import_styled_components46.default.div`
   margin-left: 25px;
   margin-right: 25px;
@@ -22134,14 +22134,18 @@ var import_styled_components46 = __toESM(require("styled-components")), MainCont
   letter-spacing: 1px;
   margin-bottom: 15px;
 `, Text = import_styled_components46.default.td`
-  color: #17202a;
-  font-weight: 400;
-  letter-spacing: 1px;
+	color: #17202a;
+
+	font-weight: 400;
+	letter-spacing: 1px;
 `, TextBold = import_styled_components46.default.th`
-  color: #17202a;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-size: medium;
+	color: #17202a;
+	font-weight: 600;
+	letter-spacing: 1px;
+	font-size: medium;
+	position: sticky;
+	top: 0;
+	background-color: white;
 `, TextBoldList = import_styled_components46.default.li`
   color: #17202a;
   font-weight: 600;
@@ -22157,9 +22161,9 @@ var import_styled_components46 = __toESM(require("styled-components")), MainCont
   font-weight: 400;
   letter-spacing: 1px;
 `, TextB = import_styled_components46.default.td`
-  color: #4766b6;
-  font-weight: 400;
-  letter-spacing: 1px;
+	color: #4766b6;
+	font-weight: 400;
+	letter-spacing: 1px;
 `;
 
 // app/components/AdminSideBar/index.js
@@ -22171,17 +22175,23 @@ init_react();
 // app/components/AdminSideBar/AdminSideBar.Styled.jsx
 init_react();
 var import_styled_components47 = __toESM(require("styled-components")), MainContainer2 = import_styled_components47.default.div`
-  margin-top: 1px;
-  height: 100vh;
-  position: absolute;
-  inset-y: 0;
-  display: flex;
-  overflow-y: scroll;
+	// eslint-disable-next-line no-tabs
+	background-color: red;
+	margin-top: 1px;
+	height: 115vh;
+	width: 265px;
+	position: absolute;
+	inset-y: 0;
+	display: flex;
+	overflow-y: scroll;
+	padding-right: 5px;
+	background-color: white;
 `, DepContainer = import_styled_components47.default.div`
-  position: relative;
-  display: inline-block;
-  padding-left: 25px;
-  padding-right: 15px;
+	position: relative;
+	display: inline-block;
+	padding-left: 25px;
+	padding-right: 15px;
+	margin-right: 10px;
 `, TitleDep = import_styled_components47.default.div`
   color: #17202a; /* Indigo-800 */
   font-weight: bold;
@@ -22190,35 +22200,38 @@ var import_styled_components47 = __toESM(require("styled-components")), MainCont
   margin-right: 8px;
   margin-top: 18%;
 `, ListDep = import_styled_components47.default.ul`
-  list-style-type: none;
-  padding: 0;
-  padding-left: 15px;
-  margin-top: 20%;
+	list-style-type: none;
+	padding: 0;
+	padding-left: 10px;
+	margin-top: 20%;
 `, DepSelect = import_styled_components47.default.li`
-  @import url("https://fonts.googleapis.com/css?family=Inter");
-  text-align: left;
-  margin-top: 7.5%;
-  color: #17202a;
-  font-weight: 600;
-  letter-spacing: 1px;
+	text-align: left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	color: #17202a;
+	font-weight: 600;
+	letter-spacing: 1px;
+	word-break: break-all;
 
-  &:hover {
-    background-color: #213246; /* Gray-700 */
-    color: white;
-    border-radius: 0.375rem; /* Rounded-md */
-    padding-top: 0.5rem; /* Py-2 */
-    padding-bottom: 0.5rem; /* Py-2 */
-  }
+	&:hover {
+		background-color: #213246; /* Gray-700 */
+		color: white;
+		border-radius: 0.375rem; /* Rounded-md */
+		cursor: pointer;
+	}
 `;
 
 // app/components/AdminSideBar/AdminSideBar.jsx
-var import_prop_types49 = __toESM(require("prop-types")), import_react82 = __toESM(require("react"));
+var import_prop_types49 = __toESM(require("prop-types"));
 function SideBar({
   departments,
   selectedDepartment,
   handleSelectDepartment
 }) {
-  return /* @__PURE__ */ import_react82.default.createElement(MainContainer2, null, /* @__PURE__ */ import_react82.default.createElement(DepContainer, null, /* @__PURE__ */ import_react82.default.createElement(TitleDep, null, "Departaments"), /* @__PURE__ */ import_react82.default.createElement(ListDep, null, departments.map((item) => /* @__PURE__ */ import_react82.default.createElement(DepSelect, {
+  return /* @__PURE__ */ React.createElement(MainContainer2, null, /* @__PURE__ */ React.createElement(DepContainer, null, /* @__PURE__ */ React.createElement(TitleDep, null, "Departaments"), /* @__PURE__ */ React.createElement(ListDep, null, departments.map((item) => /* @__PURE__ */ React.createElement(DepSelect, {
     key: item.name,
     "aria-current": item.current ? "page" : void 0,
     onClick: () => handleSelectDepartment(item.department_id),
@@ -22286,6 +22299,44 @@ var dateRangeConversion = (range2) => {
   }
 }, dateRangeConversion_default = dateRangeConversion;
 
+// app/components/OpenForumButton/index.js
+init_react();
+
+// app/components/OpenForumButton/OpenForumButton.jsx
+init_react();
+
+// app/components/OpenForumButton/OpenForumButton.Styled.jsx
+init_react();
+var import_styled_components48 = __toESM(require("styled-components")), Button3 = import_styled_components48.default.button`
+	background-color: #304966;
+	border: none;
+	color: white;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 30px;
+	width: 100px;
+	border-radius: 20px 20px 20px 20px;
+	font-weight: 400;
+
+	&:hover {
+		background-color: #213246;
+	}
+`, ButtonText = import_styled_components48.default.p`
+	color: white;
+	margin-top: 5px;
+	letter-spacing: 0.5px;
+	font-weight: 400;
+`;
+
+// app/components/OpenForumButton/OpenForumButton.jsx
+var import_react82 = __toESM(require("react"));
+function OpenForumButton() {
+  return /* @__PURE__ */ import_react82.default.createElement(Button3, null, /* @__PURE__ */ import_react82.default.createElement(ButtonText, null, "Answer it \u2192"));
+}
+var OpenForumButton_default = OpenForumButton;
+
 // app/routes/dashboard.jsx
 var loader7 = async ({ request }) => {
   await requireAuth(request);
@@ -22342,10 +22393,10 @@ function Dashboard() {
     }
   }), /* @__PURE__ */ import_react83.default.createElement(MainContainer, null, /* @__PURE__ */ import_react83.default.createElement(NextContainer, null, /* @__PURE__ */ import_react83.default.createElement(DividerContainer, null, /* @__PURE__ */ import_react83.default.createElement(TopContainers, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "Open Forums"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
     hover: !0
-  }, /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsOF.map((question) => /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
-    key: `questionOP-${question.id}`,
+  }, /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsOF.map((question, index2) => /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
+    key: `questionOP-${index2}`,
     title: question.question
-  }, question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question))))))), /* @__PURE__ */ import_react83.default.createElement(TopContainers, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "Answerbot Feedback"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
+  }, question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question), /* @__PURE__ */ import_react83.default.createElement("td", null, /* @__PURE__ */ import_react83.default.createElement(OpenForumButton_default, null)))))))), /* @__PURE__ */ import_react83.default.createElement(TopContainers, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "Answerbot Feedback"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
     stripped: !0,
     hover: !0
   }, /* @__PURE__ */ import_react83.default.createElement("thead", null, /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(TextBold, {
@@ -22377,15 +22428,15 @@ function Dashboard() {
     width: "170"
   }, "Date"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
     width: "170"
-  }, "Status"))), /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsFAQ.map((question) => {
+  }, "Status"))), /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsFAQ.map((question, index2) => {
     var _a;
     return /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
-      key: `questionFAQ-${question.id}`,
+      key: `questionFAQ-${index2}`,
       title: question.question
     }, question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question), /* @__PURE__ */ import_react83.default.createElement(Text, {
-      key: `department-${question.id}`
+      key: `department-${index2}`
     }, " ", question.assigned_department !== null ? (_a = departments.find((depa) => depa.department_id === question.assigned_department)) == null ? void 0 : _a.name : "Not Assigned", " "), /* @__PURE__ */ import_react83.default.createElement(Text, {
-      key: `date-${question.id}`
+      key: `date-${index2}`
     }, " ", formatDate(question.createdAt), " "), question.Answers.length > 0 || question.Comments.some((comment) => comment.approvedBy !== null) || question.Comments.some((comment) => comment.CommentVote.length > 0 && comment.CommentVote.some((vote) => vote.value >= 10)) ? /* @__PURE__ */ import_react83.default.createElement(TextA, {
       key: `statusFAQ-${question.id}`
     }, " Answered ") : /* @__PURE__ */ import_react83.default.createElement(TextU, {
@@ -22410,13 +22461,13 @@ var import_react85 = __toESM(require("react"));
 
 // app/styles/Contact.Styled.jsx
 init_react();
-var import_styled_components48 = __toESM(require("styled-components"));
+var import_styled_components49 = __toESM(require("styled-components"));
 
 // app/images/caret-down-solid.svg
 var caret_down_solid_default = "/build/_assets/caret-down-solid-VHSOYTMP.svg";
 
 // app/styles/Contact.Styled.jsx
-var FooterDiv = import_styled_components48.default.div`
+var FooterDiv = import_styled_components49.default.div`
     background-color: #f4f7f9;
     color: #a2abaf;
     font-size: 12px;
@@ -22427,7 +22478,7 @@ var FooterDiv = import_styled_components48.default.div`
     @media (max-width: 400px) {
         padding: 0 15px 20px;
     }
-`, FooterContainer = import_styled_components48.default.div`
+`, FooterContainer = import_styled_components49.default.div`
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
@@ -22445,20 +22496,20 @@ var FooterDiv = import_styled_components48.default.div`
     @media (min-width: 768px) and (max-width: 991px) {
         width: 750px;
     }
-`, FooterLink = import_styled_components48.default.a`
+`, FooterLink = import_styled_components49.default.a`
     color: #666;
 
     &:hover {
         text-decoration: underline;
     }
-`, ContactInputDiv = import_styled_components48.default.div`
+`, ContactInputDiv = import_styled_components49.default.div`
     background-color: #f4f7f9;
     box-sizing: border-box;
     min-height: 64.8752vh;
     padding: 2% 0 7%;
     position: relative;
     text-align: center;
-`, ContactForm = import_styled_components48.default.form`
+`, ContactForm = import_styled_components49.default.form`
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -22468,7 +22519,7 @@ var FooterDiv = import_styled_components48.default.div`
     box-sizing: border-box;
     max-width: 390px;
     width: 100%;
-`, ContactFormP = import_styled_components48.default.p`
+`, ContactFormP = import_styled_components49.default.p`
     border-radius: 4px;
     box-sizing: border-box;
     display: inline-block;
@@ -22478,7 +22529,7 @@ var FooterDiv = import_styled_components48.default.div`
     width: 100%;
     color: var(--color-dark-50);
     line-height: 24px;
-`, ContactSelect = import_styled_components48.default.select`
+`, ContactSelect = import_styled_components49.default.select`
     -moz-appearance: none; /* Firefox */
     -webkit-appearance: none; /* Safari and Chrome */
     appearance: none;
@@ -22499,7 +22550,7 @@ var FooterDiv = import_styled_components48.default.div`
     max-width: 390px;
     padding: 12px 16px;
     width: 100%;
-`, ContactTextArea = import_styled_components48.default.textarea`
+`, ContactTextArea = import_styled_components49.default.textarea`
     border: 1px solid #ccc;
     height: 150px;
     border-radius: 4px;
@@ -22513,7 +22564,7 @@ var FooterDiv = import_styled_components48.default.div`
     overflow: auto;
     border-radius: 4px;
     box-sizing: border-box;
-`, BtnContainer = import_styled_components48.default.div`
+`, BtnContainer = import_styled_components49.default.div`
     padding: 12px 0;
     border-radius: 4px;
     box-sizing: border-box;
@@ -22521,7 +22572,7 @@ var FooterDiv = import_styled_components48.default.div`
     margin: 10px 0;
     max-width: 390px;
     width: 100%;
-`, SubmitBtn = import_styled_components48.default.button`
+`, SubmitBtn = import_styled_components49.default.button`
     background-color: var(--color-secondary);
     border-radius: 3px;
     border: none;
@@ -22537,7 +22588,7 @@ var FooterDiv = import_styled_components48.default.div`
     &:hover {
         background-color: #00a7e587;
     }
-`, SuccessDiv = import_styled_components48.default.div`
+`, SuccessDiv = import_styled_components49.default.div`
     background-color: white;
     color: var(--color-dark-50);
     margin-top: 50px;
@@ -22557,15 +22608,15 @@ var FooterDiv = import_styled_components48.default.div`
     @media (min-width: 768px) and (max-width: 991px) {
         width: 750px;
     }
-`, ContactCardDiv = import_styled_components48.default.div`
+`, ContactCardDiv = import_styled_components49.default.div`
     background-color: #1c1c1c;
-`, ContactInputHeader = import_styled_components48.default.div`
+`, ContactInputHeader = import_styled_components49.default.div`
     background-color: #fff;
     text-align: center;
     font-size: 14px;
     margin: 0 auto;
     box-sizing: border-box;
-`, ContactInputHeaderH1 = import_styled_components48.default.h1`
+`, ContactInputHeaderH1 = import_styled_components49.default.h1`
     color: #a2abaf;
     letter-spacing: 1.5px;
     padding: 72px 0 12px;
@@ -22573,14 +22624,14 @@ var FooterDiv = import_styled_components48.default.div`
     font-size: 14px;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputHeaderH2 = import_styled_components48.default.h2`
+`, ContactInputHeaderH2 = import_styled_components49.default.h2`
     color: var(--color-dark-50);
     font-size: 24px;
     font-weight: 600;
     padding: 12px 0 8px;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputHeaderP = import_styled_components48.default.p`
+`, ContactInputHeaderP = import_styled_components49.default.p`
     color: var(--color-dark-50);
     letter-spacing: 0.6px;
     line-height: 1.71;
@@ -22588,27 +22639,27 @@ var FooterDiv = import_styled_components48.default.div`
     font-size: 14px;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputSitesDiv = import_styled_components48.default.div`
+`, ContactInputSitesDiv = import_styled_components49.default.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputGoTo = import_styled_components48.default.div`
+`, ContactInputGoTo = import_styled_components49.default.div`
     margin: 20px 40px 40px;
     max-width: 390px;
-`, ContactInputGoToP = import_styled_components48.default.p`
+`, ContactInputGoToP = import_styled_components49.default.p`
     font-size: 16px;
     margin: 8px 0 4px;
     padding: 0;
     max-width: 390px;
-`, ContactInputGoToA = import_styled_components48.default.a`
+`, ContactInputGoToA = import_styled_components49.default.a`
     padding: 4px 0;
     white-space: nowrap;
     color: var(--color-secondary);
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputGoToImg = import_styled_components48.default.img`
+`, ContactInputGoToImg = import_styled_components49.default.img`
     background-color: #f4f7f9;
     border-radius: 50%;
     box-shadow: 0 0 0 10px #f4f7f9;
@@ -22754,6 +22805,186 @@ Contact.propTypes = {
 };
 var contact_default = Contact;
 
+// app/routes/example.jsx
+var example_exports = {};
+__export(example_exports, {
+  default: () => example_default
+});
+init_react();
+var import_react88 = __toESM(require("react")), import_styled_components50 = __toESM(require("styled-components")), ChatbotContainer2 = import_styled_components50.default.div`
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  width: 330px;
+  height: 430px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background-color: #E1EAF4;
+  display: flex;
+  flex-direction: column;
+  visibility: ${(props) => props.visible ? "visible" : "hidden"};
+`, ChatbotHeader2 = import_styled_components50.default.div`
+  background-color: #213246;
+  height: 40px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 47.5px;
+`, IconBot2 = import_styled_components50.default.img`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 0px solid transparent;
+  background-image: url('/build/_assets/logo_answerbot-6JNTGKON.png');
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  left: 5%;
+  margin: 5px 0px;
+`, IconUser2 = import_styled_components50.default.img`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 0px solid transparent;
+  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  margin-right: 10px;
+  margin: 5px 0px;
+`, BotName2 = import_styled_components50.default.div`
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #fff;
+  padding: 0 85px;
+`, CloseButton3 = import_styled_components50.default.button`
+  color: #fff;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.4);
+  }
+
+`, ChatbotMessages2 = import_styled_components50.default.div`
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+`, ChatbotRowMessage2 = import_styled_components50.default.div`
+  display: flex;
+  alignItems: center;
+`, Message2 = import_styled_components50.default.div`
+  padding: 5px 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin: 5px 10px;
+  max-width: 80%;
+  word-break: break-word;
+
+  &.user {
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    align-self: flex-end;
+    color: #000;
+    text-align: right;
+  }
+
+  &.bot {
+    background-color: #213246;
+    border-top-right-radius: 10px;
+    color: #fff;
+  }
+
+`, ChatbotInput2 = import_styled_components50.default.form`
+  display: flex;
+  align-items: center;
+  width: 330px;
+  background-color: #fff;
+`, Input4 = import_styled_components50.default.input`
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+`, Button4 = import_styled_components50.default.button`
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  background-color: #fff;
+  border: none;
+  background-image: url('/build/_assets/post-icon.png');
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 5px 5px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #F2F2F1;
+  }
+`;
+function Chatbot() {
+  let messagesEndRef = (0, import_react88.useRef)(null), [messages, setMessages] = (0, import_react88.useState)([
+    { text: "Hola", user: !1 },
+    { text: "Hola, \xBFc\xF3mo est\xE1s?", user: !0 },
+    { text: "Estoy bien, gracias. \xBFY t\xFA?", user: !1 },
+    { text: "Bien.", user: !0 },
+    { text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", user: !1 },
+    { text: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...", user: !0 },
+    { text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", user: !1 }
+  ]), handleInput = (e) => {
+    e.preventDefault();
+    let input = e.target.querySelector("input"), message = input.value;
+    setMessages([...messages, { text: message, user: !0 }]), input.value = "";
+  };
+  (0, import_react88.useEffect)(() => {
+    (() => {
+      messagesEndRef.current && messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    })(), messagesEndRef.current && messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+  let [chatbotVisible, setChatbotVisible] = (0, import_react88.useState)(!1), handleChatbotToggle = () => {
+    setChatbotVisible(!chatbotVisible);
+  };
+  return /* @__PURE__ */ import_react88.default.createElement("div", null, /* @__PURE__ */ import_react88.default.createElement("button", {
+    type: "button",
+    onClick: handleChatbotToggle
+  }, " Mostrar chatbot "), /* @__PURE__ */ import_react88.default.createElement(ChatbotContainer2, {
+    visible: chatbotVisible
+  }, /* @__PURE__ */ import_react88.default.createElement(ChatbotHeader2, null, /* @__PURE__ */ import_react88.default.createElement(IconBot2, {
+    style: { position: "absolute" }
+  }), /* @__PURE__ */ import_react88.default.createElement(BotName2, null, " AnswerBot "), /* @__PURE__ */ import_react88.default.createElement(CloseButton3, {
+    onClick: handleChatbotToggle
+  }, " \u2715 ")), /* @__PURE__ */ import_react88.default.createElement(ChatbotMessages2, null, messages.map((message) => message.user ? /* @__PURE__ */ import_react88.default.createElement(ChatbotRowMessage2, {
+    style: { justifyContent: "flex-end" }
+  }, /* @__PURE__ */ import_react88.default.createElement(Message2, {
+    key: `message ${message.id}`,
+    className: "user",
+    ref: messagesEndRef
+  }, " ", message.text, " "), /* @__PURE__ */ import_react88.default.createElement(IconUser2, {
+    src: "/build/_assets/placeholder_user_img-ZWAQNLBE.png"
+  })) : /* @__PURE__ */ import_react88.default.createElement(ChatbotRowMessage2, {
+    style: { justifyContent: "flex-start" }
+  }, /* @__PURE__ */ import_react88.default.createElement(IconBot2, null), /* @__PURE__ */ import_react88.default.createElement(Message2, {
+    key: `message ${message.id}`,
+    className: "bot",
+    ref: messagesEndRef
+  }, " ", message.text, " ")))), /* @__PURE__ */ import_react88.default.createElement(ChatbotInput2, {
+    onSubmit: handleInput
+  }, /* @__PURE__ */ import_react88.default.createElement(Input4, {
+    type: "text",
+    placeholder: "Enter your question..."
+  }), /* @__PURE__ */ import_react88.default.createElement(Button4, {
+    type: "submit"
+  }))));
+}
+var example_default = Chatbot;
+
 // app/routes/logout.jsx
 var logout_exports = {};
 __export(logout_exports, {
@@ -22771,16 +23002,16 @@ __export(about_exports, {
   loader: () => loader10
 });
 init_react();
-var import_react88 = __toESM(require("react")), import_node9 = require("@remix-run/node");
+var import_react89 = __toESM(require("react")), import_node9 = require("@remix-run/node");
 
 // app/styles/About.Styled.jsx
 init_react();
-var import_styled_components49 = __toESM(require("styled-components")), colorDark50 = "#4E5154", colorSecondary = "#00A7E5", About = import_styled_components49.default.div`
+var import_styled_components51 = __toESM(require("styled-components")), colorDark50 = "#4E5154", colorSecondary = "#00A7E5", About = import_styled_components51.default.div`
   background-color: #fff;
   color: ${colorDark50};
   line-height: 1.71;
   text-align: center;
-`, AboutBody = import_styled_components49.default.div`
+`, AboutBody = import_styled_components51.default.div`
   margin: auto;
   max-width: 65%;
   padding: 0 20px;
@@ -22868,12 +23099,12 @@ var import_styled_components49 = __toESM(require("styled-components")), colorDar
       left: 32px;
     }
   }
-`, BoxWrapper = import_styled_components49.default.div`
+`, BoxWrapper = import_styled_components51.default.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-`, BoxContainer = import_styled_components49.default.div`
+`, BoxContainer = import_styled_components51.default.div`
     padding: 16px;
     
     @media screen and (min-width: 1025px){
@@ -22883,18 +23114,18 @@ var import_styled_components49 = __toESM(require("styled-components")), colorDar
     @media (max-width: 767px) {
       left: 32px;
     }
-`, BoxImageContainer = import_styled_components49.default.div`
+`, BoxImageContainer = import_styled_components51.default.div`
 display: inline-block;
 height: 48px;
 margin-right: 8px;
-`, BoxImage = import_styled_components49.default.img`
+`, BoxImage = import_styled_components51.default.img`
   float: left;
   margin: 28px;
 
   @media (max-width: 767px) {
     margin-top: 0px;
   }
-`, BoxBoldText = import_styled_components49.default.div`
+`, BoxBoldText = import_styled_components51.default.div`
   color: ${colorDark50};
   font-family: "NunitoSans Semibold";
   margin-top: 44px;
@@ -22904,17 +23135,17 @@ margin-right: 8px;
   @media (max-width: 767px)  {
     margin-top: 0px;
   }
-`, BoxMetadata = import_styled_components49.default.div`
+`, BoxMetadata = import_styled_components51.default.div`
   margin: 28px;
   text-align: left;
-`, AboutMetadata = import_styled_components49.default.div`
+`, AboutMetadata = import_styled_components51.default.div`
   @media (max-width: 767px)  {
     margin-top: 24px;
   }
-`, AboutWhatElseContainer = import_styled_components49.default.div`
+`, AboutWhatElseContainer = import_styled_components51.default.div`
   margin-bottom: 28px;
   margin-top: 28px;
-`, AboutWhatElseImg = import_styled_components49.default.img`
+`, AboutWhatElseImg = import_styled_components51.default.img`
   float: right;
   margin-left: 100px;
   margin-right: 28px;
@@ -22923,7 +23154,7 @@ margin-right: 8px;
     float: none;
     margin: auto;
   }
-`, AboutWHatElseText = import_styled_components49.default.div`
+`, AboutWHatElseText = import_styled_components51.default.div`
   margin-top: 44px;
   text-align: left;
   width: 70%;
@@ -22931,16 +23162,16 @@ margin-right: 8px;
   @media (max-width: 767px) {
     width: 100%;
   }
-`, AboutWHatElseBold = import_styled_components49.default.div`
+`, AboutWHatElseBold = import_styled_components51.default.div`
   color: ${colorDark50};
   font-family: "NunitoSans Semibold";
   margin-top: 44px;
   margin: 28px;
   text-align: left;
-`, AboutWhatElseMetadata = import_styled_components49.default.div`
+`, AboutWhatElseMetadata = import_styled_components51.default.div`
   margin: 28px;
   text-align: left;
-`, AboutFooter = import_styled_components49.default.div`
+`, AboutFooter = import_styled_components51.default.div`
   padding: 50px 0;
 
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -22981,21 +23212,21 @@ var ic_anonymous_default = "/build/_assets/ic_anonymous-HNXSZBQM.svg";
 // app/routes/about.jsx
 var loader10 = async ({ request }) => (await requireAuth(request), (0, import_node9.json)({}));
 function About2() {
-  return /* @__PURE__ */ import_react88.default.createElement(About, null, /* @__PURE__ */ import_react88.default.createElement(AboutBody, null, /* @__PURE__ */ import_react88.default.createElement("h1", null, "About Us"), /* @__PURE__ */ import_react88.default.createElement("h2", null, "This is Wizeline Questions"), /* @__PURE__ */ import_react88.default.createElement("p", null, /* @__PURE__ */ import_react88.default.createElement("strong", null, "Wizeline Questions (WizeQ)"), " ", "is a communication space where you can express your ideas, learn more about Wizeline, and ask all kinds of questions."), /* @__PURE__ */ import_react88.default.createElement("p", null, "Wizeline Questions is a knowledge base where you can ask for information to a specific department and allow other Wizeliners to benefit from it. For example:"), /* @__PURE__ */ import_react88.default.createElement(BoxWrapper, null, /* @__PURE__ */ import_react88.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react88.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react88.default.createElement(BoxImage, {
+  return /* @__PURE__ */ import_react89.default.createElement(About, null, /* @__PURE__ */ import_react89.default.createElement(AboutBody, null, /* @__PURE__ */ import_react89.default.createElement("h1", null, "About Us"), /* @__PURE__ */ import_react89.default.createElement("h2", null, "This is Wizeline Questions"), /* @__PURE__ */ import_react89.default.createElement("p", null, /* @__PURE__ */ import_react89.default.createElement("strong", null, "Wizeline Questions (WizeQ)"), " ", "is a communication space where you can express your ideas, learn more about Wizeline, and ask all kinds of questions."), /* @__PURE__ */ import_react89.default.createElement("p", null, "Wizeline Questions is a knowledge base where you can ask for information to a specific department and allow other Wizeliners to benefit from it. For example:"), /* @__PURE__ */ import_react89.default.createElement(BoxWrapper, null, /* @__PURE__ */ import_react89.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImage, {
     src: ic_meeting_default
-  }), /* @__PURE__ */ import_react88.default.createElement(BoxBoldText, null, "Are you still having problems with Zoom for your next meeting?")), /* @__PURE__ */ import_react88.default.createElement(BoxMetadata, null, "Check Wizeline Questions, someone might have already asked IT the same question. If that is not the case, this is your chance to shine!")), /* @__PURE__ */ import_react88.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react88.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react88.default.createElement(BoxImage, {
+  }), /* @__PURE__ */ import_react89.default.createElement(BoxBoldText, null, "Are you still having problems with Zoom for your next meeting?")), /* @__PURE__ */ import_react89.default.createElement(BoxMetadata, null, "Check Wizeline Questions, someone might have already asked IT the same question. If that is not the case, this is your chance to shine!")), /* @__PURE__ */ import_react89.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImage, {
     src: ic_saving_fund_default
-  }), /* @__PURE__ */ import_react88.default.createElement(BoxBoldText, null, "Do you want to know more about the savings fund?")), /* @__PURE__ */ import_react88.default.createElement(BoxMetadata, null, "Tag People Ops in your question, other Wizeliners will be glad to learn about that same topic, for sure!"))), /* @__PURE__ */ import_react88.default.createElement(AboutMetadata, null, /* @__PURE__ */ import_react88.default.createElement("p", null, "Information can be easily lost in the flood of comments and pinged posts on Slack. Do you need information to persist?", " ", /* @__PURE__ */ import_react88.default.createElement("strong", null, "Use Wizeline Questions instead!"))), /* @__PURE__ */ import_react88.default.createElement("h3", null, "What else?"), /* @__PURE__ */ import_react88.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react88.default.createElement(AboutWhatElseImg, {
+  }), /* @__PURE__ */ import_react89.default.createElement(BoxBoldText, null, "Do you want to know more about the savings fund?")), /* @__PURE__ */ import_react89.default.createElement(BoxMetadata, null, "Tag People Ops in your question, other Wizeliners will be glad to learn about that same topic, for sure!"))), /* @__PURE__ */ import_react89.default.createElement(AboutMetadata, null, /* @__PURE__ */ import_react89.default.createElement("p", null, "Information can be easily lost in the flood of comments and pinged posts on Slack. Do you need information to persist?", " ", /* @__PURE__ */ import_react89.default.createElement("strong", null, "Use Wizeline Questions instead!"))), /* @__PURE__ */ import_react89.default.createElement("h3", null, "What else?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseImg, {
     src: ic_dialogue_default
-  }), /* @__PURE__ */ import_react88.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react88.default.createElement(AboutWHatElseBold, null, "Start a conversation. Is there a topic you want to discuss with other Wizeliners?"), /* @__PURE__ */ import_react88.default.createElement(AboutWhatElseMetadata, null, "This is the place!. You can reply to a question and also hold interesting conversations with other Wizeliners.  Use it as a discussion forum, suggestion what-else, or simply visit to say hello! Help us to keep Wizeline an amazing place!"))), /* @__PURE__ */ import_react88.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react88.default.createElement(AboutWhatElseImg, {
+  }), /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseBold, null, "Start a conversation. Is there a topic you want to discuss with other Wizeliners?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseMetadata, null, "This is the place!. You can reply to a question and also hold interesting conversations with other Wizeliners.  Use it as a discussion forum, suggestion what-else, or simply visit to say hello! Help us to keep Wizeline an amazing place!"))), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseImg, {
     src: ic_anonymous_default
-  }), /* @__PURE__ */ import_react88.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react88.default.createElement(AboutWHatElseBold, null, "Is there a sensitive question you want to ask anonymously?"), /* @__PURE__ */ import_react88.default.createElement(AboutWhatElseMetadata, null, "Ask on Wizeline Questions! To promote ownership and open communication, it displays your user name by default when you post a new question. But you can always opt for anonymity."))), /* @__PURE__ */ import_react88.default.createElement("h3", null, "Things to Keep in Mind When Asking a Question"), /* @__PURE__ */ import_react88.default.createElement("span", null, /* @__PURE__ */ import_react88.default.createElement("p", null, "We value your ideas, questions, suggestions, and comments. Therefore, we encourage you to use this communication space. Please, when writing a new question or a comment follow these recommendations:"), /* @__PURE__ */ import_react88.default.createElement("div", {
+  }), /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseBold, null, "Is there a sensitive question you want to ask anonymously?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseMetadata, null, "Ask on Wizeline Questions! To promote ownership and open communication, it displays your user name by default when you post a new question. But you can always opt for anonymity."))), /* @__PURE__ */ import_react89.default.createElement("h3", null, "Things to Keep in Mind When Asking a Question"), /* @__PURE__ */ import_react89.default.createElement("span", null, /* @__PURE__ */ import_react89.default.createElement("p", null, "We value your ideas, questions, suggestions, and comments. Therefore, we encourage you to use this communication space. Please, when writing a new question or a comment follow these recommendations:"), /* @__PURE__ */ import_react89.default.createElement("div", {
     style: { textAlign: "justify" }
-  }, /* @__PURE__ */ import_react88.default.createElement("ul", null, /* @__PURE__ */ import_react88.default.createElement("li", null, "Strive for constructive open communication. Avoid vagueness."), /* @__PURE__ */ import_react88.default.createElement("li", null, "Do not demean or degrade others because of their gender, race, age, religion, etc."), /* @__PURE__ */ import_react88.default.createElement("li", null, "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity."), /* @__PURE__ */ import_react88.default.createElement("li", null, "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."))))), /* @__PURE__ */ import_react88.default.createElement(AboutFooter, null, /* @__PURE__ */ import_react88.default.createElement("p", null, /* @__PURE__ */ import_react88.default.createElement("strong", null, "We need your help!"), " ", "Wizeline Questions is an internal project and everyone can contribute. Come aboard and meet the team at", /* @__PURE__ */ import_react88.default.createElement("a", {
+  }, /* @__PURE__ */ import_react89.default.createElement("ul", null, /* @__PURE__ */ import_react89.default.createElement("li", null, "Strive for constructive open communication. Avoid vagueness."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Do not demean or degrade others because of their gender, race, age, religion, etc."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."))))), /* @__PURE__ */ import_react89.default.createElement(AboutFooter, null, /* @__PURE__ */ import_react89.default.createElement("p", null, /* @__PURE__ */ import_react89.default.createElement("strong", null, "We need your help!"), " ", "Wizeline Questions is an internal project and everyone can contribute. Come aboard and meet the team at", /* @__PURE__ */ import_react89.default.createElement("a", {
     href: "https://wizeline.slack.com/archives/C031D9DP7C2",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "#wize-q-2022"), ". You can take a look at our", /* @__PURE__ */ import_react88.default.createElement("a", {
+  }, "#wize-q-2022"), ". You can take a look at our", /* @__PURE__ */ import_react89.default.createElement("a", {
     href: "https://github.com/wizeline/wize-q-remix"
   }, "source code"), " ", "on GitHub.")));
 }
@@ -23010,11 +23241,11 @@ __export(admin_exports, {
   loader: () => loader11
 });
 init_react();
-var import_react97 = __toESM(require("react")), import_node10 = require("@remix-run/node"), import_react98 = require("@remix-run/react");
+var import_react98 = __toESM(require("react")), import_node10 = require("@remix-run/node"), import_react99 = require("@remix-run/react");
 
 // app/styles/Admin.Styled.jsx
 init_react();
-var import_styled_components50 = __toESM(require("styled-components")), Container4 = import_styled_components50.default.div`
+var import_styled_components52 = __toESM(require("styled-components")), Container4 = import_styled_components52.default.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -23036,17 +23267,17 @@ init_react();
 
 // app/components/AdminUsersTable/AdminUsersTable.jsx
 init_react();
-var import_react92 = __toESM(require("react")), import_prop_types53 = __toESM(require("prop-types"));
+var import_react93 = __toESM(require("react")), import_prop_types53 = __toESM(require("prop-types"));
 
 // app/images/logomark_medium.png
 var logomark_medium_default = "/build/_assets/logomark_medium-U2FGMSIX.png";
 
 // app/components/AdminUsersTable/AdminUsersTable.jsx
-var import_react93 = require("@remix-run/react");
+var import_react94 = require("@remix-run/react");
 
 // app/utils/hooks/usePagination.js
 init_react();
-var import_react89 = require("react"), DOTS = "...", range = (start, end) => {
+var import_react90 = require("react"), DOTS = "...", range = (start, end) => {
   let length = end - start;
   return Array.from({ length }, (_, idx) => idx + start);
 };
@@ -23054,7 +23285,7 @@ function usePagination({
   currentPage,
   totalPages
 }) {
-  return (0, import_react89.useMemo)(() => {
+  return (0, import_react90.useMemo)(() => {
     let totalPageCount = totalPages, sibilingCount = 1;
     if (2 + sibilingCount > totalPageCount)
       return range(1, totalPageCount);
@@ -23074,7 +23305,7 @@ function usePagination({
 
 // app/components/AdminUsersTable/AdminUsersTable.Styled.jsx
 init_react();
-var import_styled_components51 = __toESM(require("styled-components")), import_react_bootstrap12 = require("react-bootstrap"), TableContainer = import_styled_components51.default.div`
+var import_styled_components53 = __toESM(require("styled-components")), import_react_bootstrap12 = require("react-bootstrap"), TableContainer = import_styled_components53.default.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -23092,7 +23323,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
       outline: none;
     }
   }
-`, UserTable = import_styled_components51.default.table`
+`, UserTable = import_styled_components53.default.table`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -23107,7 +23338,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
       display: none;
     }
   }
-`, RowTable = import_styled_components51.default.tr`
+`, RowTable = import_styled_components53.default.tr`
   padding: 0.5rem 0;
   border: 1px solid #f2efed;
   .row-btn {
@@ -23164,7 +23395,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
       flex-direction: row;
     }
   }
-`, HeaderTable = import_styled_components51.default.tr`
+`, HeaderTable = import_styled_components53.default.tr`
   background-color: #f4f7f9;
   padding: 1rem 0;
   th {
@@ -23192,7 +23423,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
       overflow-wrap: break-word;
     }
   }
-`, PaginationContainer = import_styled_components51.default.div`
+`, PaginationContainer = import_styled_components53.default.div`
   display: flex;
   justify-content: space-between;
   margin: 0.5rem auto;
@@ -23202,7 +23433,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
   @media (max-width: 767px) {
     flex-direction: column;
   }
-`, FilterDropdown = (0, import_styled_components51.default)(import_react_bootstrap12.DropdownButton)`
+`, FilterDropdown = (0, import_styled_components53.default)(import_react_bootstrap12.DropdownButton)`
   background: transparent;
   border: none;
   font-size: 1.5rem;
@@ -23211,9 +23442,9 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
   :hover {
     background: transparent;
   }
-`, TablePagination = (0, import_styled_components51.default)(import_react_bootstrap12.Pagination)`
+`, TablePagination = (0, import_styled_components53.default)(import_react_bootstrap12.Pagination)`
  background-color: white;  
-`, Alert2 = import_styled_components51.default.div`
+`, Alert2 = import_styled_components53.default.div`
   display: flex;
   color: var(--color-secondary-active);
   align-items: center;
@@ -23236,11 +23467,11 @@ var import_styled_components51 = __toESM(require("styled-components")), import_r
 
 // app/components/Modals/EditUserModal/EditUserModal.jsx
 init_react();
-var import_react90 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types")), import_react91 = require("@remix-run/react");
+var import_react91 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types")), import_react92 = require("@remix-run/react");
 
 // app/components/Modals/EditUserModal/EditUserModal.Styled.jsx
 init_react();
-var import_styled_components52 = __toESM(require("styled-components")), Wrapper = import_styled_components52.default.div`
+var import_styled_components54 = __toESM(require("styled-components")), Wrapper = import_styled_components54.default.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 50%;
@@ -23252,7 +23483,7 @@ var import_styled_components52 = __toESM(require("styled-components")), Wrapper 
   justify-content: center;
   align-items: center;
   z-index: 1050;
-`, Container5 = import_styled_components52.default.div`
+`, Container5 = import_styled_components54.default.div`
   font-family: "Nunito", sans-serif;
   font-size: 14px;
   border-radius: 15px;
@@ -23270,7 +23501,7 @@ var import_styled_components52 = __toESM(require("styled-components")), Wrapper 
   span {
     margin: 6px 0;
   }
-`, User = import_styled_components52.default.div`
+`, User = import_styled_components54.default.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -23281,7 +23512,7 @@ var import_styled_components52 = __toESM(require("styled-components")), Wrapper 
     flex-direction: column;
     justify-content: center;
   }
-`, UserInfo = import_styled_components52.default.div`
+`, UserInfo = import_styled_components54.default.div`
   margin-left: 20px;
   display: flex;
   flex-direction: column;
@@ -23290,16 +23521,16 @@ var import_styled_components52 = __toESM(require("styled-components")), Wrapper 
   @media (max-width: 576px) {
     text-align: center;
   }
-`, Roles = import_styled_components52.default.div`
+`, Roles = import_styled_components54.default.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 15px 25px;
-`, RolesTable = import_styled_components52.default.div`
+`, RolesTable = import_styled_components54.default.div`
   border-radius: 15px;
   border: 1px solid #d8d8d8;
   margin: 10px 0 0;
-`, TableRow = import_styled_components52.default.ul`
+`, TableRow = import_styled_components54.default.ul`
   border-top: ${(props) => props.noBorder ? "none" : "1px solid #d8d8d8"};
   list-style: none;
   margin: 0;
@@ -23317,7 +23548,7 @@ var import_styled_components52 = __toESM(require("styled-components")), Wrapper 
     max-width: calc(100% - 4px);
     padding: 5px 2px;
   }
-`, ButtonContainer = import_styled_components52.default.div`
+`, ButtonContainer = import_styled_components54.default.div`
   margin-top: 25px;
   display: flex;
   flex-direction: row;
@@ -23332,22 +23563,22 @@ var import_styled_components52 = __toESM(require("styled-components")), Wrapper 
 
 // app/components/Modals/EditUserModal/EditUserModal.jsx
 function EditUserModal({ user, onClose }) {
-  let [uAdmin, setUAdmin] = (0, import_react90.useState)(user.is_admin), [uJobTitle, setUJobTitle] = (0, import_react90.useState)(user.job_title);
-  return /* @__PURE__ */ import_react90.default.createElement(Wrapper, null, /* @__PURE__ */ import_react90.default.createElement(import_react91.Form, {
+  let [uAdmin, setUAdmin] = (0, import_react91.useState)(user.is_admin), [uJobTitle, setUJobTitle] = (0, import_react91.useState)(user.job_title);
+  return /* @__PURE__ */ import_react91.default.createElement(Wrapper, null, /* @__PURE__ */ import_react91.default.createElement(import_react92.Form, {
     method: "post"
-  }, /* @__PURE__ */ import_react90.default.createElement(Container5, null, /* @__PURE__ */ import_react90.default.createElement(User, null, /* @__PURE__ */ import_react90.default.createElement(UserImage_default, {
+  }, /* @__PURE__ */ import_react91.default.createElement(Container5, null, /* @__PURE__ */ import_react91.default.createElement(User, null, /* @__PURE__ */ import_react91.default.createElement(UserImage_default, {
     src: user.profile_picture,
     size: "extra big"
-  }), /* @__PURE__ */ import_react90.default.createElement(UserInfo, null, /* @__PURE__ */ import_react90.default.createElement("h2", null, user.full_name), /* @__PURE__ */ import_react90.default.createElement("span", null, /* @__PURE__ */ import_react90.default.createElement("b", null, user.job_title !== null ? user.job_title : "")), /* @__PURE__ */ import_react90.default.createElement("span", null, user.email))), /* @__PURE__ */ import_react90.default.createElement(Roles, null, /* @__PURE__ */ import_react90.default.createElement("h3", null, "Roles"), /* @__PURE__ */ import_react90.default.createElement("span", null, "Edit roles for this user"), /* @__PURE__ */ import_react90.default.createElement(RolesTable, null, /* @__PURE__ */ import_react90.default.createElement(TableRow, {
+  }), /* @__PURE__ */ import_react91.default.createElement(UserInfo, null, /* @__PURE__ */ import_react91.default.createElement("h2", null, user.full_name), /* @__PURE__ */ import_react91.default.createElement("span", null, /* @__PURE__ */ import_react91.default.createElement("b", null, user.job_title !== null ? user.job_title : "")), /* @__PURE__ */ import_react91.default.createElement("span", null, user.email))), /* @__PURE__ */ import_react91.default.createElement(Roles, null, /* @__PURE__ */ import_react91.default.createElement("h3", null, "Roles"), /* @__PURE__ */ import_react91.default.createElement("span", null, "Edit roles for this user"), /* @__PURE__ */ import_react91.default.createElement(RolesTable, null, /* @__PURE__ */ import_react91.default.createElement(TableRow, {
     noBorder: !0
-  }, /* @__PURE__ */ import_react90.default.createElement("li", null, /* @__PURE__ */ import_react90.default.createElement("b", null, "Name")), /* @__PURE__ */ import_react90.default.createElement("li", null, /* @__PURE__ */ import_react90.default.createElement("b", null, "Action"))), /* @__PURE__ */ import_react90.default.createElement(TableRow, null, /* @__PURE__ */ import_react90.default.createElement("li", null, "Job Title"), /* @__PURE__ */ import_react90.default.createElement("li", null, /* @__PURE__ */ import_react90.default.createElement("input", {
+  }, /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("b", null, "Name")), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("b", null, "Action"))), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Job Title"), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("input", {
     name: "job_title",
     type: "text",
     value: uJobTitle,
     onChange: (e) => {
       setUJobTitle(e.target.value);
     }
-  }))), /* @__PURE__ */ import_react90.default.createElement(TableRow, null, /* @__PURE__ */ import_react90.default.createElement("li", null, "Role Title"), /* @__PURE__ */ import_react90.default.createElement("li", null, "Employee", user.is_admin && ", Admin")), /* @__PURE__ */ import_react90.default.createElement(TableRow, null, /* @__PURE__ */ import_react90.default.createElement("li", null, "Admin"), /* @__PURE__ */ import_react90.default.createElement("li", null, /* @__PURE__ */ import_react90.default.createElement("input", {
+  }))), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Role Title"), /* @__PURE__ */ import_react91.default.createElement("li", null, "Employee", user.is_admin && ", Admin")), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Admin"), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("input", {
     name: "is_admin",
     type: "checkbox",
     checked: uAdmin,
@@ -23355,13 +23586,13 @@ function EditUserModal({ user, onClose }) {
       setUAdmin(e.target.checked);
     },
     disabled: user.is_admin
-  })))), /* @__PURE__ */ import_react90.default.createElement(ButtonContainer, null, /* @__PURE__ */ import_react90.default.createElement(Button_default, {
+  })))), /* @__PURE__ */ import_react91.default.createElement(ButtonContainer, null, /* @__PURE__ */ import_react91.default.createElement(Button_default, {
     category: SECONDARY_BUTTON,
     onClick: onClose
-  }, "Cancel"), /* @__PURE__ */ import_react90.default.createElement(Button_default, {
+  }, "Cancel"), /* @__PURE__ */ import_react91.default.createElement(Button_default, {
     category: PRIMARY_BUTTON,
     type: "submit"
-  }, "Save")))), /* @__PURE__ */ import_react90.default.createElement("input", {
+  }, "Save")))), /* @__PURE__ */ import_react91.default.createElement("input", {
     type: "hidden",
     name: "employee_id",
     value: user.employee_id
@@ -23400,11 +23631,11 @@ function AdminUsersTable({
   isLoading,
   size
 }) {
-  let [modal, setModal] = (0, import_react92.useState)(!1), [currentUser, setCurrenUser] = (0, import_react92.useState)({}), quantityRef = (0, import_react92.useRef)(0), paginationRange = usePagination({
+  let [modal, setModal] = (0, import_react93.useState)(!1), [currentUser, setCurrenUser] = (0, import_react93.useState)({}), quantityRef = (0, import_react93.useRef)(0), paginationRange = usePagination({
     currentPage: currentPage === 0 ? 1 : currentPage + 1,
     totalPages
-  }), [, setSearchParams] = (0, import_react93.useSearchParams)(), data = (0, import_react93.useActionData)();
-  (0, import_react92.useEffect)(() => {
+  }), [, setSearchParams] = (0, import_react94.useSearchParams)(), data = (0, import_react94.useActionData)();
+  (0, import_react93.useEffect)(() => {
     data && data.successMessage && setModal(!1);
   }, [users, data]);
   let handleModal = (u2) => {
@@ -23424,65 +23655,65 @@ function AdminUsersTable({
       size,
       page: currentPage - 1
     });
-  }, createPaginationItem = (i, idx) => /* @__PURE__ */ import_react92.default.createElement(TablePagination.Item, {
+  }, createPaginationItem = (i, idx) => /* @__PURE__ */ import_react93.default.createElement(TablePagination.Item, {
     key: idx,
     onClick: () => changePage(i),
     active: i === currentPage
-  }, i), paginationItems = (() => [...paginationRange.map((__page, idx) => __page === DOTS ? /* @__PURE__ */ import_react92.default.createElement(TablePagination.Ellipsis, {
+  }, i), paginationItems = (() => [...paginationRange.map((__page, idx) => __page === DOTS ? /* @__PURE__ */ import_react93.default.createElement(TablePagination.Ellipsis, {
     key: idx
-  }) : createPaginationItem(__page, idx))])(), renderHeader = () => /* @__PURE__ */ import_react92.default.createElement("thead", null, /* @__PURE__ */ import_react92.default.createElement(HeaderTable, null, /* @__PURE__ */ import_react92.default.createElement("th", null, "Name"), /* @__PURE__ */ import_react92.default.createElement("th", {
+  }) : createPaginationItem(__page, idx))])(), renderHeader = () => /* @__PURE__ */ import_react93.default.createElement("thead", null, /* @__PURE__ */ import_react93.default.createElement(HeaderTable, null, /* @__PURE__ */ import_react93.default.createElement("th", null, "Name"), /* @__PURE__ */ import_react93.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Email"), /* @__PURE__ */ import_react92.default.createElement("th", {
+  }, "Email"), /* @__PURE__ */ import_react93.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Job Title"), /* @__PURE__ */ import_react92.default.createElement("th", {
+  }, "Job Title"), /* @__PURE__ */ import_react93.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Roles"), /* @__PURE__ */ import_react92.default.createElement("th", null, "Action"))), setQTY = (value) => {
+  }, "Roles"), /* @__PURE__ */ import_react93.default.createElement("th", null, "Action"))), setQTY = (value) => {
     setSearchParams({
       size: value,
       page: currentPage
     });
   };
-  return !users.length && !isLoading ? /* @__PURE__ */ import_react92.default.createElement(Alert2, null, /* @__PURE__ */ import_react92.default.createElement("span", {
+  return !users.length && !isLoading ? /* @__PURE__ */ import_react93.default.createElement(Alert2, null, /* @__PURE__ */ import_react93.default.createElement("span", {
     className: "message"
-  }, "There are no results to show")) : /* @__PURE__ */ import_react92.default.createElement("div", null, /* @__PURE__ */ import_react92.default.createElement(TableContainer, null, "Select the number of results", /* @__PURE__ */ import_react92.default.createElement("select", {
+  }, "There are no results to show")) : /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement(TableContainer, null, "Select the number of results", /* @__PURE__ */ import_react93.default.createElement("select", {
     ref: quantityRef,
     onChange: (e) => setQTY(e.target.value),
     defaultValue: size
-  }, /* @__PURE__ */ import_react92.default.createElement("option", {
+  }, /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "5"
-  }, "5"), /* @__PURE__ */ import_react92.default.createElement("option", {
+  }, "5"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "10"
-  }, "10"), /* @__PURE__ */ import_react92.default.createElement("option", {
+  }, "10"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "15"
-  }, "15"), /* @__PURE__ */ import_react92.default.createElement("option", {
+  }, "15"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "20"
-  }, "20"), /* @__PURE__ */ import_react92.default.createElement("option", {
+  }, "20"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "25"
-  }, "25")), isLoading ? /* @__PURE__ */ import_react92.default.createElement("div", null, /* @__PURE__ */ import_react92.default.createElement(UserTable, null, renderHeader()), /* @__PURE__ */ import_react92.default.createElement(Loader_default, {
+  }, "25")), isLoading ? /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement(UserTable, null, renderHeader()), /* @__PURE__ */ import_react93.default.createElement(Loader_default, {
     src: logomark_medium_default,
     size: LSPIN_MEDIUM
-  })) : /* @__PURE__ */ import_react92.default.createElement(UserTable, null, renderHeader(), /* @__PURE__ */ import_react92.default.createElement("tbody", null, users.map((user) => /* @__PURE__ */ import_react92.default.createElement(RowTable, {
+  })) : /* @__PURE__ */ import_react93.default.createElement(UserTable, null, renderHeader(), /* @__PURE__ */ import_react93.default.createElement("tbody", null, users.map((user) => /* @__PURE__ */ import_react93.default.createElement(RowTable, {
     key: user.employee_id
-  }, /* @__PURE__ */ import_react92.default.createElement("td", null, /* @__PURE__ */ import_react92.default.createElement("div", null, /* @__PURE__ */ import_react92.default.createElement("img", {
+  }, /* @__PURE__ */ import_react93.default.createElement("td", null, /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement("img", {
     src: user.profile_picture,
     alt: ""
-  }), user.full_name)), /* @__PURE__ */ import_react92.default.createElement("td", {
+  }), user.full_name)), /* @__PURE__ */ import_react93.default.createElement("td", {
     className: "table-desktop-view"
-  }, user.email), /* @__PURE__ */ import_react92.default.createElement("td", {
+  }, user.email), /* @__PURE__ */ import_react93.default.createElement("td", {
     className: "table-desktop-view"
-  }, user.job_title), /* @__PURE__ */ import_react92.default.createElement("td", {
+  }, user.job_title), /* @__PURE__ */ import_react93.default.createElement("td", {
     className: "table-desktop-view"
-  }, "Employee", user.is_admin && ", Admin"), /* @__PURE__ */ import_react92.default.createElement("td", null, /* @__PURE__ */ import_react92.default.createElement(Button_default, {
+  }, "Employee", user.is_admin && ", Admin"), /* @__PURE__ */ import_react93.default.createElement("td", null, /* @__PURE__ */ import_react93.default.createElement(Button_default, {
     category: PRIMARY_BUTTON,
     onClick: () => handleModal(user),
     className: "row-btn"
-  }, "Edit roles")))))), !isLoading && /* @__PURE__ */ import_react92.default.createElement(PaginationContainer, null, /* @__PURE__ */ import_react92.default.createElement("div", null, "Page", " ", currentPage, " ", "of", " ", totalPages), /* @__PURE__ */ import_react92.default.createElement(TablePagination, {
+  }, "Edit roles")))))), !isLoading && /* @__PURE__ */ import_react93.default.createElement(PaginationContainer, null, /* @__PURE__ */ import_react93.default.createElement("div", null, "Page", " ", currentPage, " ", "of", " ", totalPages), /* @__PURE__ */ import_react93.default.createElement(TablePagination, {
     boundarylinks: "true"
-  }, currentPage > 1 && /* @__PURE__ */ import_react92.default.createElement(TablePagination.Prev, {
+  }, currentPage > 1 && /* @__PURE__ */ import_react93.default.createElement(TablePagination.Prev, {
     onClick: prevPageHandler
-  }), paginationItems, currentPage < totalPages && /* @__PURE__ */ import_react92.default.createElement(TablePagination.Next, {
+  }), paginationItems, currentPage < totalPages && /* @__PURE__ */ import_react93.default.createElement(TablePagination.Next, {
     onClick: nextPageHandler
-  }))), modal ? /* @__PURE__ */ import_react92.default.createElement(EditUserModal_default, {
+  }))), modal ? /* @__PURE__ */ import_react93.default.createElement(EditUserModal_default, {
     user: currentUser,
     onClose: () => handleModal()
   }) : null));
@@ -23504,11 +23735,11 @@ init_react();
 
 // app/components/UserSearchBar/UserSearchBar.jsx
 init_react();
-var import_prop_types54 = __toESM(require("prop-types")), import_react94 = __toESM(require("react"));
+var import_prop_types54 = __toESM(require("prop-types")), import_react95 = __toESM(require("react"));
 
 // app/components/UserSearchBar/UserSearchBar.Styled.jsx
 init_react();
-var import_styled_components53 = __toESM(require("styled-components")), import_md7 = require("react-icons/md"), import_ai3 = require("react-icons/ai"), SearchField2 = import_styled_components53.default.div`
+var import_styled_components55 = __toESM(require("styled-components")), import_md7 = require("react-icons/md"), import_ai3 = require("react-icons/ai"), SearchField2 = import_styled_components55.default.div`
   align-items: center;
   display: flex;
   background-color: #fff;
@@ -23520,7 +23751,7 @@ var import_styled_components53 = __toESM(require("styled-components")), import_m
   position: relative;
   width: 100%;
   transition: all 0.5s ease;
-`, IconWrapper3 = import_styled_components53.default.div`
+`, IconWrapper3 = import_styled_components55.default.div`
   left: 10px;
   top: auto;
   width: 22px;
@@ -23528,7 +23759,7 @@ var import_styled_components53 = __toESM(require("styled-components")), import_m
   display: flex;
   align-items: center;
   justify-content: center;
-`, Input4 = import_styled_components53.default.input`
+`, Input5 = import_styled_components55.default.input`
   background-color: transparent;
   border: none;
   font-size: 14px;
@@ -23543,10 +23774,10 @@ var import_styled_components53 = __toESM(require("styled-components")), import_m
     color: rgba(78, 81, 84, 0.65);
     font-family: "Nunito", sans-serif;
   }
-`, SearchIcon3 = (0, import_styled_components53.default)(import_ai3.AiOutlineSearch)`
+`, SearchIcon3 = (0, import_styled_components55.default)(import_ai3.AiOutlineSearch)`
   font-size: 30px;
   color: rgba(78, 81, 84, 0.65);
-`, ClearIcon2 = (0, import_styled_components53.default)(import_md7.MdClose)`
+`, ClearIcon2 = (0, import_styled_components55.default)(import_md7.MdClose)`
   font-size: 28px;
   color: rgba(78, 81, 84, 0.65);
   padding: 5px;
@@ -23558,8 +23789,8 @@ var import_styled_components53 = __toESM(require("styled-components")), import_m
 
 // app/components/UserSearchBar/UserSearchBar.jsx
 function UserSearchBar({ onSearch }) {
-  let [search2, setSearch] = (0, import_react94.useState)("");
-  return /* @__PURE__ */ import_react94.default.createElement(SearchField2, null, /* @__PURE__ */ import_react94.default.createElement(IconWrapper3, null, /* @__PURE__ */ import_react94.default.createElement(SearchIcon3, null)), /* @__PURE__ */ import_react94.default.createElement(Input4, {
+  let [search2, setSearch] = (0, import_react95.useState)("");
+  return /* @__PURE__ */ import_react95.default.createElement(SearchField2, null, /* @__PURE__ */ import_react95.default.createElement(IconWrapper3, null, /* @__PURE__ */ import_react95.default.createElement(SearchIcon3, null)), /* @__PURE__ */ import_react95.default.createElement(Input5, {
     type: "search",
     value: search2,
     onChange: (e) => {
@@ -23569,7 +23800,7 @@ function UserSearchBar({ onSearch }) {
     onKeyDown: (event) => {
       search2 && event.key === "Enter" && onSearch(search2);
     }
-  }), search2 && /* @__PURE__ */ import_react94.default.createElement(Button_default, {
+  }), search2 && /* @__PURE__ */ import_react95.default.createElement(Button_default, {
     type: "button",
     className: "clear-button",
     title: "Clear",
@@ -23577,7 +23808,7 @@ function UserSearchBar({ onSearch }) {
     onClick: () => {
       setSearch("");
     }
-  }, /* @__PURE__ */ import_react94.default.createElement(ClearIcon2, null)));
+  }, /* @__PURE__ */ import_react95.default.createElement(ClearIcon2, null)));
 }
 UserSearchBar.propTypes = {
   onSearch: import_prop_types54.default.func.isRequired
@@ -23656,20 +23887,20 @@ __export(__exports, {
   default: () => __default2
 });
 init_react();
-var import_react96 = __toESM(require("react"));
+var import_react97 = __toESM(require("react"));
 
 // app/images/404.svg
 var __default = "/build/_assets/404-HJIPXGIH.svg";
 
 // app/styles/NotFound.Styled.jsx
 init_react();
-var import_styled_components54 = __toESM(require("styled-components")), import_react95 = require("@remix-run/react");
+var import_styled_components56 = __toESM(require("styled-components")), import_react96 = require("@remix-run/react");
 
 // app/images/header-background-dots-pattern.svg
 var header_background_dots_pattern_default = "/build/_assets/header-background-dots-pattern-4BTNNPHR.svg";
 
 // app/styles/NotFound.Styled.jsx
-var BackgroundDiv = import_styled_components54.default.div`
+var BackgroundDiv = import_styled_components56.default.div`
     background-image: url(${header_background_dots_pattern_default});
     background-size: cover;
     position: absolute;
@@ -23680,14 +23911,14 @@ var BackgroundDiv = import_styled_components54.default.div`
     height: 100%;
     width: 100%;
     z-index: -1;
-`, MainDiv = import_styled_components54.default.div`
+`, MainDiv = import_styled_components56.default.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60rem;
     margin-top: 3.5rem;
     width: 100%;
-`, Container6 = import_styled_components54.default.div`
+`, Container6 = import_styled_components56.default.div`
     align-items: center;
     margin: 0 auto;
     width: 70.4rem;
@@ -23702,18 +23933,18 @@ var BackgroundDiv = import_styled_components54.default.div`
     @media (max-width: 767px) {
         width: 288px;
     }
-`, Img = import_styled_components54.default.img`
+`, Img = import_styled_components56.default.img`
     display: block;
     height: 12.5rem;
     margin-bottom: 5rem;
     max-width: 100%
-`, Title2 = import_styled_components54.default.h2`
+`, Title2 = import_styled_components56.default.h2`
     font-size: 4rem;
     font-weight: bold;
     line-height: 1.25;
     text-align: center;
     margin: 0 0 5rem 0;
-`, SLink = (0, import_styled_components54.default)(import_react95.Link)`
+`, SLink = (0, import_styled_components56.default)(import_react96.Link)`
     color: #fff;
     background-color: var(--color-secondary);
     border-radius: 5px;
@@ -23735,10 +23966,10 @@ var BackgroundDiv = import_styled_components54.default.div`
 
 // app/routes/$.jsx
 function NotFound() {
-  return /* @__PURE__ */ import_react96.default.createElement("div", null, /* @__PURE__ */ import_react96.default.createElement(BackgroundDiv, null), /* @__PURE__ */ import_react96.default.createElement(MainDiv, null, /* @__PURE__ */ import_react96.default.createElement(Container6, null, /* @__PURE__ */ import_react96.default.createElement(Img, {
+  return /* @__PURE__ */ import_react97.default.createElement("div", null, /* @__PURE__ */ import_react97.default.createElement(BackgroundDiv, null), /* @__PURE__ */ import_react97.default.createElement(MainDiv, null, /* @__PURE__ */ import_react97.default.createElement(Container6, null, /* @__PURE__ */ import_react97.default.createElement(Img, {
     src: __default,
     alt: "404"
-  }), /* @__PURE__ */ import_react96.default.createElement(Title2, null, "Sorry! The page you were looking for doesn\u2019t exist."), /* @__PURE__ */ import_react96.default.createElement(SLink, {
+  }), /* @__PURE__ */ import_react97.default.createElement(Title2, null, "Sorry! The page you were looking for doesn\u2019t exist."), /* @__PURE__ */ import_react97.default.createElement(SLink, {
     to: "/"
   }, "Go back"))));
 }
@@ -23770,14 +24001,14 @@ function Admin() {
     totalPages,
     currentPage,
     size
-  } = (0, import_react98.useLoaderData)(), [, setSearchParams] = (0, import_react98.useSearchParams)();
-  return /* @__PURE__ */ import_react97.default.createElement("div", null, /* @__PURE__ */ import_react97.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react97.default.createElement(Container4, null, /* @__PURE__ */ import_react97.default.createElement("h2", null, "Admin page"), /* @__PURE__ */ import_react97.default.createElement(UserSearchBar, {
+  } = (0, import_react99.useLoaderData)(), [, setSearchParams] = (0, import_react99.useSearchParams)();
+  return /* @__PURE__ */ import_react98.default.createElement("div", null, /* @__PURE__ */ import_react98.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react98.default.createElement(Container4, null, /* @__PURE__ */ import_react98.default.createElement("h2", null, "Admin page"), /* @__PURE__ */ import_react98.default.createElement(UserSearchBar, {
     onSearch: (search2) => {
       setSearchParams({
         search: search2
       });
     }
-  })), /* @__PURE__ */ import_react97.default.createElement(AdminUsersTable_default, {
+  })), /* @__PURE__ */ import_react98.default.createElement(AdminUsersTable_default, {
     users,
     currentPage,
     totalPages,
@@ -23785,7 +24016,7 @@ function Admin() {
   }));
 }
 function CatchBoundary() {
-  return /* @__PURE__ */ import_react97.default.createElement(__default2, null);
+  return /* @__PURE__ */ import_react98.default.createElement(__default2, null);
 }
 var admin_default2 = Admin;
 
@@ -23797,11 +24028,11 @@ __export(routes_exports, {
   loader: () => loader12
 });
 init_react();
-var import_node11 = require("@remix-run/node"), import_react110 = require("@remix-run/react"), import_react111 = __toESM(require("react"));
+var import_node11 = require("@remix-run/node"), import_react111 = require("@remix-run/react"), import_react112 = __toESM(require("react"));
 
 // app/styles/Home.Styled.jsx
 init_react();
-var import_styled_components55 = __toESM(require("styled-components")), Container7 = import_styled_components55.default.div`
+var import_styled_components57 = __toESM(require("styled-components")), Container7 = import_styled_components57.default.div`
 background-color: #f4f7f9;
 `;
 
@@ -23810,11 +24041,11 @@ init_react();
 
 // app/components/ListQuestions/ListQuestions.jsx
 init_react();
-var import_react108 = __toESM(require("react")), import_react109 = require("@remix-run/react"), import_prop_types60 = __toESM(require("prop-types"));
+var import_react109 = __toESM(require("react")), import_react110 = require("@remix-run/react"), import_prop_types60 = __toESM(require("prop-types"));
 
 // app/components/ListQuestions/ListQuestions.Styled.jsx
 init_react();
-var import_react99 = require("@remix-run/react"), import_styled_components56 = __toESM(require("styled-components")), Container8 = import_styled_components56.default.div`
+var import_react100 = require("@remix-run/react"), import_styled_components58 = __toESM(require("styled-components")), Container8 = import_styled_components58.default.div`
   display: flex;
   background-color: #f4f7f9;
   margin: 0 auto;
@@ -23828,13 +24059,13 @@ var import_react99 = require("@remix-run/react"), import_styled_components56 = _
   @media (max-width: 768px) {
     padding-top: 20px;
   }
-`, LeftWrapper = import_styled_components56.default.div`
+`, LeftWrapper = import_styled_components58.default.div`
   flex: 1;
-`, CenterWrapper = import_styled_components56.default.div`
+`, CenterWrapper = import_styled_components58.default.div`
   flex: 2;
   display: flex;
   justify-content: center;
-`, RightWrapper2 = import_styled_components56.default.div`
+`, RightWrapper2 = import_styled_components58.default.div`
   flex: 1;
   display: flex;
   @media (max-width: 1025px) {
@@ -23845,32 +24076,32 @@ var import_react99 = require("@remix-run/react"), import_styled_components56 = _
   @media (min-width: 1440px) {
     overflow: auto;
   }
-`, SloganWrapper = import_styled_components56.default.div`
+`, SloganWrapper = import_styled_components58.default.div`
   max-width: 425px;
   
   @media (max-width: 1025px) {
     display: none;
   }
-`, QuestionsWrapper = import_styled_components56.default.div`
+`, QuestionsWrapper = import_styled_components58.default.div`
   max-width: 650px;
   width: 100%;
-`, AskQuestionButtonWrapper = import_styled_components56.default.div`
+`, AskQuestionButtonWrapper = import_styled_components58.default.div`
   padding-right: 10px;
   padding-left: 10px;
   flex-direction: row;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-`, QuestionsTitle = import_styled_components56.default.div`
+`, QuestionsTitle = import_styled_components58.default.div`
   align-items: center;
   display: flex;
   font-family: "Nunito", sans-serif;
   font-size: 20px;
   letter-spacing: 0.6px;
-`, QuestionList = import_styled_components56.default.div`
+`, QuestionList = import_styled_components58.default.div`
   margin: 5px 0 10px;
   padding-left: 0;
-`, Alert3 = import_styled_components56.default.div`
+`, Alert3 = import_styled_components58.default.div`
   border-radius: 3px;
   margin: 0 auto;
   max-width: 592px;
@@ -23879,7 +24110,7 @@ var import_react99 = require("@remix-run/react"), import_styled_components56 = _
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 100%;
   }
-`, FiltersWrapper = import_styled_components56.default.div`
+`, FiltersWrapper = import_styled_components58.default.div`
   width: 100%;
   max-width: 300px;
   @media (max-width: 1024px) {
@@ -23897,7 +24128,7 @@ var import_react99 = require("@remix-run/react"), import_styled_components56 = _
     position: sticky;
     top: 0;
   }
-`, AskButton = (0, import_styled_components56.default)(import_react99.Link)`
+`, AskButton = (0, import_styled_components58.default)(import_react100.Link)`
   align-items: center;
   background: var(--color-secondary);
   border: solid 1px transparent;
@@ -23925,7 +24156,7 @@ init_react();
 
 // app/components/QuestionCard/QuestionCard.jsx
 init_react();
-var import_react100 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
+var import_react101 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
 
 // app/images/ic_comment_non-selected.svg
 var ic_comment_non_selected_default = "/build/_assets/ic_comment_non-selected-7NOYX3FA.svg";
@@ -23955,10 +24186,10 @@ function QuestionCard(props) {
     isAnswer: !0
   }, hasAnswer = question.Answers.length > 0, navigate = (0, import_react_router_dom3.useNavigate)(), renderButtons = () => {
     let icon = question.hasLike ? ic_like_pressed_default : ic_like_default, dislikeicon = question.hasDislike ? ic_dislike_pressed_default : ic_dislike_default;
-    return /* @__PURE__ */ import_react100.default.createElement(CounterButtonsWrapper, {
+    return /* @__PURE__ */ import_react101.default.createElement(CounterButtonsWrapper, {
       isAdmin: !1,
       hasAnswer
-    }, /* @__PURE__ */ import_react100.default.createElement(CounterButton_default, {
+    }, /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
       id: `like-button-${question.question_id}`,
       selected: question.hasLike,
       icon,
@@ -23966,7 +24197,7 @@ function QuestionCard(props) {
       onClick: () => onVoteClick(!0),
       processingFormSubmission,
       isDisabled: question.hasDislike
-    }), /* @__PURE__ */ import_react100.default.createElement(CounterButton_default, {
+    }), /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
       id: `like-button-${question.question_id}`,
       selected: question.hasDislike,
       icon: dislikeicon,
@@ -23974,7 +24205,7 @@ function QuestionCard(props) {
       onClick: () => onVoteClick(!1),
       processingFormSubmission,
       isDisabled: question.hasLike
-    }), /* @__PURE__ */ import_react100.default.createElement(CounterButton_default, {
+    }), /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
       id: `comments-button-${question.question_id}`,
       icon: ic_comment_non_selected_default,
       count: question.numComments,
@@ -23991,7 +24222,7 @@ function QuestionCard(props) {
       commentAsAnswer = question.Comments.find((comment) => comment.id === communityAnswerCommentId);
     }
     if (commentAsAnswer)
-      return /* @__PURE__ */ import_react100.default.createElement(AnswerRow_default, {
+      return /* @__PURE__ */ import_react101.default.createElement(AnswerRow_default, {
         answer_text: commentAsAnswer.comment,
         user: commentAsAnswer.User,
         answered_at: commentAsAnswer.createdAt,
@@ -24005,11 +24236,11 @@ function QuestionCard(props) {
         approver: commentAsAnswer.Approver
       });
   };
-  return /* @__PURE__ */ import_react100.default.createElement(QuestionCardContainer, null, /* @__PURE__ */ import_react100.default.createElement(QuestionCardWrapper, null, /* @__PURE__ */ import_react100.default.createElement(QuestionCardBorder, null, /* @__PURE__ */ import_react100.default.createElement(QuestionRow_default, {
+  return /* @__PURE__ */ import_react101.default.createElement(QuestionCardContainer, null, /* @__PURE__ */ import_react101.default.createElement(QuestionCardWrapper, null, /* @__PURE__ */ import_react101.default.createElement(QuestionCardBorder, null, /* @__PURE__ */ import_react101.default.createElement(QuestionRow_default, {
     question,
     isQuestionModalOpen: !1,
     hasAnswer
-  }), /* @__PURE__ */ import_react100.default.createElement(QuestionCardActions, {
+  }), /* @__PURE__ */ import_react101.default.createElement(QuestionCardActions, {
     hasAnswer,
     isQuestionModalOpen: !1
   }, renderButtons()))), renderAnswer(renderAnswerProps), renderCommentAnswer());
@@ -24058,11 +24289,11 @@ init_react();
 
 // app/components/GoToTopButton/GoToTopButton.jsx
 init_react();
-var import_react102 = __toESM(require("react"));
+var import_react103 = __toESM(require("react"));
 
 // app/components/GoToTopButton/GoToTopButton.Styled.jsx
 init_react();
-var import_styled_components57 = __toESM(require("styled-components")), Button3 = import_styled_components57.default.button`
+var import_styled_components59 = __toESM(require("styled-components")), Button5 = import_styled_components59.default.button`
   all: unset;
   align-items: center;
   background-color: var(--color-secondary);
@@ -24089,7 +24320,7 @@ var import_styled_components57 = __toESM(require("styled-components")), Button3 
   svg {
     align-self: center;
   }
-`, Span = import_styled_components57.default.span`
+`, Span = import_styled_components59.default.span`
   color: #ffffff;
   font-family: 'Nunito', sans-serif;
   font-size: 14px;
@@ -24104,9 +24335,9 @@ init_react();
 
 // app/components/Atoms/ArrowIcon/ArrowIcon.jsx
 init_react();
-var import_react101 = __toESM(require("react"));
+var import_react102 = __toESM(require("react"));
 function ArrowIcon(props) {
-  return /* @__PURE__ */ import_react101.default.createElement("svg", __spreadValues({
+  return /* @__PURE__ */ import_react102.default.createElement("svg", __spreadValues({
     color: "white",
     fill: "currentColor",
     fillRule: "nonzero",
@@ -24117,7 +24348,7 @@ function ArrowIcon(props) {
     viewBox: "0 0 23 27",
     width: 10,
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ import_react101.default.createElement("path", {
+  }, props), /* @__PURE__ */ import_react102.default.createElement("path", {
     transform: "translate(-18.000000, -17.000000)",
     d: "M30.6301904,20.6966946 C30.6304384,20.705609 30.6305632,20.7145536 30.6305632,20.7235269 L30.6305632,41.9301705 C30.6305632,42.462539 30.1912987,42.8941089 29.6494386,42.8941089 C29.1075784,42.8941089 28.6683139,42.462539 28.6683139,41.9301705 L28.6683139,20.7235269 C28.6683139,20.6823753 28.6709386,20.6418259 28.6760325,20.6020316 L20.2797113,28.5838228 C19.9872058,28.8618871 19.5118845,28.8618871 19.2193791,28.5838228 C18.9268736,28.3057585 18.9268736,27.853904 19.2193791,27.5758396 L29.0731557,18.2085482 C29.3656611,17.9304839 29.8409825,17.9304839 30.1334879,18.2085482 L39.9872645,27.5758396 C40.1335172,27.7148718 40.2066436,27.888662 40.2066436,28.0798312 C40.2066436,28.2710004 40.1335172,28.4447906 39.9872645,28.5838228 C39.6947591,28.8618871 39.2194378,28.8618871 38.9269323,28.5838228 L30.6301904,20.6966946 Z M29.6444293,19.7596009 L29.6033218,19.7205229 L29.5578693,19.7637314 C29.5863864,19.7611383 29.6152573,19.7597442 29.6444293,19.7596009 Z"
   }));
@@ -24126,12 +24357,12 @@ var ArrowIcon_default = ArrowIcon;
 
 // app/components/GoToTopButton/GoToTopButton.jsx
 function GoToTopButton() {
-  let [show, setShow] = (0, import_react102.useState)(!1);
-  return (0, import_react102.useEffect)(() => {
+  let [show, setShow] = (0, import_react103.useState)(!1);
+  return (0, import_react103.useEffect)(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 500 ? setShow(!0) : setShow(!1);
     });
-  }, []), /* @__PURE__ */ import_react102.default.createElement(Button3, {
+  }, []), /* @__PURE__ */ import_react103.default.createElement(Button5, {
     id: "go-to-top-button",
     display: show,
     onClick: () => {
@@ -24140,7 +24371,7 @@ function GoToTopButton() {
         behavior: "auto"
       });
     }
-  }, /* @__PURE__ */ import_react102.default.createElement(ArrowIcon_default, null), /* @__PURE__ */ import_react102.default.createElement(Span, null, BACK_TO_TOP));
+  }, /* @__PURE__ */ import_react103.default.createElement(ArrowIcon_default, null), /* @__PURE__ */ import_react103.default.createElement(Span, null, BACK_TO_TOP));
 }
 var GoToTopButton_default = GoToTopButton;
 
@@ -24149,18 +24380,18 @@ init_react();
 
 // app/components/Atoms/InfiniteScrollList/InfiniteScrollList.jsx
 init_react();
-var import_react103 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
+var import_react104 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
 function InfiniteScrollList({ onFetch, children }) {
-  let endOfListRef = (0, import_react103.useRef)(), scrollContainer = null, fetchScrollLimit = 500, onScroll = ([entity]) => {
+  let endOfListRef = (0, import_react104.useRef)(), scrollContainer = null, fetchScrollLimit = 500, onScroll = ([entity]) => {
     entity.isIntersecting && onFetch();
-  }, observer = (0, import_react103.useRef)();
-  return (0, import_react103.useEffect)(() => (observer.current = new IntersectionObserver(onScroll, {
+  }, observer = (0, import_react104.useRef)();
+  return (0, import_react104.useEffect)(() => (observer.current = new IntersectionObserver(onScroll, {
     root: scrollContainer,
     rootMargin: `${fetchScrollLimit}px`,
     threshold: 0
   }), endOfListRef && endOfListRef.current && observer.current.observe(endOfListRef.current), () => {
     endOfListRef && endOfListRef.current && observer.current.unobserve(endOfListRef.current);
-  }), [children.props.children.length]), /* @__PURE__ */ import_react103.default.createElement("div", null, children, /* @__PURE__ */ import_react103.default.createElement("div", {
+  }), [children.props.children.length]), /* @__PURE__ */ import_react104.default.createElement("div", null, children, /* @__PURE__ */ import_react104.default.createElement("div", {
     ref: endOfListRef
   }));
 }
@@ -24178,14 +24409,14 @@ init_react();
 
 // app/components/Filters/Filters.jsx
 init_react();
-var import_react105 = __toESM(require("react")), import_prop_types58 = __toESM(require("prop-types")), import_react106 = require("@remix-run/react");
+var import_react106 = __toESM(require("react")), import_prop_types58 = __toESM(require("prop-types")), import_react107 = require("@remix-run/react");
 
 // app/images/ic_filter.svg
 var ic_filter_default = "/build/_assets/ic_filter-UC4LYVWR.svg";
 
 // app/components/Filters/Filters.Styled.jsx
 init_react();
-var import_styled_components58 = __toESM(require("styled-components")), Filters = import_styled_components58.default.div`
+var import_styled_components60 = __toESM(require("styled-components")), Filters = import_styled_components60.default.div`
   background-color: transparent;
   margin: 0 11px;
   position: -webkit-sticky;
@@ -24203,15 +24434,15 @@ var import_styled_components58 = __toESM(require("styled-components")), Filters 
     padding: 20px 0 5px;
     position: relative;
   }
-`, Icon = import_styled_components58.default.img`
+`, Icon = import_styled_components60.default.img`
   height: 20px;
   margin-right: 10px;
   width: 17px;
-`, FiltersLine = import_styled_components58.default.hr`
+`, FiltersLine = import_styled_components60.default.hr`
   border-top: 1px solid #e6e6e6;
   margin: 16px 0 24px;
   display: ${(props) => props.visibility};
-  ${(props) => props.secondary && import_styled_components58.css`
+  ${(props) => props.secondary && import_styled_components60.css`
     margin: 0;
   `}
   
@@ -24221,7 +24452,7 @@ var import_styled_components58 = __toESM(require("styled-components")), Filters 
   @media (max-width: 767px){
    display: block;
   }
-`, FiltersWrapper2 = import_styled_components58.default.div`
+`, FiltersWrapper2 = import_styled_components60.default.div`
   flex-grow: 1;
   transition: box-shadow 300ms;
   width: 100%;
@@ -24244,9 +24475,9 @@ var import_styled_components58 = __toESM(require("styled-components")), Filters 
     height: 56px;
     width: 100%;
   }
-`, FiltersContainer = import_styled_components58.default.div`
+`, FiltersContainer = import_styled_components60.default.div`
   display: unset;
-`, FiltersBlock = import_styled_components58.default.div``, FiltersLabel = import_styled_components58.default.div`
+`, FiltersBlock = import_styled_components60.default.div``, FiltersLabel = import_styled_components60.default.div`
   font-size: 12px;
   margin: 8px 0 4px;
   width: auto;
@@ -24259,7 +24490,7 @@ var import_styled_components58 = __toESM(require("styled-components")), Filters 
     border: none;
     padding: 0!important;
   }
-`, FiltersField = import_styled_components58.default.div`
+`, FiltersField = import_styled_components60.default.div`
   border-color: transparent;
   display: flex;
   flex-wrap: wrap;
@@ -24298,7 +24529,7 @@ var import_styled_components58 = __toESM(require("styled-components")), Filters 
     padding: 5px 0 8.9px;
     position: unset;
   }
-  ${(props) => props.departments && import_styled_components58.css`
+  ${(props) => props.departments && import_styled_components60.css`
       .dropdown-menu li:nth-child(2) a label {
         border-bottom: 1px solid #e6e6e6;
         padding-bottom: 12px;
@@ -24311,11 +24542,11 @@ init_react();
 
 // app/components/CustomDropdown/CustomDropdown.jsx
 init_react();
-var import_react104 = __toESM(require("react")), import_prop_types57 = __toESM(require("prop-types"));
+var import_react105 = __toESM(require("react")), import_prop_types57 = __toESM(require("prop-types"));
 
 // app/components/CustomDropdown/CustomDropdown.Styled.jsx
 init_react();
-var import_styled_components59 = __toESM(require("styled-components")), import_react_bootstrap13 = require("react-bootstrap"), CDropdown = (0, import_styled_components59.default)(import_react_bootstrap13.Dropdown)`
+var import_styled_components61 = __toESM(require("styled-components")), import_react_bootstrap13 = require("react-bootstrap"), CDropdown = (0, import_styled_components61.default)(import_react_bootstrap13.Dropdown)`
   .dropdown-menu {
     top: 98%;
     background-color: transparent;
@@ -24381,7 +24612,7 @@ var import_styled_components59 = __toESM(require("styled-components")), import_r
     font-size: 14px;
     font-weight: unset;
   }
-`, CDropdownText = import_styled_components59.default.p`
+`, CDropdownText = import_styled_components61.default.p`
   color: var(--color-secondary);
   float: left;
   font-size: 12px;
@@ -24390,7 +24621,7 @@ var import_styled_components59 = __toESM(require("styled-components")), import_r
     font-size: 14px;
     font-weight: unset;
   }
-`, CMenuItem = (0, import_styled_components59.default)(import_react_bootstrap13.MenuItem)`
+`, CMenuItem = (0, import_styled_components61.default)(import_react_bootstrap13.MenuItem)`
   .custom-dropdown {
     cursor: pointer;
     display: block;
@@ -24423,34 +24654,34 @@ var import_styled_components59 = __toESM(require("styled-components")), import_r
 
 // app/components/CustomDropdown/CustomDropdown.jsx
 function CustomDropdown(props) {
-  let { accessValueName, selectedValue } = props, renderElements = (elements) => elements.map((element) => /* @__PURE__ */ import_react104.default.createElement(CMenuItem, {
+  let { accessValueName, selectedValue } = props, renderElements = (elements) => elements.map((element) => /* @__PURE__ */ import_react105.default.createElement(CMenuItem, {
     eventKey: element,
     key: element[accessValueName]
-  }, /* @__PURE__ */ import_react104.default.createElement("label", {
+  }, /* @__PURE__ */ import_react105.default.createElement("label", {
     className: "custom-dropdown",
     htmlFor: element[accessValueName]
-  }, element.name, /* @__PURE__ */ import_react104.default.createElement("input", {
+  }, element.name, /* @__PURE__ */ import_react105.default.createElement("input", {
     type: "radio",
     className: "custom-dropdown--radio",
     checked: selectedValue === element[accessValueName],
     readOnly: !0,
     id: element[accessValueName]
-  }), /* @__PURE__ */ import_react104.default.createElement("span", {
+  }), /* @__PURE__ */ import_react105.default.createElement("span", {
     className: "custom-dropdown--span"
-  })))), renderSelected = () => props.showSelected && /* @__PURE__ */ import_react104.default.createElement("p", {
+  })))), renderSelected = () => props.showSelected && /* @__PURE__ */ import_react105.default.createElement("p", {
     className: "custom-dropdown-selected"
   }, props.text);
-  return /* @__PURE__ */ import_react104.default.createElement(CDropdown, {
+  return /* @__PURE__ */ import_react105.default.createElement(CDropdown, {
     className: props.dropdownClass,
     onSelect: props.onSelectFunc,
     id: props.dropdownClass,
     disabled: props.disabled
-  }, /* @__PURE__ */ import_react104.default.createElement(CDropdown.Toggle, {
+  }, /* @__PURE__ */ import_react105.default.createElement(CDropdown.Toggle, {
     onClick: props.onClickFunc,
     className: `toggle ${props.isHighlighted ? "highlighted" : ""}`
-  }, /* @__PURE__ */ import_react104.default.createElement("p", {
+  }, /* @__PURE__ */ import_react105.default.createElement("p", {
     className: `dropdown-text ${props.showSelected ? "" : "first"}`
-  }, props.label), renderSelected()), /* @__PURE__ */ import_react104.default.createElement(CDropdown.Menu, {
+  }, props.label), renderSelected()), /* @__PURE__ */ import_react105.default.createElement(CDropdown.Menu, {
     className: props.menuClass
   }, props.elements.length > 0 && renderElements(props.elements)));
 }
@@ -24486,7 +24717,7 @@ var CustomDropdown_default = CustomDropdown;
 
 // app/components/Filters/Filters.jsx
 function Filters2(props) {
-  let { modifyQuery, clearFilters } = props, { departments, locations } = (0, import_react106.useLoaderData)(), [searchParams] = (0, import_react106.useSearchParams)(), getDefaultStatus = () => {
+  let { modifyQuery, clearFilters } = props, { departments, locations } = (0, import_react107.useLoaderData)(), [searchParams] = (0, import_react107.useSearchParams)(), getDefaultStatus = () => {
     let searchParam = searchParams.get("status");
     if (searchParam) {
       let found = STATUS_OPTIONS.find((status) => status.value === searchParam);
@@ -24529,8 +24760,8 @@ function Filters2(props) {
         return foundInData;
     }
     return DEFAULT_LOCATION_OPT;
-  }, [selectedOrderBy, setSelectedOrderBy] = (0, import_react105.useState)(getDefaultSortOption()), [selectedDateRange, setSelectedDateRange] = (0, import_react105.useState)(getDefaultDateRangeOption()), [selectedStatus, setSelectedStatus] = (0, import_react105.useState)(getDefaultStatus()), [selectedDepartment, setSelectedDepartment] = (0, import_react105.useState)(getDefaultDepartmentOption()), [selectedLocation, setSelectedLocation] = (0, import_react105.useState)(getDefaultLocationOption()), [showClearButton, setShowClearButton] = (0, import_react105.useState)(!1), [showFilters, setShowFilters] = (0, import_react105.useState)(!1), [filtersButtonName, setFiltersButtonName] = (0, import_react105.useState)("Show filters");
-  (0, import_react105.useEffect)(() => {
+  }, [selectedOrderBy, setSelectedOrderBy] = (0, import_react106.useState)(getDefaultSortOption()), [selectedDateRange, setSelectedDateRange] = (0, import_react106.useState)(getDefaultDateRangeOption()), [selectedStatus, setSelectedStatus] = (0, import_react106.useState)(getDefaultStatus()), [selectedDepartment, setSelectedDepartment] = (0, import_react106.useState)(getDefaultDepartmentOption()), [selectedLocation, setSelectedLocation] = (0, import_react106.useState)(getDefaultLocationOption()), [showClearButton, setShowClearButton] = (0, import_react106.useState)(!1), [showFilters, setShowFilters] = (0, import_react106.useState)(!1), [filtersButtonName, setFiltersButtonName] = (0, import_react106.useState)("Show filters");
+  (0, import_react106.useEffect)(() => {
     selectedLocation != null && (selectedDateRange.name === DEFAULT_DATE_RANGE_OPT.name && selectedDepartment.name === DEFAULT_DEPARTMENT_OPT.name && selectedStatus.name === DEFAULT_STATUS_OPT.name && selectedLocation.code === DEFAULT_LOCATION ? setShowClearButton(!1) : setShowClearButton(!0));
   }, [selectedDateRange, selectedStatus, selectedDepartment, selectedLocation]);
   let selectOrderByFilter = (selectOrderBy) => {
@@ -24598,25 +24829,25 @@ function Filters2(props) {
     isHihlighted: selectedStatus !== DEFAULT_STATUS_OPT,
     accessValueName: STATUS_ACCESS_VALUE
   };
-  return /* @__PURE__ */ import_react105.default.createElement(Filters, null, /* @__PURE__ */ import_react105.default.createElement(Button_default, {
+  return /* @__PURE__ */ import_react106.default.createElement(Filters, null, /* @__PURE__ */ import_react106.default.createElement(Button_default, {
     type: "button",
     category: TEXT_BUTTON,
     className: "show-filters-button",
     onClick: selectFilters
-  }, /* @__PURE__ */ import_react105.default.createElement(Icon, {
+  }, /* @__PURE__ */ import_react106.default.createElement(Icon, {
     src: ic_filter_default,
     alt: "Icon"
-  }), /* @__PURE__ */ import_react105.default.createElement("span", null, filtersButtonName)), /* @__PURE__ */ import_react105.default.createElement(FiltersLine, {
+  }), /* @__PURE__ */ import_react106.default.createElement("span", null, filtersButtonName)), /* @__PURE__ */ import_react106.default.createElement(FiltersLine, {
     secondary: !0,
     visibility: "none"
-  }), /* @__PURE__ */ import_react105.default.createElement(FiltersWrapper2, {
+  }), /* @__PURE__ */ import_react106.default.createElement(FiltersWrapper2, {
     hideComponent: showFilters ? "block" : "none"
-  }, /* @__PURE__ */ import_react105.default.createElement(FiltersContainer, null, /* @__PURE__ */ import_react105.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react105.default.createElement(FiltersLabel, null, "Order by:"), /* @__PURE__ */ import_react105.default.createElement(FiltersField, null, /* @__PURE__ */ import_react105.default.createElement(CustomDropdown_default, __spreadValues({}, orderByDropdownConfig)))), /* @__PURE__ */ import_react105.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react105.default.createElement(FiltersLabel, null, "Filter by:", " ", showClearButton && /* @__PURE__ */ import_react105.default.createElement("button", {
+  }, /* @__PURE__ */ import_react106.default.createElement(FiltersContainer, null, /* @__PURE__ */ import_react106.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react106.default.createElement(FiltersLabel, null, "Order by:"), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, orderByDropdownConfig)))), /* @__PURE__ */ import_react106.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react106.default.createElement(FiltersLabel, null, "Filter by:", " ", showClearButton && /* @__PURE__ */ import_react106.default.createElement("button", {
     type: "button",
     onClick: clearAllFilters
-  }, "Clear All Filters")), /* @__PURE__ */ import_react105.default.createElement(FiltersField, null, /* @__PURE__ */ import_react105.default.createElement(CustomDropdown_default, __spreadValues({}, dateRangeFilterConfig))), /* @__PURE__ */ import_react105.default.createElement(FiltersField, null, /* @__PURE__ */ import_react105.default.createElement(CustomDropdown_default, __spreadValues({}, statusFilterConfig))), /* @__PURE__ */ import_react105.default.createElement(FiltersField, {
+  }, "Clear All Filters")), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, dateRangeFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, statusFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, {
     departments: !0
-  }, /* @__PURE__ */ import_react105.default.createElement(CustomDropdown_default, __spreadValues({}, departmentFilterConfig))), /* @__PURE__ */ import_react105.default.createElement(FiltersField, null, /* @__PURE__ */ import_react105.default.createElement(CustomDropdown_default, __spreadValues({}, getLocationFilterConfig())))))));
+  }, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, departmentFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, getLocationFilterConfig())))))));
 }
 Filters2.propTypes = {
   clearFilters: import_prop_types58.default.func.isRequired,
@@ -24645,11 +24876,11 @@ function getCookie(name) {
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.jsx
 init_react();
-var import_react107 = __toESM(require("react")), import_prop_types59 = __toESM(require("prop-types"));
+var import_react108 = __toESM(require("react")), import_prop_types59 = __toESM(require("prop-types"));
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.Styled.jsx
 init_react();
-var import_styled_components60 = __toESM(require("styled-components")), Modal4 = import_styled_components60.default.div`
+var import_styled_components62 = __toESM(require("styled-components")), Modal4 = import_styled_components62.default.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -24663,7 +24894,7 @@ var import_styled_components60 = __toESM(require("styled-components")), Modal4 =
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-`, ModalDialog4 = import_styled_components60.default.div`
+`, ModalDialog4 = import_styled_components62.default.div`
     position: relative;
     border-radius: 5px;
     border: 0;
@@ -24683,7 +24914,7 @@ var import_styled_components60 = __toESM(require("styled-components")), Modal4 =
         max-width: 100%;
         height: 100%;
     }
-`, ModalBody5 = import_styled_components60.default.div`
+`, ModalBody5 = import_styled_components62.default.div`
     display: block;
     font-size: 15px;
     background-color: #fff;
@@ -24692,7 +24923,7 @@ var import_styled_components60 = __toESM(require("styled-components")), Modal4 =
     padding: 15px;
     box-sizing: border-box;
     text-align: justify;
-`, ModalFooter6 = import_styled_components60.default.div`
+`, ModalFooter6 = import_styled_components62.default.div`
     border-top: none;
     background-color: #fff;
     border-bottom: none;
@@ -24704,7 +24935,7 @@ var import_styled_components60 = __toESM(require("styled-components")), Modal4 =
     ${(props) => props.variant === "logout" ? `border-top: 1px solid #e5e5e5;
     padding: 15px;
     text-align: right;` : "border-bottom: none;"}
-`, ModalHeader6 = import_styled_components60.default.div`
+`, ModalHeader6 = import_styled_components62.default.div`
     overflow-y: hidden;
     padding: 15px;
     box-sizing: border-box;
@@ -24712,48 +24943,48 @@ var import_styled_components60 = __toESM(require("styled-components")), Modal4 =
     font-size: 14px;
     ${(props) => props.variant === "logout" ? `border-bottom: 1px solid #e5e5e5;
         padding: 15px;` : "border-bottom: none;"}
-`, ModalTitle5 = import_styled_components60.default.div`
+`, ModalTitle5 = import_styled_components62.default.div`
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
     letter-spacing: normal;
     margin-bottom: 8px;
-`, ModalSubtitle3 = import_styled_components60.default.div`
+`, ModalSubtitle3 = import_styled_components62.default.div`
     font-size: 16px;
     font-weight: normal;
     letter-spacing: 0.6px;
     line-height: 1.71;
-`, ValueText = import_styled_components60.default.span`
+`, ValueText = import_styled_components62.default.span`
     color: ${(props) => props.color};
     font-weight: 600;
     font-size: 16px;
     text-decoration:  ${(props) => props.color} underline overline;
-`, ValuesInformation = import_styled_components60.default.div`
+`, ValuesInformation = import_styled_components62.default.div`
     margin: 20px 0 20px 20px;
 `;
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.jsx
 var import_bs6 = require("react-icons/bs");
 function ValuesMessageModal({ show, onClose }) {
-  let profile = useUser_default(), renderBulletPoint = (color2) => /* @__PURE__ */ import_react107.default.createElement(import_bs6.BsCircleFill, {
+  let profile = useUser_default(), renderBulletPoint = (color2) => /* @__PURE__ */ import_react108.default.createElement(import_bs6.BsCircleFill, {
     color: color2,
     size: "7px",
     style: { marginTop: "3px", marginRight: "10px" }
   });
-  return show ? /* @__PURE__ */ import_react107.default.createElement("div", {
+  return show ? /* @__PURE__ */ import_react108.default.createElement("div", {
     onClick: onClose
-  }, /* @__PURE__ */ import_react107.default.createElement(Modal4, {
+  }, /* @__PURE__ */ import_react108.default.createElement(Modal4, {
     onClick: onClose
-  }, /* @__PURE__ */ import_react107.default.createElement(ModalDialog4, {
+  }, /* @__PURE__ */ import_react108.default.createElement(ModalDialog4, {
     show: !0,
     hide: onClose
-  }, /* @__PURE__ */ import_react107.default.createElement(ModalHeader6, null, /* @__PURE__ */ import_react107.default.createElement(ModalTitle5, null, "Hello", " ", profile.full_name, " ", "!"), /* @__PURE__ */ import_react107.default.createElement(ModalSubtitle3, null, "Welcome to Wize Q!")), /* @__PURE__ */ import_react107.default.createElement(ModalBody5, null, /* @__PURE__ */ import_react107.default.createElement("p", null, "We want to share a few simple guidelines before you start. Remember that Wize Q is a space for asking questions and providing answers that are helpful to our community."), /* @__PURE__ */ import_react107.default.createElement("p", null, "Please practice our values when using Wize Q: "), /* @__PURE__ */ import_react107.default.createElement(ValuesInformation, null, /* @__PURE__ */ import_react107.default.createElement("p", null, renderBulletPoint("var(--color-primary)"), /* @__PURE__ */ import_react107.default.createElement(ValueText, {
+  }, /* @__PURE__ */ import_react108.default.createElement(ModalHeader6, null, /* @__PURE__ */ import_react108.default.createElement(ModalTitle5, null, "Hello", " ", profile.full_name, " ", "!"), /* @__PURE__ */ import_react108.default.createElement(ModalSubtitle3, null, "Welcome to Wize Q!")), /* @__PURE__ */ import_react108.default.createElement(ModalBody5, null, /* @__PURE__ */ import_react108.default.createElement("p", null, "We want to share a few simple guidelines before you start. Remember that Wize Q is a space for asking questions and providing answers that are helpful to our community."), /* @__PURE__ */ import_react108.default.createElement("p", null, "Please practice our values when using Wize Q: "), /* @__PURE__ */ import_react108.default.createElement(ValuesInformation, null, /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("var(--color-primary)"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
     color: "var(--color-primary)"
-  }, "Ownership"), "\u2013 See if you can find the answer to your question before posting on Wize Q. And if you know the answer to a question or how to find it, be sure to reply \u2014 anyone can!"), /* @__PURE__ */ import_react107.default.createElement("p", null, renderBulletPoint("var(--color-secondary)"), /* @__PURE__ */ import_react107.default.createElement(ValueText, {
+  }, "Ownership"), "\u2013 See if you can find the answer to your question before posting on Wize Q. And if you know the answer to a question or how to find it, be sure to reply \u2014 anyone can!"), /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("var(--color-secondary)"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
     color: "var(--color-secondary)"
-  }, "Innovation"), "\u2013 When someone shares a concern or challenge, let\u2019s be innovative \u2014 propose a solution or offer support!"), /* @__PURE__ */ import_react107.default.createElement("p", null, renderBulletPoint("#E5C8A6"), /* @__PURE__ */ import_react107.default.createElement(ValueText, {
+  }, "Innovation"), "\u2013 When someone shares a concern or challenge, let\u2019s be innovative \u2014 propose a solution or offer support!"), /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("#E5C8A6"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
     color: "#E5C8A6"
-  }, "Community"), "\u2013 Remember to treat everyone with dignity and respect. Assume others have good intentions. Always be honest and constructive. Let\u2019s make Wizeline a community where everyone can thrive.")), /* @__PURE__ */ import_react107.default.createElement("p", null, "Consider that other channels: (ticketing portal, Slack, your manager or people partner) might be more effective for finding the right answer quickly."), /* @__PURE__ */ import_react107.default.createElement("p", null, "Thanks for being a valuable contributor to our community! "), /* @__PURE__ */ import_react107.default.createElement("p", null, "The Wize Q Team")), /* @__PURE__ */ import_react107.default.createElement(ModalFooter6, null, /* @__PURE__ */ import_react107.default.createElement(Button_default, {
+  }, "Community"), "\u2013 Remember to treat everyone with dignity and respect. Assume others have good intentions. Always be honest and constructive. Let\u2019s make Wizeline a community where everyone can thrive.")), /* @__PURE__ */ import_react108.default.createElement("p", null, "Consider that other channels: (ticketing portal, Slack, your manager or people partner) might be more effective for finding the right answer quickly."), /* @__PURE__ */ import_react108.default.createElement("p", null, "Thanks for being a valuable contributor to our community! "), /* @__PURE__ */ import_react108.default.createElement("p", null, "The Wize Q Team")), /* @__PURE__ */ import_react108.default.createElement(ModalFooter6, null, /* @__PURE__ */ import_react108.default.createElement(Button_default, {
     id: "btnAccept",
     category: SECONDARY_BUTTON,
     onClick: onClose
@@ -24770,7 +25001,7 @@ function ListQuestions({
   questions,
   onFetchMore
 }) {
-  let submit = (0, import_react109.useSubmit)(), transition = (0, import_react109.useTransition)(), voteQuestionForm = (0, import_react108.useRef)(), profile = useUser_default(), [showValuesMessage, setShowValueMessage] = (0, import_react108.useState)(getCookie("showValueMessage")), [searchParams, setSearchParams] = (0, import_react109.useSearchParams)(), [title, setTitle] = (0, import_react108.useState)("Newest Questions"), valuesMessageModal = showValuesMessage === "true" && /* @__PURE__ */ import_react108.default.createElement(ValuesMessageModal_default, {
+  let submit = (0, import_react110.useSubmit)(), transition = (0, import_react110.useTransition)(), voteQuestionForm = (0, import_react109.useRef)(), profile = useUser_default(), [showValuesMessage, setShowValueMessage] = (0, import_react109.useState)(getCookie("showValueMessage")), [searchParams, setSearchParams] = (0, import_react110.useSearchParams)(), [title, setTitle] = (0, import_react109.useState)("Newest Questions"), valuesMessageModal = showValuesMessage === "true" && /* @__PURE__ */ import_react109.default.createElement(ValuesMessageModal_default, {
     show: showValuesMessage,
     onClose: () => {
       setShowValueMessage(!1), setCookie("showValueMessage", !1);
@@ -24795,7 +25026,7 @@ function ListQuestions({
         actionUrl += value ? `&${key}=${value}` : "";
       }), submit(data, { method: "post", action: actionUrl, replace: !0 });
     };
-    return questions.length === 0 ? null : questions.map((question, index2) => /* @__PURE__ */ import_react108.default.createElement(QuestionCard_default, {
+    return questions.length === 0 ? null : questions.map((question, index2) => /* @__PURE__ */ import_react109.default.createElement(QuestionCard_default, {
       key: question.question_id,
       question: decorateQuestion(question),
       isAdmin: profile.is_admin,
@@ -24807,17 +25038,17 @@ function ListQuestions({
       processingFormSubmission: transition.state !== "idle"
     }));
   }, renderNoResultMessage = () => questions ? "There are no questions yet, how about asking one?" : "Loading questions...";
-  return /* @__PURE__ */ import_react108.default.createElement(Container8, null, /* @__PURE__ */ import_react108.default.createElement(LeftWrapper, null, /* @__PURE__ */ import_react108.default.createElement(SloganWrapper, null, /* @__PURE__ */ import_react108.default.createElement(Slogan_default, null))), /* @__PURE__ */ import_react108.default.createElement(CenterWrapper, null, /* @__PURE__ */ import_react108.default.createElement(QuestionsWrapper, null, /* @__PURE__ */ import_react108.default.createElement(AskQuestionButtonWrapper, null, /* @__PURE__ */ import_react108.default.createElement(QuestionsTitle, null, title), (() => /* @__PURE__ */ import_react108.default.createElement(AskButton, {
+  return /* @__PURE__ */ import_react109.default.createElement(Container8, null, /* @__PURE__ */ import_react109.default.createElement(LeftWrapper, null, /* @__PURE__ */ import_react109.default.createElement(SloganWrapper, null, /* @__PURE__ */ import_react109.default.createElement(Slogan_default, null))), /* @__PURE__ */ import_react109.default.createElement(CenterWrapper, null, /* @__PURE__ */ import_react109.default.createElement(QuestionsWrapper, null, /* @__PURE__ */ import_react109.default.createElement(AskQuestionButtonWrapper, null, /* @__PURE__ */ import_react109.default.createElement(QuestionsTitle, null, title), (() => /* @__PURE__ */ import_react109.default.createElement(AskButton, {
     to: "/questions/new",
     id: "ask-button"
-  }, "Ask Question"))()), questions.length === 0 ? /* @__PURE__ */ import_react108.default.createElement(Alert3, null, renderNoResultMessage()) : /* @__PURE__ */ import_react108.default.createElement(InfiniteScrollList_default, {
+  }, "Ask Question"))()), questions.length === 0 ? /* @__PURE__ */ import_react109.default.createElement(Alert3, null, renderNoResultMessage()) : /* @__PURE__ */ import_react109.default.createElement(InfiniteScrollList_default, {
     onFetch: onFetchMore
-  }, /* @__PURE__ */ import_react108.default.createElement(QuestionList, {
+  }, /* @__PURE__ */ import_react109.default.createElement(QuestionList, {
     id: "questions-list"
-  }, renderQuestionsList(questions))))), /* @__PURE__ */ import_react108.default.createElement(RightWrapper2, null, /* @__PURE__ */ import_react108.default.createElement(FiltersWrapper, null, /* @__PURE__ */ import_react108.default.createElement(Filters_default, {
+  }, renderQuestionsList(questions))))), /* @__PURE__ */ import_react109.default.createElement(RightWrapper2, null, /* @__PURE__ */ import_react109.default.createElement(FiltersWrapper, null, /* @__PURE__ */ import_react109.default.createElement(Filters_default, {
     modifyQuery,
     clearFilters
-  }))), /* @__PURE__ */ import_react108.default.createElement(GoToTopButton_default, null), valuesMessageModal);
+  }))), /* @__PURE__ */ import_react109.default.createElement(GoToTopButton_default, null), valuesMessageModal);
 }
 ListQuestions.propTypes = {
   questions: import_prop_types60.default.arrayOf(import_prop_types60.default.shape()),
@@ -24868,18 +25099,18 @@ var loader12 = async ({ request }) => {
   return (0, import_node11.json)(response);
 };
 function Index() {
-  let { questions: initialQuestions } = (0, import_react110.useLoaderData)(), [questions, setQuestions] = (0, import_react111.useState)(initialQuestions), fetcher = (0, import_react110.useFetcher)(), [shouldFetch, setShouldFetch] = (0, import_react111.useState)(!0), [page, setPage] = (0, import_react111.useState)(2), [searchParams] = (0, import_react110.useSearchParams)(), onFetchMore = () => {
+  let { questions: initialQuestions } = (0, import_react111.useLoaderData)(), [questions, setQuestions] = (0, import_react112.useState)(initialQuestions), fetcher = (0, import_react111.useFetcher)(), [shouldFetch, setShouldFetch] = (0, import_react112.useState)(!0), [page, setPage] = (0, import_react112.useState)(2), [searchParams] = (0, import_react111.useSearchParams)(), onFetchMore = () => {
     !shouldFetch || fetcher.load(`/?index&${searchParams.toString()}&page=${page}`);
   };
-  return (0, import_react111.useEffect)(() => {
+  return (0, import_react112.useEffect)(() => {
     if (fetcher.data && fetcher.data.questions && fetcher.data.questions.length === 0) {
       setShouldFetch(!1);
       return;
     }
     fetcher.data && fetcher.data.questions && fetcher.data.questions.length > 0 && (setQuestions((prevQuestions) => [...prevQuestions, ...fetcher.data.questions]), setPage((prevPage) => prevPage + 1), setShouldFetch(!0));
-  }, [fetcher.data]), (0, import_react111.useEffect)(() => {
+  }, [fetcher.data]), (0, import_react112.useEffect)(() => {
     setQuestions(initialQuestions), setPage(2), setShouldFetch(!0);
-  }, [initialQuestions, searchParams]), /* @__PURE__ */ import_react111.default.createElement(import_react111.default.Fragment, null, /* @__PURE__ */ import_react111.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react111.default.createElement(Container7, null, /* @__PURE__ */ import_react111.default.createElement(ListQuestions_default, {
+  }, [initialQuestions, searchParams]), /* @__PURE__ */ import_react112.default.createElement(import_react112.default.Fragment, null, /* @__PURE__ */ import_react112.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react112.default.createElement(Container7, null, /* @__PURE__ */ import_react112.default.createElement(ListQuestions_default, {
     type: "all",
     questions,
     onFetchMore
@@ -24893,16 +25124,16 @@ __export(login_exports, {
   loader: () => loader13
 });
 init_react();
-var import_react114 = __toESM(require("react")), import_node12 = require("@remix-run/node");
+var import_react115 = __toESM(require("react")), import_node12 = require("@remix-run/node");
 
 // app/components/Login/LoginContainer.jsx
 init_react();
-var import_react112 = __toESM(require("react")), import_react113 = require("@remix-run/react");
+var import_react113 = __toESM(require("react")), import_react114 = require("@remix-run/react");
 
 // app/components/Login/LoginContainer.Styled.jsx
 init_react();
-var import_styled_components61 = __toESM(require("styled-components"));
-var LoginDiv = import_styled_components61.default.div`
+var import_styled_components63 = __toESM(require("styled-components"));
+var LoginDiv = import_styled_components63.default.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -24911,7 +25142,7 @@ var LoginDiv = import_styled_components61.default.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`, LoginSubDiv = import_styled_components61.default.div`
+`, LoginSubDiv = import_styled_components63.default.div`
   display: flex;
   width: 100%;
   height: 100%;
@@ -24919,7 +25150,7 @@ var LoginDiv = import_styled_components61.default.div`
   @media (max-width: 768px) {
     flex-direction: column-reverse;
   }
-`, SH3 = import_styled_components61.default.h3`
+`, SH3 = import_styled_components63.default.h3`
   text-align: center;
   color: #646464;
   margin-bottom: 50px;
@@ -24927,9 +25158,9 @@ var LoginDiv = import_styled_components61.default.div`
   font-size: 25px;
   letter-spacing: 0.4px;
   font-weight: 700;
-`, Span2 = import_styled_components61.default.span`
+`, Span2 = import_styled_components63.default.span`
   ${(props) => (props.variant === "bold", 'font-family: "Nunito";')}
-`, Paragraph = import_styled_components61.default.p`
+`, Paragraph = import_styled_components63.default.p`
   text-align: center;
   color: #646464;
   font-family: "Nunito";
@@ -24937,7 +25168,7 @@ var LoginDiv = import_styled_components61.default.div`
   letter-spacing: 0.7px;
   margin-top: 50px;
   width: 350px;
-`, LeftDiv = import_styled_components61.default.div`
+`, LeftDiv = import_styled_components63.default.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24949,7 +25180,7 @@ var LoginDiv = import_styled_components61.default.div`
     width: 100%;
     height: 100%;
   }
-`, RightDiv = import_styled_components61.default.div`
+`, RightDiv = import_styled_components63.default.div`
   display: flex;
   width: 55%;
   align-items: center;
@@ -24972,7 +25203,7 @@ var LoginDiv = import_styled_components61.default.div`
       margin-bottom: 0;
     }
   }
-`, Slogan2 = import_styled_components61.default.div`
+`, Slogan2 = import_styled_components63.default.div`
   width: 320px;
 
   ${SloganContainer} {
@@ -24987,19 +25218,19 @@ var LoginDiv = import_styled_components61.default.div`
   @media (max-width: 768px) {
     display: none;
   }
-`, RedDiv = import_styled_components61.default.div`
+`, RedDiv = import_styled_components63.default.div`
   width: 20px;
   background-color: var(--color-primary);
   position: absolute;
   height: 100%;
   left: 0;
-`, GoldDiv = import_styled_components61.default.div`
+`, GoldDiv = import_styled_components63.default.div`
   width: 20px;
   background-color: #e5c8a6;
   position: absolute;
   height: 100%;
   left: 20px;
-`, AdviceContainer = import_styled_components61.default.div`
+`, AdviceContainer = import_styled_components63.default.div`
   color: white;
   font-size: 15px;
 
@@ -25021,27 +25252,27 @@ var LoginDiv = import_styled_components61.default.div`
 // app/components/Login/LoginContainer.jsx
 function LoginContainer() {
   let redirectTo = "/";
-  return (0, import_react112.useEffect)(() => {
+  return (0, import_react113.useEffect)(() => {
     setCookie("showValueMessage", !0);
-  }, []), /* @__PURE__ */ import_react112.default.createElement(LoginDiv, null, /* @__PURE__ */ import_react112.default.createElement(LoginSubDiv, null, /* @__PURE__ */ import_react112.default.createElement(LeftDiv, null, /* @__PURE__ */ import_react112.default.createElement(SH3, null, "Welcome Wizeliner!"), /* @__PURE__ */ import_react112.default.createElement(import_react113.Form, {
+  }, []), /* @__PURE__ */ import_react113.default.createElement(LoginDiv, null, /* @__PURE__ */ import_react113.default.createElement(LoginSubDiv, null, /* @__PURE__ */ import_react113.default.createElement(LeftDiv, null, /* @__PURE__ */ import_react113.default.createElement(SH3, null, "Welcome Wizeliner!"), /* @__PURE__ */ import_react113.default.createElement(import_react114.Form, {
     action: "/auth/auth0",
     method: "POST"
-  }, /* @__PURE__ */ import_react112.default.createElement("input", {
+  }, /* @__PURE__ */ import_react113.default.createElement("input", {
     type: "hidden",
     name: "redirectTo",
     value: redirectTo
-  }), /* @__PURE__ */ import_react112.default.createElement(Button_default, {
+  }), /* @__PURE__ */ import_react113.default.createElement(Button_default, {
     type: "submit",
     category: PRIMARY_BUTTON,
     className: "login-button"
-  }, "Log in with your Wizeline account")), /* @__PURE__ */ import_react112.default.createElement(Paragraph, null, /* @__PURE__ */ import_react112.default.createElement(Span2, null, "Wizeline Questions"), /* @__PURE__ */ import_react112.default.createElement(Span2, {
+  }, "Log in with your Wizeline account")), /* @__PURE__ */ import_react113.default.createElement(Paragraph, null, /* @__PURE__ */ import_react113.default.createElement(Span2, null, "Wizeline Questions"), /* @__PURE__ */ import_react113.default.createElement(Span2, {
     variant: "bold"
-  }, " DOES NOT "), /* @__PURE__ */ import_react112.default.createElement(Span2, null, "store any personal information so that you can ask anything."))), /* @__PURE__ */ import_react112.default.createElement(RightDiv, null, /* @__PURE__ */ import_react112.default.createElement(RedDiv, null), /* @__PURE__ */ import_react112.default.createElement(GoldDiv, null), /* @__PURE__ */ import_react112.default.createElement("img", {
+  }, " DOES NOT "), /* @__PURE__ */ import_react113.default.createElement(Span2, null, "store any personal information so that you can ask anything."))), /* @__PURE__ */ import_react113.default.createElement(RightDiv, null, /* @__PURE__ */ import_react113.default.createElement(RedDiv, null), /* @__PURE__ */ import_react113.default.createElement(GoldDiv, null), /* @__PURE__ */ import_react113.default.createElement("img", {
     src: logo_white_default,
     alt: "logo"
-  }), /* @__PURE__ */ import_react112.default.createElement(Slogan2, null, /* @__PURE__ */ import_react112.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react112.default.createElement(AdviceContainer, null, /* @__PURE__ */ import_react112.default.createElement("p", null, "Before asking a question verify if you can get the information you need from these resources."), /* @__PURE__ */ import_react112.default.createElement("ul", null, /* @__PURE__ */ import_react112.default.createElement("li", null, /* @__PURE__ */ import_react112.default.createElement("a", {
+  }), /* @__PURE__ */ import_react113.default.createElement(Slogan2, null, /* @__PURE__ */ import_react113.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react113.default.createElement(AdviceContainer, null, /* @__PURE__ */ import_react113.default.createElement("p", null, "Before asking a question verify if you can get the information you need from these resources."), /* @__PURE__ */ import_react113.default.createElement("ul", null, /* @__PURE__ */ import_react113.default.createElement("li", null, /* @__PURE__ */ import_react113.default.createElement("a", {
     href: "https://wizeline.slack.com/archives/C1UDJCL9E"
-  }, " #Questions "), "- Slack Channel"), /* @__PURE__ */ import_react112.default.createElement("li", null, /* @__PURE__ */ import_react112.default.createElement("a", {
+  }, " #Questions "), "- Slack Channel"), /* @__PURE__ */ import_react113.default.createElement("li", null, /* @__PURE__ */ import_react113.default.createElement("a", {
     href: "https://ticketing.wizeline.com/ticketing.html"
   }, " Ticketing"))))))));
 }
@@ -25050,13 +25281,13 @@ var LoginContainer_default = LoginContainer;
 // app/routes/login.jsx
 var loader13 = async ({ request }) => await getAuthenticatedUser(request) ? (0, import_node12.redirect)("/") : (0, import_node12.json)({});
 function Login() {
-  return /* @__PURE__ */ import_react114.default.createElement(LoginContainer_default, null);
+  return /* @__PURE__ */ import_react115.default.createElement(LoginContainer_default, null);
 }
 var login_default = Login;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
 init_react();
-var assets_manifest_default = { version: "cfd3c55b", entry: { module: "/build/entry.client-UE62V5O4.js", imports: ["/build/_shared/chunk-AOIRIE2A.js", "/build/_shared/chunk-CA4B4QDL.js", "/build/_shared/chunk-3WZ3CGWF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-BQ5CTPRU.js", imports: ["/build/_shared/chunk-HFM5U32K.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-KHI65GMO.js", "/build/_shared/chunk-XYY27WXM.js", "/build/_shared/chunk-YILJZXCT.js", "/build/_shared/chunk-LOAY3CH6.js", "/build/_shared/chunk-CXIA25NB.js", "/build/_shared/chunk-R6ZOL3IF.js", "/build/_shared/chunk-ZQB5ZPTG.js", "/build/_shared/chunk-37BOCGGE.js", "/build/_shared/chunk-TOV5KU52.js", "/build/_shared/chunk-2FVL2P6G.js", "/build/_shared/chunk-DTXDYIFC.js", "/build/_shared/chunk-UPCFJQSK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-T64WQ7D2.js", imports: ["/build/_shared/chunk-6H77JM73.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-FKIM2JZ5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-4TUGHOAZ.js", imports: ["/build/_shared/chunk-6H77JM73.js", "/build/_shared/chunk-ZI7RFG56.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-ITMSNXEC.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-4TNALWYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-H4FX3VJF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-ZRWAK35P.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-I7VIXFAC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-YFJSJ5R3.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-ZJZ2W5SH.js", "/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-KJHGFCJ6.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-LKOJQBOU.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-XHWZMWF6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-AOVWQDNC.js", imports: ["/build/_shared/chunk-ZI7RFG56.js", "/build/_shared/chunk-ZJZ2W5SH.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-F2B5C64T.js", imports: ["/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-CFD3C55B.js" };
+var assets_manifest_default = { version: "2889d0ca", entry: { module: "/build/entry.client-UTWZFDXQ.js", imports: ["/build/_shared/chunk-PBFK4UZR.js", "/build/_shared/chunk-3MAIR26M.js", "/build/_shared/chunk-4DA2OAD7.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-XNTZ35Z7.js", imports: ["/build/_shared/chunk-ZXCMUZUW.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-YEW73CUG.js", "/build/_shared/chunk-OHU2FFVR.js", "/build/_shared/chunk-H2YFZVAH.js", "/build/_shared/chunk-I5GBPAQ4.js", "/build/_shared/chunk-6B3OXNYQ.js", "/build/_shared/chunk-NKKDRQ4D.js", "/build/_shared/chunk-Z5KDSXRE.js", "/build/_shared/chunk-P6WCU7WC.js", "/build/_shared/chunk-THD6T3BE.js", "/build/_shared/chunk-2VQ64DF4.js", "/build/_shared/chunk-Q745UF6A.js", "/build/_shared/chunk-EDO2VLX7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-P4GIKTEV.js", imports: ["/build/_shared/chunk-A7JC27CZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-JFALEPBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-Y4OAOHMY.js", imports: ["/build/_shared/chunk-A7JC27CZ.js", "/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-4HCGMZKU.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-GQILXCD6.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-DQBQ3TGF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-7Z26VICF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-3MKFYS2S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/example": { id: "routes/example", parentId: "root", path: "example", index: void 0, caseSensitive: void 0, module: "/build/routes/example-ZEUGHKKO.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-NVIJUGGS.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-FCPWXMGL.js", imports: ["/build/_shared/chunk-JBOOXQF7.js", "/build/_shared/chunk-FLVKZ3SJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-X5CHNUMG.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-SUYIXHS5.js", imports: ["/build/_shared/chunk-GAMAQSHN.js", "/build/_shared/chunk-7D2AXFPF.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-PEGE26JZ.js", imports: ["/build/_shared/chunk-FLVKZ3SJ.js", "/build/_shared/chunk-RMDQN2RV.js", "/build/_shared/chunk-3SYJZQKS.js", "/build/_shared/chunk-FEUTD5I3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-2889D0CA.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -25123,6 +25354,14 @@ var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { mod
     index: void 0,
     caseSensitive: void 0,
     module: contact_exports
+  },
+  "routes/example": {
+    id: "routes/example",
+    parentId: "root",
+    path: "example",
+    index: void 0,
+    caseSensitive: void 0,
+    module: example_exports
   },
   "routes/logout": {
     id: "routes/logout",

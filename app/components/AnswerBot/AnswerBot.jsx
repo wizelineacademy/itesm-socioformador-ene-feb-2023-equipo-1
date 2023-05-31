@@ -25,8 +25,8 @@ function AnswerBot({
   const [inputValue, setInputValue] = useState('');
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
 
-  // To send the user's question to the bot, be able to receive an answer
-  // and register a new record in the AnswerBot table.
+  // To send the user's question to the bot, be able to receive
+  // an answer and register a new record in the AnswerBot table.
   const handleInput = async (e) => {
     e.preventDefault();
 
@@ -112,7 +112,7 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index + 1].content,
-      answer_feedback: 1,
+      answerFeedback: 1,
       assignedDepartment: messagesID[index].depa,
     };
 
@@ -148,7 +148,7 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index + 1].content,
-      answer_feedback: -1,
+      answerFeedback: -1,
       assignedDepartment: messagesID[index].depa,
     };
 
@@ -166,11 +166,7 @@ function AnswerBot({
     };
 
     // Update the id of the posted question with the answerbot's
-    try {
-      await updateAnswerBotPostID(updatePostID);
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotPostID(updatePostID);
 
     // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
@@ -190,10 +186,6 @@ function AnswerBot({
   /// //////////////// User ///////////////////
 
   const profile = useUser();
-
-  if (!profile) {
-    return;
-  }
 
   /// ///////////// Components ////////////////
 
@@ -247,18 +239,14 @@ function AnswerBot({
                     {!showThanksMessage[index]
                     && (index !== messages.length - 2 || !isWaitingForResponse) && (
                       <>
-                        {(index !== messages.length - 2 || !isWaitingForResponse) && (
-                        <>
-                          <Styled.LikeButton
-                            key={`like-${index}`}
-                            onClick={() => handleLikeClick(index)}
-                          />
-                          <Styled.DislikeButton
-                            key={`dislike-${index}`}
-                            onClick={() => handleDislikeClick(index)}
-                          />
-                        </>
-                        )}
+                        <Styled.LikeButton
+                          key={`like-${message.id}`}
+                          onClick={() => handleLikeClick(index)}
+                        />
+                        <Styled.DislikeButton
+                          key={`dislike-${message.id}`}
+                          onClick={() => handleDislikeClick(index)}
+                        />
                       </>
                     )}
                     {showThanksMessage[index] && (
