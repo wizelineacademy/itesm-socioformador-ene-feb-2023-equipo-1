@@ -119,7 +119,7 @@ export const action = async ({ request }) => {
       payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
-        answer_feedback: form.answer_feedback,
+        answerFeedback: form.answerFeedback,
         assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         user_id: user.employee_id,
       };
@@ -164,7 +164,7 @@ export const action = async ({ request }) => {
 
         // Create another payload.
         payload = {
-          post_question_id: response.question.question_id,
+          postQuestionID: response.question.question_id,
           question_by_user: form.question,
           answer_by_bot: form.answer,
           assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,

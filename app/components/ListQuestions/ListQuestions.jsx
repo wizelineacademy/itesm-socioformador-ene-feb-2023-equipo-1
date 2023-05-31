@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import * as Styled from 'app/components/ListQuestions/ListQuestions.Styled';
 import Slogan from 'app/components/Slogan';
 import QuestionCard from 'app/components/QuestionCard';
-import AnswerBot from 'app/components/AnswerBot';
 import useUser from 'app/utils/hooks/useUser';
 import GoToTopButton from 'app/components/GoToTopButton';
 import markdownFormatQuestion from 'app/utils/markdownFormatQuestions';
@@ -166,7 +165,6 @@ function ListQuestions({
       </Styled.RightWrapper>
       <GoToTopButton />
       {valuesMessageModal}
-      <AnswerBot/>
     </Styled.Container>
   );
 }

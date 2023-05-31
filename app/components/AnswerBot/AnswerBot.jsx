@@ -112,7 +112,7 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index + 1].content,
-      answer_feedback: 1,
+      answerFeedback: 1,
       assignedDepartment: messagesID[index].depa,
     };
 
@@ -148,7 +148,7 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index + 1].content,
-      answer_feedback: -1,
+      answerFeedback: -1,
       assignedDepartment: messagesID[index].depa,
     };
 

@@ -21066,11 +21066,11 @@ var import_joi8 = __toESM(require("joi")), import_constants63 = __toESM(require_
 }), modifyFeedbackBotSchema = import_joi8.default.object().keys({
   question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
   answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
-  answer_feedback: import_joi8.default.number().integer().min(-1).max(1).required(),
+  answerFeedback: import_joi8.default.number().integer().min(-1).max(1).required(),
   assigned_department: import_joi8.default.number().integer().min(1).allow(null),
   user_id: import_joi8.default.number().integer().min(1).allow(null)
 }), modifyBotPostQuestion = import_joi8.default.object().keys({
-  post_question_id: import_joi8.default.number().integer().min(1).allow(null),
+  postQuestionID: import_joi8.default.number().integer().min(1).allow(null),
   question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
   answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
   assigned_department: import_joi8.default.number().integer().min(1).allow(null),
@@ -21112,7 +21112,7 @@ var updateFeedback = async (body) => {
         }
       ]
     };
-  let _a = value, { answer_feedback } = _a, rest = __objRest(_a, ["answer_feedback"]), findFeed = await db.AnswerBot.findFirst({
+  let _a = value, { answerFeedback } = _a, rest = __objRest(_a, ["answerFeedback"]), findFeed = await db.AnswerBot.findFirst({
     where: __spreadValues({
       answer_feedback: 0
     }, rest),
@@ -21134,7 +21134,7 @@ var updateFeedback = async (body) => {
       id: findFeed.id
     },
     data: {
-      answer_feedback
+      answer_feedback: answerFeedback
     }
   });
   return {
@@ -21157,7 +21157,7 @@ var updatePost = async (body) => {
         }
       ]
     };
-  let _a = value, { post_question_id } = _a, rest = __objRest(_a, ["post_question_id"]), findQABot = await db.AnswerBot.findFirst({
+  let _a = value, { postQuestionID } = _a, rest = __objRest(_a, ["postQuestionID"]), findQABot = await db.AnswerBot.findFirst({
     where: __spreadValues({
       post_question_id: null,
       answer_feedback: -1
@@ -21180,7 +21180,7 @@ var updatePost = async (body) => {
       id: findQABot.id
     },
     data: {
-      post_question_id
+      post_question_id: postQuestionID
     }
   });
   return {
@@ -21526,7 +21526,10 @@ var pdfConv = async (conversation) => fetch("http://3.213.188.151:4000/api/pdf_c
   headers: {
     "Content-Type": "application/json"
   }
-}).then((response) => response.json()).then((data) => ({ text: data.conversation[data.conversation.length - 1].content, department: data.department })).catch((error) => {
+}).then((response) => response.json()).then((data) => ({
+  text: data.conversation[data.conversation.length - 1].content,
+  department: data.department
+})).catch((error) => {
   throw new Error(`There was an error making the API call: ${error.message}`);
 }), pdfConv_default = pdfConv;
 
@@ -21576,7 +21579,7 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
     let updateFeedback2 = {
       question_by_user: messages[index2].content,
       answer_by_bot: messages[index2 + 1].content,
-      answer_feedback: 1,
+      answerFeedback: 1,
       assignedDepartment: messagesID[index2].depa
     };
     await updateAnswerBotFeedback(updateFeedback2), setTimeout(() => {
@@ -21595,7 +21598,7 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
     let updateFeedback2 = {
       question_by_user: messages[index2].content,
       answer_by_bot: messages[index2 + 1].content,
-      answer_feedback: -1,
+      answerFeedback: -1,
       assignedDepartment: messagesID[index2].depa
     };
     await updateAnswerBotFeedback(updateFeedback2);
@@ -21791,7 +21794,7 @@ var loader4 = async ({ request }) => {
       if (payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
-        answer_feedback: form.answer_feedback,
+        answerFeedback: form.answerFeedback,
         assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         user_id: user.employee_id
       }, response = await modifyFeedback_default(payload), response.successMessage) {
@@ -21814,7 +21817,7 @@ var loader4 = async ({ request }) => {
         location: DEFAULT_LOCATION,
         accessToken: user.accessToken
       }, response = await create_default4(payload), response.successMessage && (payload = {
-        post_question_id: response.question.question_id,
+        postQuestionID: response.question.question_id,
         question_by_user: form.question,
         answer_by_bot: form.answer,
         assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
@@ -22174,8 +22177,8 @@ var import_filterConstants2 = __toESM(require_filterConstants()), import_constan
       where: __spreadValues(__spreadValues({}, buildWhereDepartment2(department)), buildWhereDateRange2(dateRange)),
       take: limit || import_constants69.DEFAULT_LIMIT
     });
-  } catch (error) {
-    throw console.error(error), new Error("An error occurred while getting the responses from the bot.");
+  } catch {
+    throw new Error("An error occurred while getting the responses from the bot.");
   }
 }, list_default6 = listAnswerBot;
 
@@ -24733,7 +24736,7 @@ function ListQuestions({
   }, renderQuestionsList(questions))))), /* @__PURE__ */ import_react108.default.createElement(RightWrapper2, null, /* @__PURE__ */ import_react108.default.createElement(FiltersWrapper, null, /* @__PURE__ */ import_react108.default.createElement(Filters_default, {
     modifyQuery,
     clearFilters
-  }))), /* @__PURE__ */ import_react108.default.createElement(GoToTopButton_default, null), valuesMessageModal, /* @__PURE__ */ import_react108.default.createElement(AnswerBot_default, null));
+  }))), /* @__PURE__ */ import_react108.default.createElement(GoToTopButton_default, null), valuesMessageModal);
 }
 ListQuestions.propTypes = {
   questions: import_prop_types60.default.arrayOf(import_prop_types60.default.shape()),
@@ -24972,7 +24975,7 @@ var login_default = Login;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
 init_react();
-var assets_manifest_default = { version: "9d9b71a4", entry: { module: "/build/entry.client-X7ZHMCQA.js", imports: ["/build/_shared/chunk-IT4B5LWP.js", "/build/_shared/chunk-CA4B4QDL.js", "/build/_shared/chunk-3WZ3CGWF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-4CNZQ4ZY.js", imports: ["/build/_shared/chunk-HFM5U32K.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-KHI65GMO.js", "/build/_shared/chunk-XYY27WXM.js", "/build/_shared/chunk-YILJZXCT.js", "/build/_shared/chunk-LOAY3CH6.js", "/build/_shared/chunk-CXIA25NB.js", "/build/_shared/chunk-R6ZOL3IF.js", "/build/_shared/chunk-ZQB5ZPTG.js", "/build/_shared/chunk-37BOCGGE.js", "/build/_shared/chunk-ZKETJUKF.js", "/build/_shared/chunk-2FVL2P6G.js", "/build/_shared/chunk-DTXDYIFC.js", "/build/_shared/chunk-UPCFJQSK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-T64WQ7D2.js", imports: ["/build/_shared/chunk-6H77JM73.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-FKIM2JZ5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-3Q2HRJ25.js", imports: ["/build/_shared/chunk-6H77JM73.js", "/build/_shared/chunk-ZI7RFG56.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-ITMSNXEC.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-4TNALWYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-H4FX3VJF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-R6NDXHP2.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-I7VIXFAC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-SNYZURFG.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-ZJZ2W5SH.js", "/build/_shared/chunk-DNAWH3CY.js", "/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-KJHGFCJ6.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-LKOJQBOU.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-XHWZMWF6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-IM23U67M.js", imports: ["/build/_shared/chunk-ZI7RFG56.js", "/build/_shared/chunk-ZJZ2W5SH.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-DRURAPT5.js", imports: ["/build/_shared/chunk-DNAWH3CY.js", "/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-9D9B71A4.js" };
+var assets_manifest_default = { version: "5d8ae6c0", entry: { module: "/build/entry.client-UE62V5O4.js", imports: ["/build/_shared/chunk-AOIRIE2A.js", "/build/_shared/chunk-CA4B4QDL.js", "/build/_shared/chunk-3WZ3CGWF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-BQ5CTPRU.js", imports: ["/build/_shared/chunk-HFM5U32K.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-KHI65GMO.js", "/build/_shared/chunk-XYY27WXM.js", "/build/_shared/chunk-YILJZXCT.js", "/build/_shared/chunk-LOAY3CH6.js", "/build/_shared/chunk-CXIA25NB.js", "/build/_shared/chunk-R6ZOL3IF.js", "/build/_shared/chunk-ZQB5ZPTG.js", "/build/_shared/chunk-37BOCGGE.js", "/build/_shared/chunk-TOV5KU52.js", "/build/_shared/chunk-2FVL2P6G.js", "/build/_shared/chunk-DTXDYIFC.js", "/build/_shared/chunk-UPCFJQSK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-T64WQ7D2.js", imports: ["/build/_shared/chunk-6H77JM73.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-FKIM2JZ5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-4TUGHOAZ.js", imports: ["/build/_shared/chunk-6H77JM73.js", "/build/_shared/chunk-ZI7RFG56.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-ITMSNXEC.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-4TNALWYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-H4FX3VJF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-ETK5DEKH.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-I7VIXFAC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-YFJSJ5R3.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-ZJZ2W5SH.js", "/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-KJHGFCJ6.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-LKOJQBOU.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-XHWZMWF6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-AOVWQDNC.js", imports: ["/build/_shared/chunk-ZI7RFG56.js", "/build/_shared/chunk-ZJZ2W5SH.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-YZQNG3O6.js", imports: ["/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-JQZ5HB2F.js", "/build/_shared/chunk-JSGQKRR4.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-5D8AE6C0.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
