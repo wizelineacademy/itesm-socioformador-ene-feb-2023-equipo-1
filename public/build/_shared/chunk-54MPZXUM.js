@@ -1,1 +1,0 @@
-import{a as t}from"/build/_shared/chunk-FMW47GBS.js";import{i as r}from"/build/_shared/chunk-XNUFYIVR.js";r();function o(){let e=t("root");if(!(!e||!e.data))return e.data.profile}var n=o;export{n as a};

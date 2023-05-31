@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import { Table } from "react-bootstrap";
 
 export const MainContainer = styled.div`
+	height: 115vh;
 	background-color: #f7fafc; /* Slate-100 */
-	margin-left: 15%;
-
+	margin: 0;
+	margin-left: 18%;
 	@media (min-width: 1536px) {
 		margin-left: 40px; /* 2xl:ml-40 */
 	}
 
-	height: 100vh;
 	padding-top: 8px; /* Pt-8 */
 	align-content: stretch; /* Content-stretch */
 `;
@@ -54,7 +55,7 @@ export const TopContainers = styled.div`
 `;
 
 export const BottomContainer = styled.div`
-	display: inline-block;
+	overflow-y: scroll;
 	align-items: center;
 	justify-content: center;
 	background-color: white;
@@ -68,7 +69,7 @@ export const BottomContainer = styled.div`
 	border-radius: 0.375rem; /* rounded-md */
 	margin-left: 2px; /* ml-2 */
 	margin-right: 1px; /* mr-1 */
-	height: 90%;
+	height: 300px;
 `;
 
 export const ContMargin = styled.div`
@@ -92,6 +93,7 @@ export const Title = styled.h2`
 
 export const Text = styled.td`
 	color: #17202a;
+
 	font-weight: 400;
 	letter-spacing: 1px;
 `;
@@ -101,6 +103,9 @@ export const TextBold = styled.th`
 	font-weight: 600;
 	letter-spacing: 1px;
 	font-size: medium;
+	position: sticky;
+	top: 0;
+	background-color: white;
 `;
 
 export const TextBoldList = styled.li`
