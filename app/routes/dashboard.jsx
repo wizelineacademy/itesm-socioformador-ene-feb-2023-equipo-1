@@ -7,9 +7,8 @@ import { Table } from 'react-bootstrap';
 import { useLoaderData } from '@remix-run/react';
 import listQuestions from 'app/controllers/questions/list';
 import listDepartments from 'app/controllers/departments/list';
-import listAnswerBot from 'app/controllers/answerBot/list';
 import dateRangeConversion from 'app/utils/dateRangeConversion';
-import OpenForumButton from 'app/components/OpenForumButton';
+import listAnswerBot from 'app/controllers/answerBot/list';
 
 // Process and load the data.
 export const loader = async ({ request }) => {
@@ -114,10 +113,20 @@ function Dashboard() {
                           key={`questionOP-${question.id}`}
                           title={question.question}
                         >
-                          {question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question}
+                          {question.question.length > 100
+                            ? `${question.question.substring(0, 100)}...`
+                            : question.question}
                         </Styled.Text>
                         <td>
-                          <OpenForumButton />
+                          <Styled.Button>
+                            <Styled.ButtonText
+                              href={`http://localhost:3000/questions/${question.question_id}`}
+                              key={question.id}
+                              title={question.question}
+                            >
+                              Answer it →
+                            </Styled.ButtonText>
+                          </Styled.Button>
                         </td>
                       </tr>
                     ))}
@@ -176,7 +185,6 @@ function Dashboard() {
                     <Styled.TextBold width="170">Status</Styled.TextBold>
                   </tr>
                 </thead>
-
                 <tbody>
                   {questionsFAQ.map((question) => (
                     <tr>
@@ -184,11 +192,17 @@ function Dashboard() {
                         key={`questionFAQ-${question.id}`}
                         title={question.question}
                       >
-                        {question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question}
+                        {question.question.length > 50
+                          ? `${question.question.substring(0, 50)}...`
+                          : question.question}
                       </Styled.Text>
                       <Styled.Text key={`department-${question.id}`}>
                         {' '}
-                        {question.assigned_department !== null ? departments.find((depa) => depa.department_id === question.assigned_department)?.name : 'Not Assigned'}
+                        {question.assigned_department !== null
+                          ? departments.find(
+                            (depa) => depa.department_id === question.assigned_department,
+                          )?.name
+                          : 'Not Assigned'}
                         {' '}
                       </Styled.Text>
                       <Styled.Text key={`date-${question.id}`}>

@@ -2,11 +2,7 @@ import * as Styled from 'app/components/AdminSideBar/AdminSideBar.Styled.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function SideBar({
-  departments,
-  selectedDepartment,
-  handleSelectDepartment,
-}) {
+function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
   return (
     <Styled.MainContainer>
       <Styled.DepContainer>
