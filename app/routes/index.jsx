@@ -11,6 +11,7 @@ import AnswerBot from 'app/components/AnswerBot';
 import listDepartments from 'app/controllers/departments/list';
 import listLocations from 'app/controllers/locations/list';
 import listQuestions from 'app/controllers/questions/list';
+import createQuestion from 'app/controllers/questions/create';
 import createAnswerByBot from 'app/controllers/answerBot/create';
 import updateFeedback from 'app/controllers/answerBot/modifyFeedback';
 import updatePostID from 'app/controllers/answerBot/modifyIDQuestion';
