@@ -48,6 +48,7 @@ function AnswerBot({
       // Except the welcome message.
       const filteredMessages = chatHistory.filter((mess, index) => index !== 1);
       const response = await pdfConv(filteredMessages);
+      console.log(response)
 
       // Extract answer from bot response.
       const answer = response.text;
