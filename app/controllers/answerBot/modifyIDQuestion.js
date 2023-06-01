@@ -19,7 +19,7 @@ const updatePost = async (body) => {
   }
 
   // Destructuring, rest has all the remaining values of the data.
-  const { post_question_id, ...rest } = value;
+  const { postQuestionID, ...rest } = value;
 
   // Find the record that matches the submitted values.
   const findQABot = await db.AnswerBot.findFirst({
@@ -51,7 +51,7 @@ const updatePost = async (body) => {
       id: findQABot.id,
     },
     data: {
-      post_question_id,
+      post_question_id: postQuestionID,
     },
   });
 

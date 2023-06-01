@@ -1,6 +1,5 @@
 import { db } from 'app/utils/db.server';
 import { ALL_DEPARTMENTS, NOT_ASSIGNED_DEPARTMENT_ID } from 'app/utils/backend/filterConstants';
-import { DEFAULT_LIMIT } from 'app/utils/backend/constants';
 
 // Filter the search and selection of departments.
 const buildWhereDepartment = (department) => {
@@ -15,18 +14,32 @@ const buildWhereDepartment = (department) => {
   return { assigned_department: department };
 };
 
+// Filter the search by a range of dates.
+const buildWhereDateRange = (dateRange) => {
+  if (dateRange && dateRange.startDate && dateRange.endDate) {
+    return {
+      date_created: {
+        lte: new Date(dateRange.endDate),
+        gte: new Date(dateRange.startDate),
+      },
+    };
+  }
+
+  return {};
+};
+
 // Get the list of records from the AnswerBot table.
 const listAnswerBot = async (params) => {
   try {
     // Destructuring.
-    const { department, limit } = params;
+    const { department, dateRange } = params;
 
     // Finds all records that match the submitted values.
     const getAnswers = await db.AnswerBot.findMany({
       where: {
         ...buildWhereDepartment(department),
+        ...buildWhereDateRange(dateRange),
       },
-      take: limit || DEFAULT_LIMIT,
     });
 
     // Returns the search result.
@@ -34,7 +47,7 @@ const listAnswerBot = async (params) => {
 
     // Error and exception handling.
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     throw new Error('An error occurred while getting the responses from the bot.');
   }
 };

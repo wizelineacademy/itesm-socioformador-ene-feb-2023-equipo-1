@@ -25,8 +25,8 @@ function AnswerBot({
   const [inputValue, setInputValue] = useState('');
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
 
-  // To send the user's question to the bot, be able to receive an answer
-  // and register a new record in the AnswerBot table.
+  // To send the user's question to the bot, be able to receive
+  // an answer and register a new record in the AnswerBot table.
   const handleInput = async (e) => {
     e.preventDefault();
 
@@ -67,11 +67,7 @@ function AnswerBot({
       };
 
       // Create a new record.
-      try {
-        await postAnswerBotQuestion(newQuestion);
-      } catch (error) {
-        console.error(error);
-      }
+      await postAnswerBotQuestion(newQuestion);
     }
   };
 
@@ -116,16 +112,12 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index + 1].content,
-      answer_feedback: 1,
+      answerFeedback: 1,
       assignedDepartment: messagesID[index].depa,
     };
 
     // Update the feedback of the record.
-    try {
-      await updateAnswerBotFeedback(updateFeedback);
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotFeedback(updateFeedback);
 
     // Set a time to fade the gratitude message.
     setTimeout(() => {
@@ -156,16 +148,12 @@ function AnswerBot({
     const updateFeedback = {
       question_by_user: messages[index].content,
       answer_by_bot: messages[index + 1].content,
-      answer_feedback: -1,
+      answerFeedback: -1,
       assignedDepartment: messagesID[index].depa,
     };
 
     // Update the feedback of the record.
-    try {
-      await updateAnswerBotFeedback(updateFeedback);
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotFeedback(updateFeedback);
   };
 
   // To post a question and be able to link it to the record made in the AnswerBot table.
@@ -178,11 +166,7 @@ function AnswerBot({
     };
 
     // Update the id of the posted question with the answerbot's
-    try {
-      await updateAnswerBotPostID(updatePostID);
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotPostID(updatePostID);
 
     // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
@@ -202,10 +186,6 @@ function AnswerBot({
   /// //////////////// User ///////////////////
 
   const profile = useUser();
-
-  if (!profile) {
-    return;
-  }
 
   /// ///////////// Components ////////////////
 
@@ -256,27 +236,24 @@ function AnswerBot({
                   </Styled.ChatbotRowMessage>
                   {index !== 0 && (
                   <div>
-                    {!showThanksMessage[index] && (
+                    {!showThanksMessage[index]
+                    && (index !== messages.length - 2 || !isWaitingForResponse) && (
                       <>
-                        {(index !== messages.length - 2 || !isWaitingForResponse) && (
-                        <>
-                          <Styled.LikeButton
-                            key={`like-${index}`}
-                            onClick={() => handleLikeClick(index)}
-                          />
-                          <Styled.DislikeButton
-                            key={`dislike-${index}`}
-                            onClick={() => handleDislikeClick(index)}
-                          />
-                        </>
-                        )}
+                        <Styled.LikeButton
+                          key={`like-${message.id}`}
+                          onClick={() => handleLikeClick(index)}
+                        />
+                        <Styled.DislikeButton
+                          key={`dislike-${message.id}`}
+                          onClick={() => handleDislikeClick(index)}
+                        />
                       </>
                     )}
                     {showThanksMessage[index] && (
                       <Styled.TextFeedback padding={showThanksMessage[index]}>
-                        {showThanksMessage[index] === true
-                          ? 'Thanks for the feedback!'
-                          : showThanksMessage[index] === 'na' ? '' : showThanksMessage[index]}
+                        {showThanksMessage[index] === true && ('Thanks for the feedback!')}
+                        {showThanksMessage[index] === 'na' && ('')}
+                        {!(showThanksMessage[index] === 'Thanks for the feedback!' || showThanksMessage[index] === 'na') && (showThanksMessage[index])}
                       </Styled.TextFeedback>
                     )}
                     {showThanksMessage[index] === 'Would you like to share your question with the community?' && (

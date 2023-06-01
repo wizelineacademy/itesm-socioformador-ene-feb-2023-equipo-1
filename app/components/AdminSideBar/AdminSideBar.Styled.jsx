@@ -24,12 +24,12 @@ export const DepContainer = styled.div`
 `;
 
 export const TitleDep = styled.div`
-	color: #17202a; /* Indigo-800 */
-	font-weight: bold;
-	font-size: large;
-	margin-left: 8px;
-	margin-right: 8px;
-	margin-top: 18%;
+  color: #17202a; /* Indigo-800 */
+  font-weight: bold;
+  font-size: large;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 18%;
 `;
 
 export const ListDep = styled.ul`

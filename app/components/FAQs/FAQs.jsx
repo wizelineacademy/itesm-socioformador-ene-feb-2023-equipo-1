@@ -1,18 +1,17 @@
 import * as Styled from 'app/components/FAQs/FAQs.Styled';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 function FAQs({ questionsFAQ }) {
   return (
     <Styled.FAQContainer>
 
-      <Styled.FAQHeader>FAQ's</Styled.FAQHeader>
+      <Styled.FAQHeader>FAQ&apos;s</Styled.FAQHeader>
 
-      {questionsFAQ.map((faq, index) => (
+      {questionsFAQ.map((faq) => (
         <Styled.FAQList>
-          <Styled.Question href={`http://localhost:3000/questions/${faq.question_id}`} key={index} title={faq.question}>
-            {' '}
+          <Styled.Question href={`http://localhost:3000/questions/${faq.question_id}`} key={faq.id} title={faq.question}>
             {faq.question}
-            {' '}
           </Styled.Question>
         </Styled.FAQList>
       ))}

@@ -1,8 +1,11 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/prop-types */
 import * as Styled from 'app/components/AdminSideBar/AdminSideBar.Styled.jsx';
+import PropTypes from 'prop-types';
 
-function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
+function SideBar({
+  departments,
+  selectedDepartment,
+  handleSelectDepartment,
+}) {
   return (
     <Styled.MainContainer>
       <Styled.DepContainer>
@@ -24,5 +27,18 @@ function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
     </Styled.MainContainer>
   );
 }
+
+SideBar.propTypes = {
+  departments: PropTypes.arrayOf(
+    PropTypes.shape(),
+  ),
+  selectedDepartment: PropTypes.number,
+  handleSelectDepartment: PropTypes.func.isRequired,
+};
+
+SideBar.defaultProps = {
+  departments: [],
+  selectedDepartment: 0,
+};
 
 export default SideBar;
