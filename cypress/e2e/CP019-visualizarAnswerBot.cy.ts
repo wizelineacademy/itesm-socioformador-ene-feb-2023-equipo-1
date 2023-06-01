@@ -8,6 +8,6 @@ describe('CP019 - Visualizar AnswerBot en WizelineQuestions', () => {
     cy.reload() //Reload page to get main page
     cy.get('#btnAccept').click() //Remove pop-up
     cy.get('#ask-button').click() //Click ' Ask Question' button
-    cy.get('.sc-gYMRRK')// Verify that the AnswerBot button is displayed
+    cy.get('.sc-gITdmR')// Verify that the AnswerBot button is displayed
   })
 })

@@ -10,9 +10,9 @@ describe('CP001 - Abir el chat de Answerbot', () => {
     cy.reload() //Reload page to get main page
     cy.get('#btnAccept').click() //Remove pop-up
     cy.get('#ask-button').click() //Click ' Ask Question' button
-    cy.get('.sc-gYMRRK').click() //Click AnswerBot button
-    cy.get('.sc-DdwlG') //Text input field correctly displayed
+    cy.get('.sc-gITdmR').click() //Click AnswerBot button
+    cy.get('.sc-dWINGa') //Text input field correctly displayed
     cy.get('.sc-ddcaxn') //Messages field correctly displayed
-    cy.get('.sc-dwVMhp') //Send button correctly displayed
+    cy.get('.sc-jGprRt') //Send button correctly displayed
   })
 })

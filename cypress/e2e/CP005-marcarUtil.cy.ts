@@ -8,10 +8,10 @@ describe('CP005 - Marcar respuesta como útil', () => {
     cy.reload() //Reload page to get main page
     cy.get('#btnAccept').click() //Remove pop-up
     cy.get('#ask-button').click() //Click ' Ask Question' button
-    cy.get('.sc-gYMRRK').click() //Click AnswerBot button
-    cy.get('.sc-DdwlG').type('What should I do if I test positive?') //Write question
-    cy.get('.sc-dwVMhp').click() //Click 'Send' button
-    cy.get('.sc-gVAlfg', {timeout:50000}).click() //Click 'Like' button
+    cy.get('.sc-gITdmR').click() //Click AnswerBot button
+    cy.get('.sc-dWINGa').type('What should I do if I test positive?') //Write question
+    cy.get('.sc-jGprRt').click() //Click 'Send' button
+    cy.get('.sc-bPyhqo', {timeout:50000}).click() //Click 'Like' button
     cy.get(':nth-child(3) > :nth-child(2) > span') //Veryify that the answer was marked as useful
   })
 })
