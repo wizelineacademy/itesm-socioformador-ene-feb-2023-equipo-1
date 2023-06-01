@@ -120,7 +120,7 @@ export const Title = styled.h2`
  letter-spacing: 1px;
  margin-bottom: 15px;
  background-color: white;
- text-decoration: underline;
+
 `;
 
 export const Text = styled.td`

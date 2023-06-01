@@ -11,6 +11,8 @@ export const MainContainer = styled.div`
  overflow-y: scroll;
  padding-right: 5px;
  background-color: white;
+
+
 `;
 
 export const DepContainer = styled.div`
@@ -19,6 +21,7 @@ export const DepContainer = styled.div`
  padding-left: 25px;
  padding-right: 15px;
  margin-right: 10px;
+
 `;
 
 export const TitleDep = styled.div`
