@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { json } from '@remix-run/node';
 import * as Styled from 'app/styles/Dashboard.Styled.jsx';
-import { requireAuth, getAuthenticatedUser } from 'app/session.server';
+import { requireAuth } from 'app/session.server';
 import AdminSideBar from 'app/components/AdminSideBar';
 import { Table } from 'react-bootstrap';
 import { useLoaderData } from '@remix-run/react';

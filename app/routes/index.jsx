@@ -3,7 +3,9 @@ import {
   useFetcher, useLoaderData, useSearchParams, useSubmit,
 } from '@remix-run/react';
 import React, { useEffect, useState, useRef } from 'react';
-import { commitSession, getAuthenticatedUser, getSession, requireAuth } from 'app/session.server';
+import {
+  commitSession, getAuthenticatedUser, getSession, requireAuth,
+} from 'app/session.server';
 import * as Styled from 'app/styles/Home.Styled';
 import ListQuestions from 'app/components/ListQuestions';
 import Notifications from 'app/components/Notifications';
@@ -245,8 +247,6 @@ export default function Index() {
     for (const [key, value] of Object.entries(question)) {
       data.set(key, value);
     }
-
-    console.log("\n\n\nHello\n\n\n")
 
     submit(
       data,
