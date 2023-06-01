@@ -117,7 +117,14 @@ function Dashboard() {
                           {question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question}
                         </Styled.Text>
                         <td>
-                          <OpenForumButton />
+                          <Styled.Button>
+														<Styled.ButtonText
+															href={`http://localhost:3000/questions/${question.question_id}`}
+															key={index}
+															title={question.question}>
+															Answer it →
+														</Styled.ButtonText>
+													</Styled.Button>
                         </td>
                       </tr>
                     ))}
@@ -154,7 +161,7 @@ function Dashboard() {
                         {question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
                       </Styled.Text>
                       {question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${question.id}`}> Bad </Styled.TextU>}
-                      {question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${question.id}`}> N/A </Styled.Text>}
+                      {question.answer_feedback === 0 && <Styled.TextB key={`feedbackAB-${question.id}`}> N/A </Styled.TextB>}
                       {question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${question.id}`}> Good </Styled.TextA>}
                     </tr>
                   ))}
