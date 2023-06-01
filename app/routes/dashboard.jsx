@@ -154,39 +154,17 @@ function Dashboard() {
                           key={`questionAB-${question.id}`}
                           title={question.question_by_user}
                         >
-                          {question.question_by_user.length > 50
-                            ? `${question.question_by_user.substring(0, 50)}...`
-                            : question.question_by_user}
+                          {question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user}
                         </Styled.Text>
                         <Styled.Text
                           key={`answerAB-${question.id}`}
                           title={question.answer_by_bot}
                         >
-                          {question.answer_by_bot.length > 50
-                            ? `${question.answer_by_bot.substring(0, 50)}...`
-                            : question.answer_by_bot}
+                          {question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
                         </Styled.Text>
-                        {question.answer_feedback === -1 && (
-                        <Styled.TextU key={`feedbackAB-${question.id}`}>
-                          {' '}
-                          Bad
-                          {' '}
-                        </Styled.TextU>
-                        )}
-                        {question.answer_feedback === 0 && (
-                        <Styled.TextB key={`feedbackAB-${question.id}`}>
-                          {' '}
-                          N/A
-                          {' '}
-                        </Styled.TextB>
-                        )}
-                        {question.answer_feedback === 1 && (
-                        <Styled.TextA key={`feedbackAB-${question.id}`}>
-                          {' '}
-                          Good
-                          {' '}
-                        </Styled.TextA>
-                        )}
+                        {question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${question.id}`}> Bad </Styled.TextU>}
+                        {question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${question.id}`}> N/A </Styled.Text>}
+                        {question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${question.id}`}> Good </Styled.TextA>}
                       </tr>
                     ))}
                   </tbody>
