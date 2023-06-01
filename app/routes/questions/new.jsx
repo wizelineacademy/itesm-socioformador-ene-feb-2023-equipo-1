@@ -16,7 +16,7 @@ import listQuestions from 'app/controllers/questions/list';
 import createQuestion from 'app/controllers/questions/create';
 import createAnswerByBot from 'app/controllers/answerBot/create';
 import updateFeedback from 'app/controllers/answerBot/modifyFeedback';
-import updatePostID from 'app/controllers/answerBot/modifyIDQuestion'
+import updatePostID from 'app/controllers/answerBot/modifyIDQuestion';
 import Notifications from 'app/components/Notifications';
 import AnswerBot from 'app/components/AnswerBot';
 import FAQs from 'app/components/FAQs/FAQs';
@@ -28,8 +28,8 @@ export const loader = async ({ request }) => {
   const locations = await listLocations();
   const departments = await listDepartments();
   const questionsFAQ = await listQuestions({
-    orderBy: "popular",
-    dateRange: "this_week",
+    orderBy: 'popular',
+    dateRange: 'this_week',
     limit: 10,
   });
   return json({
@@ -103,8 +103,8 @@ export const action = async ({ request }) => {
         const session = await getSession(request);
         const { successMessage } = response;
         session.flash('globalSuccess', successMessage);
-        const destination = `/questions/new`;
-    
+        const destination = '/questions/new';
+
         return redirect(destination, {
           headers: {
             'Set-Cookie': await commitSession(session),
@@ -119,7 +119,7 @@ export const action = async ({ request }) => {
       payload = {
         question_by_user: form.question_by_user,
         answer_by_bot: form.answer_by_bot,
-        answer_feedback: form.answer_feedback,
+        answerFeedback: form.answerFeedback,
         assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         user_id: user.employee_id,
       };
@@ -132,8 +132,8 @@ export const action = async ({ request }) => {
         const session = await getSession(request);
         const { successMessage } = response;
         session.flash('globalSuccess', successMessage);
-        const destination = `/questions/new`;
-    
+        const destination = '/questions/new';
+
         return redirect(destination, {
           headers: {
             'Set-Cookie': await commitSession(session),
@@ -161,10 +161,9 @@ export const action = async ({ request }) => {
 
       // If the result is successful, proceed to continue.
       if (response.successMessage) {
-
         // Create another payload.
         payload = {
-          post_question_id: response.question.question_id,
+          postQuestionID: response.question.question_id,
           question_by_user: form.question,
           answer_by_bot: form.answer,
           assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
@@ -173,15 +172,14 @@ export const action = async ({ request }) => {
 
         // Update the AnswerBot record with the new payload.
         response = await updatePostID(payload);
-    
+
         // If the result is successful, it shows it on the screen.
         if (response.successMessage) {
-          console.log('finish',response.feedback);
           const session = await getSession(request);
           const { successMessage } = response;
           session.flash('globalSuccess', successMessage);
-          const destination = `/questions/new`;
-      
+          const destination = '/questions/new';
+
           return redirect(destination, {
             headers: {
               'Set-Cookie': await commitSession(session),
@@ -236,6 +234,7 @@ function CreateQuestion() {
 
     data.set('action', ACTIONS.CREATE_QUESTION_ANSWERBOT);
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(question)) {
       data.set(key, value);
     }
@@ -252,6 +251,7 @@ function CreateQuestion() {
 
     data.set('action', ACTIONS.UPDATE_FEEDBACK_ANSWERBOT);
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(question)) {
       data.set(key, value);
     }
@@ -268,6 +268,7 @@ function CreateQuestion() {
 
     data.set('action', ACTIONS.UPDATE_POST_ANSWERBOT);
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(question)) {
       data.set(key, value);
     }
@@ -284,7 +285,7 @@ function CreateQuestion() {
       <Styled.QuestionDiv>
         <Styled.QuestionSlogan>
           <Slogan />
-          <FAQs questionsFAQ={questionsFAQ}/>
+          <FAQs questionsFAQ={questionsFAQ} />
         </Styled.QuestionSlogan>
         <Styled.QuestionInput>
           <QuestionForm

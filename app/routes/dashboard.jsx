@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { json } from '@remix-run/node';
 import * as Styled from 'app/styles/Dashboard.Styled.jsx';
-import { requireAuth } from 'app/session.server';
+import { requireAuth, getAuthenticatedUser } from 'app/session.server';
 import AdminSideBar from 'app/components/AdminSideBar';
 import { Table } from 'react-bootstrap';
 import { useLoaderData } from '@remix-run/react';
 import listQuestions from 'app/controllers/questions/list';
 import listDepartments from 'app/controllers/departments/list';
-
+import dateRangeConversion from 'app/utils/dateRangeConversion';
 import listAnswerBot from 'app/controllers/answerBot/list';
 
 // Process and load the data.
@@ -18,26 +18,31 @@ export const loader = async ({ request }) => {
   // To access the request URL.
   const url = new URL(request.url);
 
-  // Extract the 'department' parameter from the URL.
+  // Extract the "department" parameter from the URL.
   const department = Number.parseInt(url.searchParams.get('department'), 10);
+
+  // Gets the date range of the current month.
+  const dateRange = dateRangeConversion('this_month');
 
   // Get a list of FAQ questions.
   const questionsFAQ = await listQuestions({
     department: Number.isNaN(department) ? undefined : department,
-    limit: 5,
+    dateRange,
   });
 
   // Get a list of unanswered questions.
   const questionsOF = await listQuestions({
     department: Number.isNaN(department) ? undefined : department,
     status: 'not_answered',
-    limit: 8,
+    commentStatus: 'not_approved',
+    commentVote: 'not_approved',
+    dateRange,
   });
 
   // Get a list of bot questions.
   const questionsBot = await listAnswerBot({
     department: Number.isNaN(department) ? undefined : department,
-    limit: 5,
+    dateRange,
   });
 
   // Get a list of the departments.
@@ -57,18 +62,8 @@ export const loader = async ({ request }) => {
 
 // Format for the month.
 const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ];
 
 // Format for date.
@@ -87,9 +82,7 @@ function Dashboard() {
   } = useLoaderData();
 
   // For the department selector.
-  const [selectedDepartment, setSelectedDepartment] = useState(
-    departments[0].department_id,
-  );
+  const [selectedDepartment, setSelectedDepartment] = useState(departments[0].department_id);
 
   // Change the current value of the department selector and send it to the loader.
   const handleSelectDepartment = (department) => {
@@ -239,19 +232,12 @@ function Dashboard() {
                         {formatDate(question.createdAt)}
                         {' '}
                       </Styled.Text>
-                      {question.Answers.length > 0 ? (
-                        <Styled.TextA key={`statusFAQ-${question.id}`}>
-                          {' '}
-                          Answered
-                          {' '}
-                        </Styled.TextA>
-                      ) : (
-                        <Styled.TextU key={`statusFAQ-${question.id}`}>
-                          {' '}
-                          Unanswered
-                          {' '}
-                        </Styled.TextU>
-                      )}
+                      {question.Answers.length > 0
+                      || question.Comments.some((comment) => comment.approvedBy !== null)
+                      || question.Comments.some((comment) => comment.CommentVote.length > 0
+                        && comment.CommentVote.some((vote) => vote.value >= 10))
+                        ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>
+                        : <Styled.TextU key={`statusFAQ-${question.id}`}> Unanswered </Styled.TextU>}
                     </tr>
                   ))}
                 </tbody>

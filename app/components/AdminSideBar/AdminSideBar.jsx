@@ -24,4 +24,17 @@ function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
   );
 }
 
+SideBar.propTypes = {
+  departments: PropTypes.arrayOf(
+    PropTypes.shape(),
+  ),
+  selectedDepartment: PropTypes.number,
+  handleSelectDepartment: PropTypes.func.isRequired,
+};
+
+SideBar.defaultProps = {
+  departments: [],
+  selectedDepartment: 0,
+};
+
 export default SideBar;

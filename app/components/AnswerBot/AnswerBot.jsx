@@ -10,7 +10,7 @@ function AnswerBot({
   updateAnswerBotPostID,
   departments,
 }) {
-  //////////////// Send Question to AnswerBot ////////////////
+  /// ///////////// Send Question to AnswerBot ////////////////
 
   // Instrucciones (query principal)
   const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
@@ -19,13 +19,14 @@ function AnswerBot({
   const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you." }]);
   // To save the id of the assigned department.
   const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, depa: null }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you.", depa: null }]);
-  
+
   // Variables for chatbot effects.
   const messagesEndRef = useRef(null);
   const [inputValue, setInputValue] = useState('');
   const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
 
-  // To send the user's question to the bot, be able to receive an answer and register a new record in the AnswerBot table.
+  // To send the user's question to the bot, be able to receive
+  // an answer and register a new record in the AnswerBot table.
   const handleInput = async (e) => {
     e.preventDefault();
 
@@ -38,7 +39,7 @@ function AnswerBot({
       input.value = '';
 
       // Update specific variables for chatbot effects.
-      setInputValue(input.value)
+      setInputValue(input.value);
       setIsWaitingForResponse(true);
       setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: '' }]);
 
@@ -66,11 +67,7 @@ function AnswerBot({
       };
 
       // Create a new record.
-      try {
-        await postAnswerBotQuestion(newQuestion);
-      } catch (error) {
-        console.error(error);
-      }
+      await postAnswerBotQuestion(newQuestion);
     }
   };
 
@@ -99,13 +96,12 @@ function AnswerBot({
     setChatbotVisible(!chatbotVisible);
   };
 
-  //////////////// Feedback to AnswerBot ////////////////
+  /// ///////////// Feedback to AnswerBot ////////////////
 
   const [showThanksMessage, setShowThanksMessage] = useState({});
 
   // To update the response feedback to positive.
   const handleLikeClick = async (index) => {
-
     // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
@@ -115,17 +111,13 @@ function AnswerBot({
     // Create the payload.
     const updateFeedback = {
       question_by_user: messages[index].content,
-      answer_by_bot: messages[index+1].content,
-      answer_feedback: 1,
+      answer_by_bot: messages[index + 1].content,
+      answerFeedback: 1,
       assignedDepartment: messagesID[index].depa,
     };
 
     // Update the feedback of the record.
-    try {
-      await updateAnswerBotFeedback(updateFeedback);
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotFeedback(updateFeedback);
 
     // Set a time to fade the gratitude message.
     setTimeout(() => {
@@ -138,7 +130,6 @@ function AnswerBot({
 
   // To update the response feedback to negative.
   const handleDislikeClick = async (index) => {
-
     // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
@@ -149,24 +140,20 @@ function AnswerBot({
     setTimeout(() => {
       setShowThanksMessage((prevShowThanksMessage) => ({
         ...prevShowThanksMessage,
-        [index]: "Would you like to share your question with the community?",
+        [index]: 'Would you like to share your question with the community?',
       }));
     }, 1500);
 
     // Create the payload.
     const updateFeedback = {
       question_by_user: messages[index].content,
-      answer_by_bot: messages[index+1].content,
-      answer_feedback: -1,
+      answer_by_bot: messages[index + 1].content,
+      answerFeedback: -1,
       assignedDepartment: messagesID[index].depa,
     };
 
     // Update the feedback of the record.
-    try {
-      await updateAnswerBotFeedback(updateFeedback);
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotFeedback(updateFeedback);
   };
 
   // To post a question and be able to link it to the record made in the AnswerBot table.
@@ -174,21 +161,17 @@ function AnswerBot({
     // Create the payload.
     const updatePostID = {
       question: messages[index].content,
-      answer: messages[index+1].content,
+      answer: messages[index + 1].content,
       assignedDepartment: messagesID[index].depa,
     };
 
     // Update the id of the posted question with the answerbot's
-    try {
-      await updateAnswerBotPostID(updatePostID)
-    } catch (error) {
-      throw error;
-    }
+    await updateAnswerBotPostID(updatePostID);
 
     // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
-      [index]: "Your question has been published successfully.",
+      [index]: 'Your question has been published successfully.',
     }));
 
     // Set a time to fade the gratitude message.
@@ -200,15 +183,11 @@ function AnswerBot({
     }, 2500);
   };
 
-  /////////////////// User ///////////////////
+  /// //////////////// User ///////////////////
 
   const profile = useUser();
 
-  if (!profile) {
-    return;
-  }
-
-  //////////////// Components ////////////////
+  /// ///////////// Components ////////////////
 
   return (
     <div>
@@ -257,36 +236,33 @@ function AnswerBot({
                   </Styled.ChatbotRowMessage>
                   {index !== 0 && (
                   <div>
-                    {!showThanksMessage[index] && (
+                    {!showThanksMessage[index]
+                    && (index !== messages.length - 2 || !isWaitingForResponse) && (
                       <>
-                      {(index !== messages.length-2 || !isWaitingForResponse) && (
-                        <>
-                          <Styled.LikeButton
-                            key={`like-${index}`}
-                            onClick={() => handleLikeClick(index)}
-                          />
-                          <Styled.DislikeButton
-                            key={`dislike-${index}`}
-                            onClick={() => handleDislikeClick(index)}
-                          />
-                         </>
-                        )}
+                        <Styled.LikeButton
+                          key={`like-${message.id}`}
+                          onClick={() => handleLikeClick(index)}
+                        />
+                        <Styled.DislikeButton
+                          key={`dislike-${message.id}`}
+                          onClick={() => handleDislikeClick(index)}
+                        />
                       </>
                     )}
                     {showThanksMessage[index] && (
                       <Styled.TextFeedback padding={showThanksMessage[index]}>
-                        {showThanksMessage[index] === true
-                          ? 'Thanks for the feedback!'
-                          : showThanksMessage[index] === 'na' ? '' : showThanksMessage[index]}
+                        {showThanksMessage[index] === true && ('Thanks for the feedback!')}
+                        {showThanksMessage[index] === 'na' && ('')}
+                        {!(showThanksMessage[index] === 'Thanks for the feedback!' || showThanksMessage[index] === 'na') && (showThanksMessage[index])}
                       </Styled.TextFeedback>
                     )}
-                    {showThanksMessage[index] === "Would you like to share your question with the community?" && (
+                    {showThanksMessage[index] === 'Would you like to share your question with the community?' && (
                       <Styled.PublishButton onClick={() => handlePublishQuestion(index)}>
                         Post question
                       </Styled.PublishButton>
                     )}
                   </div>
-                )}
+                  )}
                 </div>
               )
           ))}
@@ -299,8 +275,9 @@ function AnswerBot({
             onChange={handleChange}
             disabled={isWaitingForResponse}
             enabled={!isWaitingForResponse}
-            title='Type at least 14 characters'/>
-          <Styled.SendButton type="submit" inputLength={inputValue.length} disabled={isWaitingForResponse}/>
+            title="Type at least 14 characters"
+          />
+          <Styled.SendButton type="submit" inputLength={inputValue.length} disabled={isWaitingForResponse} />
         </Styled.ChatbotInput>
       </Styled.ChatbotContainer>
     </div>
