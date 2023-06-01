@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Table } from "react-bootstrap";
+import styled from 'styled-components';
+import { Table } from 'react-bootstrap';
 
 export const MainContainer = styled.div`
 	height: 115vh;
@@ -39,11 +39,12 @@ export const DividerContainer = styled.div`
 
 export const TopContainers = styled.div`
 	display: inline-block;
+	overflow-y: scroll;
 	align-items: center;
 	justify-content: center;
 	margin-top: 20px;
 	width: 11/12;
-	height: 100%;
+	height: 380px;
 	border-radius: 0.5rem;
 	background-color: white;
 	border: 1px solid #d1d5db;
@@ -59,7 +60,7 @@ export const BottomContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	background-color: white;
-	margin-top: 20px;
+	margin-top: 15px;
 	border: 1px solid #d1d5db; /* ring-gray-200 */
 	box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.05);
 	&:focus {
@@ -118,6 +119,8 @@ export const Title = styled.h2`
 	font-weight: 600;
 	letter-spacing: 1px;
 	margin-bottom: 15px;
+	background-color: white;
+	text-decoration: underline;
 `;
 
 export const Text = styled.td`

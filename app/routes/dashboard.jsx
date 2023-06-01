@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { json } from "@remix-run/node";
-import * as Styled from "app/styles/Dashboard.Styled.jsx";
-import { requireAuth, getAuthenticatedUser } from "app/session.server";
-import AdminSideBar from "app/components/AdminSideBar";
-import { Table } from "react-bootstrap";
-import { useLoaderData } from "@remix-run/react";
-import listQuestions from "app/controllers/questions/list";
-import listDepartments from "app/controllers/departments/list";
+import React, { useState } from 'react';
+import { json } from '@remix-run/node';
+import * as Styled from 'app/styles/Dashboard.Styled.jsx';
+import { requireAuth } from 'app/session.server';
+import AdminSideBar from 'app/components/AdminSideBar';
+import { Table } from 'react-bootstrap';
+import { useLoaderData } from '@remix-run/react';
+import listQuestions from 'app/controllers/questions/list';
+import listDepartments from 'app/controllers/departments/list';
 
-import listAnswerBot from "app/controllers/answerBot/list";
+import listAnswerBot from 'app/controllers/answerBot/list';
 
 // Process and load the data.
 export const loader = async ({ request }) => {
@@ -18,8 +18,8 @@ export const loader = async ({ request }) => {
 	// To access the request URL.
 	const url = new URL(request.url);
 
-	// Extract the "department" parameter from the URL.
-	const department = Number.parseInt(url.searchParams.get("department"), 10);
+	// Extract the 'department' parameter from the URL.
+	const department = Number.parseInt(url.searchParams.get('department'), 10);
 
 	// Get a list of FAQ questions.
 	const questionsFAQ = await listQuestions({
@@ -30,7 +30,7 @@ export const loader = async ({ request }) => {
 	// Get a list of unanswered questions.
 	const questionsOF = await listQuestions({
 		department: Number.isNaN(department) ? undefined : department,
-		status: "not_answered",
+		status: 'not_answered',
 		limit: 8,
 	});
 
@@ -43,8 +43,8 @@ export const loader = async ({ request }) => {
 	// Get a list of the departments.
 	const departments = await listDepartments();
 	// Add 2 more departments in the options.
-	departments.unshift({ department_id: 0, name: "Not Assigned" });
-	departments.unshift({ department_id: undefined, name: "All" });
+	departments.unshift({ department_id: 0, name: 'Not Assigned' });
+	departments.unshift({ department_id: undefined, name: 'All' });
 
 	// Returns the results in a json.
 	return json({
@@ -57,18 +57,18 @@ export const loader = async ({ request }) => {
 
 // Format for the month.
 const months = [
-	"Jan",
-	"Feb",
-	"Mar",
-	"Apr",
-	"May",
-	"Jun",
-	"Jul",
-	"Aug",
-	"Sep",
-	"Oct",
-	"Nov",
-	"Dec",
+	'Jan',
+	'Feb',
+	'Mar',
+	'Apr',
+	'May',
+	'Jun',
+	'Jul',
+	'Aug',
+	'Sep',
+	'Oct',
+	'Nov',
+	'Dec',
 ];
 
 // Format for date.
@@ -146,9 +146,9 @@ function Dashboard() {
 								<Table stripped hover>
 									<thead>
 										<tr>
-											<Styled.TextBold width="250">Question</Styled.TextBold>
-											<Styled.TextBold width="250">Answer</Styled.TextBold>
-											<Styled.TextBold width="170">Feedback</Styled.TextBold>
+											<Styled.TextBold width='250'>Question</Styled.TextBold>
+											<Styled.TextBold width='250'>Answer</Styled.TextBold>
+											<Styled.TextBold width='170'>Feedback</Styled.TextBold>
 										</tr>
 									</thead>
 									<tbody>
@@ -170,20 +170,20 @@ function Dashboard() {
 												</Styled.Text>
 												{question.answer_feedback === -1 && (
 													<Styled.TextU key={`feedbackAB-${index}`}>
-														{" "}
-														Bad{" "}
+														{' '}
+														Bad{' '}
 													</Styled.TextU>
 												)}
 												{question.answer_feedback === 0 && (
-													<Styled.Text key={`feedbackAB-${index}`}>
-														{" "}
-														N/A{" "}
-													</Styled.Text>
+													<Styled.TextB key={`feedbackAB-${index}`}>
+														{' '}
+														N/A{' '}
+													</Styled.TextB>
 												)}
 												{question.answer_feedback === 1 && (
 													<Styled.TextA key={`feedbackAB-${index}`}>
-														{" "}
-														Good{" "}
+														{' '}
+														Good{' '}
 													</Styled.TextA>
 												)}
 											</tr>
@@ -200,10 +200,10 @@ function Dashboard() {
 							<Table stripped hover>
 								<thead>
 									<tr>
-										<Styled.TextBold width="330">Question</Styled.TextBold>
-										<Styled.TextBold width="170">Department</Styled.TextBold>
-										<Styled.TextBold width="170">Date</Styled.TextBold>
-										<Styled.TextBold width="170">Status</Styled.TextBold>
+										<Styled.TextBold width='330'>Question</Styled.TextBold>
+										<Styled.TextBold width='170'>Department</Styled.TextBold>
+										<Styled.TextBold width='170'>Date</Styled.TextBold>
+										<Styled.TextBold width='170'>Status</Styled.TextBold>
 									</tr>
 								</thead>
 								<tbody>
@@ -217,28 +217,28 @@ function Dashboard() {
 													: question.question}
 											</Styled.Text>
 											<Styled.Text key={`department-${index}`}>
-												{" "}
+												{' '}
 												{question.assigned_department !== null
 													? departments.find(
 															(depa) =>
 																depa.department_id ===
 																question.assigned_department
 													  )?.name
-													: "Not Assigned"}{" "}
+													: 'Not Assigned'}{' '}
 											</Styled.Text>
 											<Styled.Text key={`date-${index}`}>
-												{" "}
-												{formatDate(question.createdAt)}{" "}
+												{' '}
+												{formatDate(question.createdAt)}{' '}
 											</Styled.Text>
 											{question.Answers.length > 0 ? (
 												<Styled.TextA key={`statusFAQ-${index}`}>
-													{" "}
-													Answered{" "}
+													{' '}
+													Answered{' '}
 												</Styled.TextA>
 											) : (
 												<Styled.TextU key={`statusFAQ-${index}`}>
-													{" "}
-													Unanswered{" "}
+													{' '}
+													Unanswered{' '}
 												</Styled.TextU>
 											)}
 										</tr>
