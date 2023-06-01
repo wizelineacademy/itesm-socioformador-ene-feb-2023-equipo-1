@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { json } from '@remix-run/node';
 import * as Styled from 'app/styles/Dashboard.Styled.jsx';
-import { requireAuth, getAuthenticatedUser } from 'app/session.server';
+import { requireAuth } from 'app/session.server';
 import AdminSideBar from 'app/components/AdminSideBar';
 import { Table } from 'react-bootstrap';
 import { useLoaderData } from '@remix-run/react';
@@ -108,10 +108,10 @@ function Dashboard() {
                 <Styled.Title>Open Forums</Styled.Title>
                 <Table hover>
                   <tbody>
-                    {questionsOF.map((question, index) => (
+                    {questionsOF.map((question) => (
                       <tr>
                         <Styled.Text
-                          key={`questionOP-${index}`}
+                          key={`questionOP-${question.id}`}
                           title={question.question}
                         >
                           {question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question}
@@ -139,25 +139,25 @@ function Dashboard() {
                     </tr>
                   </thead>
                   <tbody>
-                  {questionsBot.map((question) => (
-                    <tr>
-                      <Styled.Text
-                        key={`questionAB-${question.id}`}
-                        title={question.question_by_user}
-                      >
-                        {question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user}
-                      </Styled.Text>
-                      <Styled.Text
-                        key={`answerAB-${question.id}`}
-                        title={question.answer_by_bot}
-                      >
-                        {question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
-                      </Styled.Text>
-                      {question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${question.id}`}> Bad </Styled.TextU>}
-                      {question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${question.id}`}> N/A </Styled.Text>}
-                      {question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${question.id}`}> Good </Styled.TextA>}
-                    </tr>
-                  ))}
+                    {questionsBot.map((question) => (
+                      <tr>
+                        <Styled.Text
+                          key={`questionAB-${question.id}`}
+                          title={question.question_by_user}
+                        >
+                          {question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user}
+                        </Styled.Text>
+                        <Styled.Text
+                          key={`answerAB-${question.id}`}
+                          title={question.answer_by_bot}
+                        >
+                          {question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
+                        </Styled.Text>
+                        {question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${question.id}`}> Bad </Styled.TextU>}
+                        {question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${question.id}`}> N/A </Styled.Text>}
+                        {question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${question.id}`}> Good </Styled.TextA>}
+                      </tr>
+                    ))}
                   </tbody>
                 </Table>
               </Styled.ContMargin>
@@ -178,20 +178,20 @@ function Dashboard() {
                 </thead>
 
                 <tbody>
-                  {questionsFAQ.map((question, index) => (
+                  {questionsFAQ.map((question) => (
                     <tr>
                       <Styled.Text
-                        key={`questionFAQ-${index}`}
+                        key={`questionFAQ-${question.id}`}
                         title={question.question}
                       >
                         {question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question}
                       </Styled.Text>
-                      <Styled.Text key={`department-${index}`}>
+                      <Styled.Text key={`department-${question.id}`}>
                         {' '}
                         {question.assigned_department !== null ? departments.find((depa) => depa.department_id === question.assigned_department)?.name : 'Not Assigned'}
                         {' '}
                       </Styled.Text>
-                      <Styled.Text key={`date-${index}`}>
+                      <Styled.Text key={`date-${question.id}`}>
                         {' '}
                         {formatDate(question.createdAt)}
                         {' '}
