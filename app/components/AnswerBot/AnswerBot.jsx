@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import pdfConv from 'app/controllers/answerBot/pdfConv';
 import PropTypes from 'prop-types';
 import useUser from 'app/utils/hooks/useUser';
+import { WELCOME_MESSAGE } from 'app/utils/constants';
 
 function AnswerBot({
   postAnswerBotQuestion,
@@ -16,9 +17,9 @@ function AnswerBot({
   const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
 
   // The chat history in the chatbot.
-  const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you." }]);
+  const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: WELCOME_MESSAGE }]);
   // To save the id of the assigned department.
-  const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, depa: null }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you.", depa: null }]);
+  const [messagesID, setMessagesID] = useState([{ role: 'system', content: instructions, depa: null }, { role: 'system', content: WELCOME_MESSAGE, depa: null }]);
 
   // Variables for chatbot effects.
   const messagesEndRef = useRef(null);
@@ -191,7 +192,7 @@ function AnswerBot({
 
   return (
     <div>
-      <Styled.BotButton visible={!chatbotVisible} onClick={handleChatbotToggle}>
+      <Styled.BotButton id="answerbotbutton" visible={!chatbotVisible} onClick={handleChatbotToggle}>
         <Styled.BotIcon />
         <Styled.BotMessage className="message">
           Hi, I&apos;m AnswerBot!
@@ -203,14 +204,14 @@ function AnswerBot({
       <Styled.ChatbotContainer visible={chatbotVisible}>
         <Styled.ChatbotHeader>
           <Styled.IconBot style={{ position: 'absolute' }} />
-          <Styled.BotName> AnswerBot </Styled.BotName>
-          <Styled.CloseButton onClick={handleChatbotToggle}> ✕ </Styled.CloseButton>
+          <Styled.BotName id="openchat"> AnswerBot </Styled.BotName>
+          <Styled.CloseButton id="closechat" onClick={handleChatbotToggle}> ✕ </Styled.CloseButton>
         </Styled.ChatbotHeader>
 
         <Styled.ChatbotMessages>
           {messages.slice(1).map((message, index) => (
             message.role === 'user' ? (
-              <Styled.ChatbotRowMessage style={{ justifyContent: 'flex-end' }}>
+              <Styled.ChatbotRowMessage id={`msg-${index}`} style={{ justifyContent: 'flex-end' }}>
                 <Styled.Message
                   key={`message-${message.id}`}
                   className="user"
@@ -223,7 +224,7 @@ function AnswerBot({
             )
               : (
                 <div>
-                  <Styled.ChatbotRowMessage style={{ justifyContent: 'flex-start' }}>
+                  <Styled.ChatbotRowMessage id={`msg-${index}`} style={{ justifyContent: 'flex-start' }}>
                     <Styled.IconBot />
                     <Styled.Message
                       key={`message-${message.id}`}
@@ -270,6 +271,7 @@ function AnswerBot({
 
         <Styled.ChatbotInput onSubmit={handleInput}>
           <Styled.Input
+            id="chatbotinput"
             type="text"
             placeholder="Enter your question..."
             onChange={handleChange}

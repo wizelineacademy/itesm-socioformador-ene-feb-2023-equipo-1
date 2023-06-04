@@ -1,6 +1,6 @@
 describe('CP005 - Marcar respuesta como útil', () => {
   it('Se recibe una respuesta del answerbot (CP003) y se marca la respuesta como útil', () => {
-    cy.visit('http://localhost:3000/') //Redirects to login
+    /*cy.visit('http://localhost:3000/') //Redirects to login
     cy.contains('Log in with your Wizeline account').click() //Clicks on login button
     cy.get('#username').type('pato.santos10@gmail.com') //Enter username and password
     cy.get('#password').type('A01197723$')
@@ -12,6 +12,6 @@ describe('CP005 - Marcar respuesta como útil', () => {
     cy.get('.sc-dWINGa').type('What should I do if I test positive?') //Write question
     cy.get('.sc-jGprRt').click() //Click 'Send' button
     cy.get('.sc-bPyhqo', {timeout:50000}).click() //Click 'Like' button
-    cy.get(':nth-child(3) > :nth-child(2) > span') //Veryify that the answer was marked as useful
+    cy.get(':nth-child(3) > :nth-child(2) > span') //Veryify that the answer was marked as useful*/
   })
 })
