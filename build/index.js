@@ -61,6 +61,9 @@ var require_constants = __commonJS({
       MIN_NET_PROMOTER_SCORE: 1,
       MAX_NET_PROMOTER_SCORE: 4,
       DEFAULT_ERROR_MESSAGE: "An unknown error has occurred with your request.",
+      DEFAULT_ERROR_MESSAGE_CREATE_BOT: "An unknown error has occurred with your request to bot.",
+      DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT: "An unknown error has occurred while submitting feedback.",
+      DEFAULT_ERROR_MESSAGE_POST_BOT: "An unknown error has occurred while posting the question.",
       COMMENT_AS_AN_ANSWER: "This question already has a comment as answer",
       COMMUNITY_ANSWER_COMMENT_VOTES_THRESHOLD: 10,
       DEFAULT_MONTHS: -3
@@ -4938,10 +4941,10 @@ var Draft_default = "/build/_assets/Draft-U64VZDWR.css";
 var import_node2 = require("@remix-run/node");
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-ITRFXLVX.css";
+var global_default = "/build/_assets/global-LITR44L5.css";
 
 // app/styles/bootstrap/css/bootstrap.min.css
-var bootstrap_min_default = "/build/_assets/bootstrap.min-WMROZIUM.css";
+var bootstrap_min_default = "/build/_assets/bootstrap.min-PBEPUKPK.css";
 
 // app/components/ErrorHandler/ErrorHandler.jsx
 init_react();
@@ -5474,7 +5477,12 @@ var NOT_ASSIGNED_DEPARTMENT_ID = 0, PRIMARY_BUTTON = "primary_button", SECONDARY
   "Do not demean or degrade others because of their gender, race, age, religion, etc.",
   "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity.",
   "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."
-], PIN_QUESTION_ERROR_MESSAGE = "Error trying to pin/unpin the question.", INVALID_PARAMS_FOR_OPERATION_ERROR_MESSAGE = "The provided parameters for the operation are not valid", QUESTION_NOT_FOUND_ERROR_MESSAGE = "The question with the id provided could not be found", INVALIDATE_VOTE_ERROR_MESSAGE = "Error trying to invalidate the vote in the question", UPDATE_COMMENT_ERROR_MESSAGE = "Error trying to update the comment", DELETE_COMMENT_ERROR_MESSAGE = "Error trying to delete the comment", ENABLE_DISABLE_ERROR_MESSAGE = "Error trying to enable/disable this question", WELCOME_MESSAGE = "Hello! Ask me any question and I'll see how I can help you.";
+], PIN_QUESTION_ERROR_MESSAGE = "Error trying to pin/unpin the question.", INVALID_PARAMS_FOR_OPERATION_ERROR_MESSAGE = "The provided parameters for the operation are not valid", QUESTION_NOT_FOUND_ERROR_MESSAGE = "The question with the id provided could not be found", INVALIDATE_VOTE_ERROR_MESSAGE = "Error trying to invalidate the vote in the question", UPDATE_COMMENT_ERROR_MESSAGE = "Error trying to update the comment", DELETE_COMMENT_ERROR_MESSAGE = "Error trying to delete the comment", ENABLE_DISABLE_ERROR_MESSAGE = "Error trying to enable/disable this question", WELCOME_MESSAGE = "Hello! Ask me any question and I'll see how I can help you.", CREATED_ANSWEBOT = "The question to bot has been created succesfully!", POSITIVE_FEEDBACK_ANSWEBOT = "The positive feedback to bot has been updated succesfully!", NEGATIVE_FEEDBACK_ANSWEBOT = "The negative feedback to bot has been updated succesfully!", POSTED_ANSWEBOT = "The question has been posted on the forum successfully!", INSTRUCTIONS_ANSWERBOT = `Instructions: Compose a comprehensive reply to the query using the search results given.
+ If the search results mention multiple subjects
+with the same name, create separate answers for each. Only include information found in the results and
+don't add any additional information. Make sure the answer is correct and don't output false content.
+If the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.
+`;
 
 // app/components/Atoms/Button/Button.Styled.jsx
 init_react();
@@ -13733,16 +13741,16 @@ init_react();
 var import_react61 = __toESM(require("react")), import_react62 = require("@remix-run/react"), import_react_router_dom = require("react-router-dom"), import_prop_types38 = __toESM(require("prop-types"));
 
 // app/images/ic_like.svg
-var ic_like_default = "/build/_assets/ic_like-3HK5UX5Q.svg";
+var ic_like_default = "/build/_assets/ic_like-NMKT3SD2.svg";
 
 // app/images/ic_like_pressed.svg
-var ic_like_pressed_default = "/build/_assets/ic_like_pressed-M7VBJL7G.svg";
+var ic_like_pressed_default = "/build/_assets/ic_like_pressed-XXP725X2.svg";
 
 // app/images/ic_dislike.svg
-var ic_dislike_default = "/build/_assets/ic_dislike-W3REF4NO.svg";
+var ic_dislike_default = "/build/_assets/ic_dislike-SKUS46A3.svg";
 
 // app/images/ic_dislike_pressed.svg
-var ic_dislike_pressed_default = "/build/_assets/ic_dislike_pressed-7K72A5ZE.svg";
+var ic_dislike_pressed_default = "/build/_assets/ic_dislike_pressed-2IDCQ6K4.svg";
 
 // app/utils/questionUtils.js
 init_react();
@@ -14220,10 +14228,10 @@ var import_styled_components15 = __toESM(require("styled-components")), AnswerOp
 `;
 
 // app/images/ic_edit.svg
-var ic_edit_default = "/build/_assets/ic_edit-B4NH7Z7Y.svg";
+var ic_edit_default = "/build/_assets/ic_edit-RAYDZA5B.svg";
 
 // app/images/ic_delete.svg
-var ic_delete_default = "/build/_assets/ic_delete-J5HDF3GI.svg";
+var ic_delete_default = "/build/_assets/ic_delete-O2BLLQ3J.svg";
 
 // app/components/AnswerAdminOptions/AnswerAdminOptions.jsx
 function AnswerAdminOptions({
@@ -14946,10 +14954,10 @@ position: relative;
 `;
 
 // app/images/ic_edit_selected.svg
-var ic_edit_selected_default = "/build/_assets/ic_edit_selected-LEMRBASI.svg";
+var ic_edit_selected_default = "/build/_assets/ic_edit_selected-EJWVUM6O.svg";
 
 // app/images/ic_delete_selected.svg
-var ic_delete_selected_default = "/build/_assets/ic_delete_selected-YSR34BBX.svg";
+var ic_delete_selected_default = "/build/_assets/ic_delete_selected-2Y6ZTOBB.svg";
 
 // app/components/CommentInput/CommentInputText.jsx
 init_react();
@@ -18725,6 +18733,7 @@ init_react();
 // app/components/Notifications/Notifications.jsx
 init_react();
 var import_react65 = require("@remix-run/react"), import_react66 = __toESM(require("react")), import_react_toastify = require("react-toastify");
+var import_constants31 = __toESM(require_constants());
 
 // app/utils/hooks/useGlobalSuccessMessage.js
 init_react();
@@ -18739,7 +18748,7 @@ var useGlobalSuccessMessage_default = useGlobalSuccessMessage;
 function Notifications() {
   let globalSuccess = useGlobalSuccessMessage_default(), data = (0, import_react65.useActionData)();
   return (0, import_react66.useEffect)(() => {
-    if (globalSuccess && import_react_toastify.toast.success(globalSuccess, DEFAULT_TOAST_CONFIG), !data)
+    if (globalSuccess && globalSuccess !== CREATED_ANSWEBOT && globalSuccess !== POSITIVE_FEEDBACK_ANSWEBOT && globalSuccess !== NEGATIVE_FEEDBACK_ANSWEBOT && globalSuccess !== POSTED_ANSWEBOT && import_react_toastify.toast.success(globalSuccess, DEFAULT_TOAST_CONFIG), !data)
       return;
     let {
       error,
@@ -18747,7 +18756,7 @@ function Notifications() {
       successMessage,
       warnings
     } = data;
-    error && import_react_toastify.toast.error(error.message, DEFAULT_TOAST_CONFIG), errors && Array.isArray(errors) && errors.forEach((_error) => {
+    error && error !== import_constants31.DEFAULT_ERROR_MESSAGE_BOT && import_react_toastify.toast.error(error.message, DEFAULT_TOAST_CONFIG), errors && Array.isArray(errors) && errors.forEach((_error) => {
       import_react_toastify.toast.error(_error.message, DEFAULT_TOAST_CONFIG);
     }), warnings && Array.isArray(warnings) && warnings.forEach((warning) => {
       import_react_toastify.toast.warning(warning, DEFAULT_TOAST_CONFIG);
@@ -18851,10 +18860,10 @@ init_react();
 
 // app/utils/backend/validators/question.js
 init_react();
-var import_joi = __toESM(require("joi")), import_constants32 = __toESM(require_constants()), import_joiConstants = __toESM(require_joiConstants()), createQuestionSchema = import_joi.default.object().keys({
+var import_joi = __toESM(require("joi")), import_constants33 = __toESM(require_constants()), import_joiConstants = __toESM(require_joiConstants()), createQuestionSchema = import_joi.default.object().keys({
   username: import_joi.default.string().allow(null),
   accessToken: import_joi.default.string().required(),
-  question: import_joi.default.string().min(import_constants32.MINIMUM_QUESTION_LENGTH).max(import_constants32.MAXIMUM_QUESTION_LENGTH).required(),
+  question: import_joi.default.string().min(import_constants33.MINIMUM_QUESTION_LENGTH).max(import_constants33.MAXIMUM_QUESTION_LENGTH).required(),
   is_anonymous: import_joi.default.boolean().required(),
   location: import_joi.default.string().required(),
   created_by_employee_id: import_joi.default.number().integer().min(1).allow(null),
@@ -18979,17 +18988,17 @@ var voteQuestion = async (questionId, user, isUpVote) => {
 
 // app/controllers/answers/create.js
 init_react();
-var import_moment3 = __toESM(require("moment")), import_constants36 = __toESM(require_constants());
+var import_moment3 = __toESM(require("moment")), import_constants37 = __toESM(require_constants());
 
 // app/utils/backend/validators/answer.js
 init_react();
-var import_joi2 = __toESM(require("joi")), import_constants35 = __toESM(require_constants()), import_joiConstants2 = __toESM(require_joiConstants()), createAnswerSchema = import_joi2.default.object().keys({
-  answer_text: import_joi2.default.string().min(import_constants35.MINIMUM_ANSWER_LENGTH).max(import_constants35.MAXIMUM_ANSWER_LENGTH).required(),
+var import_joi2 = __toESM(require("joi")), import_constants36 = __toESM(require_constants()), import_joiConstants2 = __toESM(require_joiConstants()), createAnswerSchema = import_joi2.default.object().keys({
+  answer_text: import_joi2.default.string().min(import_constants36.MINIMUM_ANSWER_LENGTH).max(import_constants36.MAXIMUM_ANSWER_LENGTH).required(),
   answered_by_employee_id: import_joiConstants2.JOI_ID_VALIDATION,
   answered_question_id: import_joiConstants2.JOI_ID_VALIDATION
 }), updateAnswerSchema = import_joi2.default.object().keys({
   answer_id: import_joiConstants2.JOI_ID_VALIDATION,
-  answer_text: import_joi2.default.string().min(import_constants35.MINIMUM_ANSWER_LENGTH).max(import_constants35.MAXIMUM_ANSWER_LENGTH).required()
+  answer_text: import_joi2.default.string().min(import_constants36.MINIMUM_ANSWER_LENGTH).max(import_constants36.MAXIMUM_ANSWER_LENGTH).required()
 }), deleteAnswerSchema = import_joi2.default.object().keys({
   answer_id: import_joiConstants2.JOI_ID_VALIDATION
 }), npsSchema = import_joi2.default.object().keys({
@@ -19111,12 +19120,12 @@ var createAnswer = async (body) => {
   let { error, value } = createAnswerSchema.validate(body);
   if (error)
     return {
-      error: { message: import_constants36.DEFAULT_ERROR_MESSAGE, detail: error.message }
+      error: { message: import_constants37.DEFAULT_ERROR_MESSAGE, detail: error.message }
     };
   let _a = value, { answered_by_employee_id, answered_question_id } = _a, rest = __objRest(_a, ["answered_by_employee_id", "answered_question_id"]), answer = await db.Answers.create({
     data: __spreadProps(__spreadValues({}, rest), {
       answer_text: sanitizer_default(value.answer_text),
-      answer_date: import_moment3.default.utc().format(import_constants36.DATE_TIME_FORMAT),
+      answer_date: import_moment3.default.utc().format(import_constants37.DATE_TIME_FORMAT),
       AnsweredBy: {
         connect: {
           employee_id: answered_by_employee_id
@@ -19145,12 +19154,12 @@ var createAnswer = async (body) => {
 
 // app/controllers/answers/update.js
 init_react();
-var import_moment4 = __toESM(require("moment")), import_constants37 = __toESM(require_constants());
+var import_moment4 = __toESM(require("moment")), import_constants38 = __toESM(require_constants());
 var updateAnswer = async (query) => {
   let { error, value } = updateAnswerSchema.validate(query), { answer_id, answer_text } = value;
   if (error)
     return {
-      error: { message: import_constants37.DEFAULT_ERROR_MESSAGE, detail: error.details }
+      error: { message: import_constants38.DEFAULT_ERROR_MESSAGE, detail: error.details }
     };
   let updatedAnswer = await db.Answers.update({
     where: {
@@ -19158,8 +19167,8 @@ var updateAnswer = async (query) => {
     },
     data: {
       answer_text,
-      answer_date: import_moment4.default.utc().format(import_constants37.DATE_TIME_FORMAT),
-      updatedAt: import_moment4.default.utc().format(import_constants37.DATE_TIME_FORMAT)
+      answer_date: import_moment4.default.utc().format(import_constants38.DATE_TIME_FORMAT),
+      updatedAt: import_moment4.default.utc().format(import_constants38.DATE_TIME_FORMAT)
     }
   });
   return {
@@ -19170,11 +19179,11 @@ var updateAnswer = async (query) => {
 
 // app/controllers/answers/delete.js
 init_react();
-var import_constants38 = __toESM(require_constants());
+var import_constants39 = __toESM(require_constants());
 var deleteAnswer = async (query) => {
   let { error, value } = deleteAnswerSchema.validate(query), { answer_id } = value;
   return error ? {
-    error: { message: import_constants38.DEFAULT_ERROR_MESSAGE, detail: error.details }
+    error: { message: import_constants39.DEFAULT_ERROR_MESSAGE, detail: error.details }
   } : (await db.Nps.deleteMany({
     where: {
       answer_id
@@ -19275,12 +19284,12 @@ ${sortBy === "votes" ? import_client2.Prisma.sql`ORDER BY approvedBy DESC, votes
 
 // app/controllers/comments/create.js
 init_react();
-var import_constants41 = __toESM(require_constants());
+var import_constants42 = __toESM(require_constants());
 
 // app/utils/backend/validators/comment.js
 init_react();
-var import_joi3 = __toESM(require("joi")), import_constants40 = __toESM(require_constants()), import_joiConstants3 = __toESM(require_joiConstants());
-var COMMENT_VALIDATION = import_joi3.default.string().min(import_constants40.MINIMUM_COMMENT_LENGTH).max(3e3).required(), createCommentSchema = import_joi3.default.object().keys({
+var import_joi3 = __toESM(require("joi")), import_constants41 = __toESM(require_constants()), import_joiConstants3 = __toESM(require_joiConstants());
+var COMMENT_VALIDATION = import_joi3.default.string().min(import_constants41.MINIMUM_COMMENT_LENGTH).max(3e3).required(), createCommentSchema = import_joi3.default.object().keys({
   questionId: import_joiConstants3.JOI_ID_VALIDATION,
   comment: COMMENT_VALIDATION,
   isAnonymous: import_joi3.default.boolean(),
@@ -19297,7 +19306,7 @@ var createComment = async (data) => {
   if (error)
     return {
       error: {
-        message: import_constants41.DEFAULT_ERROR_MESSAGE,
+        message: import_constants42.DEFAULT_ERROR_MESSAGE,
         detail: error
       }
     };
@@ -19343,11 +19352,11 @@ var createComment = async (data) => {
 
 // app/controllers/comments/update.js
 init_react();
-var import_constants44 = __toESM(require_constants());
+var import_constants45 = __toESM(require_constants());
 
 // app/utils/backend/validators/comments.js
 init_react();
-var import_joi4 = __toESM(require("joi")), import_joiConstants4 = __toESM(require_joiConstants()), import_constants43 = __toESM(require_constants()), EMAIL_VALIDATION = import_joi4.default.string().email().allow(null), SIMPLE_INTEGER_VALIDATION = import_joi4.default.number().integer(), getCommentsSchema = import_joi4.default.object().keys({
+var import_joi4 = __toESM(require("joi")), import_joiConstants4 = __toESM(require_joiConstants()), import_constants44 = __toESM(require_constants()), EMAIL_VALIDATION = import_joi4.default.string().email().allow(null), SIMPLE_INTEGER_VALIDATION = import_joi4.default.number().integer(), getCommentsSchema = import_joi4.default.object().keys({
   questionId: import_joiConstants4.JOI_ID_VALIDATION,
   limit: SIMPLE_INTEGER_VALIDATION,
   offset: SIMPLE_INTEGER_VALIDATION,
@@ -19357,7 +19366,7 @@ var import_joi4 = __toESM(require("joi")), import_joiConstants4 = __toESM(requir
   sortBy: import_joiConstants4.JOI_SIMPLE_STRING_VALIDATION
 }), updateCommentSchema = import_joi4.default.object().keys({
   commentId: import_joiConstants4.JOI_ID_VALIDATION,
-  comment: import_joi4.default.string().min(import_constants43.MINIMUM_COMMENT_LENGTH).max(import_constants43.MAXIMUM_COMMENT_LENGTH).required(),
+  comment: import_joi4.default.string().min(import_constants44.MINIMUM_COMMENT_LENGTH).max(import_constants44.MAXIMUM_COMMENT_LENGTH).required(),
   accessToken: import_joi4.default.string().required(),
   userEmail: EMAIL_VALIDATION
 }), deleteCommentSchema = import_joi4.default.object().keys({
@@ -19416,7 +19425,7 @@ var updateComment = async (body) => {
   });
   return updateCommentResponse.count === void 0 || typeof updateCommentResponse.count != "number" ? {
     error: {
-      message: import_constants44.DEFAULT_ERROR_MESSAGE,
+      message: import_constants45.DEFAULT_ERROR_MESSAGE,
       detail: "Something went wrong trying to update the comment"
     }
   } : updateCommentResponse.count === 0 ? {
@@ -19436,7 +19445,7 @@ var updateComment = async (body) => {
 
 // app/controllers/commentVotes/voteComment.js
 init_react();
-var import_constants46 = __toESM(require_constants());
+var import_constants47 = __toESM(require_constants());
 
 // app/utils/backend/validators/commentVote.js
 init_react();
@@ -19456,7 +19465,7 @@ var transformValue = (value) => {
 }, findCommentVote = async (query) => {
   let { error, value } = commentVoteExistsSchema.validate(query), { comment_id, user } = value;
   return error ? {
-    error: { message: import_constants46.DEFAULT_ERROR_MESSAGE, detail: error.details }
+    error: { message: import_constants47.DEFAULT_ERROR_MESSAGE, detail: error.details }
   } : await db.CommentVote.findFirst({
     where: {
       comment_id,
@@ -19467,7 +19476,7 @@ var transformValue = (value) => {
   let { error, value } = commentVoteSchema.validate(query), { comment_id, user, value: newValue } = value;
   if (error)
     return {
-      error: { message: import_constants46.DEFAULT_ERROR_MESSAGE, detail: error.details }
+      error: { message: import_constants47.DEFAULT_ERROR_MESSAGE, detail: error.details }
     };
   let foundCommentVote = await findCommentVote({ comment_id, user });
   if (foundCommentVote) {
@@ -19494,7 +19503,7 @@ var transformValue = (value) => {
 
 // app/controllers/comments/delete.js
 init_react();
-var import_constants47 = __toESM(require_constants());
+var import_constants48 = __toESM(require_constants());
 var deleteComment = async (body) => {
   let { error, value } = deleteCommentSchema.validate(body);
   if (error)
@@ -19531,7 +19540,7 @@ var deleteComment = async (body) => {
   });
   return deleteCommentResponse.count === void 0 || typeof deleteCommentResponse.count != "number" ? {
     error: {
-      message: import_constants47.DEFAULT_ERROR_MESSAGE,
+      message: import_constants48.DEFAULT_ERROR_MESSAGE,
       detail: "Something went wrong trying to delete the comment"
     }
   } : deleteCommentResponse.count === 0 ? {
@@ -19571,12 +19580,12 @@ var import_joi6 = __toESM(require("joi")), import_joiConstants6 = __toESM(requir
 });
 
 // app/controllers/answers/nps/create.js
-var import_constants49 = __toESM(require_constants());
+var import_constants50 = __toESM(require_constants());
 var createNPS = async (params) => {
   let { error, value } = createNPSSchema.validate(params);
   if (error)
     return {
-      errors: [{ message: import_constants49.DEFAULT_ERROR_MESSAGE, detail: error.details }]
+      errors: [{ message: import_constants50.DEFAULT_ERROR_MESSAGE, detail: error.details }]
     };
   try {
     let { score, answer_id, user } = value, npmCreated = await db.Nps.create({
@@ -19611,7 +19620,7 @@ var createNPS = async (params) => {
 
 // app/controllers/comments/approvedBy.js
 init_react();
-var import_constants51 = __toESM(require_constants());
+var import_constants52 = __toESM(require_constants());
 var approvedByComment = async (params) => {
   let { error, value } = approvedByCommentSchema.validate(params);
   if (error)
@@ -19647,8 +19656,8 @@ var approvedByComment = async (params) => {
     return {
       errors: [
         {
-          message: import_constants51.COMMENT_AS_AN_ANSWER,
-          detail: import_constants51.COMMENT_AS_AN_ANSWER
+          message: import_constants52.COMMENT_AS_AN_ANSWER,
+          detail: import_constants52.COMMENT_AS_AN_ANSWER
         }
       ]
     };
@@ -19658,7 +19667,7 @@ var approvedByComment = async (params) => {
   });
   return isEmptyObject(commentUpdated) ? {
     error: {
-      message: import_constants51.DEFAULT_ERROR_MESSAGE,
+      message: import_constants52.DEFAULT_ERROR_MESSAGE,
       detail: "Something went wrong trying to update the comment"
     }
   } : {
@@ -19669,11 +19678,11 @@ var approvedByComment = async (params) => {
 
 // app/controllers/questions/assignQuestion.js
 init_react();
-var import_constants52 = __toESM(require_constants());
+var import_constants53 = __toESM(require_constants());
 var assignQuestion = async (query) => {
   let { error, value } = assignQuestionSchema.validate(query), { question_id, assigned_department } = value;
   if (error)
-    return { errors: [{ message: import_constants52.DEFAULT_ERROR_MESSAGE, detail: error.details }] };
+    return { errors: [{ message: import_constants53.DEFAULT_ERROR_MESSAGE, detail: error.details }] };
   try {
     let assignedQuestion = await db.Questions.update({
       where: { question_id },
@@ -19701,12 +19710,12 @@ var listDepartments = async () => await db.Departments.findMany({}), list_defaul
 
 // app/controllers/answers/nps/delete.js
 init_react();
-var import_constants54 = __toESM(require_constants());
+var import_constants55 = __toESM(require_constants());
 var deleteNPS = async (params) => {
   let { error, value } = deleteNPSSchema.validate(params);
   if (error)
     return {
-      errors: [{ message: import_constants54.DEFAULT_ERROR_MESSAGE, detail: error.details }]
+      errors: [{ message: import_constants55.DEFAULT_ERROR_MESSAGE, detail: error.details }]
     };
   let { id, user } = value;
   try {
@@ -19905,7 +19914,7 @@ __export(new_exports, {
   loader: () => loader4
 });
 init_react();
-var import_react80 = __toESM(require("react")), import_bs5 = require("react-icons/bs"), import_node4 = require("@remix-run/node"), import_react81 = require("@remix-run/react");
+var import_react81 = __toESM(require("react")), import_bs5 = require("react-icons/bs"), import_node4 = require("@remix-run/node"), import_react82 = require("@remix-run/react");
 
 // app/styles/CreateQuestion.Styled.jsx
 init_react();
@@ -19996,7 +20005,7 @@ function Slogan() {
 var Slogan_default = Slogan;
 
 // app/routes/questions/new.jsx
-var import_constants68 = __toESM(require_constants());
+var import_constants73 = __toESM(require_constants());
 
 // app/components/QuestionForm/index.js
 init_react();
@@ -20522,7 +20531,7 @@ var QuestionTextAreaWrapper = import_styled_components41.default.div`
 `;
 
 // app/components/QuestionTextArea/QuestionTextArea.jsx
-var import_constants60 = __toESM(require_constants());
+var import_constants61 = __toESM(require_constants());
 function QuestionTextArea({
   editorState,
   setEditorState,
@@ -20542,7 +20551,7 @@ function QuestionTextArea({
     }
   };
   return /* @__PURE__ */ import_react72.default.createElement(QuestionTextAreaWrapper, null, /* @__PURE__ */ import_react72.default.createElement(import_remix_utils.ClientOnly, null, () => /* @__PURE__ */ import_react72.default.createElement(import_react_draft_wysiwyg2.Editor, {
-    placeholder: inputPlaceholder(import_constants60.MINIMUM_QUESTION_LENGTH),
+    placeholder: inputPlaceholder(import_constants61.MINIMUM_QUESTION_LENGTH),
     editorState,
     onEditorStateChange: setEditorState,
     wrapperClassName: "demo-wrapper",
@@ -21063,7 +21072,7 @@ var QuestionForm_default = QuestionForm;
 
 // app/controllers/questions/create.js
 init_react();
-var import_constants62 = __toESM(require_constants());
+var import_constants63 = __toESM(require_constants());
 var import_slackConstants2 = __toESM(require_slackConstants());
 init_emailConstants();
 
@@ -21078,7 +21087,7 @@ var import_emailHandler = __toESM(require_emailHandler()), createQuestion = asyn
     return {
       errors: [
         {
-          message: import_constants62.DEFAULT_ERROR_MESSAGE,
+          message: import_constants63.DEFAULT_ERROR_MESSAGE,
           detail: error
         }
       ]
@@ -21133,25 +21142,25 @@ var import_emailHandler = __toESM(require_emailHandler()), createQuestion = asyn
 
 // app/controllers/answerBot/create.js
 init_react();
-var import_constants64 = __toESM(require_constants());
+var import_constants65 = __toESM(require_constants());
 
 // app/utils/backend/validators/answerBot.js
 init_react();
-var import_joi8 = __toESM(require("joi")), import_constants63 = __toESM(require_constants()), createBotSchema = import_joi8.default.object().keys({
-  question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
-  answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
+var import_joi8 = __toESM(require("joi")), import_constants64 = __toESM(require_constants()), createBotSchema = import_joi8.default.object().keys({
+  question_by_user: import_joi8.default.string().min(import_constants64.MINIMUM_QUESTION_LENGTH).max(import_constants64.MAXIMUM_QUESTION_LENGTH).required(),
+  answer_by_bot: import_joi8.default.string().min(import_constants64.MINIMUM_ANSWER_LENGTH).max(import_constants64.MAXIMUM_ANSWER_LENGTH).required(),
   assigned_department: import_joi8.default.number().integer().min(1).allow(null),
   user_id: import_joi8.default.number().integer().min(1).allow(null)
 }), modifyFeedbackBotSchema = import_joi8.default.object().keys({
-  question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
-  answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
+  question_by_user: import_joi8.default.string().min(import_constants64.MINIMUM_QUESTION_LENGTH).max(import_constants64.MAXIMUM_QUESTION_LENGTH).required(),
+  answer_by_bot: import_joi8.default.string().min(import_constants64.MINIMUM_ANSWER_LENGTH).max(import_constants64.MAXIMUM_ANSWER_LENGTH).required(),
   answerFeedback: import_joi8.default.number().integer().min(-1).max(1).required(),
   assigned_department: import_joi8.default.number().integer().min(1).allow(null),
   user_id: import_joi8.default.number().integer().min(1).allow(null)
 }), modifyBotPostQuestion = import_joi8.default.object().keys({
   postQuestionID: import_joi8.default.number().integer().min(1).allow(null),
-  question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
-  answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
+  question_by_user: import_joi8.default.string().min(import_constants64.MINIMUM_QUESTION_LENGTH).max(import_constants64.MAXIMUM_QUESTION_LENGTH).required(),
+  answer_by_bot: import_joi8.default.string().min(import_constants64.MINIMUM_ANSWER_LENGTH).max(import_constants64.MAXIMUM_ANSWER_LENGTH).required(),
   assigned_department: import_joi8.default.number().integer().min(1).allow(null),
   user_id: import_joi8.default.number().integer().min(1).allow(null)
 });
@@ -21161,35 +21170,31 @@ var createAnswerByBot = async (body) => {
   let { error, value } = createBotSchema.validate(body);
   if (error)
     return {
-      errors: [
-        {
-          message: import_constants64.DEFAULT_ERROR_MESSAGE,
-          detail: error
-        }
-      ]
+      error: {
+        message: import_constants65.DEFAULT_ERROR_MESSAGE_CREATE_BOT,
+        detail: error.message
+      }
     };
   let rest = __objRest(value, []), created = await db.AnswerBot.create({
     data: __spreadValues({}, rest)
   });
   return {
-    successMessage: "The question to bot has been created succesfully!",
+    successMessage: CREATED_ANSWEBOT,
     question: created
   };
 }, create_default5 = createAnswerByBot;
 
 // app/controllers/answerBot/modifyFeedback.js
 init_react();
-var import_constants65 = __toESM(require_constants());
+var import_constants67 = __toESM(require_constants());
 var updateFeedback = async (body) => {
   let { error, value } = modifyFeedbackBotSchema.validate(body);
   if (error)
     return {
-      errors: [
-        {
-          message: import_constants65.DEFAULT_ERROR_MESSAGE,
-          detail: error
-        }
-      ]
+      error: {
+        message: import_constants67.DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+        detail: error.message
+      }
     };
   let _a = value, { answerFeedback } = _a, rest = __objRest(_a, ["answerFeedback"]), findFeed = await db.AnswerBot.findFirst({
     where: __spreadValues({
@@ -21201,12 +21206,10 @@ var updateFeedback = async (body) => {
   });
   if (!findFeed)
     return {
-      errors: [
-        {
-          message: import_constants65.DEFAULT_ERROR_MESSAGE,
-          detail: "The record to update the feedback does not exist."
-        }
-      ]
+      error: {
+        message: import_constants67.DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+        detail: "The record to update the feedback does not exist."
+      }
     };
   let updateFeed = await db.AnswerBot.update({
     where: {
@@ -21217,24 +21220,22 @@ var updateFeedback = async (body) => {
     }
   });
   return {
-    successMessage: "The feedback to bot has been updated succesfully!",
+    successMessage: answerFeedback === 1 ? POSITIVE_FEEDBACK_ANSWEBOT : NEGATIVE_FEEDBACK_ANSWEBOT,
     feedback: updateFeed
   };
 }, modifyFeedback_default = updateFeedback;
 
 // app/controllers/answerBot/modifyIDQuestion.js
 init_react();
-var import_constants66 = __toESM(require_constants());
+var import_constants69 = __toESM(require_constants());
 var updatePost = async (body) => {
   let { error, value } = modifyBotPostQuestion.validate(body);
   if (error)
     return {
-      errors: [
-        {
-          message: import_constants66.DEFAULT_ERROR_MESSAGE,
-          detail: error
-        }
-      ]
+      error: {
+        message: import_constants69.DEFAULT_ERROR_MESSAGE_POST_BOT,
+        detail: error.message
+      }
     };
   let _a = value, { postQuestionID } = _a, rest = __objRest(_a, ["postQuestionID"]), findQABot = await db.AnswerBot.findFirst({
     where: __spreadValues({
@@ -21247,12 +21248,10 @@ var updatePost = async (body) => {
   });
   if (!findQABot)
     return {
-      errors: [
-        {
-          message: import_constants66.DEFAULT_ERROR_MESSAGE,
-          detail: "The record to update the link between AnswerBot and Question does not exist."
-        }
-      ]
+      error: {
+        message: import_constants69.DEFAULT_ERROR_MESSAGE_POST_BOT,
+        detail: "The record to update the link between AnswerBot and Question does not exist."
+      }
     };
   let upToDate = await db.AnswerBot.update({
     where: {
@@ -21263,7 +21262,7 @@ var updatePost = async (body) => {
     }
   });
   return {
-    successMessage: "The question has been posted on the forum successfully!",
+    successMessage: POSTED_ANSWEBOT,
     detail: upToDate
   };
 }, modifyIDQuestion_default = updatePost;
@@ -21614,18 +21613,15 @@ var pdfConv = async (conversation) => fetch("http://3.213.188.151:4000/api/pdf_c
 
 // app/components/AnswerBot/AnswerBot.jsx
 var import_prop_types47 = __toESM(require("prop-types"));
+var import_constants72 = __toESM(require_constants());
+var import_react79 = require("@remix-run/react");
 function AnswerBot({
   postAnswerBotQuestion,
   updateAnswerBotFeedback,
   updateAnswerBotPostID,
   departments
 }) {
-  let instructions = `Instructions: Compose a comprehensive reply to the query using the search results given.
- If the search results mention multiple subjects
-with the same name, create separate answers for each. Only include information found in the results and
-don't add any additional information. Make sure the answer is correct and don't output false content.
-If the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.
-`, [messages, setMessages] = (0, import_react78.useState)([{ role: "system", content: instructions }, { role: "system", content: WELCOME_MESSAGE }]), [messagesID, setMessagesID] = (0, import_react78.useState)([{ role: "system", content: instructions, depa: null }, { role: "system", content: WELCOME_MESSAGE, depa: null }]), messagesEndRef = (0, import_react78.useRef)(null), [inputValue, setInputValue] = (0, import_react78.useState)(""), [isWaitingForResponse, setIsWaitingForResponse] = (0, import_react78.useState)(!1), handleInput = async (e) => {
+  let instructions = INSTRUCTIONS_ANSWERBOT, [messages, setMessages] = (0, import_react78.useState)([{ role: "system", content: instructions }, { role: "system", content: WELCOME_MESSAGE }]), [messagesID, setMessagesID] = (0, import_react78.useState)([{ role: "system", content: instructions, depa: null }, { role: "system", content: WELCOME_MESSAGE, depa: null }]), messagesEndRef = (0, import_react78.useRef)(null), [inputValue, setInputValue] = (0, import_react78.useState)(""), [isWaitingForResponse, setIsWaitingForResponse] = (0, import_react78.useState)(!1), handleInput = async (e) => {
     e.preventDefault();
     let input = e.target.querySelector("input"), message = input.value;
     if (message.length > 13) {
@@ -21635,7 +21631,7 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
       let depaName = response.department, department = departments.find((c) => c.name === depaName);
       setMessagesID([...messagesID, { role: "user", content: message, depa: (department == null ? void 0 : department.department_id) || "wizeq" }, { role: "system", content: answer, depa: (department == null ? void 0 : department.department_id) || "wizeq" }]);
       let newQuestion = {
-        question_by_user: message,
+        question_by_user: 1,
         answer_by_bot: answer,
         assignedDepartment: (department == null ? void 0 : department.department_id) || "wizeq"
       };
@@ -21651,51 +21647,103 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
   }, [messages]);
   let [chatbotVisible, setChatbotVisible] = (0, import_react78.useState)(!1), handleChatbotToggle = () => {
     setChatbotVisible(!chatbotVisible);
-  }, [showThanksMessage, setShowThanksMessage] = (0, import_react78.useState)({}), handleLikeClick = async (index2) => {
-    setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-      [index2]: !0
-    }));
+  }, [showThanksMessage, setShowThanksMessage] = (0, import_react78.useState)({}), [indexMessage, setIndexMessage] = (0, import_react78.useState)(null), handleLikeClick = async (index2) => {
+    setIndexMessage(index2);
     let updateFeedback2 = {
       question_by_user: messages[index2].content,
       answer_by_bot: messages[index2 + 1].content,
       answerFeedback: 1,
       assignedDepartment: messagesID[index2].depa
     };
-    await updateAnswerBotFeedback(updateFeedback2), setTimeout(() => {
-      setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-        [index2]: "na"
-      }));
-    }, 2500);
+    await updateAnswerBotFeedback(updateFeedback2), setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+      [index2]: "Loading..."
+    }));
   }, handleDislikeClick = async (index2) => {
-    setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-      [index2]: !0
-    })), setTimeout(() => {
-      setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-        [index2]: "Would you like to share your question with the community?"
-      }));
-    }, 1500);
+    setIndexMessage(index2);
     let updateFeedback2 = {
       question_by_user: messages[index2].content,
       answer_by_bot: messages[index2 + 1].content,
       answerFeedback: -1,
       assignedDepartment: messagesID[index2].depa
     };
-    await updateAnswerBotFeedback(updateFeedback2);
+    await updateAnswerBotFeedback(updateFeedback2), setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+      [index2]: "Loading..."
+    }));
   }, handlePublishQuestion = async (index2) => {
+    setIndexMessage(index2);
     let updatePostID = {
       question: messages[index2].content,
       answer: messages[index2 + 1].content,
       assignedDepartment: messagesID[index2].depa
     };
     await updateAnswerBotPostID(updatePostID), setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-      [index2]: "Your question has been published successfully."
-    })), setTimeout(() => {
-      setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-        [index2]: "na"
-      }));
-    }, 2500);
-  }, profile = useUser_default();
-  return /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(BotButton, {
+      [index2]: "Loading..."
+    }));
+  }, profile = useUser_default(), globalSuccess = useGlobalSuccessMessage_default(), data = (0, import_react79.useActionData)();
+  return (0, import_react78.useEffect)(() => {
+    if (globalSuccess) {
+      switch (globalSuccess) {
+        case POSITIVE_FEEDBACK_ANSWEBOT:
+          setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+            [indexMessage]: !0
+          })), setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+              [indexMessage]: "na"
+            }));
+          }, 2500);
+          break;
+        case NEGATIVE_FEEDBACK_ANSWEBOT:
+          setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+            [indexMessage]: !0
+          })), setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+              [indexMessage]: "Would you like to share your question with the community?"
+            }));
+          }, 1500);
+          break;
+        case POSTED_ANSWEBOT:
+          setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+            [indexMessage]: "Your question has been published successfully."
+          })), setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+              [indexMessage]: "na"
+            }));
+          }, 2500);
+          break;
+        default:
+          break;
+      }
+      setIndexMessage(null);
+    }
+    if (!data)
+      return;
+    let { error } = data;
+    if (error) {
+      switch (error.message) {
+        case import_constants72.DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT:
+          setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+            [indexMessage]: import_constants72.DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT
+          })), setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+              [indexMessage]: !1
+            }));
+          }, 2500);
+          break;
+        case import_constants72.DEFAULT_ERROR_MESSAGE_POST_BOT:
+          setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+            [indexMessage]: import_constants72.DEFAULT_ERROR_MESSAGE_POST_BOT
+          })), setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+              [indexMessage]: "Would you like to share your question with the community?"
+            }));
+          }, 2500);
+          break;
+        default:
+          break;
+      }
+      setIndexMessage(null);
+    }
+  }, [data, globalSuccess]), /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(BotButton, {
     id: "answerbotbutton",
     visible: !chatbotVisible,
     onClick: handleChatbotToggle
@@ -21808,9 +21856,9 @@ var import_styled_components45 = __toESM(require("styled-components")), FAQConta
 `;
 
 // app/components/FAQs/FAQs.jsx
-var import_prop_types48 = __toESM(require("prop-types")), import_react79 = __toESM(require("react"));
+var import_prop_types48 = __toESM(require("prop-types")), import_react80 = __toESM(require("react"));
 function FAQs({ questionsFAQ }) {
-  return /* @__PURE__ */ import_react79.default.createElement(FAQContainer, null, /* @__PURE__ */ import_react79.default.createElement(FAQHeader, null, "FAQ's"), questionsFAQ.map((faq) => /* @__PURE__ */ import_react79.default.createElement(FAQList, null, /* @__PURE__ */ import_react79.default.createElement(Question, {
+  return /* @__PURE__ */ import_react80.default.createElement(FAQContainer, null, /* @__PURE__ */ import_react80.default.createElement(FAQHeader, null, "FAQ's"), questionsFAQ.map((faq) => /* @__PURE__ */ import_react80.default.createElement(FAQList, null, /* @__PURE__ */ import_react80.default.createElement(Question, {
     href: `http://localhost:3000/questions/${faq.question_id}`,
     key: faq.id,
     title: faq.question
@@ -21923,11 +21971,11 @@ var loader4 = async ({ request }) => {
   return (0, import_node4.json)(response);
 };
 function CreateQuestion() {
-  let { questionsFAQ, locations, departments } = (0, import_react81.useLoaderData)(), submit = (0, import_react81.useSubmit)(), formRef = (0, import_react80.useRef)();
-  (0, import_react80.useEffect)(() => {
-    departments.unshift({ name: "I don't know whom to assign it.", department_id: import_constants68.NOT_ASSIGNED_DEPARTMENT_ID });
+  let { questionsFAQ, locations, departments } = (0, import_react82.useLoaderData)(), submit = (0, import_react82.useSubmit)(), formRef = (0, import_react81.useRef)();
+  (0, import_react81.useEffect)(() => {
+    departments.unshift({ name: "I don't know whom to assign it.", department_id: import_constants73.NOT_ASSIGNED_DEPARTMENT_ID });
   }, []);
-  let renderBulletPoint = () => /* @__PURE__ */ import_react80.default.createElement("div", null, /* @__PURE__ */ import_react80.default.createElement(import_bs5.BsCircleFill, {
+  let renderBulletPoint = () => /* @__PURE__ */ import_react81.default.createElement("div", null, /* @__PURE__ */ import_react81.default.createElement(import_bs5.BsCircleFill, {
     color: "var(--color-secondary)",
     size: "7px",
     style: { marginTop: "3px", marginRight: "10px" }
@@ -21956,17 +22004,17 @@ function CreateQuestion() {
       data.set(key, value);
     submit(data, { method: "post", action: "/questions/new" });
   };
-  return /* @__PURE__ */ import_react80.default.createElement(import_react80.default.Fragment, null, /* @__PURE__ */ import_react80.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react80.default.createElement(QuestionDiv, null, /* @__PURE__ */ import_react80.default.createElement(QuestionSlogan, null, /* @__PURE__ */ import_react80.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react80.default.createElement(FAQs_default, {
+  return /* @__PURE__ */ import_react81.default.createElement(import_react81.default.Fragment, null, /* @__PURE__ */ import_react81.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react81.default.createElement(QuestionDiv, null, /* @__PURE__ */ import_react81.default.createElement(QuestionSlogan, null, /* @__PURE__ */ import_react81.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react81.default.createElement(FAQs_default, {
     questionsFAQ
-  })), /* @__PURE__ */ import_react80.default.createElement(QuestionInput, null, /* @__PURE__ */ import_react80.default.createElement(QuestionForm_default, {
-    maximumQuestionLength: import_constants68.MAXIMUM_QUESTION_LENGTH,
-    minimumQuestionLength: import_constants68.MINIMUM_ANSWER_LENGTH,
+  })), /* @__PURE__ */ import_react81.default.createElement(QuestionInput, null, /* @__PURE__ */ import_react81.default.createElement(QuestionForm_default, {
+    maximumQuestionLength: import_constants73.MAXIMUM_QUESTION_LENGTH,
+    minimumQuestionLength: import_constants73.MINIMUM_ANSWER_LENGTH,
     postQuestion,
     locations,
     departments
-  })), /* @__PURE__ */ import_react80.default.createElement(QuestionRecommendations2, null, /* @__PURE__ */ import_react80.default.createElement(RecommendationsContainer2, null, /* @__PURE__ */ import_react80.default.createElement(Recommendations2, null, /* @__PURE__ */ import_react80.default.createElement("span", null, "Things to keep in mind"), RECOMMENDATIONS_QUESTION.map((text5) => /* @__PURE__ */ import_react80.default.createElement("span", {
+  })), /* @__PURE__ */ import_react81.default.createElement(QuestionRecommendations2, null, /* @__PURE__ */ import_react81.default.createElement(RecommendationsContainer2, null, /* @__PURE__ */ import_react81.default.createElement(Recommendations2, null, /* @__PURE__ */ import_react81.default.createElement("span", null, "Things to keep in mind"), RECOMMENDATIONS_QUESTION.map((text5) => /* @__PURE__ */ import_react81.default.createElement("span", {
     key: text5
-  }, renderBulletPoint(), text5)))), /* @__PURE__ */ import_react80.default.createElement(AnswerBot_default, {
+  }, renderBulletPoint(), text5)))), /* @__PURE__ */ import_react81.default.createElement(AnswerBot_default, {
     postAnswerBotQuestion,
     updateAnswerBotFeedback,
     updateAnswerBotPostID,
@@ -22062,7 +22110,7 @@ __export(dashboard_exports, {
   loader: () => loader7
 });
 init_react();
-var import_react83 = __toESM(require("react")), import_node6 = require("@remix-run/node");
+var import_react84 = __toESM(require("react")), import_node6 = require("@remix-run/node");
 
 // app/styles/Dashboard.Styled.jsx
 init_react();
@@ -22263,9 +22311,9 @@ var import_styled_components47 = __toESM(require("styled-components")), MainCont
 `;
 
 // app/components/AdminSideBar/AdminSideBar.jsx
-var import_prop_types49 = __toESM(require("prop-types")), import_react82 = __toESM(require("react"));
+var import_prop_types49 = __toESM(require("prop-types")), import_react83 = __toESM(require("react"));
 function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
-  return /* @__PURE__ */ import_react82.default.createElement(MainContainer2, null, /* @__PURE__ */ import_react82.default.createElement(DepContainer, null, /* @__PURE__ */ import_react82.default.createElement(TitleDep, null, "Departaments"), /* @__PURE__ */ import_react82.default.createElement(ListDep, null, departments.map((item) => /* @__PURE__ */ import_react82.default.createElement(DepSelect, {
+  return /* @__PURE__ */ import_react83.default.createElement(MainContainer2, null, /* @__PURE__ */ import_react83.default.createElement(DepContainer, null, /* @__PURE__ */ import_react83.default.createElement(TitleDep, null, "Departaments"), /* @__PURE__ */ import_react83.default.createElement(ListDep, null, departments.map((item) => /* @__PURE__ */ import_react83.default.createElement(DepSelect, {
     key: item.name,
     "aria-current": item.current ? "page" : void 0,
     onClick: () => handleSelectDepartment(item.department_id),
@@ -22284,7 +22332,7 @@ SideBar.defaultProps = {
 var AdminSideBar_default = SideBar;
 
 // app/routes/dashboard.jsx
-var import_react_bootstrap11 = require("react-bootstrap"), import_react84 = require("@remix-run/react");
+var import_react_bootstrap11 = require("react-bootstrap"), import_react85 = require("@remix-run/react");
 
 // app/utils/dateRangeConversion.js
 init_react();
@@ -22378,8 +22426,8 @@ function Dashboard() {
     questionsOF,
     questionsBot,
     departments
-  } = (0, import_react84.useLoaderData)(), [selectedDepartment, setSelectedDepartment] = (0, import_react83.useState)(departments[0].department_id);
-  return /* @__PURE__ */ import_react83.default.createElement(import_react83.default.Fragment, null, /* @__PURE__ */ import_react83.default.createElement(AdminSideBar_default, {
+  } = (0, import_react85.useLoaderData)(), [selectedDepartment, setSelectedDepartment] = (0, import_react84.useState)(departments[0].department_id);
+  return /* @__PURE__ */ import_react84.default.createElement(import_react84.default.Fragment, null, /* @__PURE__ */ import_react84.default.createElement(AdminSideBar_default, {
     departments,
     selectedDepartment,
     handleSelectDepartment: (department) => {
@@ -22387,59 +22435,59 @@ function Dashboard() {
       let queryParams = new URLSearchParams({ department });
       window.location.search = queryParams.toString();
     }
-  }), /* @__PURE__ */ import_react83.default.createElement(MainContainer, null, /* @__PURE__ */ import_react83.default.createElement(NextContainer, null, /* @__PURE__ */ import_react83.default.createElement(DividerContainer, null, /* @__PURE__ */ import_react83.default.createElement(TopContainers, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "Open Forums"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
+  }), /* @__PURE__ */ import_react84.default.createElement(MainContainer, null, /* @__PURE__ */ import_react84.default.createElement(NextContainer, null, /* @__PURE__ */ import_react84.default.createElement(DividerContainer, null, /* @__PURE__ */ import_react84.default.createElement(TopContainers, null, /* @__PURE__ */ import_react84.default.createElement(ContMargin, null, /* @__PURE__ */ import_react84.default.createElement(Title, null, "Open Forums"), /* @__PURE__ */ import_react84.default.createElement(import_react_bootstrap11.Table, {
     hover: !0
-  }, /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsOF.map((question) => /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
+  }, /* @__PURE__ */ import_react84.default.createElement("tbody", null, questionsOF.map((question) => /* @__PURE__ */ import_react84.default.createElement("tr", null, /* @__PURE__ */ import_react84.default.createElement(Text, {
     key: `questionOP-${question.id}`,
     title: question.question
-  }, question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question), /* @__PURE__ */ import_react83.default.createElement("td", null, /* @__PURE__ */ import_react83.default.createElement(Button3, null, /* @__PURE__ */ import_react83.default.createElement(ButtonText, {
+  }, question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question), /* @__PURE__ */ import_react84.default.createElement("td", null, /* @__PURE__ */ import_react84.default.createElement(Button3, null, /* @__PURE__ */ import_react84.default.createElement(ButtonText, {
     href: `http://localhost:3000/questions/${question.question_id}`,
     key: question.id,
     title: question.question
-  }, "Answer it \u2192"))))))))), /* @__PURE__ */ import_react83.default.createElement(TopContainers, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "Answerbot Feedback"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
+  }, "Answer it \u2192"))))))))), /* @__PURE__ */ import_react84.default.createElement(TopContainers, null, /* @__PURE__ */ import_react84.default.createElement(ContMargin, null, /* @__PURE__ */ import_react84.default.createElement(Title, null, "Answerbot Feedback"), /* @__PURE__ */ import_react84.default.createElement(import_react_bootstrap11.Table, {
     stripped: !0,
     hover: !0
-  }, /* @__PURE__ */ import_react83.default.createElement("thead", null, /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+  }, /* @__PURE__ */ import_react84.default.createElement("thead", null, /* @__PURE__ */ import_react84.default.createElement("tr", null, /* @__PURE__ */ import_react84.default.createElement(TextBold, {
     width: "250"
-  }, "Question"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+  }, "Question"), /* @__PURE__ */ import_react84.default.createElement(TextBold, {
     width: "250"
-  }, "Answer"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+  }, "Answer"), /* @__PURE__ */ import_react84.default.createElement(TextBold, {
     width: "170"
-  }, "Feedback"))), /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsBot.map((question) => /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
+  }, "Feedback"))), /* @__PURE__ */ import_react84.default.createElement("tbody", null, questionsBot.map((question) => /* @__PURE__ */ import_react84.default.createElement("tr", null, /* @__PURE__ */ import_react84.default.createElement(Text, {
     key: `questionAB-${question.id}`,
     title: question.question_by_user
-  }, question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user), /* @__PURE__ */ import_react83.default.createElement(Text, {
+  }, question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user), /* @__PURE__ */ import_react84.default.createElement(Text, {
     key: `answerAB-${question.id}`,
     title: question.answer_by_bot
-  }, question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot), question.answer_feedback === -1 && /* @__PURE__ */ import_react83.default.createElement(TextU, {
+  }, question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot), question.answer_feedback === -1 && /* @__PURE__ */ import_react84.default.createElement(TextU, {
     key: `feedbackAB-${question.id}`
-  }, " Bad "), question.answer_feedback === 0 && /* @__PURE__ */ import_react83.default.createElement(Text, {
+  }, " Bad "), question.answer_feedback === 0 && /* @__PURE__ */ import_react84.default.createElement(Text, {
     key: `feedbackAB-${question.id}`
-  }, " N/A "), question.answer_feedback === 1 && /* @__PURE__ */ import_react83.default.createElement(TextA, {
+  }, " N/A "), question.answer_feedback === 1 && /* @__PURE__ */ import_react84.default.createElement(TextA, {
     key: `feedbackAB-${question.id}`
-  }, " Good ")))))))), /* @__PURE__ */ import_react83.default.createElement(BottomContainer, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "FAQs"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
+  }, " Good ")))))))), /* @__PURE__ */ import_react84.default.createElement(BottomContainer, null, /* @__PURE__ */ import_react84.default.createElement(ContMargin, null, /* @__PURE__ */ import_react84.default.createElement(Title, null, "FAQs"), /* @__PURE__ */ import_react84.default.createElement(import_react_bootstrap11.Table, {
     stripped: !0,
     hover: !0
-  }, /* @__PURE__ */ import_react83.default.createElement("thead", null, /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+  }, /* @__PURE__ */ import_react84.default.createElement("thead", null, /* @__PURE__ */ import_react84.default.createElement("tr", null, /* @__PURE__ */ import_react84.default.createElement(TextBold, {
     width: "330"
-  }, "Question"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+  }, "Question"), /* @__PURE__ */ import_react84.default.createElement(TextBold, {
     width: "170"
-  }, "Department"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+  }, "Department"), /* @__PURE__ */ import_react84.default.createElement(TextBold, {
     width: "170"
-  }, "Date"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+  }, "Date"), /* @__PURE__ */ import_react84.default.createElement(TextBold, {
     width: "170"
-  }, "Status"))), /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsFAQ.map((question) => {
+  }, "Status"))), /* @__PURE__ */ import_react84.default.createElement("tbody", null, questionsFAQ.map((question) => {
     var _a;
-    return /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
+    return /* @__PURE__ */ import_react84.default.createElement("tr", null, /* @__PURE__ */ import_react84.default.createElement(Text, {
       key: `questionFAQ-${question.id}`,
       title: question.question
-    }, question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question), /* @__PURE__ */ import_react83.default.createElement(Text, {
+    }, question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question), /* @__PURE__ */ import_react84.default.createElement(Text, {
       key: `department-${question.id}`
-    }, " ", question.assigned_department !== null ? (_a = departments.find((depa) => depa.department_id === question.assigned_department)) == null ? void 0 : _a.name : "Not Assigned", " "), /* @__PURE__ */ import_react83.default.createElement(Text, {
+    }, " ", question.assigned_department !== null ? (_a = departments.find((depa) => depa.department_id === question.assigned_department)) == null ? void 0 : _a.name : "Not Assigned", " "), /* @__PURE__ */ import_react84.default.createElement(Text, {
       key: `date-${question.id}`
-    }, " ", formatDate(question.createdAt), " "), question.Answers.length > 0 || question.Comments.some((comment) => comment.approvedBy !== null) || question.Comments.some((comment) => comment.CommentVote.length > 0 && comment.CommentVote.some((vote) => vote.value >= 10)) ? /* @__PURE__ */ import_react83.default.createElement(TextA, {
+    }, " ", formatDate(question.createdAt), " "), question.Answers.length > 0 || question.Comments.some((comment) => comment.approvedBy !== null) || question.Comments.some((comment) => comment.CommentVote.length > 0 && comment.CommentVote.some((vote) => vote.value >= 10)) ? /* @__PURE__ */ import_react84.default.createElement(TextA, {
       key: `statusFAQ-${question.id}`
-    }, " Answered ") : /* @__PURE__ */ import_react83.default.createElement(TextU, {
+    }, " Answered ") : /* @__PURE__ */ import_react84.default.createElement(TextU, {
       key: `statusFAQ-${question.id}`
     }, " Unanswered "));
   }))))))));
@@ -22453,11 +22501,11 @@ __export(contact_exports, {
   loader: () => loader8
 });
 init_react();
-var import_react87 = __toESM(require("react")), import_prop_types51 = __toESM(require("prop-types")), import_node7 = require("@remix-run/node");
+var import_react88 = __toESM(require("react")), import_prop_types51 = __toESM(require("prop-types")), import_node7 = require("@remix-run/node");
 
 // app/components/Footer.jsx
 init_react();
-var import_react85 = __toESM(require("react"));
+var import_react86 = __toESM(require("react"));
 
 // app/styles/Contact.Styled.jsx
 init_react();
@@ -22670,7 +22718,7 @@ var FooterDiv = import_styled_components48.default.div`
 `;
 
 // app/components/Footer.jsx
-var Footer = class extends import_react85.Component {
+var Footer = class extends import_react86.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22678,7 +22726,7 @@ var Footer = class extends import_react85.Component {
     };
   }
   render() {
-    return /* @__PURE__ */ import_react85.default.createElement(FooterDiv, null, /* @__PURE__ */ import_react85.default.createElement(FooterContainer, null, /* @__PURE__ */ import_react85.default.createElement(FooterLink, {
+    return /* @__PURE__ */ import_react86.default.createElement(FooterDiv, null, /* @__PURE__ */ import_react86.default.createElement(FooterContainer, null, /* @__PURE__ */ import_react86.default.createElement(FooterLink, {
       href: this.state.wizeQTeamUrl,
       target: "_blank",
       rel: "noopener noreferrer"
@@ -22687,14 +22735,14 @@ var Footer = class extends import_react85.Component {
 }, Footer_default = Footer;
 
 // app/images/ic_email.svg
-var ic_email_default = "/build/_assets/ic_email-HBLCPGEV.svg";
+var ic_email_default = "/build/_assets/ic_email-7QFLTJKH.svg";
 
 // app/images/ic_slack.svg
-var ic_slack_default = "/build/_assets/ic_slack-IQPOSSZZ.svg";
+var ic_slack_default = "/build/_assets/ic_slack-AAKJHCWL.svg";
 
 // app/components/ContactGoto.jsx
 init_react();
-var import_react86 = __toESM(require("react")), import_prop_types50 = __toESM(require("prop-types"));
+var import_react87 = __toESM(require("react")), import_prop_types50 = __toESM(require("prop-types"));
 function ContactGoto(props) {
   let {
     icon,
@@ -22702,9 +22750,9 @@ function ContactGoto(props) {
     goto,
     dir
   } = props;
-  return /* @__PURE__ */ import_react86.default.createElement(ContactInputGoTo, null, /* @__PURE__ */ import_react86.default.createElement(ContactInputGoToImg, {
+  return /* @__PURE__ */ import_react87.default.createElement(ContactInputGoTo, null, /* @__PURE__ */ import_react87.default.createElement(ContactInputGoToImg, {
     src: icon
-  }), /* @__PURE__ */ import_react86.default.createElement(ContactInputGoToP, null, text5), /* @__PURE__ */ import_react86.default.createElement(ContactInputGoToA, {
+  }), /* @__PURE__ */ import_react87.default.createElement(ContactInputGoToP, null, text5), /* @__PURE__ */ import_react87.default.createElement(ContactInputGoToA, {
     href: dir,
     target: "_blank",
     rel: "noopener noreferrer"
@@ -22728,14 +22776,14 @@ var loader8 = async ({ request }) => (await requireAuth(request), (0, import_nod
   isSubmitted: !1
 };
 function Contact(props) {
-  let { full_name: name, email } = useUser_default(), [state, setState] = (0, import_react87.useState)(initialState), resetForm = () => {
+  let { full_name: name, email } = useUser_default(), [state, setState] = (0, import_react88.useState)(initialState), resetForm = () => {
     setState(initialState);
   }, handleContactClick = () => {
     resetForm();
-  }, renderSuccessMessage = () => /* @__PURE__ */ import_react87.default.createElement(SuccessDiv, null, /* @__PURE__ */ import_react87.default.createElement("p", null, "Thanks for contacting us! We will review your feedback shortly."), /* @__PURE__ */ import_react87.default.createElement("p", null, "Click", " ", /* @__PURE__ */ import_react87.default.createElement("button", {
+  }, renderSuccessMessage = () => /* @__PURE__ */ import_react88.default.createElement(SuccessDiv, null, /* @__PURE__ */ import_react88.default.createElement("p", null, "Thanks for contacting us! We will review your feedback shortly."), /* @__PURE__ */ import_react88.default.createElement("p", null, "Click", " ", /* @__PURE__ */ import_react88.default.createElement("button", {
     type: "button",
     onClick: handleContactClick
-  }, " here "), " ", "to contact us again."), /* @__PURE__ */ import_react87.default.createElement("p", null, "Cheers,", /* @__PURE__ */ import_react87.default.createElement("br", null), " ", "The WizeQ team!")), renderOptionsList = () => CONTACT_REASONS_LIST.map((options) => /* @__PURE__ */ import_react87.default.createElement("option", {
+  }, " here "), " ", "to contact us again."), /* @__PURE__ */ import_react88.default.createElement("p", null, "Cheers,", /* @__PURE__ */ import_react88.default.createElement("br", null), " ", "The WizeQ team!")), renderOptionsList = () => CONTACT_REASONS_LIST.map((options) => /* @__PURE__ */ import_react88.default.createElement("option", {
     value: options.value,
     key: options.value
   }, options.reason)), onInputChange = (event) => {
@@ -22774,30 +22822,30 @@ function Contact(props) {
     }
   }, renderContactForm = () => {
     let firstName = name ? name.split(" ")[0] : "";
-    return /* @__PURE__ */ import_react87.default.createElement(ContactForm, {
+    return /* @__PURE__ */ import_react88.default.createElement(ContactForm, {
       onSubmit
-    }, /* @__PURE__ */ import_react87.default.createElement(ContactFormP, null, "Hi\xA0", /* @__PURE__ */ import_react87.default.createElement("strong", null, firstName), "!", /* @__PURE__ */ import_react87.default.createElement("br", null), "Send us a message!"), /* @__PURE__ */ import_react87.default.createElement(ContactSelect, {
+    }, /* @__PURE__ */ import_react88.default.createElement(ContactFormP, null, "Hi\xA0", /* @__PURE__ */ import_react88.default.createElement("strong", null, firstName), "!", /* @__PURE__ */ import_react88.default.createElement("br", null), "Send us a message!"), /* @__PURE__ */ import_react88.default.createElement(ContactSelect, {
       name: "reason",
       onChange: onInputChange
-    }, renderOptionsList()), /* @__PURE__ */ import_react87.default.createElement(ContactTextArea, {
+    }, renderOptionsList()), /* @__PURE__ */ import_react88.default.createElement(ContactTextArea, {
       name: "message",
       placeholder: state.placeholders.message,
       onChange: onInputChange
-    }), /* @__PURE__ */ import_react87.default.createElement(BtnContainer, null, /* @__PURE__ */ import_react87.default.createElement(SubmitBtn, {
+    }), /* @__PURE__ */ import_react88.default.createElement(BtnContainer, null, /* @__PURE__ */ import_react88.default.createElement(SubmitBtn, {
       type: "submit"
     }, "Submit")));
   };
-  return /* @__PURE__ */ import_react87.default.createElement(ContactCardDiv, null, /* @__PURE__ */ import_react87.default.createElement(ContactInputHeader, null, /* @__PURE__ */ import_react87.default.createElement(ContactInputHeaderH1, null, "Contact Us"), /* @__PURE__ */ import_react87.default.createElement(ContactInputHeaderH2, null, "We are here for you!"), /* @__PURE__ */ import_react87.default.createElement(ContactInputHeaderP, null, "We\u2019d love to hear from you, please let us know what you think and get in touch with us.", " "), /* @__PURE__ */ import_react87.default.createElement(ContactInputSitesDiv, null, /* @__PURE__ */ import_react87.default.createElement(ContactGoto_default, {
+  return /* @__PURE__ */ import_react88.default.createElement(ContactCardDiv, null, /* @__PURE__ */ import_react88.default.createElement(ContactInputHeader, null, /* @__PURE__ */ import_react88.default.createElement(ContactInputHeaderH1, null, "Contact Us"), /* @__PURE__ */ import_react88.default.createElement(ContactInputHeaderH2, null, "We are here for you!"), /* @__PURE__ */ import_react88.default.createElement(ContactInputHeaderP, null, "We\u2019d love to hear from you, please let us know what you think and get in touch with us.", " "), /* @__PURE__ */ import_react88.default.createElement(ContactInputSitesDiv, null, /* @__PURE__ */ import_react88.default.createElement(ContactGoto_default, {
     icon: ic_email_default,
     text: "Email us at",
     goto: "wizeq@wizeline.com",
     dir: "mailto:wizeq@wizeline.com"
-  }), /* @__PURE__ */ import_react87.default.createElement(ContactGoto_default, {
+  }), /* @__PURE__ */ import_react88.default.createElement(ContactGoto_default, {
     icon: ic_slack_default,
     text: "Slack us at",
     goto: "#wize-q-support",
     dir: "https://wizeline.slack.com/messages/C6M652THT"
-  }))), /* @__PURE__ */ import_react87.default.createElement(ContactInputDiv, null, (() => state.isSubmitted ? state.isSubmitted ? renderSuccessMessage() : null : renderContactForm())()), /* @__PURE__ */ import_react87.default.createElement(Footer_default, null));
+  }))), /* @__PURE__ */ import_react88.default.createElement(ContactInputDiv, null, (() => state.isSubmitted ? state.isSubmitted ? renderSuccessMessage() : null : renderContactForm())()), /* @__PURE__ */ import_react88.default.createElement(Footer_default, null));
 }
 Contact.propTypes = {
   sendContact: import_prop_types51.default.func.isRequired,
@@ -22811,7 +22859,7 @@ __export(example_exports, {
   default: () => example_default
 });
 init_react();
-var import_react88 = __toESM(require("react")), import_styled_components49 = __toESM(require("styled-components")), ChatbotContainer2 = import_styled_components49.default.div`
+var import_react89 = __toESM(require("react")), import_styled_components49 = __toESM(require("styled-components")), ChatbotContainer2 = import_styled_components49.default.div`
   position: fixed;
   bottom: 0px;
   right: 0px;
@@ -22930,7 +22978,7 @@ var import_react88 = __toESM(require("react")), import_styled_components49 = __t
   }
 `;
 function Chatbot() {
-  let messagesEndRef = (0, import_react88.useRef)(null), [messages, setMessages] = (0, import_react88.useState)([
+  let messagesEndRef = (0, import_react89.useRef)(null), [messages, setMessages] = (0, import_react89.useState)([
     { text: "Hola", user: !1 },
     { text: "Hola, \xBFc\xF3mo est\xE1s?", user: !0 },
     { text: "Estoy bien, gracias. \xBFY t\xFA?", user: !1 },
@@ -22943,43 +22991,43 @@ function Chatbot() {
     let input = e.target.querySelector("input"), message = input.value;
     setMessages([...messages, { text: message, user: !0 }]), input.value = "";
   };
-  (0, import_react88.useEffect)(() => {
+  (0, import_react89.useEffect)(() => {
     (() => {
       messagesEndRef.current && messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     })(), messagesEndRef.current && messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-  let [chatbotVisible, setChatbotVisible] = (0, import_react88.useState)(!1), handleChatbotToggle = () => {
+  let [chatbotVisible, setChatbotVisible] = (0, import_react89.useState)(!1), handleChatbotToggle = () => {
     setChatbotVisible(!chatbotVisible);
   };
-  return /* @__PURE__ */ import_react88.default.createElement("div", null, /* @__PURE__ */ import_react88.default.createElement("button", {
+  return /* @__PURE__ */ import_react89.default.createElement("div", null, /* @__PURE__ */ import_react89.default.createElement("button", {
     type: "button",
     onClick: handleChatbotToggle
-  }, " Mostrar chatbot "), /* @__PURE__ */ import_react88.default.createElement(ChatbotContainer2, {
+  }, " Mostrar chatbot "), /* @__PURE__ */ import_react89.default.createElement(ChatbotContainer2, {
     visible: chatbotVisible
-  }, /* @__PURE__ */ import_react88.default.createElement(ChatbotHeader2, null, /* @__PURE__ */ import_react88.default.createElement(IconBot2, {
+  }, /* @__PURE__ */ import_react89.default.createElement(ChatbotHeader2, null, /* @__PURE__ */ import_react89.default.createElement(IconBot2, {
     style: { position: "absolute" }
-  }), /* @__PURE__ */ import_react88.default.createElement(BotName2, null, " AnswerBot "), /* @__PURE__ */ import_react88.default.createElement(CloseButton3, {
+  }), /* @__PURE__ */ import_react89.default.createElement(BotName2, null, " AnswerBot "), /* @__PURE__ */ import_react89.default.createElement(CloseButton3, {
     onClick: handleChatbotToggle
-  }, " \u2715 ")), /* @__PURE__ */ import_react88.default.createElement(ChatbotMessages2, null, messages.map((message) => message.user ? /* @__PURE__ */ import_react88.default.createElement(ChatbotRowMessage2, {
+  }, " \u2715 ")), /* @__PURE__ */ import_react89.default.createElement(ChatbotMessages2, null, messages.map((message) => message.user ? /* @__PURE__ */ import_react89.default.createElement(ChatbotRowMessage2, {
     style: { justifyContent: "flex-end" }
-  }, /* @__PURE__ */ import_react88.default.createElement(Message2, {
+  }, /* @__PURE__ */ import_react89.default.createElement(Message2, {
     key: `message ${message.id}`,
     className: "user",
     ref: messagesEndRef
-  }, " ", message.text, " "), /* @__PURE__ */ import_react88.default.createElement(IconUser2, {
+  }, " ", message.text, " "), /* @__PURE__ */ import_react89.default.createElement(IconUser2, {
     src: "/build/_assets/placeholder_user_img-ZWAQNLBE.png"
-  })) : /* @__PURE__ */ import_react88.default.createElement(ChatbotRowMessage2, {
+  })) : /* @__PURE__ */ import_react89.default.createElement(ChatbotRowMessage2, {
     style: { justifyContent: "flex-start" }
-  }, /* @__PURE__ */ import_react88.default.createElement(IconBot2, null), /* @__PURE__ */ import_react88.default.createElement(Message2, {
+  }, /* @__PURE__ */ import_react89.default.createElement(IconBot2, null), /* @__PURE__ */ import_react89.default.createElement(Message2, {
     key: `message ${message.id}`,
     className: "bot",
     ref: messagesEndRef
-  }, " ", message.text, " ")))), /* @__PURE__ */ import_react88.default.createElement(ChatbotInput2, {
+  }, " ", message.text, " ")))), /* @__PURE__ */ import_react89.default.createElement(ChatbotInput2, {
     onSubmit: handleInput
-  }, /* @__PURE__ */ import_react88.default.createElement(Input4, {
+  }, /* @__PURE__ */ import_react89.default.createElement(Input4, {
     type: "text",
     placeholder: "Enter your question..."
-  }), /* @__PURE__ */ import_react88.default.createElement(Button4, {
+  }), /* @__PURE__ */ import_react89.default.createElement(Button4, {
     type: "submit"
   }))));
 }
@@ -23002,7 +23050,7 @@ __export(about_exports, {
   loader: () => loader10
 });
 init_react();
-var import_react89 = __toESM(require("react")), import_node9 = require("@remix-run/node");
+var import_react90 = __toESM(require("react")), import_node9 = require("@remix-run/node");
 
 // app/styles/About.Styled.jsx
 init_react();
@@ -23198,35 +23246,35 @@ margin-right: 8px;
 `;
 
 // app/images/ic_meeting.svg
-var ic_meeting_default = "/build/_assets/ic_meeting-Q6VQZ7JB.svg";
+var ic_meeting_default = "/build/_assets/ic_meeting-V5Q4K7AR.svg";
 
 // app/images/ic_saving_fund.svg
-var ic_saving_fund_default = "/build/_assets/ic_saving_fund-Q3MWXURZ.svg";
+var ic_saving_fund_default = "/build/_assets/ic_saving_fund-YK7RIPNT.svg";
 
 // app/images/ic_dialogue.svg
-var ic_dialogue_default = "/build/_assets/ic_dialogue-IMAMZON2.svg";
+var ic_dialogue_default = "/build/_assets/ic_dialogue-F4DV3F2V.svg";
 
 // app/images/ic_anonymous.svg
-var ic_anonymous_default = "/build/_assets/ic_anonymous-YCAN6UEP.svg";
+var ic_anonymous_default = "/build/_assets/ic_anonymous-HNXSZBQM.svg";
 
 // app/routes/about.jsx
 var loader10 = async ({ request }) => (await requireAuth(request), (0, import_node9.json)({}));
 function About2() {
-  return /* @__PURE__ */ import_react89.default.createElement(About, null, /* @__PURE__ */ import_react89.default.createElement(AboutBody, null, /* @__PURE__ */ import_react89.default.createElement("h1", null, "About Us"), /* @__PURE__ */ import_react89.default.createElement("h2", null, "This is Wizeline Questions"), /* @__PURE__ */ import_react89.default.createElement("p", null, /* @__PURE__ */ import_react89.default.createElement("strong", null, "Wizeline Questions (WizeQ)"), " ", "is a communication space where you can express your ideas, learn more about Wizeline, and ask all kinds of questions."), /* @__PURE__ */ import_react89.default.createElement("p", null, "Wizeline Questions is a knowledge base where you can ask for information to a specific department and allow other Wizeliners to benefit from it. For example:"), /* @__PURE__ */ import_react89.default.createElement(BoxWrapper, null, /* @__PURE__ */ import_react89.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImage, {
+  return /* @__PURE__ */ import_react90.default.createElement(About, null, /* @__PURE__ */ import_react90.default.createElement(AboutBody, null, /* @__PURE__ */ import_react90.default.createElement("h1", null, "About Us"), /* @__PURE__ */ import_react90.default.createElement("h2", null, "This is Wizeline Questions"), /* @__PURE__ */ import_react90.default.createElement("p", null, /* @__PURE__ */ import_react90.default.createElement("strong", null, "Wizeline Questions (WizeQ)"), " ", "is a communication space where you can express your ideas, learn more about Wizeline, and ask all kinds of questions."), /* @__PURE__ */ import_react90.default.createElement("p", null, "Wizeline Questions is a knowledge base where you can ask for information to a specific department and allow other Wizeliners to benefit from it. For example:"), /* @__PURE__ */ import_react90.default.createElement(BoxWrapper, null, /* @__PURE__ */ import_react90.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react90.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react90.default.createElement(BoxImage, {
     src: ic_meeting_default
-  }), /* @__PURE__ */ import_react89.default.createElement(BoxBoldText, null, "Are you still having problems with Zoom for your next meeting?")), /* @__PURE__ */ import_react89.default.createElement(BoxMetadata, null, "Check Wizeline Questions, someone might have already asked IT the same question. If that is not the case, this is your chance to shine!")), /* @__PURE__ */ import_react89.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImage, {
+  }), /* @__PURE__ */ import_react90.default.createElement(BoxBoldText, null, "Are you still having problems with Zoom for your next meeting?")), /* @__PURE__ */ import_react90.default.createElement(BoxMetadata, null, "Check Wizeline Questions, someone might have already asked IT the same question. If that is not the case, this is your chance to shine!")), /* @__PURE__ */ import_react90.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react90.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react90.default.createElement(BoxImage, {
     src: ic_saving_fund_default
-  }), /* @__PURE__ */ import_react89.default.createElement(BoxBoldText, null, "Do you want to know more about the savings fund?")), /* @__PURE__ */ import_react89.default.createElement(BoxMetadata, null, "Tag People Ops in your question, other Wizeliners will be glad to learn about that same topic, for sure!"))), /* @__PURE__ */ import_react89.default.createElement(AboutMetadata, null, /* @__PURE__ */ import_react89.default.createElement("p", null, "Information can be easily lost in the flood of comments and pinged posts on Slack. Do you need information to persist?", " ", /* @__PURE__ */ import_react89.default.createElement("strong", null, "Use Wizeline Questions instead!"))), /* @__PURE__ */ import_react89.default.createElement("h3", null, "What else?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseImg, {
+  }), /* @__PURE__ */ import_react90.default.createElement(BoxBoldText, null, "Do you want to know more about the savings fund?")), /* @__PURE__ */ import_react90.default.createElement(BoxMetadata, null, "Tag People Ops in your question, other Wizeliners will be glad to learn about that same topic, for sure!"))), /* @__PURE__ */ import_react90.default.createElement(AboutMetadata, null, /* @__PURE__ */ import_react90.default.createElement("p", null, "Information can be easily lost in the flood of comments and pinged posts on Slack. Do you need information to persist?", " ", /* @__PURE__ */ import_react90.default.createElement("strong", null, "Use Wizeline Questions instead!"))), /* @__PURE__ */ import_react90.default.createElement("h3", null, "What else?"), /* @__PURE__ */ import_react90.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react90.default.createElement(AboutWhatElseImg, {
     src: ic_dialogue_default
-  }), /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseBold, null, "Start a conversation. Is there a topic you want to discuss with other Wizeliners?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseMetadata, null, "This is the place!. You can reply to a question and also hold interesting conversations with other Wizeliners.  Use it as a discussion forum, suggestion what-else, or simply visit to say hello! Help us to keep Wizeline an amazing place!"))), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseImg, {
+  }), /* @__PURE__ */ import_react90.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react90.default.createElement(AboutWHatElseBold, null, "Start a conversation. Is there a topic you want to discuss with other Wizeliners?"), /* @__PURE__ */ import_react90.default.createElement(AboutWhatElseMetadata, null, "This is the place!. You can reply to a question and also hold interesting conversations with other Wizeliners.  Use it as a discussion forum, suggestion what-else, or simply visit to say hello! Help us to keep Wizeline an amazing place!"))), /* @__PURE__ */ import_react90.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react90.default.createElement(AboutWhatElseImg, {
     src: ic_anonymous_default
-  }), /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseBold, null, "Is there a sensitive question you want to ask anonymously?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseMetadata, null, "Ask on Wizeline Questions! To promote ownership and open communication, it displays your user name by default when you post a new question. But you can always opt for anonymity."))), /* @__PURE__ */ import_react89.default.createElement("h3", null, "Things to Keep in Mind When Asking a Question"), /* @__PURE__ */ import_react89.default.createElement("span", null, /* @__PURE__ */ import_react89.default.createElement("p", null, "We value your ideas, questions, suggestions, and comments. Therefore, we encourage you to use this communication space. Please, when writing a new question or a comment follow these recommendations:"), /* @__PURE__ */ import_react89.default.createElement("div", {
+  }), /* @__PURE__ */ import_react90.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react90.default.createElement(AboutWHatElseBold, null, "Is there a sensitive question you want to ask anonymously?"), /* @__PURE__ */ import_react90.default.createElement(AboutWhatElseMetadata, null, "Ask on Wizeline Questions! To promote ownership and open communication, it displays your user name by default when you post a new question. But you can always opt for anonymity."))), /* @__PURE__ */ import_react90.default.createElement("h3", null, "Things to Keep in Mind When Asking a Question"), /* @__PURE__ */ import_react90.default.createElement("span", null, /* @__PURE__ */ import_react90.default.createElement("p", null, "We value your ideas, questions, suggestions, and comments. Therefore, we encourage you to use this communication space. Please, when writing a new question or a comment follow these recommendations:"), /* @__PURE__ */ import_react90.default.createElement("div", {
     style: { textAlign: "justify" }
-  }, /* @__PURE__ */ import_react89.default.createElement("ul", null, /* @__PURE__ */ import_react89.default.createElement("li", null, "Strive for constructive open communication. Avoid vagueness."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Do not demean or degrade others because of their gender, race, age, religion, etc."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."))))), /* @__PURE__ */ import_react89.default.createElement(AboutFooter, null, /* @__PURE__ */ import_react89.default.createElement("p", null, /* @__PURE__ */ import_react89.default.createElement("strong", null, "We need your help!"), " ", "Wizeline Questions is an internal project and everyone can contribute. Come aboard and meet the team at", /* @__PURE__ */ import_react89.default.createElement("a", {
+  }, /* @__PURE__ */ import_react90.default.createElement("ul", null, /* @__PURE__ */ import_react90.default.createElement("li", null, "Strive for constructive open communication. Avoid vagueness."), /* @__PURE__ */ import_react90.default.createElement("li", null, "Do not demean or degrade others because of their gender, race, age, religion, etc."), /* @__PURE__ */ import_react90.default.createElement("li", null, "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity."), /* @__PURE__ */ import_react90.default.createElement("li", null, "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."))))), /* @__PURE__ */ import_react90.default.createElement(AboutFooter, null, /* @__PURE__ */ import_react90.default.createElement("p", null, /* @__PURE__ */ import_react90.default.createElement("strong", null, "We need your help!"), " ", "Wizeline Questions is an internal project and everyone can contribute. Come aboard and meet the team at", /* @__PURE__ */ import_react90.default.createElement("a", {
     href: "https://wizeline.slack.com/archives/C031D9DP7C2",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "#wize-q-2022"), ". You can take a look at our", /* @__PURE__ */ import_react89.default.createElement("a", {
+  }, "#wize-q-2022"), ". You can take a look at our", /* @__PURE__ */ import_react90.default.createElement("a", {
     href: "https://github.com/wizeline/wize-q-remix"
   }, "source code"), " ", "on GitHub.")));
 }
@@ -23241,7 +23289,7 @@ __export(admin_exports, {
   loader: () => loader11
 });
 init_react();
-var import_react98 = __toESM(require("react")), import_node10 = require("@remix-run/node"), import_react99 = require("@remix-run/react");
+var import_react99 = __toESM(require("react")), import_node10 = require("@remix-run/node"), import_react100 = require("@remix-run/react");
 
 // app/styles/Admin.Styled.jsx
 init_react();
@@ -23267,17 +23315,17 @@ init_react();
 
 // app/components/AdminUsersTable/AdminUsersTable.jsx
 init_react();
-var import_react93 = __toESM(require("react")), import_prop_types53 = __toESM(require("prop-types"));
+var import_react94 = __toESM(require("react")), import_prop_types53 = __toESM(require("prop-types"));
 
 // app/images/logomark_medium.png
 var logomark_medium_default = "/build/_assets/logomark_medium-U2FGMSIX.png";
 
 // app/components/AdminUsersTable/AdminUsersTable.jsx
-var import_react94 = require("@remix-run/react");
+var import_react95 = require("@remix-run/react");
 
 // app/utils/hooks/usePagination.js
 init_react();
-var import_react90 = require("react"), DOTS = "...", range = (start, end) => {
+var import_react91 = require("react"), DOTS = "...", range = (start, end) => {
   let length = end - start;
   return Array.from({ length }, (_, idx) => idx + start);
 };
@@ -23285,7 +23333,7 @@ function usePagination({
   currentPage,
   totalPages
 }) {
-  return (0, import_react90.useMemo)(() => {
+  return (0, import_react91.useMemo)(() => {
     let totalPageCount = totalPages, sibilingCount = 1;
     if (2 + sibilingCount > totalPageCount)
       return range(1, totalPageCount);
@@ -23467,7 +23515,7 @@ var import_styled_components52 = __toESM(require("styled-components")), import_r
 
 // app/components/Modals/EditUserModal/EditUserModal.jsx
 init_react();
-var import_react91 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types")), import_react92 = require("@remix-run/react");
+var import_react92 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types")), import_react93 = require("@remix-run/react");
 
 // app/components/Modals/EditUserModal/EditUserModal.Styled.jsx
 init_react();
@@ -23563,22 +23611,22 @@ var import_styled_components53 = __toESM(require("styled-components")), Wrapper 
 
 // app/components/Modals/EditUserModal/EditUserModal.jsx
 function EditUserModal({ user, onClose }) {
-  let [uAdmin, setUAdmin] = (0, import_react91.useState)(user.is_admin), [uJobTitle, setUJobTitle] = (0, import_react91.useState)(user.job_title);
-  return /* @__PURE__ */ import_react91.default.createElement(Wrapper, null, /* @__PURE__ */ import_react91.default.createElement(import_react92.Form, {
+  let [uAdmin, setUAdmin] = (0, import_react92.useState)(user.is_admin), [uJobTitle, setUJobTitle] = (0, import_react92.useState)(user.job_title);
+  return /* @__PURE__ */ import_react92.default.createElement(Wrapper, null, /* @__PURE__ */ import_react92.default.createElement(import_react93.Form, {
     method: "post"
-  }, /* @__PURE__ */ import_react91.default.createElement(Container5, null, /* @__PURE__ */ import_react91.default.createElement(User, null, /* @__PURE__ */ import_react91.default.createElement(UserImage_default, {
+  }, /* @__PURE__ */ import_react92.default.createElement(Container5, null, /* @__PURE__ */ import_react92.default.createElement(User, null, /* @__PURE__ */ import_react92.default.createElement(UserImage_default, {
     src: user.profile_picture,
     size: "extra big"
-  }), /* @__PURE__ */ import_react91.default.createElement(UserInfo, null, /* @__PURE__ */ import_react91.default.createElement("h2", null, user.full_name), /* @__PURE__ */ import_react91.default.createElement("span", null, /* @__PURE__ */ import_react91.default.createElement("b", null, user.job_title !== null ? user.job_title : "")), /* @__PURE__ */ import_react91.default.createElement("span", null, user.email))), /* @__PURE__ */ import_react91.default.createElement(Roles, null, /* @__PURE__ */ import_react91.default.createElement("h3", null, "Roles"), /* @__PURE__ */ import_react91.default.createElement("span", null, "Edit roles for this user"), /* @__PURE__ */ import_react91.default.createElement(RolesTable, null, /* @__PURE__ */ import_react91.default.createElement(TableRow, {
+  }), /* @__PURE__ */ import_react92.default.createElement(UserInfo, null, /* @__PURE__ */ import_react92.default.createElement("h2", null, user.full_name), /* @__PURE__ */ import_react92.default.createElement("span", null, /* @__PURE__ */ import_react92.default.createElement("b", null, user.job_title !== null ? user.job_title : "")), /* @__PURE__ */ import_react92.default.createElement("span", null, user.email))), /* @__PURE__ */ import_react92.default.createElement(Roles, null, /* @__PURE__ */ import_react92.default.createElement("h3", null, "Roles"), /* @__PURE__ */ import_react92.default.createElement("span", null, "Edit roles for this user"), /* @__PURE__ */ import_react92.default.createElement(RolesTable, null, /* @__PURE__ */ import_react92.default.createElement(TableRow, {
     noBorder: !0
-  }, /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("b", null, "Name")), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("b", null, "Action"))), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Job Title"), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("input", {
+  }, /* @__PURE__ */ import_react92.default.createElement("li", null, /* @__PURE__ */ import_react92.default.createElement("b", null, "Name")), /* @__PURE__ */ import_react92.default.createElement("li", null, /* @__PURE__ */ import_react92.default.createElement("b", null, "Action"))), /* @__PURE__ */ import_react92.default.createElement(TableRow, null, /* @__PURE__ */ import_react92.default.createElement("li", null, "Job Title"), /* @__PURE__ */ import_react92.default.createElement("li", null, /* @__PURE__ */ import_react92.default.createElement("input", {
     name: "job_title",
     type: "text",
     value: uJobTitle,
     onChange: (e) => {
       setUJobTitle(e.target.value);
     }
-  }))), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Role Title"), /* @__PURE__ */ import_react91.default.createElement("li", null, "Employee", user.is_admin && ", Admin")), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Admin"), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("input", {
+  }))), /* @__PURE__ */ import_react92.default.createElement(TableRow, null, /* @__PURE__ */ import_react92.default.createElement("li", null, "Role Title"), /* @__PURE__ */ import_react92.default.createElement("li", null, "Employee", user.is_admin && ", Admin")), /* @__PURE__ */ import_react92.default.createElement(TableRow, null, /* @__PURE__ */ import_react92.default.createElement("li", null, "Admin"), /* @__PURE__ */ import_react92.default.createElement("li", null, /* @__PURE__ */ import_react92.default.createElement("input", {
     name: "is_admin",
     type: "checkbox",
     checked: uAdmin,
@@ -23586,13 +23634,13 @@ function EditUserModal({ user, onClose }) {
       setUAdmin(e.target.checked);
     },
     disabled: user.is_admin
-  })))), /* @__PURE__ */ import_react91.default.createElement(ButtonContainer, null, /* @__PURE__ */ import_react91.default.createElement(Button_default, {
+  })))), /* @__PURE__ */ import_react92.default.createElement(ButtonContainer, null, /* @__PURE__ */ import_react92.default.createElement(Button_default, {
     category: SECONDARY_BUTTON,
     onClick: onClose
-  }, "Cancel"), /* @__PURE__ */ import_react91.default.createElement(Button_default, {
+  }, "Cancel"), /* @__PURE__ */ import_react92.default.createElement(Button_default, {
     category: PRIMARY_BUTTON,
     type: "submit"
-  }, "Save")))), /* @__PURE__ */ import_react91.default.createElement("input", {
+  }, "Save")))), /* @__PURE__ */ import_react92.default.createElement("input", {
     type: "hidden",
     name: "employee_id",
     value: user.employee_id
@@ -23631,11 +23679,11 @@ function AdminUsersTable({
   isLoading,
   size
 }) {
-  let [modal, setModal] = (0, import_react93.useState)(!1), [currentUser, setCurrenUser] = (0, import_react93.useState)({}), quantityRef = (0, import_react93.useRef)(0), paginationRange = usePagination({
+  let [modal, setModal] = (0, import_react94.useState)(!1), [currentUser, setCurrenUser] = (0, import_react94.useState)({}), quantityRef = (0, import_react94.useRef)(0), paginationRange = usePagination({
     currentPage: currentPage === 0 ? 1 : currentPage + 1,
     totalPages
-  }), [, setSearchParams] = (0, import_react94.useSearchParams)(), data = (0, import_react94.useActionData)();
-  (0, import_react93.useEffect)(() => {
+  }), [, setSearchParams] = (0, import_react95.useSearchParams)(), data = (0, import_react95.useActionData)();
+  (0, import_react94.useEffect)(() => {
     data && data.successMessage && setModal(!1);
   }, [users, data]);
   let handleModal = (u2) => {
@@ -23655,65 +23703,65 @@ function AdminUsersTable({
       size,
       page: currentPage - 1
     });
-  }, createPaginationItem = (i, idx) => /* @__PURE__ */ import_react93.default.createElement(TablePagination.Item, {
+  }, createPaginationItem = (i, idx) => /* @__PURE__ */ import_react94.default.createElement(TablePagination.Item, {
     key: idx,
     onClick: () => changePage(i),
     active: i === currentPage
-  }, i), paginationItems = (() => [...paginationRange.map((__page, idx) => __page === DOTS ? /* @__PURE__ */ import_react93.default.createElement(TablePagination.Ellipsis, {
+  }, i), paginationItems = (() => [...paginationRange.map((__page, idx) => __page === DOTS ? /* @__PURE__ */ import_react94.default.createElement(TablePagination.Ellipsis, {
     key: idx
-  }) : createPaginationItem(__page, idx))])(), renderHeader = () => /* @__PURE__ */ import_react93.default.createElement("thead", null, /* @__PURE__ */ import_react93.default.createElement(HeaderTable, null, /* @__PURE__ */ import_react93.default.createElement("th", null, "Name"), /* @__PURE__ */ import_react93.default.createElement("th", {
+  }) : createPaginationItem(__page, idx))])(), renderHeader = () => /* @__PURE__ */ import_react94.default.createElement("thead", null, /* @__PURE__ */ import_react94.default.createElement(HeaderTable, null, /* @__PURE__ */ import_react94.default.createElement("th", null, "Name"), /* @__PURE__ */ import_react94.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Email"), /* @__PURE__ */ import_react93.default.createElement("th", {
+  }, "Email"), /* @__PURE__ */ import_react94.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Job Title"), /* @__PURE__ */ import_react93.default.createElement("th", {
+  }, "Job Title"), /* @__PURE__ */ import_react94.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Roles"), /* @__PURE__ */ import_react93.default.createElement("th", null, "Action"))), setQTY = (value) => {
+  }, "Roles"), /* @__PURE__ */ import_react94.default.createElement("th", null, "Action"))), setQTY = (value) => {
     setSearchParams({
       size: value,
       page: currentPage
     });
   };
-  return !users.length && !isLoading ? /* @__PURE__ */ import_react93.default.createElement(Alert2, null, /* @__PURE__ */ import_react93.default.createElement("span", {
+  return !users.length && !isLoading ? /* @__PURE__ */ import_react94.default.createElement(Alert2, null, /* @__PURE__ */ import_react94.default.createElement("span", {
     className: "message"
-  }, "There are no results to show")) : /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement(TableContainer, null, "Select the number of results", /* @__PURE__ */ import_react93.default.createElement("select", {
+  }, "There are no results to show")) : /* @__PURE__ */ import_react94.default.createElement("div", null, /* @__PURE__ */ import_react94.default.createElement(TableContainer, null, "Select the number of results", /* @__PURE__ */ import_react94.default.createElement("select", {
     ref: quantityRef,
     onChange: (e) => setQTY(e.target.value),
     defaultValue: size
-  }, /* @__PURE__ */ import_react93.default.createElement("option", {
+  }, /* @__PURE__ */ import_react94.default.createElement("option", {
     value: "5"
-  }, "5"), /* @__PURE__ */ import_react93.default.createElement("option", {
+  }, "5"), /* @__PURE__ */ import_react94.default.createElement("option", {
     value: "10"
-  }, "10"), /* @__PURE__ */ import_react93.default.createElement("option", {
+  }, "10"), /* @__PURE__ */ import_react94.default.createElement("option", {
     value: "15"
-  }, "15"), /* @__PURE__ */ import_react93.default.createElement("option", {
+  }, "15"), /* @__PURE__ */ import_react94.default.createElement("option", {
     value: "20"
-  }, "20"), /* @__PURE__ */ import_react93.default.createElement("option", {
+  }, "20"), /* @__PURE__ */ import_react94.default.createElement("option", {
     value: "25"
-  }, "25")), isLoading ? /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement(UserTable, null, renderHeader()), /* @__PURE__ */ import_react93.default.createElement(Loader_default, {
+  }, "25")), isLoading ? /* @__PURE__ */ import_react94.default.createElement("div", null, /* @__PURE__ */ import_react94.default.createElement(UserTable, null, renderHeader()), /* @__PURE__ */ import_react94.default.createElement(Loader_default, {
     src: logomark_medium_default,
     size: LSPIN_MEDIUM
-  })) : /* @__PURE__ */ import_react93.default.createElement(UserTable, null, renderHeader(), /* @__PURE__ */ import_react93.default.createElement("tbody", null, users.map((user) => /* @__PURE__ */ import_react93.default.createElement(RowTable, {
+  })) : /* @__PURE__ */ import_react94.default.createElement(UserTable, null, renderHeader(), /* @__PURE__ */ import_react94.default.createElement("tbody", null, users.map((user) => /* @__PURE__ */ import_react94.default.createElement(RowTable, {
     key: user.employee_id
-  }, /* @__PURE__ */ import_react93.default.createElement("td", null, /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement("img", {
+  }, /* @__PURE__ */ import_react94.default.createElement("td", null, /* @__PURE__ */ import_react94.default.createElement("div", null, /* @__PURE__ */ import_react94.default.createElement("img", {
     src: user.profile_picture,
     alt: ""
-  }), user.full_name)), /* @__PURE__ */ import_react93.default.createElement("td", {
+  }), user.full_name)), /* @__PURE__ */ import_react94.default.createElement("td", {
     className: "table-desktop-view"
-  }, user.email), /* @__PURE__ */ import_react93.default.createElement("td", {
+  }, user.email), /* @__PURE__ */ import_react94.default.createElement("td", {
     className: "table-desktop-view"
-  }, user.job_title), /* @__PURE__ */ import_react93.default.createElement("td", {
+  }, user.job_title), /* @__PURE__ */ import_react94.default.createElement("td", {
     className: "table-desktop-view"
-  }, "Employee", user.is_admin && ", Admin"), /* @__PURE__ */ import_react93.default.createElement("td", null, /* @__PURE__ */ import_react93.default.createElement(Button_default, {
+  }, "Employee", user.is_admin && ", Admin"), /* @__PURE__ */ import_react94.default.createElement("td", null, /* @__PURE__ */ import_react94.default.createElement(Button_default, {
     category: PRIMARY_BUTTON,
     onClick: () => handleModal(user),
     className: "row-btn"
-  }, "Edit roles")))))), !isLoading && /* @__PURE__ */ import_react93.default.createElement(PaginationContainer, null, /* @__PURE__ */ import_react93.default.createElement("div", null, "Page", " ", currentPage, " ", "of", " ", totalPages), /* @__PURE__ */ import_react93.default.createElement(TablePagination, {
+  }, "Edit roles")))))), !isLoading && /* @__PURE__ */ import_react94.default.createElement(PaginationContainer, null, /* @__PURE__ */ import_react94.default.createElement("div", null, "Page", " ", currentPage, " ", "of", " ", totalPages), /* @__PURE__ */ import_react94.default.createElement(TablePagination, {
     boundarylinks: "true"
-  }, currentPage > 1 && /* @__PURE__ */ import_react93.default.createElement(TablePagination.Prev, {
+  }, currentPage > 1 && /* @__PURE__ */ import_react94.default.createElement(TablePagination.Prev, {
     onClick: prevPageHandler
-  }), paginationItems, currentPage < totalPages && /* @__PURE__ */ import_react93.default.createElement(TablePagination.Next, {
+  }), paginationItems, currentPage < totalPages && /* @__PURE__ */ import_react94.default.createElement(TablePagination.Next, {
     onClick: nextPageHandler
-  }))), modal ? /* @__PURE__ */ import_react93.default.createElement(EditUserModal_default, {
+  }))), modal ? /* @__PURE__ */ import_react94.default.createElement(EditUserModal_default, {
     user: currentUser,
     onClose: () => handleModal()
   }) : null));
@@ -23735,7 +23783,7 @@ init_react();
 
 // app/components/UserSearchBar/UserSearchBar.jsx
 init_react();
-var import_prop_types54 = __toESM(require("prop-types")), import_react95 = __toESM(require("react"));
+var import_prop_types54 = __toESM(require("prop-types")), import_react96 = __toESM(require("react"));
 
 // app/components/UserSearchBar/UserSearchBar.Styled.jsx
 init_react();
@@ -23789,8 +23837,8 @@ var import_styled_components54 = __toESM(require("styled-components")), import_m
 
 // app/components/UserSearchBar/UserSearchBar.jsx
 function UserSearchBar({ onSearch }) {
-  let [search2, setSearch] = (0, import_react95.useState)("");
-  return /* @__PURE__ */ import_react95.default.createElement(SearchField2, null, /* @__PURE__ */ import_react95.default.createElement(IconWrapper3, null, /* @__PURE__ */ import_react95.default.createElement(SearchIcon3, null)), /* @__PURE__ */ import_react95.default.createElement(Input5, {
+  let [search2, setSearch] = (0, import_react96.useState)("");
+  return /* @__PURE__ */ import_react96.default.createElement(SearchField2, null, /* @__PURE__ */ import_react96.default.createElement(IconWrapper3, null, /* @__PURE__ */ import_react96.default.createElement(SearchIcon3, null)), /* @__PURE__ */ import_react96.default.createElement(Input5, {
     type: "search",
     value: search2,
     onChange: (e) => {
@@ -23800,7 +23848,7 @@ function UserSearchBar({ onSearch }) {
     onKeyDown: (event) => {
       search2 && event.key === "Enter" && onSearch(search2);
     }
-  }), search2 && /* @__PURE__ */ import_react95.default.createElement(Button_default, {
+  }), search2 && /* @__PURE__ */ import_react96.default.createElement(Button_default, {
     type: "button",
     className: "clear-button",
     title: "Clear",
@@ -23808,7 +23856,7 @@ function UserSearchBar({ onSearch }) {
     onClick: () => {
       setSearch("");
     }
-  }, /* @__PURE__ */ import_react95.default.createElement(ClearIcon2, null)));
+  }, /* @__PURE__ */ import_react96.default.createElement(ClearIcon2, null)));
 }
 UserSearchBar.propTypes = {
   onSearch: import_prop_types54.default.func.isRequired
@@ -23844,7 +23892,7 @@ var getPagination = (page, size) => {
 
 // app/controllers/users/update.js
 init_react();
-var import_constants75 = __toESM(require_constants());
+var import_constants80 = __toESM(require_constants());
 
 // app/utils/backend/validators/admin.js
 init_react();
@@ -23861,7 +23909,7 @@ var updateUser = async (query) => {
     return {
       errors: [
         {
-          message: import_constants75.DEFAULT_ERROR_MESSAGE,
+          message: import_constants80.DEFAULT_ERROR_MESSAGE,
           detail: error.details
         }
       ]
@@ -23887,17 +23935,17 @@ __export(__exports, {
   default: () => __default2
 });
 init_react();
-var import_react97 = __toESM(require("react"));
+var import_react98 = __toESM(require("react"));
 
 // app/images/404.svg
 var __default = "/build/_assets/404-HJIPXGIH.svg";
 
 // app/styles/NotFound.Styled.jsx
 init_react();
-var import_styled_components55 = __toESM(require("styled-components")), import_react96 = require("@remix-run/react");
+var import_styled_components55 = __toESM(require("styled-components")), import_react97 = require("@remix-run/react");
 
 // app/images/header-background-dots-pattern.svg
-var header_background_dots_pattern_default = "/build/_assets/header-background-dots-pattern-M2TDWK6C.svg";
+var header_background_dots_pattern_default = "/build/_assets/header-background-dots-pattern-4BTNNPHR.svg";
 
 // app/styles/NotFound.Styled.jsx
 var BackgroundDiv = import_styled_components55.default.div`
@@ -23944,7 +23992,7 @@ var BackgroundDiv = import_styled_components55.default.div`
     line-height: 1.25;
     text-align: center;
     margin: 0 0 5rem 0;
-`, SLink = (0, import_styled_components55.default)(import_react96.Link)`
+`, SLink = (0, import_styled_components55.default)(import_react97.Link)`
     color: #fff;
     background-color: var(--color-secondary);
     border-radius: 5px;
@@ -23966,10 +24014,10 @@ var BackgroundDiv = import_styled_components55.default.div`
 
 // app/routes/$.jsx
 function NotFound() {
-  return /* @__PURE__ */ import_react97.default.createElement("div", null, /* @__PURE__ */ import_react97.default.createElement(BackgroundDiv, null), /* @__PURE__ */ import_react97.default.createElement(MainDiv, null, /* @__PURE__ */ import_react97.default.createElement(Container6, null, /* @__PURE__ */ import_react97.default.createElement(Img, {
+  return /* @__PURE__ */ import_react98.default.createElement("div", null, /* @__PURE__ */ import_react98.default.createElement(BackgroundDiv, null), /* @__PURE__ */ import_react98.default.createElement(MainDiv, null, /* @__PURE__ */ import_react98.default.createElement(Container6, null, /* @__PURE__ */ import_react98.default.createElement(Img, {
     src: __default,
     alt: "404"
-  }), /* @__PURE__ */ import_react97.default.createElement(Title2, null, "Sorry! The page you were looking for doesn\u2019t exist."), /* @__PURE__ */ import_react97.default.createElement(SLink, {
+  }), /* @__PURE__ */ import_react98.default.createElement(Title2, null, "Sorry! The page you were looking for doesn\u2019t exist."), /* @__PURE__ */ import_react98.default.createElement(SLink, {
     to: "/"
   }, "Go back"))));
 }
@@ -24001,14 +24049,14 @@ function Admin() {
     totalPages,
     currentPage,
     size
-  } = (0, import_react99.useLoaderData)(), [, setSearchParams] = (0, import_react99.useSearchParams)();
-  return /* @__PURE__ */ import_react98.default.createElement("div", null, /* @__PURE__ */ import_react98.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react98.default.createElement(Container4, null, /* @__PURE__ */ import_react98.default.createElement("h2", null, "Admin page"), /* @__PURE__ */ import_react98.default.createElement(UserSearchBar, {
+  } = (0, import_react100.useLoaderData)(), [, setSearchParams] = (0, import_react100.useSearchParams)();
+  return /* @__PURE__ */ import_react99.default.createElement("div", null, /* @__PURE__ */ import_react99.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react99.default.createElement(Container4, null, /* @__PURE__ */ import_react99.default.createElement("h2", null, "Admin page"), /* @__PURE__ */ import_react99.default.createElement(UserSearchBar, {
     onSearch: (search2) => {
       setSearchParams({
         search: search2
       });
     }
-  })), /* @__PURE__ */ import_react98.default.createElement(AdminUsersTable_default, {
+  })), /* @__PURE__ */ import_react99.default.createElement(AdminUsersTable_default, {
     users,
     currentPage,
     totalPages,
@@ -24016,7 +24064,7 @@ function Admin() {
   }));
 }
 function CatchBoundary() {
-  return /* @__PURE__ */ import_react98.default.createElement(__default2, null);
+  return /* @__PURE__ */ import_react99.default.createElement(__default2, null);
 }
 var admin_default2 = Admin;
 
@@ -24028,7 +24076,7 @@ __export(routes_exports, {
   loader: () => loader12
 });
 init_react();
-var import_node11 = require("@remix-run/node"), import_react111 = require("@remix-run/react"), import_react112 = __toESM(require("react"));
+var import_node11 = require("@remix-run/node"), import_react112 = require("@remix-run/react"), import_react113 = __toESM(require("react"));
 
 // app/styles/Home.Styled.jsx
 init_react();
@@ -24041,11 +24089,11 @@ init_react();
 
 // app/components/ListQuestions/ListQuestions.jsx
 init_react();
-var import_react109 = __toESM(require("react")), import_react110 = require("@remix-run/react"), import_prop_types60 = __toESM(require("prop-types"));
+var import_react110 = __toESM(require("react")), import_react111 = require("@remix-run/react"), import_prop_types60 = __toESM(require("prop-types"));
 
 // app/components/ListQuestions/ListQuestions.Styled.jsx
 init_react();
-var import_react100 = require("@remix-run/react"), import_styled_components57 = __toESM(require("styled-components")), Container8 = import_styled_components57.default.div`
+var import_react101 = require("@remix-run/react"), import_styled_components57 = __toESM(require("styled-components")), Container8 = import_styled_components57.default.div`
   display: flex;
   background-color: #f4f7f9;
   margin: 0 auto;
@@ -24128,7 +24176,7 @@ var import_react100 = require("@remix-run/react"), import_styled_components57 = 
     position: sticky;
     top: 0;
   }
-`, AskButton = (0, import_styled_components57.default)(import_react100.Link)`
+`, AskButton = (0, import_styled_components57.default)(import_react101.Link)`
   align-items: center;
   background: var(--color-secondary);
   border: solid 1px transparent;
@@ -24156,10 +24204,10 @@ init_react();
 
 // app/components/QuestionCard/QuestionCard.jsx
 init_react();
-var import_react101 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
+var import_react102 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
 
 // app/images/ic_comment_non-selected.svg
-var ic_comment_non_selected_default = "/build/_assets/ic_comment_non-selected-KYYD5WEF.svg";
+var ic_comment_non_selected_default = "/build/_assets/ic_comment_non-selected-7NOYX3FA.svg";
 
 // app/components/QuestionCard/QuestionCard.jsx
 function QuestionCard(props) {
@@ -24186,10 +24234,10 @@ function QuestionCard(props) {
     isAnswer: !0
   }, hasAnswer = question.Answers.length > 0, navigate = (0, import_react_router_dom3.useNavigate)(), renderButtons = () => {
     let icon = question.hasLike ? ic_like_pressed_default : ic_like_default, dislikeicon = question.hasDislike ? ic_dislike_pressed_default : ic_dislike_default;
-    return /* @__PURE__ */ import_react101.default.createElement(CounterButtonsWrapper, {
+    return /* @__PURE__ */ import_react102.default.createElement(CounterButtonsWrapper, {
       isAdmin: !1,
       hasAnswer
-    }, /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
+    }, /* @__PURE__ */ import_react102.default.createElement(CounterButton_default, {
       id: `like-button-${question.question_id}`,
       selected: question.hasLike,
       icon,
@@ -24197,7 +24245,7 @@ function QuestionCard(props) {
       onClick: () => onVoteClick(!0),
       processingFormSubmission,
       isDisabled: question.hasDislike
-    }), /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
+    }), /* @__PURE__ */ import_react102.default.createElement(CounterButton_default, {
       id: `like-button-${question.question_id}`,
       selected: question.hasDislike,
       icon: dislikeicon,
@@ -24205,7 +24253,7 @@ function QuestionCard(props) {
       onClick: () => onVoteClick(!1),
       processingFormSubmission,
       isDisabled: question.hasLike
-    }), /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
+    }), /* @__PURE__ */ import_react102.default.createElement(CounterButton_default, {
       id: `comments-button-${question.question_id}`,
       icon: ic_comment_non_selected_default,
       count: question.numComments,
@@ -24222,7 +24270,7 @@ function QuestionCard(props) {
       commentAsAnswer = question.Comments.find((comment) => comment.id === communityAnswerCommentId);
     }
     if (commentAsAnswer)
-      return /* @__PURE__ */ import_react101.default.createElement(AnswerRow_default, {
+      return /* @__PURE__ */ import_react102.default.createElement(AnswerRow_default, {
         answer_text: commentAsAnswer.comment,
         user: commentAsAnswer.User,
         answered_at: commentAsAnswer.createdAt,
@@ -24236,11 +24284,11 @@ function QuestionCard(props) {
         approver: commentAsAnswer.Approver
       });
   };
-  return /* @__PURE__ */ import_react101.default.createElement(QuestionCardContainer, null, /* @__PURE__ */ import_react101.default.createElement(QuestionCardWrapper, null, /* @__PURE__ */ import_react101.default.createElement(QuestionCardBorder, null, /* @__PURE__ */ import_react101.default.createElement(QuestionRow_default, {
+  return /* @__PURE__ */ import_react102.default.createElement(QuestionCardContainer, null, /* @__PURE__ */ import_react102.default.createElement(QuestionCardWrapper, null, /* @__PURE__ */ import_react102.default.createElement(QuestionCardBorder, null, /* @__PURE__ */ import_react102.default.createElement(QuestionRow_default, {
     question,
     isQuestionModalOpen: !1,
     hasAnswer
-  }), /* @__PURE__ */ import_react101.default.createElement(QuestionCardActions, {
+  }), /* @__PURE__ */ import_react102.default.createElement(QuestionCardActions, {
     hasAnswer,
     isQuestionModalOpen: !1
   }, renderButtons()))), renderAnswer(renderAnswerProps), renderCommentAnswer());
@@ -24289,7 +24337,7 @@ init_react();
 
 // app/components/GoToTopButton/GoToTopButton.jsx
 init_react();
-var import_react103 = __toESM(require("react"));
+var import_react104 = __toESM(require("react"));
 
 // app/components/GoToTopButton/GoToTopButton.Styled.jsx
 init_react();
@@ -24335,9 +24383,9 @@ init_react();
 
 // app/components/Atoms/ArrowIcon/ArrowIcon.jsx
 init_react();
-var import_react102 = __toESM(require("react"));
+var import_react103 = __toESM(require("react"));
 function ArrowIcon(props) {
-  return /* @__PURE__ */ import_react102.default.createElement("svg", __spreadValues({
+  return /* @__PURE__ */ import_react103.default.createElement("svg", __spreadValues({
     color: "white",
     fill: "currentColor",
     fillRule: "nonzero",
@@ -24348,7 +24396,7 @@ function ArrowIcon(props) {
     viewBox: "0 0 23 27",
     width: 10,
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ import_react102.default.createElement("path", {
+  }, props), /* @__PURE__ */ import_react103.default.createElement("path", {
     transform: "translate(-18.000000, -17.000000)",
     d: "M30.6301904,20.6966946 C30.6304384,20.705609 30.6305632,20.7145536 30.6305632,20.7235269 L30.6305632,41.9301705 C30.6305632,42.462539 30.1912987,42.8941089 29.6494386,42.8941089 C29.1075784,42.8941089 28.6683139,42.462539 28.6683139,41.9301705 L28.6683139,20.7235269 C28.6683139,20.6823753 28.6709386,20.6418259 28.6760325,20.6020316 L20.2797113,28.5838228 C19.9872058,28.8618871 19.5118845,28.8618871 19.2193791,28.5838228 C18.9268736,28.3057585 18.9268736,27.853904 19.2193791,27.5758396 L29.0731557,18.2085482 C29.3656611,17.9304839 29.8409825,17.9304839 30.1334879,18.2085482 L39.9872645,27.5758396 C40.1335172,27.7148718 40.2066436,27.888662 40.2066436,28.0798312 C40.2066436,28.2710004 40.1335172,28.4447906 39.9872645,28.5838228 C39.6947591,28.8618871 39.2194378,28.8618871 38.9269323,28.5838228 L30.6301904,20.6966946 Z M29.6444293,19.7596009 L29.6033218,19.7205229 L29.5578693,19.7637314 C29.5863864,19.7611383 29.6152573,19.7597442 29.6444293,19.7596009 Z"
   }));
@@ -24357,12 +24405,12 @@ var ArrowIcon_default = ArrowIcon;
 
 // app/components/GoToTopButton/GoToTopButton.jsx
 function GoToTopButton() {
-  let [show, setShow] = (0, import_react103.useState)(!1);
-  return (0, import_react103.useEffect)(() => {
+  let [show, setShow] = (0, import_react104.useState)(!1);
+  return (0, import_react104.useEffect)(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 500 ? setShow(!0) : setShow(!1);
     });
-  }, []), /* @__PURE__ */ import_react103.default.createElement(Button5, {
+  }, []), /* @__PURE__ */ import_react104.default.createElement(Button5, {
     id: "go-to-top-button",
     display: show,
     onClick: () => {
@@ -24371,7 +24419,7 @@ function GoToTopButton() {
         behavior: "auto"
       });
     }
-  }, /* @__PURE__ */ import_react103.default.createElement(ArrowIcon_default, null), /* @__PURE__ */ import_react103.default.createElement(Span, null, BACK_TO_TOP));
+  }, /* @__PURE__ */ import_react104.default.createElement(ArrowIcon_default, null), /* @__PURE__ */ import_react104.default.createElement(Span, null, BACK_TO_TOP));
 }
 var GoToTopButton_default = GoToTopButton;
 
@@ -24380,18 +24428,18 @@ init_react();
 
 // app/components/Atoms/InfiniteScrollList/InfiniteScrollList.jsx
 init_react();
-var import_react104 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
+var import_react105 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
 function InfiniteScrollList({ onFetch, children }) {
-  let endOfListRef = (0, import_react104.useRef)(), scrollContainer = null, fetchScrollLimit = 500, onScroll = ([entity]) => {
+  let endOfListRef = (0, import_react105.useRef)(), scrollContainer = null, fetchScrollLimit = 500, onScroll = ([entity]) => {
     entity.isIntersecting && onFetch();
-  }, observer = (0, import_react104.useRef)();
-  return (0, import_react104.useEffect)(() => (observer.current = new IntersectionObserver(onScroll, {
+  }, observer = (0, import_react105.useRef)();
+  return (0, import_react105.useEffect)(() => (observer.current = new IntersectionObserver(onScroll, {
     root: scrollContainer,
     rootMargin: `${fetchScrollLimit}px`,
     threshold: 0
   }), endOfListRef && endOfListRef.current && observer.current.observe(endOfListRef.current), () => {
     endOfListRef && endOfListRef.current && observer.current.unobserve(endOfListRef.current);
-  }), [children.props.children.length]), /* @__PURE__ */ import_react104.default.createElement("div", null, children, /* @__PURE__ */ import_react104.default.createElement("div", {
+  }), [children.props.children.length]), /* @__PURE__ */ import_react105.default.createElement("div", null, children, /* @__PURE__ */ import_react105.default.createElement("div", {
     ref: endOfListRef
   }));
 }
@@ -24409,7 +24457,7 @@ init_react();
 
 // app/components/Filters/Filters.jsx
 init_react();
-var import_react106 = __toESM(require("react")), import_prop_types58 = __toESM(require("prop-types")), import_react107 = require("@remix-run/react");
+var import_react107 = __toESM(require("react")), import_prop_types58 = __toESM(require("prop-types")), import_react108 = require("@remix-run/react");
 
 // app/images/ic_filter.svg
 var ic_filter_default = "/build/_assets/ic_filter-UC4LYVWR.svg";
@@ -24542,7 +24590,7 @@ init_react();
 
 // app/components/CustomDropdown/CustomDropdown.jsx
 init_react();
-var import_react105 = __toESM(require("react")), import_prop_types57 = __toESM(require("prop-types"));
+var import_react106 = __toESM(require("react")), import_prop_types57 = __toESM(require("prop-types"));
 
 // app/components/CustomDropdown/CustomDropdown.Styled.jsx
 init_react();
@@ -24654,34 +24702,34 @@ var import_styled_components60 = __toESM(require("styled-components")), import_r
 
 // app/components/CustomDropdown/CustomDropdown.jsx
 function CustomDropdown(props) {
-  let { accessValueName, selectedValue } = props, renderElements = (elements) => elements.map((element) => /* @__PURE__ */ import_react105.default.createElement(CMenuItem, {
+  let { accessValueName, selectedValue } = props, renderElements = (elements) => elements.map((element) => /* @__PURE__ */ import_react106.default.createElement(CMenuItem, {
     eventKey: element,
     key: element[accessValueName]
-  }, /* @__PURE__ */ import_react105.default.createElement("label", {
+  }, /* @__PURE__ */ import_react106.default.createElement("label", {
     className: "custom-dropdown",
     htmlFor: element[accessValueName]
-  }, element.name, /* @__PURE__ */ import_react105.default.createElement("input", {
+  }, element.name, /* @__PURE__ */ import_react106.default.createElement("input", {
     type: "radio",
     className: "custom-dropdown--radio",
     checked: selectedValue === element[accessValueName],
     readOnly: !0,
     id: element[accessValueName]
-  }), /* @__PURE__ */ import_react105.default.createElement("span", {
+  }), /* @__PURE__ */ import_react106.default.createElement("span", {
     className: "custom-dropdown--span"
-  })))), renderSelected = () => props.showSelected && /* @__PURE__ */ import_react105.default.createElement("p", {
+  })))), renderSelected = () => props.showSelected && /* @__PURE__ */ import_react106.default.createElement("p", {
     className: "custom-dropdown-selected"
   }, props.text);
-  return /* @__PURE__ */ import_react105.default.createElement(CDropdown, {
+  return /* @__PURE__ */ import_react106.default.createElement(CDropdown, {
     className: props.dropdownClass,
     onSelect: props.onSelectFunc,
     id: props.dropdownClass,
     disabled: props.disabled
-  }, /* @__PURE__ */ import_react105.default.createElement(CDropdown.Toggle, {
+  }, /* @__PURE__ */ import_react106.default.createElement(CDropdown.Toggle, {
     onClick: props.onClickFunc,
     className: `toggle ${props.isHighlighted ? "highlighted" : ""}`
-  }, /* @__PURE__ */ import_react105.default.createElement("p", {
+  }, /* @__PURE__ */ import_react106.default.createElement("p", {
     className: `dropdown-text ${props.showSelected ? "" : "first"}`
-  }, props.label), renderSelected()), /* @__PURE__ */ import_react105.default.createElement(CDropdown.Menu, {
+  }, props.label), renderSelected()), /* @__PURE__ */ import_react106.default.createElement(CDropdown.Menu, {
     className: props.menuClass
   }, props.elements.length > 0 && renderElements(props.elements)));
 }
@@ -24717,7 +24765,7 @@ var CustomDropdown_default = CustomDropdown;
 
 // app/components/Filters/Filters.jsx
 function Filters2(props) {
-  let { modifyQuery, clearFilters } = props, { departments, locations } = (0, import_react107.useLoaderData)(), [searchParams] = (0, import_react107.useSearchParams)(), getDefaultStatus = () => {
+  let { modifyQuery, clearFilters } = props, { departments, locations } = (0, import_react108.useLoaderData)(), [searchParams] = (0, import_react108.useSearchParams)(), getDefaultStatus = () => {
     let searchParam = searchParams.get("status");
     if (searchParam) {
       let found = STATUS_OPTIONS.find((status) => status.value === searchParam);
@@ -24760,8 +24808,8 @@ function Filters2(props) {
         return foundInData;
     }
     return DEFAULT_LOCATION_OPT;
-  }, [selectedOrderBy, setSelectedOrderBy] = (0, import_react106.useState)(getDefaultSortOption()), [selectedDateRange, setSelectedDateRange] = (0, import_react106.useState)(getDefaultDateRangeOption()), [selectedStatus, setSelectedStatus] = (0, import_react106.useState)(getDefaultStatus()), [selectedDepartment, setSelectedDepartment] = (0, import_react106.useState)(getDefaultDepartmentOption()), [selectedLocation, setSelectedLocation] = (0, import_react106.useState)(getDefaultLocationOption()), [showClearButton, setShowClearButton] = (0, import_react106.useState)(!1), [showFilters, setShowFilters] = (0, import_react106.useState)(!1), [filtersButtonName, setFiltersButtonName] = (0, import_react106.useState)("Show filters");
-  (0, import_react106.useEffect)(() => {
+  }, [selectedOrderBy, setSelectedOrderBy] = (0, import_react107.useState)(getDefaultSortOption()), [selectedDateRange, setSelectedDateRange] = (0, import_react107.useState)(getDefaultDateRangeOption()), [selectedStatus, setSelectedStatus] = (0, import_react107.useState)(getDefaultStatus()), [selectedDepartment, setSelectedDepartment] = (0, import_react107.useState)(getDefaultDepartmentOption()), [selectedLocation, setSelectedLocation] = (0, import_react107.useState)(getDefaultLocationOption()), [showClearButton, setShowClearButton] = (0, import_react107.useState)(!1), [showFilters, setShowFilters] = (0, import_react107.useState)(!1), [filtersButtonName, setFiltersButtonName] = (0, import_react107.useState)("Show filters");
+  (0, import_react107.useEffect)(() => {
     selectedLocation != null && (selectedDateRange.name === DEFAULT_DATE_RANGE_OPT.name && selectedDepartment.name === DEFAULT_DEPARTMENT_OPT.name && selectedStatus.name === DEFAULT_STATUS_OPT.name && selectedLocation.code === DEFAULT_LOCATION ? setShowClearButton(!1) : setShowClearButton(!0));
   }, [selectedDateRange, selectedStatus, selectedDepartment, selectedLocation]);
   let selectOrderByFilter = (selectOrderBy) => {
@@ -24829,25 +24877,25 @@ function Filters2(props) {
     isHihlighted: selectedStatus !== DEFAULT_STATUS_OPT,
     accessValueName: STATUS_ACCESS_VALUE
   };
-  return /* @__PURE__ */ import_react106.default.createElement(Filters, null, /* @__PURE__ */ import_react106.default.createElement(Button_default, {
+  return /* @__PURE__ */ import_react107.default.createElement(Filters, null, /* @__PURE__ */ import_react107.default.createElement(Button_default, {
     type: "button",
     category: TEXT_BUTTON,
     className: "show-filters-button",
     onClick: selectFilters
-  }, /* @__PURE__ */ import_react106.default.createElement(Icon, {
+  }, /* @__PURE__ */ import_react107.default.createElement(Icon, {
     src: ic_filter_default,
     alt: "Icon"
-  }), /* @__PURE__ */ import_react106.default.createElement("span", null, filtersButtonName)), /* @__PURE__ */ import_react106.default.createElement(FiltersLine, {
+  }), /* @__PURE__ */ import_react107.default.createElement("span", null, filtersButtonName)), /* @__PURE__ */ import_react107.default.createElement(FiltersLine, {
     secondary: !0,
     visibility: "none"
-  }), /* @__PURE__ */ import_react106.default.createElement(FiltersWrapper2, {
+  }), /* @__PURE__ */ import_react107.default.createElement(FiltersWrapper2, {
     hideComponent: showFilters ? "block" : "none"
-  }, /* @__PURE__ */ import_react106.default.createElement(FiltersContainer, null, /* @__PURE__ */ import_react106.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react106.default.createElement(FiltersLabel, null, "Order by:"), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, orderByDropdownConfig)))), /* @__PURE__ */ import_react106.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react106.default.createElement(FiltersLabel, null, "Filter by:", " ", showClearButton && /* @__PURE__ */ import_react106.default.createElement("button", {
+  }, /* @__PURE__ */ import_react107.default.createElement(FiltersContainer, null, /* @__PURE__ */ import_react107.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react107.default.createElement(FiltersLabel, null, "Order by:"), /* @__PURE__ */ import_react107.default.createElement(FiltersField, null, /* @__PURE__ */ import_react107.default.createElement(CustomDropdown_default, __spreadValues({}, orderByDropdownConfig)))), /* @__PURE__ */ import_react107.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react107.default.createElement(FiltersLabel, null, "Filter by:", " ", showClearButton && /* @__PURE__ */ import_react107.default.createElement("button", {
     type: "button",
     onClick: clearAllFilters
-  }, "Clear All Filters")), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, dateRangeFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, statusFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, {
+  }, "Clear All Filters")), /* @__PURE__ */ import_react107.default.createElement(FiltersField, null, /* @__PURE__ */ import_react107.default.createElement(CustomDropdown_default, __spreadValues({}, dateRangeFilterConfig))), /* @__PURE__ */ import_react107.default.createElement(FiltersField, null, /* @__PURE__ */ import_react107.default.createElement(CustomDropdown_default, __spreadValues({}, statusFilterConfig))), /* @__PURE__ */ import_react107.default.createElement(FiltersField, {
     departments: !0
-  }, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, departmentFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, getLocationFilterConfig())))))));
+  }, /* @__PURE__ */ import_react107.default.createElement(CustomDropdown_default, __spreadValues({}, departmentFilterConfig))), /* @__PURE__ */ import_react107.default.createElement(FiltersField, null, /* @__PURE__ */ import_react107.default.createElement(CustomDropdown_default, __spreadValues({}, getLocationFilterConfig())))))));
 }
 Filters2.propTypes = {
   clearFilters: import_prop_types58.default.func.isRequired,
@@ -24876,7 +24924,7 @@ function getCookie(name) {
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.jsx
 init_react();
-var import_react108 = __toESM(require("react")), import_prop_types59 = __toESM(require("prop-types"));
+var import_react109 = __toESM(require("react")), import_prop_types59 = __toESM(require("prop-types"));
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.Styled.jsx
 init_react();
@@ -24966,25 +25014,25 @@ var import_styled_components61 = __toESM(require("styled-components")), Modal4 =
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.jsx
 var import_bs6 = require("react-icons/bs");
 function ValuesMessageModal({ show, onClose }) {
-  let profile = useUser_default(), renderBulletPoint = (color2) => /* @__PURE__ */ import_react108.default.createElement(import_bs6.BsCircleFill, {
+  let profile = useUser_default(), renderBulletPoint = (color2) => /* @__PURE__ */ import_react109.default.createElement(import_bs6.BsCircleFill, {
     color: color2,
     size: "7px",
     style: { marginTop: "3px", marginRight: "10px" }
   });
-  return show ? /* @__PURE__ */ import_react108.default.createElement("div", {
+  return show ? /* @__PURE__ */ import_react109.default.createElement("div", {
     onClick: onClose
-  }, /* @__PURE__ */ import_react108.default.createElement(Modal4, {
+  }, /* @__PURE__ */ import_react109.default.createElement(Modal4, {
     onClick: onClose
-  }, /* @__PURE__ */ import_react108.default.createElement(ModalDialog4, {
+  }, /* @__PURE__ */ import_react109.default.createElement(ModalDialog4, {
     show: !0,
     hide: onClose
-  }, /* @__PURE__ */ import_react108.default.createElement(ModalHeader6, null, /* @__PURE__ */ import_react108.default.createElement(ModalTitle5, null, "Hello", " ", profile.full_name, " ", "!"), /* @__PURE__ */ import_react108.default.createElement(ModalSubtitle3, null, "Welcome to Wize Q!")), /* @__PURE__ */ import_react108.default.createElement(ModalBody5, null, /* @__PURE__ */ import_react108.default.createElement("p", null, "We want to share a few simple guidelines before you start. Remember that Wize Q is a space for asking questions and providing answers that are helpful to our community."), /* @__PURE__ */ import_react108.default.createElement("p", null, "Please practice our values when using Wize Q: "), /* @__PURE__ */ import_react108.default.createElement(ValuesInformation, null, /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("var(--color-primary)"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
+  }, /* @__PURE__ */ import_react109.default.createElement(ModalHeader6, null, /* @__PURE__ */ import_react109.default.createElement(ModalTitle5, null, "Hello", " ", profile.full_name, " ", "!"), /* @__PURE__ */ import_react109.default.createElement(ModalSubtitle3, null, "Welcome to Wize Q!")), /* @__PURE__ */ import_react109.default.createElement(ModalBody5, null, /* @__PURE__ */ import_react109.default.createElement("p", null, "We want to share a few simple guidelines before you start. Remember that Wize Q is a space for asking questions and providing answers that are helpful to our community."), /* @__PURE__ */ import_react109.default.createElement("p", null, "Please practice our values when using Wize Q: "), /* @__PURE__ */ import_react109.default.createElement(ValuesInformation, null, /* @__PURE__ */ import_react109.default.createElement("p", null, renderBulletPoint("var(--color-primary)"), /* @__PURE__ */ import_react109.default.createElement(ValueText, {
     color: "var(--color-primary)"
-  }, "Ownership"), "\u2013 See if you can find the answer to your question before posting on Wize Q. And if you know the answer to a question or how to find it, be sure to reply \u2014 anyone can!"), /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("var(--color-secondary)"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
+  }, "Ownership"), "\u2013 See if you can find the answer to your question before posting on Wize Q. And if you know the answer to a question or how to find it, be sure to reply \u2014 anyone can!"), /* @__PURE__ */ import_react109.default.createElement("p", null, renderBulletPoint("var(--color-secondary)"), /* @__PURE__ */ import_react109.default.createElement(ValueText, {
     color: "var(--color-secondary)"
-  }, "Innovation"), "\u2013 When someone shares a concern or challenge, let\u2019s be innovative \u2014 propose a solution or offer support!"), /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("#E5C8A6"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
+  }, "Innovation"), "\u2013 When someone shares a concern or challenge, let\u2019s be innovative \u2014 propose a solution or offer support!"), /* @__PURE__ */ import_react109.default.createElement("p", null, renderBulletPoint("#E5C8A6"), /* @__PURE__ */ import_react109.default.createElement(ValueText, {
     color: "#E5C8A6"
-  }, "Community"), "\u2013 Remember to treat everyone with dignity and respect. Assume others have good intentions. Always be honest and constructive. Let\u2019s make Wizeline a community where everyone can thrive.")), /* @__PURE__ */ import_react108.default.createElement("p", null, "Consider that other channels: (ticketing portal, Slack, your manager or people partner) might be more effective for finding the right answer quickly."), /* @__PURE__ */ import_react108.default.createElement("p", null, "Thanks for being a valuable contributor to our community! "), /* @__PURE__ */ import_react108.default.createElement("p", null, "The Wize Q Team")), /* @__PURE__ */ import_react108.default.createElement(ModalFooter6, null, /* @__PURE__ */ import_react108.default.createElement(Button_default, {
+  }, "Community"), "\u2013 Remember to treat everyone with dignity and respect. Assume others have good intentions. Always be honest and constructive. Let\u2019s make Wizeline a community where everyone can thrive.")), /* @__PURE__ */ import_react109.default.createElement("p", null, "Consider that other channels: (ticketing portal, Slack, your manager or people partner) might be more effective for finding the right answer quickly."), /* @__PURE__ */ import_react109.default.createElement("p", null, "Thanks for being a valuable contributor to our community! "), /* @__PURE__ */ import_react109.default.createElement("p", null, "The Wize Q Team")), /* @__PURE__ */ import_react109.default.createElement(ModalFooter6, null, /* @__PURE__ */ import_react109.default.createElement(Button_default, {
     id: "btnAccept",
     category: SECONDARY_BUTTON,
     onClick: onClose
@@ -25001,7 +25049,7 @@ function ListQuestions({
   questions,
   onFetchMore
 }) {
-  let submit = (0, import_react110.useSubmit)(), transition = (0, import_react110.useTransition)(), voteQuestionForm = (0, import_react109.useRef)(), profile = useUser_default(), [showValuesMessage, setShowValueMessage] = (0, import_react109.useState)(getCookie("showValueMessage")), [searchParams, setSearchParams] = (0, import_react110.useSearchParams)(), [title, setTitle] = (0, import_react109.useState)("Newest Questions"), valuesMessageModal = showValuesMessage === "true" && /* @__PURE__ */ import_react109.default.createElement(ValuesMessageModal_default, {
+  let submit = (0, import_react111.useSubmit)(), transition = (0, import_react111.useTransition)(), voteQuestionForm = (0, import_react110.useRef)(), profile = useUser_default(), [showValuesMessage, setShowValueMessage] = (0, import_react110.useState)(getCookie("showValueMessage")), [searchParams, setSearchParams] = (0, import_react111.useSearchParams)(), [title, setTitle] = (0, import_react110.useState)("Newest Questions"), valuesMessageModal = showValuesMessage === "true" && /* @__PURE__ */ import_react110.default.createElement(ValuesMessageModal_default, {
     show: showValuesMessage,
     onClose: () => {
       setShowValueMessage(!1), setCookie("showValueMessage", !1);
@@ -25026,7 +25074,7 @@ function ListQuestions({
         actionUrl += value ? `&${key}=${value}` : "";
       }), submit(data, { method: "post", action: actionUrl, replace: !0 });
     };
-    return questions.length === 0 ? null : questions.map((question, index2) => /* @__PURE__ */ import_react109.default.createElement(QuestionCard_default, {
+    return questions.length === 0 ? null : questions.map((question, index2) => /* @__PURE__ */ import_react110.default.createElement(QuestionCard_default, {
       key: question.question_id,
       question: decorateQuestion(question),
       isAdmin: profile.is_admin,
@@ -25038,17 +25086,17 @@ function ListQuestions({
       processingFormSubmission: transition.state !== "idle"
     }));
   }, renderNoResultMessage = () => questions ? "There are no questions yet, how about asking one?" : "Loading questions...";
-  return /* @__PURE__ */ import_react109.default.createElement(Container8, null, /* @__PURE__ */ import_react109.default.createElement(LeftWrapper, null, /* @__PURE__ */ import_react109.default.createElement(SloganWrapper, null, /* @__PURE__ */ import_react109.default.createElement(Slogan_default, null))), /* @__PURE__ */ import_react109.default.createElement(CenterWrapper, null, /* @__PURE__ */ import_react109.default.createElement(QuestionsWrapper, null, /* @__PURE__ */ import_react109.default.createElement(AskQuestionButtonWrapper, null, /* @__PURE__ */ import_react109.default.createElement(QuestionsTitle, null, title), (() => /* @__PURE__ */ import_react109.default.createElement(AskButton, {
+  return /* @__PURE__ */ import_react110.default.createElement(Container8, null, /* @__PURE__ */ import_react110.default.createElement(LeftWrapper, null, /* @__PURE__ */ import_react110.default.createElement(SloganWrapper, null, /* @__PURE__ */ import_react110.default.createElement(Slogan_default, null))), /* @__PURE__ */ import_react110.default.createElement(CenterWrapper, null, /* @__PURE__ */ import_react110.default.createElement(QuestionsWrapper, null, /* @__PURE__ */ import_react110.default.createElement(AskQuestionButtonWrapper, null, /* @__PURE__ */ import_react110.default.createElement(QuestionsTitle, null, title), (() => /* @__PURE__ */ import_react110.default.createElement(AskButton, {
     to: "/questions/new",
     id: "ask-button"
-  }, "Ask Question"))()), questions.length === 0 ? /* @__PURE__ */ import_react109.default.createElement(Alert3, null, renderNoResultMessage()) : /* @__PURE__ */ import_react109.default.createElement(InfiniteScrollList_default, {
+  }, "Ask Question"))()), questions.length === 0 ? /* @__PURE__ */ import_react110.default.createElement(Alert3, null, renderNoResultMessage()) : /* @__PURE__ */ import_react110.default.createElement(InfiniteScrollList_default, {
     onFetch: onFetchMore
-  }, /* @__PURE__ */ import_react109.default.createElement(QuestionList, {
+  }, /* @__PURE__ */ import_react110.default.createElement(QuestionList, {
     id: "questions-list"
-  }, renderQuestionsList(questions))))), /* @__PURE__ */ import_react109.default.createElement(RightWrapper2, null, /* @__PURE__ */ import_react109.default.createElement(FiltersWrapper, null, /* @__PURE__ */ import_react109.default.createElement(Filters_default, {
+  }, renderQuestionsList(questions))))), /* @__PURE__ */ import_react110.default.createElement(RightWrapper2, null, /* @__PURE__ */ import_react110.default.createElement(FiltersWrapper, null, /* @__PURE__ */ import_react110.default.createElement(Filters_default, {
     modifyQuery,
     clearFilters
-  }))), /* @__PURE__ */ import_react109.default.createElement(GoToTopButton_default, null), valuesMessageModal);
+  }))), /* @__PURE__ */ import_react110.default.createElement(GoToTopButton_default, null), valuesMessageModal);
 }
 ListQuestions.propTypes = {
   questions: import_prop_types60.default.arrayOf(import_prop_types60.default.shape()),
@@ -25155,22 +25203,22 @@ var loader12 = async ({ request }) => {
   return (0, import_node11.json)(response);
 };
 function Index() {
-  let { questions: initialQuestions, departments } = (0, import_react111.useLoaderData)(), [questions, setQuestions] = (0, import_react112.useState)(initialQuestions), fetcher = (0, import_react111.useFetcher)(), submit = (0, import_react111.useSubmit)(), formRef = (0, import_react112.useRef)(), [shouldFetch, setShouldFetch] = (0, import_react112.useState)(!0), [page, setPage] = (0, import_react112.useState)(2), [searchParams] = (0, import_react111.useSearchParams)(), onFetchMore = () => {
+  let { questions: initialQuestions, departments } = (0, import_react112.useLoaderData)(), [questions, setQuestions] = (0, import_react113.useState)(initialQuestions), fetcher = (0, import_react112.useFetcher)(), submit = (0, import_react112.useSubmit)(), formRef = (0, import_react113.useRef)(), [shouldFetch, setShouldFetch] = (0, import_react113.useState)(!0), [page, setPage] = (0, import_react113.useState)(2), [searchParams] = (0, import_react112.useSearchParams)(), onFetchMore = () => {
     !shouldFetch || fetcher.load(`/?index&${searchParams.toString()}&page=${page}`);
   };
-  return (0, import_react112.useEffect)(() => {
+  return (0, import_react113.useEffect)(() => {
     if (fetcher.data && fetcher.data.questions && fetcher.data.questions.length === 0) {
       setShouldFetch(!1);
       return;
     }
     fetcher.data && fetcher.data.questions && fetcher.data.questions.length > 0 && (setQuestions((prevQuestions) => [...prevQuestions, ...fetcher.data.questions]), setPage((prevPage) => prevPage + 1), setShouldFetch(!0));
-  }, [fetcher.data]), (0, import_react112.useEffect)(() => {
+  }, [fetcher.data]), (0, import_react113.useEffect)(() => {
     setQuestions(initialQuestions), setPage(2), setShouldFetch(!0);
-  }, [initialQuestions, searchParams]), /* @__PURE__ */ import_react112.default.createElement(import_react112.default.Fragment, null, /* @__PURE__ */ import_react112.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react112.default.createElement(Container7, null, /* @__PURE__ */ import_react112.default.createElement(ListQuestions_default, {
+  }, [initialQuestions, searchParams]), /* @__PURE__ */ import_react113.default.createElement(import_react113.default.Fragment, null, /* @__PURE__ */ import_react113.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react113.default.createElement(Container7, null, /* @__PURE__ */ import_react113.default.createElement(ListQuestions_default, {
     type: "all",
     questions,
     onFetchMore
-  }), /* @__PURE__ */ import_react112.default.createElement(AnswerBot_default, {
+  }), /* @__PURE__ */ import_react113.default.createElement(AnswerBot_default, {
     postAnswerBotQuestion: (question) => {
       let data = new FormData(formRef.current);
       data.set("action", actions_default.CREATE_QUESTION_ANSWERBOT);
@@ -25203,11 +25251,11 @@ __export(login_exports, {
   loader: () => loader13
 });
 init_react();
-var import_react115 = __toESM(require("react")), import_node12 = require("@remix-run/node");
+var import_react116 = __toESM(require("react")), import_node12 = require("@remix-run/node");
 
 // app/components/Login/LoginContainer.jsx
 init_react();
-var import_react113 = __toESM(require("react")), import_react114 = require("@remix-run/react");
+var import_react114 = __toESM(require("react")), import_react115 = require("@remix-run/react");
 
 // app/components/Login/LoginContainer.Styled.jsx
 init_react();
@@ -25331,27 +25379,27 @@ var LoginDiv = import_styled_components62.default.div`
 // app/components/Login/LoginContainer.jsx
 function LoginContainer() {
   let redirectTo = "/";
-  return (0, import_react113.useEffect)(() => {
+  return (0, import_react114.useEffect)(() => {
     setCookie("showValueMessage", !0);
-  }, []), /* @__PURE__ */ import_react113.default.createElement(LoginDiv, null, /* @__PURE__ */ import_react113.default.createElement(LoginSubDiv, null, /* @__PURE__ */ import_react113.default.createElement(LeftDiv, null, /* @__PURE__ */ import_react113.default.createElement(SH3, null, "Welcome Wizeliner!"), /* @__PURE__ */ import_react113.default.createElement(import_react114.Form, {
+  }, []), /* @__PURE__ */ import_react114.default.createElement(LoginDiv, null, /* @__PURE__ */ import_react114.default.createElement(LoginSubDiv, null, /* @__PURE__ */ import_react114.default.createElement(LeftDiv, null, /* @__PURE__ */ import_react114.default.createElement(SH3, null, "Welcome Wizeliner!"), /* @__PURE__ */ import_react114.default.createElement(import_react115.Form, {
     action: "/auth/auth0",
     method: "POST"
-  }, /* @__PURE__ */ import_react113.default.createElement("input", {
+  }, /* @__PURE__ */ import_react114.default.createElement("input", {
     type: "hidden",
     name: "redirectTo",
     value: redirectTo
-  }), /* @__PURE__ */ import_react113.default.createElement(Button_default, {
+  }), /* @__PURE__ */ import_react114.default.createElement(Button_default, {
     type: "submit",
     category: PRIMARY_BUTTON,
     className: "login-button"
-  }, "Log in with your Wizeline account")), /* @__PURE__ */ import_react113.default.createElement(Paragraph, null, /* @__PURE__ */ import_react113.default.createElement(Span2, null, "Wizeline Questions"), /* @__PURE__ */ import_react113.default.createElement(Span2, {
+  }, "Log in with your Wizeline account")), /* @__PURE__ */ import_react114.default.createElement(Paragraph, null, /* @__PURE__ */ import_react114.default.createElement(Span2, null, "Wizeline Questions"), /* @__PURE__ */ import_react114.default.createElement(Span2, {
     variant: "bold"
-  }, " DOES NOT "), /* @__PURE__ */ import_react113.default.createElement(Span2, null, "store any personal information so that you can ask anything."))), /* @__PURE__ */ import_react113.default.createElement(RightDiv, null, /* @__PURE__ */ import_react113.default.createElement(RedDiv, null), /* @__PURE__ */ import_react113.default.createElement(GoldDiv, null), /* @__PURE__ */ import_react113.default.createElement("img", {
+  }, " DOES NOT "), /* @__PURE__ */ import_react114.default.createElement(Span2, null, "store any personal information so that you can ask anything."))), /* @__PURE__ */ import_react114.default.createElement(RightDiv, null, /* @__PURE__ */ import_react114.default.createElement(RedDiv, null), /* @__PURE__ */ import_react114.default.createElement(GoldDiv, null), /* @__PURE__ */ import_react114.default.createElement("img", {
     src: logo_white_default,
     alt: "logo"
-  }), /* @__PURE__ */ import_react113.default.createElement(Slogan2, null, /* @__PURE__ */ import_react113.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react113.default.createElement(AdviceContainer, null, /* @__PURE__ */ import_react113.default.createElement("p", null, "Before asking a question verify if you can get the information you need from these resources."), /* @__PURE__ */ import_react113.default.createElement("ul", null, /* @__PURE__ */ import_react113.default.createElement("li", null, /* @__PURE__ */ import_react113.default.createElement("a", {
+  }), /* @__PURE__ */ import_react114.default.createElement(Slogan2, null, /* @__PURE__ */ import_react114.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react114.default.createElement(AdviceContainer, null, /* @__PURE__ */ import_react114.default.createElement("p", null, "Before asking a question verify if you can get the information you need from these resources."), /* @__PURE__ */ import_react114.default.createElement("ul", null, /* @__PURE__ */ import_react114.default.createElement("li", null, /* @__PURE__ */ import_react114.default.createElement("a", {
     href: "https://wizeline.slack.com/archives/C1UDJCL9E"
-  }, " #Questions "), "- Slack Channel"), /* @__PURE__ */ import_react113.default.createElement("li", null, /* @__PURE__ */ import_react113.default.createElement("a", {
+  }, " #Questions "), "- Slack Channel"), /* @__PURE__ */ import_react114.default.createElement("li", null, /* @__PURE__ */ import_react114.default.createElement("a", {
     href: "https://ticketing.wizeline.com/ticketing.html"
   }, " Ticketing"))))))));
 }
@@ -25360,16 +25408,16 @@ var LoginContainer_default = LoginContainer;
 // app/routes/login.jsx
 var loader13 = async ({ request }) => await getAuthenticatedUser(request) ? (0, import_node12.redirect)("/") : (0, import_node12.json)({});
 function Login() {
-  return /* @__PURE__ */ import_react115.default.createElement(LoginContainer_default, null);
+  return /* @__PURE__ */ import_react116.default.createElement(LoginContainer_default, null);
 }
 var login_default = Login;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
 init_react();
-var assets_manifest_default = { version: "ae9988da", entry: { module: "/build/entry.client-WVOK65CE.js", imports: ["/build/_shared/chunk-IT4B5LWP.js", "/build/_shared/chunk-CA4B4QDL.js", "/build/_shared/chunk-3WZ3CGWF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-4YS5CAKR.js", imports: ["/build/_shared/chunk-KWDBJDLQ.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-5M22U5RX.js", "/build/_shared/chunk-4CYKQU6R.js", "/build/_shared/chunk-G3X6XPVQ.js", "/build/_shared/chunk-P7BYWKM6.js", "/build/_shared/chunk-CJWDOHQ3.js", "/build/_shared/chunk-UBEID7IU.js", "/build/_shared/chunk-C4H7A3DG.js", "/build/_shared/chunk-KIKUJAUP.js", "/build/_shared/chunk-ZKETJUKF.js", "/build/_shared/chunk-2FVL2P6G.js", "/build/_shared/chunk-DTXDYIFC.js", "/build/_shared/chunk-UPCFJQSK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-LV76AEPG.js", imports: ["/build/_shared/chunk-ZJYHTA2X.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-PCU3UQVH.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-N7SMPOX4.js", imports: ["/build/_shared/chunk-ZJYHTA2X.js", "/build/_shared/chunk-SD6HPIQU.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-KBQ2S7BZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-CN5UOKJC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-F43WT5EB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-FKN25DVC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-BTD55P6L.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/example": { id: "routes/example", parentId: "root", path: "example", index: void 0, caseSensitive: void 0, module: "/build/routes/example-KIWW2AVD.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-TSDVGYHL.js", imports: ["/build/_shared/chunk-J3GNERB6.js", "/build/_shared/chunk-DJQ7DVF2.js", "/build/_shared/chunk-BNBGJ5QY.js", "/build/_shared/chunk-RVRN3YQ7.js", "/build/_shared/chunk-Y5RV5S54.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-CKXMB22W.js", imports: ["/build/_shared/chunk-J3GNERB6.js", "/build/_shared/chunk-RVRN3YQ7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-4LBXPPXN.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-ESYGSGMK.js", imports: ["/build/_shared/chunk-SD6HPIQU.js", "/build/_shared/chunk-DJQ7DVF2.js", "/build/_shared/chunk-T276QUSN.js", "/build/_shared/chunk-Y5RV5S54.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-ZNSYPZYX.js", imports: ["/build/_shared/chunk-BNBGJ5QY.js", "/build/_shared/chunk-RVRN3YQ7.js", "/build/_shared/chunk-T276QUSN.js", "/build/_shared/chunk-Y5RV5S54.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-AE9988DA.js" };
+var assets_manifest_default = { version: "d90107c3", entry: { module: "/build/entry.client-UE62V5O4.js", imports: ["/build/_shared/chunk-AOIRIE2A.js", "/build/_shared/chunk-CA4B4QDL.js", "/build/_shared/chunk-3WZ3CGWF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ECZRH2LR.js", imports: ["/build/_shared/chunk-NPNCWMXA.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-KHI65GMO.js", "/build/_shared/chunk-6TCZEOTC.js", "/build/_shared/chunk-TIDFRYFE.js", "/build/_shared/chunk-LOAY3CH6.js", "/build/_shared/chunk-CXIA25NB.js", "/build/_shared/chunk-R6ZOL3IF.js", "/build/_shared/chunk-MTRSEIQJ.js", "/build/_shared/chunk-YT3K4J47.js", "/build/_shared/chunk-TOV5KU52.js", "/build/_shared/chunk-2FVL2P6G.js", "/build/_shared/chunk-DTXDYIFC.js", "/build/_shared/chunk-UPCFJQSK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-T64WQ7D2.js", imports: ["/build/_shared/chunk-6H77JM73.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-FKIM2JZ5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-YAZNKAUZ.js", imports: ["/build/_shared/chunk-6H77JM73.js", "/build/_shared/chunk-35OB2BUG.js", "/build/_shared/chunk-JQBD2MHU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-ITMSNXEC.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-4TNALWYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-MMAM3N7V.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-LVJLP6WG.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-I7VIXFAC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/example": { id: "routes/example", parentId: "root", path: "example", index: void 0, caseSensitive: void 0, module: "/build/routes/example-XLXMPQBJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-W6JFMN76.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-O5ML77LV.js", "/build/_shared/chunk-EAHAFI37.js", "/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-DMHBAV2X.js", "/build/_shared/chunk-JQBD2MHU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-USZNUW5H.js", imports: ["/build/_shared/chunk-PNOSEPO2.js", "/build/_shared/chunk-LKOJQBOU.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-XHWZMWF6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-E6LCRDBY.js", imports: ["/build/_shared/chunk-35OB2BUG.js", "/build/_shared/chunk-O5ML77LV.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-DMHBAV2X.js", "/build/_shared/chunk-JQBD2MHU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-FU3AXK74.js", imports: ["/build/_shared/chunk-EAHAFI37.js", "/build/_shared/chunk-LKOJQBOU.js", "/build/_shared/chunk-DQMYHA6A.js", "/build/_shared/chunk-DMHBAV2X.js", "/build/_shared/chunk-JQBD2MHU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-D90107C3.js" };
 
 // server-entry-module:@remix-run/dev/server-build
-var assetsBuildDirectory = "public\\build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
+var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
   root: {
     id: "root",
     parentId: void 0,

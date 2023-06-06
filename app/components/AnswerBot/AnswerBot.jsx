@@ -3,7 +3,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import pdfConv from 'app/controllers/answerBot/pdfConv';
 import PropTypes from 'prop-types';
 import useUser from 'app/utils/hooks/useUser';
-import { WELCOME_MESSAGE } from 'app/utils/constants';
+import {
+  WELCOME_MESSAGE,
+  INSTRUCTIONS_ANSWERBOT,
+  POSITIVE_FEEDBACK_ANSWEBOT,
+  NEGATIVE_FEEDBACK_ANSWEBOT,
+  POSTED_ANSWEBOT,
+} from 'app/utils/constants';
+import {
+  DEFAULT_ERROR_MESSAGE_CREATE_BOT,
+  DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+  DEFAULT_ERROR_MESSAGE_POST_BOT,
+} from 'app/utils/backend/constants';
+import useGlobalSuccessMessage from 'app/utils/hooks/useGlobalSuccessMessage';
+import { useActionData } from '@remix-run/react';
 
 function AnswerBot({
   postAnswerBotQuestion,
@@ -14,7 +27,7 @@ function AnswerBot({
   /// ///////////// Send Question to AnswerBot ////////////////
 
   // Instrucciones (query principal)
-  const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
+  const instructions = INSTRUCTIONS_ANSWERBOT;
 
   // The chat history in the chatbot.
   const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: WELCOME_MESSAGE }]);
@@ -62,7 +75,7 @@ function AnswerBot({
 
       // Create the payload.
       const newQuestion = {
-        question_by_user: message,
+        question_by_user: 1,
         answer_by_bot: answer,
         assignedDepartment: department?.department_id || 'wizeq',
       };
@@ -100,14 +113,12 @@ function AnswerBot({
   /// ///////////// Feedback to AnswerBot ////////////////
 
   const [showThanksMessage, setShowThanksMessage] = useState({});
+  const [indexMessage, setIndexMessage] = useState(null);
 
   // To update the response feedback to positive.
   const handleLikeClick = async (index) => {
-    // Show thanks message.
-    setShowThanksMessage((prevShowThanksMessage) => ({
-      ...prevShowThanksMessage,
-      [index]: true,
-    }));
+    // Setting the index.
+    setIndexMessage(index);
 
     // Create the payload.
     const updateFeedback = {
@@ -120,30 +131,16 @@ function AnswerBot({
     // Update the feedback of the record.
     await updateAnswerBotFeedback(updateFeedback);
 
-    // Set a time to fade the gratitude message.
-    setTimeout(() => {
-      setShowThanksMessage((prevShowThanksMessage) => ({
-        ...prevShowThanksMessage,
-        [index]: 'na',
-      }));
-    }, 2500);
+    setShowThanksMessage((prevShowThanksMessage) => ({
+      ...prevShowThanksMessage,
+      [index]: 'Loading...',
+    }));
   };
 
   // To update the response feedback to negative.
   const handleDislikeClick = async (index) => {
-    // Show thanks message.
-    setShowThanksMessage((prevShowThanksMessage) => ({
-      ...prevShowThanksMessage,
-      [index]: true,
-    }));
-
-    // Show a message if the user would like to share the question in the forum.
-    setTimeout(() => {
-      setShowThanksMessage((prevShowThanksMessage) => ({
-        ...prevShowThanksMessage,
-        [index]: 'Would you like to share your question with the community?',
-      }));
-    }, 1500);
+    // Setting the index.
+    setIndexMessage(index);
 
     // Create the payload.
     const updateFeedback = {
@@ -155,10 +152,18 @@ function AnswerBot({
 
     // Update the feedback of the record.
     await updateAnswerBotFeedback(updateFeedback);
+
+    setShowThanksMessage((prevShowThanksMessage) => ({
+      ...prevShowThanksMessage,
+      [index]: 'Loading...',
+    }));
   };
 
   // To post a question and be able to link it to the record made in the AnswerBot table.
   const handlePublishQuestion = async (index) => {
+    // Setting the index.
+    setIndexMessage(index);
+
     // Create the payload.
     const updatePostID = {
       question: messages[index].content,
@@ -169,24 +174,135 @@ function AnswerBot({
     // Update the id of the posted question with the answerbot's
     await updateAnswerBotPostID(updatePostID);
 
-    // Show thanks message.
     setShowThanksMessage((prevShowThanksMessage) => ({
       ...prevShowThanksMessage,
-      [index]: 'Your question has been published successfully.',
+      [index]: 'Loading...',
     }));
-
-    // Set a time to fade the gratitude message.
-    setTimeout(() => {
-      setShowThanksMessage((prevShowThanksMessage) => ({
-        ...prevShowThanksMessage,
-        [index]: 'na',
-      }));
-    }, 2500);
   };
 
   /// //////////////// User ///////////////////
 
   const profile = useUser();
+
+  /// //////////////// To Handle the Success/Error Messages in the Bot ///////////////////
+
+  const globalSuccess = useGlobalSuccessMessage();
+  const data = useActionData();
+
+  useEffect(() => {
+    // Checking if the action was successful
+    if (globalSuccess) {
+      switch (globalSuccess) {
+        // For positive feedback
+        case POSITIVE_FEEDBACK_ANSWEBOT:
+          // Show thanks message.
+          setShowThanksMessage((prevShowThanksMessage) => ({
+            ...prevShowThanksMessage,
+            [indexMessage]: true,
+          }));
+
+          // Set a time to fade the gratitude message.
+          setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => ({
+              ...prevShowThanksMessage,
+              [indexMessage]: 'na',
+            }));
+          }, 2500);
+
+          break;
+      
+        // For negative feedback
+        case NEGATIVE_FEEDBACK_ANSWEBOT:
+          // Show thanks message.
+          setShowThanksMessage((prevShowThanksMessage) => ({
+            ...prevShowThanksMessage,
+            [indexMessage]: true,
+          }));
+
+          // Show a message if the user would like to share the question in the forum.
+          setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => ({
+              ...prevShowThanksMessage,
+              [indexMessage]: 'Would you like to share your question with the community?',
+            }));
+          }, 1500);
+
+          break;
+
+        // For posting question
+        case POSTED_ANSWEBOT:
+          // Show thanks message.
+          setShowThanksMessage((prevShowThanksMessage) => ({
+            ...prevShowThanksMessage,
+            [indexMessage]: 'Your question has been published successfully.',
+          }));
+
+          // Set a time to fade the gratitude message.
+          setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => ({
+              ...prevShowThanksMessage,
+              [indexMessage]: 'na',
+            }));
+          }, 2500);
+
+          break;
+        default:
+          break;
+      }
+
+      setIndexMessage(null);
+    }
+
+    if (!data) return;
+
+    const { error } = data;
+
+    if (error) {
+      switch (error.message) {
+        // Error in feedback
+        case DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT:
+          // Show thanks message.
+          setShowThanksMessage((prevShowThanksMessage) => ({
+            ...prevShowThanksMessage,
+            [indexMessage]: DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+          }));
+
+          // Set a time to fade the gratitude message.
+          setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => ({
+              ...prevShowThanksMessage,
+              [indexMessage]: false,
+            }));
+          }, 2500);
+
+          break;
+
+        // Error in post
+        case DEFAULT_ERROR_MESSAGE_POST_BOT:
+          // Show thanks message.
+          setShowThanksMessage((prevShowThanksMessage) => ({
+            ...prevShowThanksMessage,
+            [indexMessage]: DEFAULT_ERROR_MESSAGE_POST_BOT,
+          }));
+
+          // Set a time to fade the gratitude message.
+          setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => ({
+              ...prevShowThanksMessage,
+              [indexMessage]: 'Would you like to share your question with the community?',
+            }));
+          }, 2500);
+
+          break;
+
+        default:
+          break;
+      }
+
+      setIndexMessage(null);
+    }
+
+  }, [data, globalSuccess]);
 
   /// ///////////// Components ////////////////
 
