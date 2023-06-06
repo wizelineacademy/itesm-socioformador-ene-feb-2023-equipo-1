@@ -94,7 +94,7 @@ jobs:
             npm run build
 
             echo "*** Step: ** Cleanup"
-            rm -rf ~/projectlab/tmp
+            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp
     
   deploy-prod:
   name: 🚀 Deploy Prod
@@ -179,7 +179,7 @@ jobs:
             npm run build
 
             echo "*** Step: ** Cleanup"
-            rm -rf ~/projectlab/tmp
+            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp
           
           #echo "*** Step: *** Start pm2 service"
           #pm2 start ecosystem.config.js
