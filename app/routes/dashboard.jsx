@@ -1,12 +1,11 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { json } from '@remix-run/node';
-import { useSearchParams } from '@remix-run/react';
+import { useSearchParams, useLoaderData } from '@remix-run/react';
 import * as Styled from 'app/styles/Dashboard.Styled.jsx';
 import { requireAuth } from 'app/session.server';
 import AdminSideBar from 'app/components/AdminSideBar';
 import { Table } from 'react-bootstrap';
-import { useLoaderData } from '@remix-run/react';
 import listQuestions from 'app/controllers/questions/list';
 import listDepartments from 'app/controllers/departments/list';
 import dateRangeConversion from 'app/utils/dateRangeConversion';
@@ -83,7 +82,7 @@ function Dashboard() {
   const {
     questionsFAQ, questionsOF, questionsBot, departments,
   } = useLoaderData();
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   // For the department selector.
