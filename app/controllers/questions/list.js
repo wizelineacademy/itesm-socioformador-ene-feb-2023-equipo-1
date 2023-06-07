@@ -66,6 +66,89 @@ const buildWhereStatus = (status) => {
   return filter;
 };
 
+// For approved or not approved comments.
+const buildWhereCommentStatus = (commentStatus) => {
+  let filter = {};
+
+  switch (commentStatus) {
+    case 'approved':
+      filter = {
+        Comments: {
+          some: {
+            approvedBy: {
+              not: null,
+            },
+          },
+        },
+      };
+      break;
+    case 'not_approved':
+      filter = {
+        OR: [
+          {
+            Comments: {
+              some: {
+                approvedBy: null,
+              },
+            },
+          },
+          {
+            Comments: {
+              none: {},
+            },
+          },
+        ],
+      };
+      break;
+    default:
+      break;
+  }
+
+  return filter;
+};
+
+// For approved or not approved comments by community.
+const buildWhereCommentVote = (commentVote) => {
+  let filter = {};
+
+  switch (commentVote) {
+    case 'approved':
+      filter = {
+        Comments: {
+          some: {
+            CommentVote: {
+              some: {
+                value: {
+                  gte: 10,
+                },
+              },
+            },
+          },
+        },
+      };
+      break;
+    case 'not_approved':
+      filter = {
+        Comments: {
+          none: {
+            CommentVote: {
+              some: {
+                value: {
+                  gte: 10,
+                },
+              },
+            },
+          },
+        },
+      };
+      break;
+    default:
+      break;
+  }
+
+  return filter;
+};
+
 const buildWhereLocation = (location) => {
   if (!location) return {};
 
@@ -148,10 +231,12 @@ const buildWhereIsAdminSearch = (isAdmin) => {
 };
 
 const buildWhere = ({
-  status, search, location, department, dateRange, isAdmin,
+  status, commentStatus, commentVote, search, location, department, dateRange, isAdmin,
 }) => {
   const where = {
     ...buildWhereStatus(status),
+    ...buildWhereCommentStatus(commentStatus),
+    ...buildWhereCommentVote(commentVote),
     ...buildWhereLocation(location),
     ...buildWhereDepartment(department),
     ...buildWhereDateRange(dateRange),
@@ -192,12 +277,14 @@ const sortQuestions = (sortType, questions) => {
 
 const listQuestions = async (params) => {
   const {
-    limit, offset, orderBy, status, location, department, dateRange, search, user,
+    limit, offset, orderBy, status, commentStatus, commentVote, location, department, dateRange, search, user,
   } = params;
 
   const fetchedQuestions = await db.Questions.findMany({
     where: buildWhere({
       status,
+      commentStatus,
+      commentVote,
       location,
       department,
       dateRange,

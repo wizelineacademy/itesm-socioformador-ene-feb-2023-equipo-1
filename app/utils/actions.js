@@ -13,6 +13,9 @@ const ACTIONS = {
   SCORE_ANSWER: 'score_answer',
   DELETE_SCORE: 'delete_answer_score',
   ENABLED_ACTION: 'enable/disable',
+  CREATE_QUESTION_ANSWERBOT: 'create_question_answerbot',
+  UPDATE_FEEDBACK_ANSWERBOT: 'update_feedback_answerbot',
+  UPDATE_POST_ANSWERBOT: 'update_post_answerbot',
 };
 
 export default ACTIONS;

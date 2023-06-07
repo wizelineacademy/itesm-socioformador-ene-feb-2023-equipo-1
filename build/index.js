@@ -83,11 +83,11 @@ var require_filterConstants = __commonJS({
 var require_joiConstants = __commonJS({
   "app/utils/backend/joiConstants.js"(exports, module2) {
     init_react();
-    var Joi9 = require("joi");
+    var Joi10 = require("joi");
     module2.exports = {
-      JOI_ID_VALIDATION: Joi9.number().integer().min(1).required(),
-      JOI_SIMPLE_STRING_VALIDATION: Joi9.string().required(),
-      JOI_EMAIL_VALIDATION: Joi9.string().email()
+      JOI_ID_VALIDATION: Joi10.number().integer().min(1).required(),
+      JOI_SIMPLE_STRING_VALIDATION: Joi10.string().required(),
+      JOI_EMAIL_VALIDATION: Joi10.string().email()
     };
   }
 });
@@ -5038,59 +5038,59 @@ var logo_white_default = "/build/_assets/logo-white-OWKWHN6A.png";
 init_react();
 var import_styled_components2 = __toESM(require("styled-components")), import_react_bootstrap = require("react-bootstrap"), import_ai = require("react-icons/ai"), AppNav = (0, import_styled_components2.default)(import_react_bootstrap.Navbar).attrs(() => ({
   fluid: !0
-}))` 
-  background-color: #203449;
-  border-color: #203449;
-  border-radius: 0;
-  margin-bottom: 0;
-  padding: 5px;
-  width: 100%;
-  .dropdown.btn-group {
-    float: left;
-    margin-left: 30px;
-  }
+}))`
+background-color: #203449;
+border-color: #203449;
+border-radius: 0;
+margin-bottom: 0;
+padding: 5px;
+width: 100%;
+.dropdown.btn-group {
+float: left;
+margin-left: 30px;
+}
 `, ButtonBootstrap = (0, import_styled_components2.default)(import_react_bootstrap.Button)`
-  background-color: transparent;
-  display: none;
-  border: 1px solid transparent;
-  border-radius: 25px;
-  position: absolute;
-  right: 65px;
-  top: 8px;
+background-color: transparent;
+display: none;
+border: 1px solid transparent;
+border-radius: 25px;
+position: absolute;
+right: 65px;
+top: 8px;
 
-  &:hover,
-  &.hover {
-    background-color: #4d5d6d;
-    border: 1px solid transparent;
-  }
-  &:focus,
-  &.focus {
-    background-color: #4d5d6d;
-    border: 1px solid transparent;
-  }
-  &:active:hover,
-  &:active:focus {
-    background-color: #4d5d6d;
-    border: 1px solid transparent;
-    color: transparent;
-  }
-  @media (max-width: 768px) {
-    display: block;
-  }
+&:hover,
+&.hover {
+background-color: #4d5d6d;
+border: 1px solid transparent;
+}
+&:focus,
+&.focus {
+background-color: #4d5d6d;
+border: 1px solid transparent;
+}
+&:active:hover,
+&:active:focus {
+background-color: #4d5d6d;
+border: 1px solid transparent;
+color: transparent;
+}
+@media (max-width: 768px) {
+display: block;
+}
 `, SearchBarNavContainer = import_styled_components2.default.div`
-  display: none;
-  @media (max-width: 768px) {
-    display: flex;
-    width: 100%;
-  }
+display: none;
+@media (max-width: 768px) {
+display: flex;
+width: 100%;
+}
 `, IconWrapper = import_styled_components2.default.div`
-  width: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+width: 22px;
+display: flex;
+align-items: center;
+justify-content: center;
 `, SearchIcon = (0, import_styled_components2.default)(import_ai.AiOutlineSearch)`
-  font-size: 30px;
-  color: #fff;
+font-size: 30px;
+color: #fff;
 `;
 
 // app/components/UserControls/index.js
@@ -5474,7 +5474,7 @@ var NOT_ASSIGNED_DEPARTMENT_ID = 0, PRIMARY_BUTTON = "primary_button", SECONDARY
   "Do not demean or degrade others because of their gender, race, age, religion, etc.",
   "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity.",
   "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."
-], PIN_QUESTION_ERROR_MESSAGE = "Error trying to pin/unpin the question.", INVALID_PARAMS_FOR_OPERATION_ERROR_MESSAGE = "The provided parameters for the operation are not valid", QUESTION_NOT_FOUND_ERROR_MESSAGE = "The question with the id provided could not be found", INVALIDATE_VOTE_ERROR_MESSAGE = "Error trying to invalidate the vote in the question", UPDATE_COMMENT_ERROR_MESSAGE = "Error trying to update the comment", DELETE_COMMENT_ERROR_MESSAGE = "Error trying to delete the comment", ENABLE_DISABLE_ERROR_MESSAGE = "Error trying to enable/disable this question";
+], PIN_QUESTION_ERROR_MESSAGE = "Error trying to pin/unpin the question.", INVALID_PARAMS_FOR_OPERATION_ERROR_MESSAGE = "The provided parameters for the operation are not valid", QUESTION_NOT_FOUND_ERROR_MESSAGE = "The question with the id provided could not be found", INVALIDATE_VOTE_ERROR_MESSAGE = "Error trying to invalidate the vote in the question", UPDATE_COMMENT_ERROR_MESSAGE = "Error trying to update the comment", DELETE_COMMENT_ERROR_MESSAGE = "Error trying to delete the comment", ENABLE_DISABLE_ERROR_MESSAGE = "Error trying to enable/disable this question", WELCOME_MESSAGE = "Hello! Ask me any question and I'll see how I can help you.";
 
 // app/components/Atoms/Button/Button.Styled.jsx
 init_react();
@@ -5763,9 +5763,9 @@ var useFindLoaderMatch_default = useFindLoaderMatch;
 
 // app/utils/hooks/useUser.js
 function useUser() {
-  let loader13 = useFindLoaderMatch_default("root");
-  if (!(!loader13 || !loader13.data))
-    return loader13.data.profile;
+  let loader14 = useFindLoaderMatch_default("root");
+  if (!(!loader14 || !loader14.data))
+    return loader14.data.profile;
 }
 var useUser_default = useUser;
 
@@ -13200,7 +13200,9 @@ function UserControls(props) {
     to: "/contact"
   }, /* @__PURE__ */ import_react20.default.createElement(Navitem, null, "Contact")), isAdmin && /* @__PURE__ */ import_react20.default.createElement(import_react_router_bootstrap.LinkContainer, {
     to: "/admin"
-  }, /* @__PURE__ */ import_react20.default.createElement(Navitem, null, "Admin")), /* @__PURE__ */ import_react20.default.createElement(NavLi, null, /* @__PURE__ */ import_react20.default.createElement(import_react_bootstrap4.ButtonToolbar, null, /* @__PURE__ */ import_react20.default.createElement(UserDropdown, {
+  }, /* @__PURE__ */ import_react20.default.createElement(Navitem, null, "Admin")), isAdmin && /* @__PURE__ */ import_react20.default.createElement(import_react_router_bootstrap.LinkContainer, {
+    to: "/dashboard"
+  }, /* @__PURE__ */ import_react20.default.createElement(Navitem, null, "Dashboard")), /* @__PURE__ */ import_react20.default.createElement(NavLi, null, /* @__PURE__ */ import_react20.default.createElement(import_react_bootstrap4.ButtonToolbar, null, /* @__PURE__ */ import_react20.default.createElement(UserDropdown, {
     name,
     title,
     email,
@@ -13272,8 +13274,8 @@ var import_constants9 = __toESM(require_constants()), import_filterConstants = _
 
 // app/utils/backend/dateUtils.js
 init_react();
-var createDateRange = (startDate, months) => {
-  let startDateCopy = new Date(startDate), newDate = new Date(startDateCopy.setMonth(startDate.getMonth() + months)), initialDate = months < 0 ? newDate : startDate, lastDate = months < 0 ? startDate : newDate;
+var createDateRange = (startDate, months2) => {
+  let startDateCopy = new Date(startDate), newDate = new Date(startDateCopy.setMonth(startDate.getMonth() + months2)), initialDate = months2 < 0 ? newDate : startDate, lastDate = months2 < 0 ? startDate : newDate;
   return {
     initialDate,
     lastDate: new Date(lastDate.setDate(lastDate.getDate() + 1))
@@ -13337,6 +13339,79 @@ var getOrderBy = (order2) => {
       break;
   }
   return filter;
+}, buildWhereCommentStatus = (commentStatus) => {
+  let filter = {};
+  switch (commentStatus) {
+    case "approved":
+      filter = {
+        Comments: {
+          some: {
+            approvedBy: {
+              not: null
+            }
+          }
+        }
+      };
+      break;
+    case "not_approved":
+      filter = {
+        OR: [
+          {
+            Comments: {
+              some: {
+                approvedBy: null
+              }
+            }
+          },
+          {
+            Comments: {
+              none: {}
+            }
+          }
+        ]
+      };
+      break;
+    default:
+      break;
+  }
+  return filter;
+}, buildWhereCommentVote = (commentVote) => {
+  let filter = {};
+  switch (commentVote) {
+    case "approved":
+      filter = {
+        Comments: {
+          some: {
+            CommentVote: {
+              some: {
+                value: {
+                  gte: 10
+                }
+              }
+            }
+          }
+        }
+      };
+      break;
+    case "not_approved":
+      filter = {
+        Comments: {
+          none: {
+            CommentVote: {
+              some: {
+                value: {
+                  gte: 10
+                }
+              }
+            }
+          }
+        }
+      };
+      break;
+    default:
+      break;
+  }
+  return filter;
 }, buildWhereLocation = (location) => location ? {
   location
 } : {}, buildWhereDepartment = (department) => department === void 0 || department === import_filterConstants.ALL_DEPARTMENTS ? {} : department === import_filterConstants.NOT_ASSIGNED_DEPARTMENT_ID ? {
@@ -13383,12 +13458,14 @@ var getOrderBy = (order2) => {
   return {};
 }, buildWhereIsAdminSearch = (isAdmin) => isAdmin ? {} : { is_enabled: !0 }, buildWhere = ({
   status,
+  commentStatus,
+  commentVote,
   search: search2,
   location,
   department,
   dateRange,
   isAdmin
-}) => __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, buildWhereStatus(status)), buildWhereLocation(location)), buildWhereDepartment(department)), buildWhereDateRange(dateRange)), buildWhereSearch(search2)), buildWhereLastXMonths(import_constants9.DEFAULT_MONTHS, dateRange, search2)), buildWhereIsAdminSearch(isAdmin)), sortQuestions = (sortType, questions) => {
+}) => __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, buildWhereStatus(status)), buildWhereCommentStatus(commentStatus)), buildWhereCommentVote(commentVote)), buildWhereLocation(location)), buildWhereDepartment(department)), buildWhereDateRange(dateRange)), buildWhereSearch(search2)), buildWhereLastXMonths(import_constants9.DEFAULT_MONTHS, dateRange, search2)), buildWhereIsAdminSearch(isAdmin)), sortQuestions = (sortType, questions) => {
   let _sortQuestions;
   switch (sortType) {
     case "popular":
@@ -13408,6 +13485,8 @@ var getOrderBy = (order2) => {
     offset,
     orderBy,
     status,
+    commentStatus,
+    commentVote,
     location,
     department,
     dateRange,
@@ -13416,6 +13495,8 @@ var getOrderBy = (order2) => {
   } = params, fetchedQuestions = await db.Questions.findMany({
     where: buildWhere({
       status,
+      commentStatus,
+      commentVote,
       location,
       department,
       dateRange,
@@ -16633,7 +16714,10 @@ var ACTIONS = {
   APPROVED_COMMENT: "approved_comment",
   SCORE_ANSWER: "score_answer",
   DELETE_SCORE: "delete_answer_score",
-  ENABLED_ACTION: "enable/disable"
+  ENABLED_ACTION: "enable/disable",
+  CREATE_QUESTION_ANSWERBOT: "create_question_answerbot",
+  UPDATE_FEEDBACK_ANSWERBOT: "update_feedback_answerbot",
+  UPDATE_POST_ANSWERBOT: "update_post_answerbot"
 }, actions_default = ACTIONS;
 
 // app/components/QuestionComment/QuestionComment.jsx
@@ -18645,9 +18729,9 @@ var import_react65 = require("@remix-run/react"), import_react66 = __toESM(requi
 // app/utils/hooks/useGlobalSuccessMessage.js
 init_react();
 function useGlobalSuccessMessage() {
-  let loader13 = useFindLoaderMatch_default("root");
-  if (!(!loader13 || !loader13.data))
-    return loader13.data.globalSuccess;
+  let loader14 = useFindLoaderMatch_default("root");
+  if (!(!loader14 || !loader14.data))
+    return loader14.data.globalSuccess;
 }
 var useGlobalSuccessMessage_default = useGlobalSuccessMessage;
 
@@ -18775,7 +18859,8 @@ var import_joi = __toESM(require("joi")), import_constants32 = __toESM(require_c
   location: import_joi.default.string().required(),
   created_by_employee_id: import_joi.default.number().integer().min(1).allow(null),
   assigned_department: import_joi.default.number().integer().min(1).allow(null),
-  assigned_to_employee_id: import_joi.default.number().integer().min(1).allow(null)
+  assigned_to_employee_id: import_joi.default.number().integer().min(1).allow(null),
+  bot_enabled: import_joi.default.boolean()
 }), modifyQuestionPinStatusParams = import_joi.default.object().keys({
   questionId: import_joi.default.number().integer().required().min(1),
   newPinStatus: import_joi.default.boolean().required()
@@ -19820,7 +19905,7 @@ __export(new_exports, {
   loader: () => loader4
 });
 init_react();
-var import_react79 = __toESM(require("react")), import_bs5 = require("react-icons/bs"), import_node4 = require("@remix-run/node"), import_react80 = require("@remix-run/react");
+var import_react80 = __toESM(require("react")), import_bs5 = require("react-icons/bs"), import_node4 = require("@remix-run/node"), import_react81 = require("@remix-run/react");
 
 // app/styles/CreateQuestion.Styled.jsx
 init_react();
@@ -19911,7 +19996,7 @@ function Slogan() {
 var Slogan_default = Slogan;
 
 // app/routes/questions/new.jsx
-var import_constants63 = __toESM(require_constants());
+var import_constants68 = __toESM(require_constants());
 
 // app/components/QuestionForm/index.js
 init_react();
@@ -21046,13 +21131,150 @@ var import_emailHandler = __toESM(require_emailHandler()), createQuestion = asyn
   };
 }, create_default4 = createQuestion;
 
-// app/components/Atoms/AnswerBotButton/index.js
+// app/controllers/answerBot/create.js
+init_react();
+var import_constants64 = __toESM(require_constants());
+
+// app/utils/backend/validators/answerBot.js
+init_react();
+var import_joi8 = __toESM(require("joi")), import_constants63 = __toESM(require_constants()), createBotSchema = import_joi8.default.object().keys({
+  question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
+  answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
+  assigned_department: import_joi8.default.number().integer().min(1).allow(null),
+  user_id: import_joi8.default.number().integer().min(1).allow(null)
+}), modifyFeedbackBotSchema = import_joi8.default.object().keys({
+  question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
+  answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
+  answerFeedback: import_joi8.default.number().integer().min(-1).max(1).required(),
+  assigned_department: import_joi8.default.number().integer().min(1).allow(null),
+  user_id: import_joi8.default.number().integer().min(1).allow(null)
+}), modifyBotPostQuestion = import_joi8.default.object().keys({
+  postQuestionID: import_joi8.default.number().integer().min(1).allow(null),
+  question_by_user: import_joi8.default.string().min(import_constants63.MINIMUM_QUESTION_LENGTH).max(import_constants63.MAXIMUM_QUESTION_LENGTH).required(),
+  answer_by_bot: import_joi8.default.string().min(import_constants63.MINIMUM_ANSWER_LENGTH).max(import_constants63.MAXIMUM_ANSWER_LENGTH).required(),
+  assigned_department: import_joi8.default.number().integer().min(1).allow(null),
+  user_id: import_joi8.default.number().integer().min(1).allow(null)
+});
+
+// app/controllers/answerBot/create.js
+var createAnswerByBot = async (body) => {
+  let { error, value } = createBotSchema.validate(body);
+  if (error)
+    return {
+      errors: [
+        {
+          message: import_constants64.DEFAULT_ERROR_MESSAGE,
+          detail: error
+        }
+      ]
+    };
+  let rest = __objRest(value, []), created = await db.AnswerBot.create({
+    data: __spreadValues({}, rest)
+  });
+  return {
+    successMessage: "The question to bot has been created succesfully!",
+    question: created
+  };
+}, create_default5 = createAnswerByBot;
+
+// app/controllers/answerBot/modifyFeedback.js
+init_react();
+var import_constants65 = __toESM(require_constants());
+var updateFeedback = async (body) => {
+  let { error, value } = modifyFeedbackBotSchema.validate(body);
+  if (error)
+    return {
+      errors: [
+        {
+          message: import_constants65.DEFAULT_ERROR_MESSAGE,
+          detail: error
+        }
+      ]
+    };
+  let _a = value, { answerFeedback } = _a, rest = __objRest(_a, ["answerFeedback"]), findFeed = await db.AnswerBot.findFirst({
+    where: __spreadValues({
+      answer_feedback: 0
+    }, rest),
+    orderBy: {
+      date_created: "desc"
+    }
+  });
+  if (!findFeed)
+    return {
+      errors: [
+        {
+          message: import_constants65.DEFAULT_ERROR_MESSAGE,
+          detail: "The record to update the feedback does not exist."
+        }
+      ]
+    };
+  let updateFeed = await db.AnswerBot.update({
+    where: {
+      id: findFeed.id
+    },
+    data: {
+      answer_feedback: answerFeedback
+    }
+  });
+  return {
+    successMessage: "The feedback to bot has been updated succesfully!",
+    feedback: updateFeed
+  };
+}, modifyFeedback_default = updateFeedback;
+
+// app/controllers/answerBot/modifyIDQuestion.js
+init_react();
+var import_constants66 = __toESM(require_constants());
+var updatePost = async (body) => {
+  let { error, value } = modifyBotPostQuestion.validate(body);
+  if (error)
+    return {
+      errors: [
+        {
+          message: import_constants66.DEFAULT_ERROR_MESSAGE,
+          detail: error
+        }
+      ]
+    };
+  let _a = value, { postQuestionID } = _a, rest = __objRest(_a, ["postQuestionID"]), findQABot = await db.AnswerBot.findFirst({
+    where: __spreadValues({
+      post_question_id: null,
+      answer_feedback: -1
+    }, rest),
+    orderBy: {
+      date_created: "desc"
+    }
+  });
+  if (!findQABot)
+    return {
+      errors: [
+        {
+          message: import_constants66.DEFAULT_ERROR_MESSAGE,
+          detail: "The record to update the link between AnswerBot and Question does not exist."
+        }
+      ]
+    };
+  let upToDate = await db.AnswerBot.update({
+    where: {
+      id: findQABot.id
+    },
+    data: {
+      post_question_id: postQuestionID
+    }
+  });
+  return {
+    successMessage: "The question has been posted on the forum successfully!",
+    detail: upToDate
+  };
+}, modifyIDQuestion_default = updatePost;
+
+// app/components/AnswerBot/index.js
 init_react();
 
-// app/components/Atoms/AnswerBotButton/AnswerBotButton.jsx
+// app/components/AnswerBot/AnswerBot.jsx
 init_react();
 
-// app/components/Atoms/AnswerBotButton/AnswerBotButton.Styled.jsx
+// app/components/AnswerBot/AnswerBot.Styled.jsx
 init_react();
 var import_styled_components44 = __toESM(require("styled-components"));
 
@@ -21074,24 +21296,18 @@ var likeHover_default = "/build/_assets/likeHover-5HAAADIM.png";
 // app/images/dislikeHover.png
 var dislikeHover_default = "/build/_assets/dislikeHover-TLAFEHHT.png";
 
-// app/images/likeClick.png
-var likeClick_default = "/build/_assets/likeClick-OGK76L26.png";
-
-// app/images/dislikeClick.png
-var dislikeClick_default = "/build/_assets/dislikeClick-HLGEDCEM.png";
-
-// app/components/Atoms/AnswerBotButton/AnswerBotButton.Styled.jsx
+// app/components/AnswerBot/AnswerBot.Styled.jsx
 var BotButton = import_styled_components44.default.button`
     background-color: #213246;
     border: none;
     width: 8.4vw;
     height: 8.4vw;
-    margin: 75% 0 0 0;
-    float: right;
+    right: 0px;
+    position: fixed;
+    top: 70%;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-    position: relative;
     visibility: ${(props) => props.visible ? "visible" : "hidden"};
     transition: width 0.3s ease-in-out;
 
@@ -21102,7 +21318,7 @@ var BotButton = import_styled_components44.default.button`
     }
 
     &:hover {
-        width: 20.16vw;
+        width: 19vw;
 
         & > .message {
             opacity: 1;
@@ -21110,32 +21326,23 @@ var BotButton = import_styled_components44.default.button`
             transition: opacity 0.25s ease-in-out;
             transition-delay: 0.2s;
         }
-
-        @media screen and (max-width: 3025px) and (min-height: 1150px) {
+        
+        @media screen and (min-width: 1600px) {
             width: 14vw;
         }
 
-        @media screen and (max-width: 2400px) and (min-height: 1750px) {
-            width: 17vw;
+        @media screen and (min-width: 2000px) {
+            width: 13vw;
         }
-
-        @media screen and (max-width: 2000px) and (min-height: 1750px) {
-            width: 18vw;
-        }
-
     }
 
-    @media screen and (max-width: 1300px) {
-        margin: 50% 0 0 0;
-    }
-
-    @media screen and (max-width: 1025px) and (max-height: 1060px) {
+    @media screen and (max-width: 1025px) {
         display: none;
     }
 
-    @media screen and (min-width: 1150px) and (min-height: 1150px) {
-        width: 6.5vw;
-        height: 6.5vw;
+    @media screen and (min-width: 1600px) {
+        width: 6vw;
+        height: 6vw;
     }
 `, BotIcon = import_styled_components44.default.img`
     width: 5.6vw;
@@ -21151,36 +21358,33 @@ var BotButton = import_styled_components44.default.button`
     position: absolute;
     left: 1.5vw;
     transform: translateY(-50%);
-  
-    @media screen and (min-width: 1150px) and (min-height: 1150px) {
+
+    @media screen and (min-width: 1600px) {
         width: 4vw;
         height: 4vw;
+        left: 1.25vw;
     }
 `, BotMessage = import_styled_components44.default.div`
     color: #fff;
-    font-size: 1.3vw;
+    font-size: 115%;
     font-weight: bold;
     position: absolute;
-    right: 8%;
+    right: 1.3vw;
+    padding-left: 7.85vw;
     transform: translateY(-50%);
 
-    @media screen and (max-width: 2000px) and (min-height: 500px) {
-        font-size: 16px;
-        left: 45%;
-    }
-
-    @media screen and (max-width: 2017px) {
-        right: 2.15vw;
-    }
-
-    @media screen and (max-width: 1000px) {
-        left: 50%;
-        font-size: 20px;
-    }
-
-    @media screen and (max-width: 1500px) {
-        left: 50%;
+    @media screen and (max-width: 1240px) {
         font-size: 100%;
+        right: 1.1vw;
+    }
+
+    @media screen and (max-width: 1100px) {
+        font-size: 85%;
+    }
+
+    @media screen and (min-width: 1600px) {
+        font-size: 90%;
+        padding-left: 5vw;
     }
 
 `, ChatbotContainer = import_styled_components44.default.div`
@@ -21198,7 +21402,11 @@ var BotButton = import_styled_components44.default.button`
     transition: visibility 0.3s ease-in-out;
     visibility: ${(props) => props.visible ? "visible" : "hidden"};
 
-    @media screen and (max-width: 1025px) and (max-height: 960px) {
+    @media screen and (max-width: 1025px) {
+        display: none;
+    }
+
+    @media screen and (max-height: 450px) {
         display: none;
     }
 `, ChatbotHeader = import_styled_components44.default.div`
@@ -21260,6 +21468,16 @@ var BotButton = import_styled_components44.default.button`
 `, ChatbotRowMessage = import_styled_components44.default.div`
     display: flex;
     alignItems: center;
+`, blinkAnimation = import_styled_components44.keyframes`
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
 `, Message = import_styled_components44.default.div`
     padding: 10px 10px;
     border-bottom-right-radius: 10px;
@@ -21281,6 +21499,17 @@ var BotButton = import_styled_components44.default.button`
         background-color: #213246;
         border-top-right-radius: 10px;
         color: #fff;
+
+        ${(props) => props.isWaiting && import_styled_components44.css`
+          position: relative;
+          overflow: hidden;
+
+          &:after {
+            content: '...';
+            animation: ${blinkAnimation} 1s infinite alternate;
+            animation-delay: ${props.index * 0.2}s;
+          }
+        `}
     }
 `, ChatbotInput = import_styled_components44.default.form`
     display: flex;
@@ -21292,6 +21521,7 @@ var BotButton = import_styled_components44.default.button`
     padding: 10px;
     border: none;
     outline: none;
+    cursor: ${(props) => props.enabled ? "text" : "not-allowed"};
 `, SendButton = import_styled_components44.default.button`
     width: 30px;
     height: 30px;
@@ -21303,17 +21533,19 @@ var BotButton = import_styled_components44.default.button`
     background-repeat: no-repeat;
     background-position: center;
     margin: 5px 5px;
+    opacity: ${(props) => props.inputLength > 13 ? 1 : 0.3};
+    cursor: ${(props) => props.inputLength > 13 ? "pointer" : "not-allowed"};
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-    background-color: #F2F2F1;
+        background-color: ${(props) => props.inputLength > 13 ? "#F2F2F1" : "#fff"};
     }
 `, LikeButton = import_styled_components44.default.button`
     width: 20px;
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${(props) => props.liked ? likeClick_default : like_default});
+    background-image: url(${like_default});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
@@ -21322,25 +21554,47 @@ var BotButton = import_styled_components44.default.button`
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${(props) => props.liked ? likeClick_default : likeHover_default});
+        background-image: url(${likeHover_default});
     }
 `, DislikeButton = import_styled_components44.default.button`
     width: 20px;
     height: 20px;
     border: none;
     background-color: transparent;
-    background-image: url(${(props) => props.disliked ? dislikeClick_default : dislike_default});
+    background-image: url(${dislike_default});
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
     transition: background-image 0.3s ease-in-out;
 
     &:hover {
-        background-image: url(${(props) => props.disliked ? dislikeClick_default : dislikeHover_default});
+        background-image: url(${dislikeHover_default});
+    }
+`, TextFeedback = import_styled_components44.default.span`
+    padding: ${(props) => props.padding === "na" ? "0px 0px" : "5px 31px"};
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+`, PublishButton = import_styled_components44.default.button`
+    margin: 0 0 2.5% 10%;
+    background-color: #fff;
+    color: #213246;
+    border: 1px solid #213246;
+    padding: 8px 25px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: #213246;
+        color: #fff;
     }
 `;
 
-// app/components/Atoms/AnswerBotButton/AnswerBotButton.jsx
+// app/components/AnswerBot/AnswerBot.jsx
 var import_react78 = __toESM(require("react"));
 
 // app/controllers/answerBot/pdfConv.js
@@ -21351,23 +21605,44 @@ var pdfConv = async (conversation) => fetch("http://3.213.188.151:4000/api/pdf_c
   headers: {
     "Content-Type": "application/json"
   }
-}).then((response) => response.json()).then((data) => ({ text: data[data.length - 1].content })).catch((error) => {
+}).then((response) => response.json()).then((data) => ({
+  text: data.conversation[data.conversation.length - 1].content,
+  department: data.department
+})).catch((error) => {
   throw new Error(`There was an error making the API call: ${error.message}`);
 }), pdfConv_default = pdfConv;
 
-// app/components/Atoms/AnswerBotButton/AnswerBotButton.jsx
-function AnswerBotButton() {
+// app/components/AnswerBot/AnswerBot.jsx
+var import_prop_types47 = __toESM(require("prop-types"));
+function AnswerBot({
+  postAnswerBotQuestion,
+  updateAnswerBotFeedback,
+  updateAnswerBotPostID,
+  departments
+}) {
   let instructions = `Instructions: Compose a comprehensive reply to the query using the search results given.
  If the search results mention multiple subjects
 with the same name, create separate answers for each. Only include information found in the results and
 don't add any additional information. Make sure the answer is correct and don't output false content.
 If the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.
-`, messagesEndRef = (0, import_react78.useRef)(null), [messages, setMessages] = (0, import_react78.useState)([{ role: "system", content: instructions }, { role: "system", content: "Hello! Ask me any question and I'll see how I can help you." }]), handleInput = async (e) => {
+`, [messages, setMessages] = (0, import_react78.useState)([{ role: "system", content: instructions }, { role: "system", content: WELCOME_MESSAGE }]), [messagesID, setMessagesID] = (0, import_react78.useState)([{ role: "system", content: instructions, depa: null }, { role: "system", content: WELCOME_MESSAGE, depa: null }]), messagesEndRef = (0, import_react78.useRef)(null), [inputValue, setInputValue] = (0, import_react78.useState)(""), [isWaitingForResponse, setIsWaitingForResponse] = (0, import_react78.useState)(!1), handleInput = async (e) => {
     e.preventDefault();
     let input = e.target.querySelector("input"), message = input.value;
-    input.value = "", setMessages([...messages, { role: "user", content: message }]);
-    let filteredMessages = [...messages, { role: "user", content: message }].filter((mess, index2) => index2 !== 1), answer = (await pdfConv_default(filteredMessages)).text;
-    setMessages([...messages, { role: "user", content: message }, { role: "system", content: answer }]);
+    if (message.length > 13) {
+      input.value = "", setInputValue(input.value), setIsWaitingForResponse(!0), setMessages([...messages, { role: "user", content: message }, { role: "system", content: "" }]);
+      let filteredMessages = [...messages, { role: "user", content: message }].filter((mess, index2) => index2 !== 1), response = await pdfConv_default(filteredMessages), answer = response.text;
+      setMessages([...messages, { role: "user", content: message }, { role: "system", content: answer }]), setIsWaitingForResponse(!1);
+      let depaName = response.department, department = departments.find((c) => c.name === depaName);
+      setMessagesID([...messagesID, { role: "user", content: message, depa: (department == null ? void 0 : department.department_id) || "wizeq" }, { role: "system", content: answer, depa: (department == null ? void 0 : department.department_id) || "wizeq" }]);
+      let newQuestion = {
+        question_by_user: message,
+        answer_by_bot: answer,
+        assignedDepartment: (department == null ? void 0 : department.department_id) || "wizeq"
+      };
+      await postAnswerBotQuestion(newQuestion);
+    }
+  }, handleChange = (e) => {
+    setInputValue(e.target.value);
   };
   (0, import_react78.useEffect)(() => {
     (() => {
@@ -21376,24 +21651,52 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
   }, [messages]);
   let [chatbotVisible, setChatbotVisible] = (0, import_react78.useState)(!1), handleChatbotToggle = () => {
     setChatbotVisible(!chatbotVisible);
-  }, [likedButtons, setLikedButtons] = (0, import_react78.useState)({}), [dislikedButtons, setDislikedButtons] = (0, import_react78.useState)({}), [showThanksMessage, setShowThanksMessage] = (0, import_react78.useState)({}), handleLikeClick = (index2) => {
-    setLikedButtons((prevLikedButtons) => __spreadProps(__spreadValues({}, prevLikedButtons), {
-      [index2]: !prevLikedButtons[index2]
-    })), setDislikedButtons((prevDislikedButtons) => __spreadProps(__spreadValues({}, prevDislikedButtons), {
-      [index2]: !1
-    })), setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-      [index2]: !likedButtons[index2]
+  }, [showThanksMessage, setShowThanksMessage] = (0, import_react78.useState)({}), handleLikeClick = async (index2) => {
+    setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+      [index2]: !0
     }));
-  }, handleDislikeClick = (index2) => {
-    setDislikedButtons((prevDislikedButtons) => __spreadProps(__spreadValues({}, prevDislikedButtons), {
-      [index2]: !prevDislikedButtons[index2]
-    })), setLikedButtons((prevLikedButtons) => __spreadProps(__spreadValues({}, prevLikedButtons), {
-      [index2]: !1
-    })), setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
-      [index2]: !dislikedButtons[index2]
-    }));
-  };
+    let updateFeedback2 = {
+      question_by_user: messages[index2].content,
+      answer_by_bot: messages[index2 + 1].content,
+      answerFeedback: 1,
+      assignedDepartment: messagesID[index2].depa
+    };
+    await updateAnswerBotFeedback(updateFeedback2), setTimeout(() => {
+      setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+        [index2]: "na"
+      }));
+    }, 2500);
+  }, handleDislikeClick = async (index2) => {
+    setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+      [index2]: !0
+    })), setTimeout(() => {
+      setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+        [index2]: "Would you like to share your question with the community?"
+      }));
+    }, 1500);
+    let updateFeedback2 = {
+      question_by_user: messages[index2].content,
+      answer_by_bot: messages[index2 + 1].content,
+      answerFeedback: -1,
+      assignedDepartment: messagesID[index2].depa
+    };
+    await updateAnswerBotFeedback(updateFeedback2);
+  }, handlePublishQuestion = async (index2) => {
+    let updatePostID = {
+      question: messages[index2].content,
+      answer: messages[index2 + 1].content,
+      assignedDepartment: messagesID[index2].depa
+    };
+    await updateAnswerBotPostID(updatePostID), setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+      [index2]: "Your question has been published successfully."
+    })), setTimeout(() => {
+      setShowThanksMessage((prevShowThanksMessage) => __spreadProps(__spreadValues({}, prevShowThanksMessage), {
+        [index2]: "na"
+      }));
+    }, 2500);
+  }, profile = useUser_default();
   return /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(BotButton, {
+    id: "answerbotbutton",
     visible: !chatbotVisible,
     onClick: handleChatbotToggle
   }, /* @__PURE__ */ import_react78.default.createElement(BotIcon, null), /* @__PURE__ */ import_react78.default.createElement(BotMessage, {
@@ -21402,97 +21705,273 @@ If the text does not relate to the query, simply state 'Sorry, I couldn't find a
     visible: chatbotVisible
   }, /* @__PURE__ */ import_react78.default.createElement(ChatbotHeader, null, /* @__PURE__ */ import_react78.default.createElement(IconBot, {
     style: { position: "absolute" }
-  }), /* @__PURE__ */ import_react78.default.createElement(BotName, null, " AnswerBot "), /* @__PURE__ */ import_react78.default.createElement(CloseButton2, {
+  }), /* @__PURE__ */ import_react78.default.createElement(BotName, {
+    id: "openchat"
+  }, " AnswerBot "), /* @__PURE__ */ import_react78.default.createElement(CloseButton2, {
+    id: "closechat",
     onClick: handleChatbotToggle
   }, " \u2715 ")), /* @__PURE__ */ import_react78.default.createElement(ChatbotMessages, null, messages.slice(1).map((message, index2) => message.role === "user" ? /* @__PURE__ */ import_react78.default.createElement(ChatbotRowMessage, {
+    id: `msg-${index2}`,
     style: { justifyContent: "flex-end" }
   }, /* @__PURE__ */ import_react78.default.createElement(Message, {
     key: `message-${message.id}`,
     className: "user",
     ref: messagesEndRef
   }, message.content), /* @__PURE__ */ import_react78.default.createElement(IconUser, {
-    src: "/build/_assets/placeholder_user_img-ZWAQNLBE.png"
+    src: profile.profile_picture
   })) : /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(ChatbotRowMessage, {
+    id: `msg-${index2}`,
     style: { justifyContent: "flex-start" }
   }, /* @__PURE__ */ import_react78.default.createElement(IconBot, null), /* @__PURE__ */ import_react78.default.createElement(Message, {
     key: `message-${message.id}`,
     className: "bot",
-    ref: messagesEndRef
-  }, message.content)), index2 !== 0 ? /* @__PURE__ */ import_react78.default.createElement("div", null, /* @__PURE__ */ import_react78.default.createElement(LikeButton, {
+    ref: messagesEndRef,
+    isWaiting: isWaitingForResponse && index2 + 2 === messages.length
+  }, message.content)), index2 !== 0 && /* @__PURE__ */ import_react78.default.createElement("div", null, !showThanksMessage[index2] && (index2 !== messages.length - 2 || !isWaitingForResponse) && /* @__PURE__ */ import_react78.default.createElement(import_react78.default.Fragment, null, /* @__PURE__ */ import_react78.default.createElement(LikeButton, {
     key: `like-${message.id}`,
-    liked: likedButtons[index2],
     onClick: () => handleLikeClick(index2)
   }), /* @__PURE__ */ import_react78.default.createElement(DislikeButton, {
     key: `dislike-${message.id}`,
-    disliked: dislikedButtons[index2],
     onClick: () => handleDislikeClick(index2)
-  }), showThanksMessage[index2] ? /* @__PURE__ */ import_react78.default.createElement("span", {
-    style: { padding: "5px" }
-  }, " Thanks for the feedback! ") : /* @__PURE__ */ import_react78.default.createElement(import_react78.default.Fragment, null, " ")) : /* @__PURE__ */ import_react78.default.createElement(import_react78.default.Fragment, null, " ")))), /* @__PURE__ */ import_react78.default.createElement(ChatbotInput, {
+  })), showThanksMessage[index2] && /* @__PURE__ */ import_react78.default.createElement(TextFeedback, {
+    padding: showThanksMessage[index2]
+  }, showThanksMessage[index2] === !0 && "Thanks for the feedback!", showThanksMessage[index2] === "na" && "", !(showThanksMessage[index2] === "Thanks for the feedback!" || showThanksMessage[index2] === "na") && showThanksMessage[index2]), showThanksMessage[index2] === "Would you like to share your question with the community?" && /* @__PURE__ */ import_react78.default.createElement(PublishButton, {
+    onClick: () => handlePublishQuestion(index2)
+  }, "Post question"))))), /* @__PURE__ */ import_react78.default.createElement(ChatbotInput, {
     onSubmit: handleInput
   }, /* @__PURE__ */ import_react78.default.createElement(Input3, {
+    id: "chatbotinput",
     type: "text",
-    placeholder: "Enter your question..."
+    placeholder: "Enter your question...",
+    onChange: handleChange,
+    disabled: isWaitingForResponse,
+    enabled: !isWaitingForResponse,
+    title: "Type at least 14 characters"
   }), /* @__PURE__ */ import_react78.default.createElement(SendButton, {
-    type: "submit"
+    type: "submit",
+    inputLength: inputValue.length,
+    disabled: isWaitingForResponse
   }))));
 }
-var AnswerBotButton_default = AnswerBotButton;
+AnswerBot.propTypes = {
+  postAnswerBotQuestion: import_prop_types47.default.func.isRequired,
+  updateAnswerBotFeedback: import_prop_types47.default.func.isRequired,
+  updateAnswerBotPostID: import_prop_types47.default.func.isRequired,
+  departments: import_prop_types47.default.arrayOf(import_prop_types47.default.shape())
+};
+AnswerBot.defaultProps = {
+  departments: []
+};
+var AnswerBot_default = AnswerBot;
+
+// app/components/FAQs/FAQs.jsx
+init_react();
+
+// app/components/FAQs/FAQs.Styled.jsx
+init_react();
+var import_styled_components45 = __toESM(require("styled-components")), FAQContainer = import_styled_components45.default.div`
+  margin: 30px 40px 0;
+  width: 17vw;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  flex-direction: column;
+`, FAQHeader = import_styled_components45.default.div`
+  background-color: #f5f5f5;
+  font-size: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
+`, FAQList = import_styled_components45.default.div`
+  padding: 10px 25px 10px 25px;
+  border: 1px solid #f5f5f5;
+
+  &:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+`, Question = import_styled_components45.default.a`
+  font-size: 15px;
+  color: #555555;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  &:hover {
+    color: #213246;
+  }
+`;
+
+// app/components/FAQs/FAQs.jsx
+var import_prop_types48 = __toESM(require("prop-types")), import_react79 = __toESM(require("react"));
+function FAQs({ questionsFAQ }) {
+  return /* @__PURE__ */ import_react79.default.createElement(FAQContainer, null, /* @__PURE__ */ import_react79.default.createElement(FAQHeader, null, "FAQ's"), questionsFAQ.map((faq) => /* @__PURE__ */ import_react79.default.createElement(FAQList, null, /* @__PURE__ */ import_react79.default.createElement(Question, {
+    href: `http://localhost:3000/questions/${faq.question_id}`,
+    key: faq.id,
+    title: faq.question
+  }, faq.question))));
+}
+FAQs.propTypes = {
+  questionsFAQ: import_prop_types48.default.arrayOf(import_prop_types48.default.shape())
+};
+FAQs.defaultProps = {
+  questionsFAQ: []
+};
+var FAQs_default = FAQs;
 
 // app/routes/questions/new.jsx
 var loader4 = async ({ request }) => {
   await requireAuth(request);
-  let locations = await list_default3(), departments = await list_default5();
+  let locations = await list_default3(), departments = await list_default5(), questionsFAQ = await list_default({
+    orderBy: "popular",
+    dateRange: "this_week",
+    limit: 10
+  });
   return (0, import_node4.json)({
     locations,
-    departments
+    departments,
+    questionsFAQ
   });
 }, action2 = async ({ request }) => {
-  let formData = await request.formData(), form = Object.fromEntries(formData.entries()), { assignedDepartment, assigned_to_employee_id: assignedEmployeeId } = form, user = await getAuthenticatedUser(request), parsedDepartment = parseInt(assignedDepartment, 10), assignedEmployeeValue = assignedEmployeeId !== "undefined" ? parseInt(assignedEmployeeId, 10) : void 0, payload = {
-    question: form.question,
-    created_by_employee_id: form.isAnonymous === "true" ? null : user.employee_id,
-    is_anonymous: form.isAnonymous === "true",
-    assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
-    assigned_to_employee_id: Number.isNaN(assignedEmployeeValue) ? null : assignedEmployeeValue,
-    location: form.location,
-    accessToken: user.accessToken
-  }, response = await create_default4(payload);
-  if (response.successMessage) {
-    let session = await getSession(request), { question, successMessage } = response;
-    session.flash("globalSuccess", successMessage);
-    let destination = `/questions/${question.question_id}`;
-    return (0, import_node4.redirect)(destination, {
-      headers: {
-        "Set-Cookie": await commitSession(session)
+  let formData = await request.formData(), formAction = formData.get("action"), user = await getAuthenticatedUser(request), form = Object.fromEntries(formData.entries()), { assignedDepartment } = form, parsedDepartment = parseInt(assignedDepartment, 10), response, payload;
+  switch (formAction) {
+    case actions_default.CREATE_QUESTION_ANSWER:
+      let { assigned_to_employee_id: assignedEmployeeId } = form, assignedEmployeeValue = assignedEmployeeId !== "undefined" ? parseInt(assignedEmployeeId, 10) : void 0;
+      if (payload = {
+        question: form.question,
+        created_by_employee_id: form.isAnonymous === "true" ? null : user.employee_id,
+        is_anonymous: form.isAnonymous === "true",
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        assigned_to_employee_id: Number.isNaN(assignedEmployeeValue) ? null : assignedEmployeeValue,
+        location: form.location,
+        accessToken: user.accessToken
+      }, response = await create_default4(payload), response.successMessage) {
+        let session = await getSession(request), { question, successMessage } = response;
+        session.flash("globalSuccess", successMessage);
+        let destination = `/questions/${question.question_id}`;
+        return (0, import_node4.redirect)(destination, {
+          headers: {
+            "Set-Cookie": await commitSession(session)
+          }
+        });
       }
-    });
+      break;
+    case actions_default.CREATE_QUESTION_ANSWERBOT:
+      if (payload = {
+        question_by_user: form.question_by_user,
+        answer_by_bot: form.answer_by_bot,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        user_id: user.employee_id
+      }, response = await create_default5(payload), response.successMessage) {
+        let session = await getSession(request), { successMessage } = response;
+        return session.flash("globalSuccess", successMessage), (0, import_node4.redirect)("/questions/new", {
+          headers: {
+            "Set-Cookie": await commitSession(session)
+          }
+        });
+      }
+      break;
+    case actions_default.UPDATE_FEEDBACK_ANSWERBOT:
+      if (payload = {
+        question_by_user: form.question_by_user,
+        answer_by_bot: form.answer_by_bot,
+        answerFeedback: form.answerFeedback,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        user_id: user.employee_id
+      }, response = await modifyFeedback_default(payload), response.successMessage) {
+        let session = await getSession(request), { successMessage } = response;
+        return session.flash("globalSuccess", successMessage), (0, import_node4.redirect)("/questions/new", {
+          headers: {
+            "Set-Cookie": await commitSession(session)
+          }
+        });
+      }
+      break;
+    case actions_default.UPDATE_POST_ANSWERBOT:
+      if (payload = {
+        question: form.question,
+        created_by_employee_id: user.employee_id,
+        is_anonymous: !1,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        assigned_to_employee_id: null,
+        bot_enabled: !0,
+        location: DEFAULT_LOCATION,
+        accessToken: user.accessToken
+      }, response = await create_default4(payload), response.successMessage && (payload = {
+        postQuestionID: response.question.question_id,
+        question_by_user: form.question,
+        answer_by_bot: form.answer,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        user_id: user.employee_id
+      }, response = await modifyIDQuestion_default(payload), response.successMessage)) {
+        let session = await getSession(request), { successMessage } = response;
+        return session.flash("globalSuccess", successMessage), (0, import_node4.redirect)("/questions/new", {
+          headers: {
+            "Set-Cookie": await commitSession(session)
+          }
+        });
+      }
+      break;
+    default:
+      break;
   }
   return (0, import_node4.json)(response);
 };
 function CreateQuestion() {
-  let { locations, departments } = (0, import_react80.useLoaderData)(), submit = (0, import_react80.useSubmit)(), formRef = (0, import_react79.useRef)();
-  (0, import_react79.useEffect)(() => {
-    departments.unshift({ name: "I don't know whom to assign it.", department_id: import_constants63.NOT_ASSIGNED_DEPARTMENT_ID });
+  let { questionsFAQ, locations, departments } = (0, import_react81.useLoaderData)(), submit = (0, import_react81.useSubmit)(), formRef = (0, import_react80.useRef)();
+  (0, import_react80.useEffect)(() => {
+    departments.unshift({ name: "I don't know whom to assign it.", department_id: import_constants68.NOT_ASSIGNED_DEPARTMENT_ID });
   }, []);
-  let renderBulletPoint = () => /* @__PURE__ */ import_react79.default.createElement("div", null, /* @__PURE__ */ import_react79.default.createElement(import_bs5.BsCircleFill, {
+  let renderBulletPoint = () => /* @__PURE__ */ import_react80.default.createElement("div", null, /* @__PURE__ */ import_react80.default.createElement(import_bs5.BsCircleFill, {
     color: "var(--color-secondary)",
     size: "7px",
     style: { marginTop: "3px", marginRight: "10px" }
-  }));
-  return /* @__PURE__ */ import_react79.default.createElement(import_react79.default.Fragment, null, /* @__PURE__ */ import_react79.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react79.default.createElement(QuestionDiv, null, /* @__PURE__ */ import_react79.default.createElement(QuestionSlogan, null, /* @__PURE__ */ import_react79.default.createElement(Slogan_default, null)), /* @__PURE__ */ import_react79.default.createElement(QuestionInput, null, /* @__PURE__ */ import_react79.default.createElement(QuestionForm_default, {
-    maximumQuestionLength: import_constants63.MAXIMUM_QUESTION_LENGTH,
-    minimumQuestionLength: import_constants63.MINIMUM_ANSWER_LENGTH,
-    postQuestion: (question) => {
-      let data = new FormData(formRef.current);
-      for (let [key, value] of Object.entries(question))
-        data.set(key, value);
-      submit(data, { method: "post", action: "/questions/new" });
-    },
+  })), postQuestion = (question) => {
+    let data = new FormData(formRef.current);
+    data.set("action", actions_default.CREATE_QUESTION_ANSWER);
+    for (let [key, value] of Object.entries(question))
+      data.set(key, value);
+    submit(data, { method: "post", action: "/questions/new" });
+  }, postAnswerBotQuestion = (question) => {
+    let data = new FormData(formRef.current);
+    data.set("action", actions_default.CREATE_QUESTION_ANSWERBOT);
+    for (let [key, value] of Object.entries(question))
+      data.set(key, value);
+    submit(data, { method: "post", action: "/questions/new" });
+  }, updateAnswerBotFeedback = (question) => {
+    let data = new FormData(formRef.current);
+    data.set("action", actions_default.UPDATE_FEEDBACK_ANSWERBOT);
+    for (let [key, value] of Object.entries(question))
+      data.set(key, value);
+    submit(data, { method: "post", action: "/questions/new" });
+  }, updateAnswerBotPostID = (question) => {
+    let data = new FormData(formRef.current);
+    data.set("action", actions_default.UPDATE_POST_ANSWERBOT);
+    for (let [key, value] of Object.entries(question))
+      data.set(key, value);
+    submit(data, { method: "post", action: "/questions/new" });
+  };
+  return /* @__PURE__ */ import_react80.default.createElement(import_react80.default.Fragment, null, /* @__PURE__ */ import_react80.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react80.default.createElement(QuestionDiv, null, /* @__PURE__ */ import_react80.default.createElement(QuestionSlogan, null, /* @__PURE__ */ import_react80.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react80.default.createElement(FAQs_default, {
+    questionsFAQ
+  })), /* @__PURE__ */ import_react80.default.createElement(QuestionInput, null, /* @__PURE__ */ import_react80.default.createElement(QuestionForm_default, {
+    maximumQuestionLength: import_constants68.MAXIMUM_QUESTION_LENGTH,
+    minimumQuestionLength: import_constants68.MINIMUM_ANSWER_LENGTH,
+    postQuestion,
     locations,
     departments
-  })), /* @__PURE__ */ import_react79.default.createElement(QuestionRecommendations2, null, /* @__PURE__ */ import_react79.default.createElement(RecommendationsContainer2, null, /* @__PURE__ */ import_react79.default.createElement(Recommendations2, null, /* @__PURE__ */ import_react79.default.createElement("span", null, "Things to keep in mind"), RECOMMENDATIONS_QUESTION.map((text5) => /* @__PURE__ */ import_react79.default.createElement("span", {
+  })), /* @__PURE__ */ import_react80.default.createElement(QuestionRecommendations2, null, /* @__PURE__ */ import_react80.default.createElement(RecommendationsContainer2, null, /* @__PURE__ */ import_react80.default.createElement(Recommendations2, null, /* @__PURE__ */ import_react80.default.createElement("span", null, "Things to keep in mind"), RECOMMENDATIONS_QUESTION.map((text5) => /* @__PURE__ */ import_react80.default.createElement("span", {
     key: text5
-  }, renderBulletPoint(), text5)))), /* @__PURE__ */ import_react79.default.createElement(AnswerBotButton_default, null))));
+  }, renderBulletPoint(), text5)))), /* @__PURE__ */ import_react80.default.createElement(AnswerBot_default, {
+    postAnswerBotQuestion,
+    updateAnswerBotFeedback,
+    updateAnswerBotPostID,
+    departments
+  }))));
 }
 var new_default = CreateQuestion;
 
@@ -21576,28 +22055,419 @@ var loader6 = async ({ request }) => {
   });
 };
 
+// app/routes/dashboard.jsx
+var dashboard_exports = {};
+__export(dashboard_exports, {
+  default: () => dashboard_default,
+  loader: () => loader7
+});
+init_react();
+var import_react83 = __toESM(require("react")), import_node6 = require("@remix-run/node");
+
+// app/styles/Dashboard.Styled.jsx
+init_react();
+var import_styled_components46 = __toESM(require("styled-components")), MainContainer = import_styled_components46.default.div`
+height: 115vh;
+background-color: #f7fafc; /* Slate-100 */
+margin: 0;
+margin-left: 18%;
+@media (min-width: 1536px) {
+margin-left: 40px; /* 2xl:ml-40 */
+}
+
+padding-top: 8px; /* Pt-8 */
+align-content: stretch; /* Content-stretch */
+`, NextContainer = import_styled_components46.default.div`
+margin-left: 1%;
+
+height: 100vh;
+padding-top: 8px;
+display: grid;
+
+grid-template-columns: repeat(1, minmax(0, 1fr));
+gap: 3.5rem;
+padding-left: 2.5rem;
+padding-right: 2.5rem;
+
+margin-right: 1px;
+`, DividerContainer = import_styled_components46.default.div`
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+grid-template-rows: minmax(0, 1fr);
+column-gap: 3%;
+margin-left: 2px;
+`, TopContainers = import_styled_components46.default.div`
+display: inline-block;
+overflow-y: scroll;
+align-items: center;
+justify-content: center;
+margin-top: 20px;
+width: 11/12;
+height: 380px;
+border-radius: 0.5rem;
+background-color: white;
+border: 1px solid #d1d5db;
+box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.05);
+&:focus {
+outline: none;
+box-shadow: 0px 0px 0px 3px rgba(59, 130, 246, 0.5);
+}
+`, BottomContainer = import_styled_components46.default.div`
+overflow-y: scroll;
+align-items: center;
+justify-content: center;
+background-color: white;
+margin-top: 15px;
+border: 1px solid #d1d5db; /* ring-gray-200 */
+box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.05);
+&:focus {
+outline: none;
+box-shadow: 0px 0px 0px 3px rgba(59, 130, 246, 0.5);
+}
+border-radius: 0.375rem; /* rounded-md */
+margin-left: 2px; /* ml-2 */
+margin-right: 1px; /* mr-1 */
+height: 300px;
+`, ContMargin = import_styled_components46.default.div`
+margin-left: 25px;
+margin-right: 25px;
+margin-top: 10px;
+`, UList = import_styled_components46.default.ul`
+list-style-type: none;
+margin: 0;
+padding: 0;
+`, Button3 = import_styled_components46.default.button`
+ background-color: #304966;
+ border: none;
+ color: white;
+ padding: 0;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ height: 30px;
+ width: 100px;
+ border-radius: 20px 20px 20px 20px;
+ font-weight: 400;
+
+ &:hover {
+  background-color: #213246;
+ }
+`, ButtonText = import_styled_components46.default.a`
+ text-decoration: none;
+ color: white;
+ margin-top: 5px;
+ letter-spacing: 0.5px;
+ font-weight: 400;
+ 
+ &:hover {
+  text-decoration: none;
+ }
+`, Title = import_styled_components46.default.h2`
+ color: #17202a;
+ font-weight: 600;
+ letter-spacing: 1px;
+ margin-bottom: 15px;
+ background-color: white;
+
+`, Text = import_styled_components46.default.td`
+ color: #17202a;
+
+ font-weight: 400;
+ letter-spacing: 1px;
+`, TextBold = import_styled_components46.default.th`
+ color: #17202a;
+ font-weight: 600;
+ letter-spacing: 1px;
+ font-size: medium;
+ position: sticky;
+ top: 0;
+ background-color: white;
+`, TextBoldList = import_styled_components46.default.li`
+ color: #17202a;
+ font-weight: 600;
+ letter-spacing: 1px;
+ font-size: large;
+ margin-top: 30px;
+`, TextU = import_styled_components46.default.td`
+ color: #c64927;
+ font-weight: 400;
+ letter-spacing: 1px;
+`, TextA = import_styled_components46.default.td`
+ color: #83bb2b;
+ font-weight: 400;
+ letter-spacing: 1px;
+`, TextB = import_styled_components46.default.td`
+ color: #4766b6;
+ font-weight: 400;
+ letter-spacing: 1px;
+`;
+
+// app/components/AdminSideBar/index.js
+init_react();
+
+// app/components/AdminSideBar/AdminSideBar.jsx
+init_react();
+
+// app/components/AdminSideBar/AdminSideBar.Styled.jsx
+init_react();
+var import_styled_components47 = __toESM(require("styled-components")), MainContainer2 = import_styled_components47.default.div`
+ background-color: red;
+ margin-top: 1px;
+ height: 115vh;
+ width: 265px;
+ position: absolute;
+ inset-y: 0;
+ display: flex;
+ overflow-y: scroll;
+ padding-right: 5px;
+ background-color: white;
+
+
+`, DepContainer = import_styled_components47.default.div`
+ position: relative;
+ display: inline-block;
+ padding-left: 25px;
+ padding-right: 15px;
+ margin-right: 10px;
+
+`, TitleDep = import_styled_components47.default.div`
+ color: #17202a; /* Indigo-800 */
+ font-weight: bold;
+ font-size: large;
+ margin-left: 8px;
+ margin-right: 8px;
+ margin-top: 18%;
+`, ListDep = import_styled_components47.default.ul`
+ list-style-type: none;
+ padding: 0;
+ padding-left: 10px;
+ margin-top: 20%;
+`, DepSelect = import_styled_components47.default.li`
+ text-align: left;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ padding-left: 5px;
+ color: #17202a;
+ font-weight: 600;
+ letter-spacing: 1px;
+ word-break: break-all;
+
+ &:hover {
+  background-color: #213246; /* Gray-700 */
+  color: white;
+  border-radius: 0.375rem; /* Rounded-md */
+  cursor: pointer;
+ }
+`;
+
+// app/components/AdminSideBar/AdminSideBar.jsx
+var import_prop_types49 = __toESM(require("prop-types")), import_react82 = __toESM(require("react"));
+function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
+  return /* @__PURE__ */ import_react82.default.createElement(MainContainer2, null, /* @__PURE__ */ import_react82.default.createElement(DepContainer, null, /* @__PURE__ */ import_react82.default.createElement(TitleDep, null, "Departaments"), /* @__PURE__ */ import_react82.default.createElement(ListDep, null, departments.map((item) => /* @__PURE__ */ import_react82.default.createElement(DepSelect, {
+    key: item.name,
+    "aria-current": item.current ? "page" : void 0,
+    onClick: () => handleSelectDepartment(item.department_id),
+    selected: item.department_id === selectedDepartment
+  }, item.name)))));
+}
+SideBar.propTypes = {
+  departments: import_prop_types49.default.arrayOf(import_prop_types49.default.shape()),
+  selectedDepartment: import_prop_types49.default.number,
+  handleSelectDepartment: import_prop_types49.default.func.isRequired
+};
+SideBar.defaultProps = {
+  departments: [],
+  selectedDepartment: 0
+};
+var AdminSideBar_default = SideBar;
+
+// app/routes/dashboard.jsx
+var import_react_bootstrap11 = require("react-bootstrap"), import_react84 = require("@remix-run/react");
+
+// app/utils/dateRangeConversion.js
+init_react();
+var dateRangeConversion = (range2) => {
+  let startDate, endDate;
+  switch (range2) {
+    case "today":
+      return startDate = new Date(), startDate.setHours(0, 0, 0, 0), {
+        startDate,
+        endDate: new Date()
+      };
+    case "this_week":
+      let curr = new Date(), first = curr.getDate() - curr.getDay();
+      return startDate = new Date(curr.setDate(first)), startDate.setHours(0, 0, 0, 0), endDate = new Date(), {
+        startDate,
+        endDate
+      };
+    case "this_month":
+      let now = new Date();
+      return startDate = new Date(now.getFullYear(), now.getMonth(), 1), endDate = new Date(), {
+        startDate,
+        endDate
+      };
+    default:
+      return;
+  }
+}, dateRangeConversion_default = dateRangeConversion;
+
+// app/controllers/answerBot/list.js
+init_react();
+var import_filterConstants2 = __toESM(require_filterConstants()), buildWhereDepartment2 = (department) => department === void 0 || department === import_filterConstants2.ALL_DEPARTMENTS ? {} : department === import_filterConstants2.NOT_ASSIGNED_DEPARTMENT_ID ? {
+  assigned_department: null
+} : { assigned_department: department }, buildWhereDateRange2 = (dateRange) => dateRange && dateRange.startDate && dateRange.endDate ? {
+  date_created: {
+    lte: new Date(dateRange.endDate),
+    gte: new Date(dateRange.startDate)
+  }
+} : {}, listAnswerBot = async (params) => {
+  try {
+    let { department, dateRange } = params;
+    return await db.AnswerBot.findMany({
+      where: __spreadValues(__spreadValues({}, buildWhereDepartment2(department)), buildWhereDateRange2(dateRange))
+    });
+  } catch {
+    throw new Error("An error occurred while getting the responses from the bot.");
+  }
+}, list_default6 = listAnswerBot;
+
+// app/routes/dashboard.jsx
+var loader7 = async ({ request }) => {
+  await requireAuth(request);
+  let url = new URL(request.url), department = Number.parseInt(url.searchParams.get("department"), 10), dateRange = dateRangeConversion_default("this_month"), questionsFAQ = await list_default({
+    department: Number.isNaN(department) ? void 0 : department,
+    dateRange
+  }), questionsOF = await list_default({
+    department: Number.isNaN(department) ? void 0 : department,
+    status: "not_answered",
+    commentStatus: "not_approved",
+    commentVote: "not_approved",
+    dateRange
+  }), questionsBot = await list_default6({
+    department: Number.isNaN(department) ? void 0 : department,
+    dateRange
+  }), departments = await list_default5();
+  return departments.unshift({ department_id: 0, name: "Not Assigned" }), departments.unshift({ department_id: void 0, name: "All" }), (0, import_node6.json)({
+    questionsFAQ,
+    questionsOF,
+    questionsBot,
+    departments
+  });
+}, months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+], formatDate = (dateString) => {
+  let date = new Date(dateString), month = months[date.getMonth()], day = date.getDate();
+  return `${month} ${day}`;
+};
+function Dashboard() {
+  let {
+    questionsFAQ,
+    questionsOF,
+    questionsBot,
+    departments
+  } = (0, import_react84.useLoaderData)(), [selectedDepartment, setSelectedDepartment] = (0, import_react83.useState)(departments[0].department_id);
+  return /* @__PURE__ */ import_react83.default.createElement(import_react83.default.Fragment, null, /* @__PURE__ */ import_react83.default.createElement(AdminSideBar_default, {
+    departments,
+    selectedDepartment,
+    handleSelectDepartment: (department) => {
+      setSelectedDepartment(department);
+      let queryParams = new URLSearchParams({ department });
+      window.location.search = queryParams.toString();
+    }
+  }), /* @__PURE__ */ import_react83.default.createElement(MainContainer, null, /* @__PURE__ */ import_react83.default.createElement(NextContainer, null, /* @__PURE__ */ import_react83.default.createElement(DividerContainer, null, /* @__PURE__ */ import_react83.default.createElement(TopContainers, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "Open Forums"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
+    hover: !0
+  }, /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsOF.map((question) => /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
+    key: `questionOP-${question.id}`,
+    title: question.question
+  }, question.question.length > 100 ? `${question.question.substring(0, 100)}...` : question.question), /* @__PURE__ */ import_react83.default.createElement("td", null, /* @__PURE__ */ import_react83.default.createElement(Button3, null, /* @__PURE__ */ import_react83.default.createElement(ButtonText, {
+    href: `http://localhost:3000/questions/${question.question_id}`,
+    key: question.id,
+    title: question.question
+  }, "Answer it \u2192"))))))))), /* @__PURE__ */ import_react83.default.createElement(TopContainers, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "Answerbot Feedback"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
+    stripped: !0,
+    hover: !0
+  }, /* @__PURE__ */ import_react83.default.createElement("thead", null, /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+    width: "250"
+  }, "Question"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+    width: "250"
+  }, "Answer"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+    width: "170"
+  }, "Feedback"))), /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsBot.map((question) => /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
+    key: `questionAB-${question.id}`,
+    title: question.question_by_user
+  }, question.question_by_user.length > 50 ? `${question.question_by_user.substring(0, 50)}...` : question.question_by_user), /* @__PURE__ */ import_react83.default.createElement(Text, {
+    key: `answerAB-${question.id}`,
+    title: question.answer_by_bot
+  }, question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot), question.answer_feedback === -1 && /* @__PURE__ */ import_react83.default.createElement(TextU, {
+    key: `feedbackAB-${question.id}`
+  }, " Bad "), question.answer_feedback === 0 && /* @__PURE__ */ import_react83.default.createElement(Text, {
+    key: `feedbackAB-${question.id}`
+  }, " N/A "), question.answer_feedback === 1 && /* @__PURE__ */ import_react83.default.createElement(TextA, {
+    key: `feedbackAB-${question.id}`
+  }, " Good ")))))))), /* @__PURE__ */ import_react83.default.createElement(BottomContainer, null, /* @__PURE__ */ import_react83.default.createElement(ContMargin, null, /* @__PURE__ */ import_react83.default.createElement(Title, null, "FAQs"), /* @__PURE__ */ import_react83.default.createElement(import_react_bootstrap11.Table, {
+    stripped: !0,
+    hover: !0
+  }, /* @__PURE__ */ import_react83.default.createElement("thead", null, /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+    width: "330"
+  }, "Question"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+    width: "170"
+  }, "Department"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+    width: "170"
+  }, "Date"), /* @__PURE__ */ import_react83.default.createElement(TextBold, {
+    width: "170"
+  }, "Status"))), /* @__PURE__ */ import_react83.default.createElement("tbody", null, questionsFAQ.map((question) => {
+    var _a;
+    return /* @__PURE__ */ import_react83.default.createElement("tr", null, /* @__PURE__ */ import_react83.default.createElement(Text, {
+      key: `questionFAQ-${question.id}`,
+      title: question.question
+    }, question.question.length > 50 ? `${question.question.substring(0, 50)}...` : question.question), /* @__PURE__ */ import_react83.default.createElement(Text, {
+      key: `department-${question.id}`
+    }, " ", question.assigned_department !== null ? (_a = departments.find((depa) => depa.department_id === question.assigned_department)) == null ? void 0 : _a.name : "Not Assigned", " "), /* @__PURE__ */ import_react83.default.createElement(Text, {
+      key: `date-${question.id}`
+    }, " ", formatDate(question.createdAt), " "), question.Answers.length > 0 || question.Comments.some((comment) => comment.approvedBy !== null) || question.Comments.some((comment) => comment.CommentVote.length > 0 && comment.CommentVote.some((vote) => vote.value >= 10)) ? /* @__PURE__ */ import_react83.default.createElement(TextA, {
+      key: `statusFAQ-${question.id}`
+    }, " Answered ") : /* @__PURE__ */ import_react83.default.createElement(TextU, {
+      key: `statusFAQ-${question.id}`
+    }, " Unanswered "));
+  }))))))));
+}
+var dashboard_default = Dashboard;
+
 // app/routes/contact.jsx
 var contact_exports = {};
 __export(contact_exports, {
   default: () => contact_default,
-  loader: () => loader7
+  loader: () => loader8
 });
 init_react();
-var import_react83 = __toESM(require("react")), import_prop_types48 = __toESM(require("prop-types")), import_node6 = require("@remix-run/node");
+var import_react87 = __toESM(require("react")), import_prop_types51 = __toESM(require("prop-types")), import_node7 = require("@remix-run/node");
 
 // app/components/Footer.jsx
 init_react();
-var import_react81 = __toESM(require("react"));
+var import_react85 = __toESM(require("react"));
 
 // app/styles/Contact.Styled.jsx
 init_react();
-var import_styled_components45 = __toESM(require("styled-components"));
+var import_styled_components48 = __toESM(require("styled-components"));
 
 // app/images/caret-down-solid.svg
 var caret_down_solid_default = "/build/_assets/caret-down-solid-VHSOYTMP.svg";
 
 // app/styles/Contact.Styled.jsx
-var FooterDiv = import_styled_components45.default.div`
+var FooterDiv = import_styled_components48.default.div`
     background-color: #f4f7f9;
     color: #a2abaf;
     font-size: 12px;
@@ -21608,7 +22478,7 @@ var FooterDiv = import_styled_components45.default.div`
     @media (max-width: 400px) {
         padding: 0 15px 20px;
     }
-`, FooterContainer = import_styled_components45.default.div`
+`, FooterContainer = import_styled_components48.default.div`
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
@@ -21626,20 +22496,20 @@ var FooterDiv = import_styled_components45.default.div`
     @media (min-width: 768px) and (max-width: 991px) {
         width: 750px;
     }
-`, FooterLink = import_styled_components45.default.a`
+`, FooterLink = import_styled_components48.default.a`
     color: #666;
 
     &:hover {
         text-decoration: underline;
     }
-`, ContactInputDiv = import_styled_components45.default.div`
+`, ContactInputDiv = import_styled_components48.default.div`
     background-color: #f4f7f9;
     box-sizing: border-box;
     min-height: 64.8752vh;
     padding: 2% 0 7%;
     position: relative;
     text-align: center;
-`, ContactForm = import_styled_components45.default.form`
+`, ContactForm = import_styled_components48.default.form`
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -21649,7 +22519,7 @@ var FooterDiv = import_styled_components45.default.div`
     box-sizing: border-box;
     max-width: 390px;
     width: 100%;
-`, ContactFormP = import_styled_components45.default.p`
+`, ContactFormP = import_styled_components48.default.p`
     border-radius: 4px;
     box-sizing: border-box;
     display: inline-block;
@@ -21659,7 +22529,7 @@ var FooterDiv = import_styled_components45.default.div`
     width: 100%;
     color: var(--color-dark-50);
     line-height: 24px;
-`, ContactSelect = import_styled_components45.default.select`
+`, ContactSelect = import_styled_components48.default.select`
     -moz-appearance: none; /* Firefox */
     -webkit-appearance: none; /* Safari and Chrome */
     appearance: none;
@@ -21680,7 +22550,7 @@ var FooterDiv = import_styled_components45.default.div`
     max-width: 390px;
     padding: 12px 16px;
     width: 100%;
-`, ContactTextArea = import_styled_components45.default.textarea`
+`, ContactTextArea = import_styled_components48.default.textarea`
     border: 1px solid #ccc;
     height: 150px;
     border-radius: 4px;
@@ -21694,7 +22564,7 @@ var FooterDiv = import_styled_components45.default.div`
     overflow: auto;
     border-radius: 4px;
     box-sizing: border-box;
-`, BtnContainer = import_styled_components45.default.div`
+`, BtnContainer = import_styled_components48.default.div`
     padding: 12px 0;
     border-radius: 4px;
     box-sizing: border-box;
@@ -21702,7 +22572,7 @@ var FooterDiv = import_styled_components45.default.div`
     margin: 10px 0;
     max-width: 390px;
     width: 100%;
-`, SubmitBtn = import_styled_components45.default.button`
+`, SubmitBtn = import_styled_components48.default.button`
     background-color: var(--color-secondary);
     border-radius: 3px;
     border: none;
@@ -21718,7 +22588,7 @@ var FooterDiv = import_styled_components45.default.div`
     &:hover {
         background-color: #00a7e587;
     }
-`, SuccessDiv = import_styled_components45.default.div`
+`, SuccessDiv = import_styled_components48.default.div`
     background-color: white;
     color: var(--color-dark-50);
     margin-top: 50px;
@@ -21738,15 +22608,15 @@ var FooterDiv = import_styled_components45.default.div`
     @media (min-width: 768px) and (max-width: 991px) {
         width: 750px;
     }
-`, ContactCardDiv = import_styled_components45.default.div`
+`, ContactCardDiv = import_styled_components48.default.div`
     background-color: #1c1c1c;
-`, ContactInputHeader = import_styled_components45.default.div`
+`, ContactInputHeader = import_styled_components48.default.div`
     background-color: #fff;
     text-align: center;
     font-size: 14px;
     margin: 0 auto;
     box-sizing: border-box;
-`, ContactInputHeaderH1 = import_styled_components45.default.h1`
+`, ContactInputHeaderH1 = import_styled_components48.default.h1`
     color: #a2abaf;
     letter-spacing: 1.5px;
     padding: 72px 0 12px;
@@ -21754,14 +22624,14 @@ var FooterDiv = import_styled_components45.default.div`
     font-size: 14px;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputHeaderH2 = import_styled_components45.default.h2`
+`, ContactInputHeaderH2 = import_styled_components48.default.h2`
     color: var(--color-dark-50);
     font-size: 24px;
     font-weight: 600;
     padding: 12px 0 8px;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputHeaderP = import_styled_components45.default.p`
+`, ContactInputHeaderP = import_styled_components48.default.p`
     color: var(--color-dark-50);
     letter-spacing: 0.6px;
     line-height: 1.71;
@@ -21769,27 +22639,27 @@ var FooterDiv = import_styled_components45.default.div`
     font-size: 14px;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputSitesDiv = import_styled_components45.default.div`
+`, ContactInputSitesDiv = import_styled_components48.default.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputGoTo = import_styled_components45.default.div`
+`, ContactInputGoTo = import_styled_components48.default.div`
     margin: 20px 40px 40px;
     max-width: 390px;
-`, ContactInputGoToP = import_styled_components45.default.p`
+`, ContactInputGoToP = import_styled_components48.default.p`
     font-size: 16px;
     margin: 8px 0 4px;
     padding: 0;
     max-width: 390px;
-`, ContactInputGoToA = import_styled_components45.default.a`
+`, ContactInputGoToA = import_styled_components48.default.a`
     padding: 4px 0;
     white-space: nowrap;
     color: var(--color-secondary);
     margin: 0 auto;
     max-width: 390px;
-`, ContactInputGoToImg = import_styled_components45.default.img`
+`, ContactInputGoToImg = import_styled_components48.default.img`
     background-color: #f4f7f9;
     border-radius: 50%;
     box-shadow: 0 0 0 10px #f4f7f9;
@@ -21800,7 +22670,7 @@ var FooterDiv = import_styled_components45.default.div`
 `;
 
 // app/components/Footer.jsx
-var Footer = class extends import_react81.Component {
+var Footer = class extends import_react85.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21808,7 +22678,7 @@ var Footer = class extends import_react81.Component {
     };
   }
   render() {
-    return /* @__PURE__ */ import_react81.default.createElement(FooterDiv, null, /* @__PURE__ */ import_react81.default.createElement(FooterContainer, null, /* @__PURE__ */ import_react81.default.createElement(FooterLink, {
+    return /* @__PURE__ */ import_react85.default.createElement(FooterDiv, null, /* @__PURE__ */ import_react85.default.createElement(FooterContainer, null, /* @__PURE__ */ import_react85.default.createElement(FooterLink, {
       href: this.state.wizeQTeamUrl,
       target: "_blank",
       rel: "noopener noreferrer"
@@ -21824,7 +22694,7 @@ var ic_slack_default = "/build/_assets/ic_slack-IQPOSSZZ.svg";
 
 // app/components/ContactGoto.jsx
 init_react();
-var import_react82 = __toESM(require("react")), import_prop_types47 = __toESM(require("prop-types"));
+var import_react86 = __toESM(require("react")), import_prop_types50 = __toESM(require("prop-types"));
 function ContactGoto(props) {
   let {
     icon,
@@ -21832,24 +22702,24 @@ function ContactGoto(props) {
     goto,
     dir
   } = props;
-  return /* @__PURE__ */ import_react82.default.createElement(ContactInputGoTo, null, /* @__PURE__ */ import_react82.default.createElement(ContactInputGoToImg, {
+  return /* @__PURE__ */ import_react86.default.createElement(ContactInputGoTo, null, /* @__PURE__ */ import_react86.default.createElement(ContactInputGoToImg, {
     src: icon
-  }), /* @__PURE__ */ import_react82.default.createElement(ContactInputGoToP, null, text5), /* @__PURE__ */ import_react82.default.createElement(ContactInputGoToA, {
+  }), /* @__PURE__ */ import_react86.default.createElement(ContactInputGoToP, null, text5), /* @__PURE__ */ import_react86.default.createElement(ContactInputGoToA, {
     href: dir,
     target: "_blank",
     rel: "noopener noreferrer"
   }, goto));
 }
 ContactGoto.propTypes = {
-  icon: import_prop_types47.default.string.isRequired,
-  text: import_prop_types47.default.string.isRequired,
-  goto: import_prop_types47.default.string.isRequired,
-  dir: import_prop_types47.default.string.isRequired
+  icon: import_prop_types50.default.string.isRequired,
+  text: import_prop_types50.default.string.isRequired,
+  goto: import_prop_types50.default.string.isRequired,
+  dir: import_prop_types50.default.string.isRequired
 };
 var ContactGoto_default = ContactGoto;
 
 // app/routes/contact.jsx
-var loader7 = async ({ request }) => (await requireAuth(request), (0, import_node6.json)({})), initialState = {
+var loader8 = async ({ request }) => (await requireAuth(request), (0, import_node7.json)({})), initialState = {
   reason: "",
   message: "",
   placeholders: {
@@ -21858,14 +22728,14 @@ var loader7 = async ({ request }) => (await requireAuth(request), (0, import_nod
   isSubmitted: !1
 };
 function Contact(props) {
-  let { full_name: name, email } = useUser_default(), [state, setState] = (0, import_react83.useState)(initialState), resetForm = () => {
+  let { full_name: name, email } = useUser_default(), [state, setState] = (0, import_react87.useState)(initialState), resetForm = () => {
     setState(initialState);
   }, handleContactClick = () => {
     resetForm();
-  }, renderSuccessMessage = () => /* @__PURE__ */ import_react83.default.createElement(SuccessDiv, null, /* @__PURE__ */ import_react83.default.createElement("p", null, "Thanks for contacting us! We will review your feedback shortly."), /* @__PURE__ */ import_react83.default.createElement("p", null, "Click", " ", /* @__PURE__ */ import_react83.default.createElement("button", {
+  }, renderSuccessMessage = () => /* @__PURE__ */ import_react87.default.createElement(SuccessDiv, null, /* @__PURE__ */ import_react87.default.createElement("p", null, "Thanks for contacting us! We will review your feedback shortly."), /* @__PURE__ */ import_react87.default.createElement("p", null, "Click", " ", /* @__PURE__ */ import_react87.default.createElement("button", {
     type: "button",
     onClick: handleContactClick
-  }, " here "), " ", "to contact us again."), /* @__PURE__ */ import_react83.default.createElement("p", null, "Cheers,", /* @__PURE__ */ import_react83.default.createElement("br", null), " ", "The WizeQ team!")), renderOptionsList = () => CONTACT_REASONS_LIST.map((options) => /* @__PURE__ */ import_react83.default.createElement("option", {
+  }, " here "), " ", "to contact us again."), /* @__PURE__ */ import_react87.default.createElement("p", null, "Cheers,", /* @__PURE__ */ import_react87.default.createElement("br", null), " ", "The WizeQ team!")), renderOptionsList = () => CONTACT_REASONS_LIST.map((options) => /* @__PURE__ */ import_react87.default.createElement("option", {
     value: options.value,
     key: options.value
   }, options.reason)), onInputChange = (event) => {
@@ -21904,34 +22774,34 @@ function Contact(props) {
     }
   }, renderContactForm = () => {
     let firstName = name ? name.split(" ")[0] : "";
-    return /* @__PURE__ */ import_react83.default.createElement(ContactForm, {
+    return /* @__PURE__ */ import_react87.default.createElement(ContactForm, {
       onSubmit
-    }, /* @__PURE__ */ import_react83.default.createElement(ContactFormP, null, "Hi\xA0", /* @__PURE__ */ import_react83.default.createElement("strong", null, firstName), "!", /* @__PURE__ */ import_react83.default.createElement("br", null), "Send us a message!"), /* @__PURE__ */ import_react83.default.createElement(ContactSelect, {
+    }, /* @__PURE__ */ import_react87.default.createElement(ContactFormP, null, "Hi\xA0", /* @__PURE__ */ import_react87.default.createElement("strong", null, firstName), "!", /* @__PURE__ */ import_react87.default.createElement("br", null), "Send us a message!"), /* @__PURE__ */ import_react87.default.createElement(ContactSelect, {
       name: "reason",
       onChange: onInputChange
-    }, renderOptionsList()), /* @__PURE__ */ import_react83.default.createElement(ContactTextArea, {
+    }, renderOptionsList()), /* @__PURE__ */ import_react87.default.createElement(ContactTextArea, {
       name: "message",
       placeholder: state.placeholders.message,
       onChange: onInputChange
-    }), /* @__PURE__ */ import_react83.default.createElement(BtnContainer, null, /* @__PURE__ */ import_react83.default.createElement(SubmitBtn, {
+    }), /* @__PURE__ */ import_react87.default.createElement(BtnContainer, null, /* @__PURE__ */ import_react87.default.createElement(SubmitBtn, {
       type: "submit"
     }, "Submit")));
   };
-  return /* @__PURE__ */ import_react83.default.createElement(ContactCardDiv, null, /* @__PURE__ */ import_react83.default.createElement(ContactInputHeader, null, /* @__PURE__ */ import_react83.default.createElement(ContactInputHeaderH1, null, "Contact Us"), /* @__PURE__ */ import_react83.default.createElement(ContactInputHeaderH2, null, "We are here for you!"), /* @__PURE__ */ import_react83.default.createElement(ContactInputHeaderP, null, "We\u2019d love to hear from you, please let us know what you think and get in touch with us.", " "), /* @__PURE__ */ import_react83.default.createElement(ContactInputSitesDiv, null, /* @__PURE__ */ import_react83.default.createElement(ContactGoto_default, {
+  return /* @__PURE__ */ import_react87.default.createElement(ContactCardDiv, null, /* @__PURE__ */ import_react87.default.createElement(ContactInputHeader, null, /* @__PURE__ */ import_react87.default.createElement(ContactInputHeaderH1, null, "Contact Us"), /* @__PURE__ */ import_react87.default.createElement(ContactInputHeaderH2, null, "We are here for you!"), /* @__PURE__ */ import_react87.default.createElement(ContactInputHeaderP, null, "We\u2019d love to hear from you, please let us know what you think and get in touch with us.", " "), /* @__PURE__ */ import_react87.default.createElement(ContactInputSitesDiv, null, /* @__PURE__ */ import_react87.default.createElement(ContactGoto_default, {
     icon: ic_email_default,
     text: "Email us at",
     goto: "wizeq@wizeline.com",
     dir: "mailto:wizeq@wizeline.com"
-  }), /* @__PURE__ */ import_react83.default.createElement(ContactGoto_default, {
+  }), /* @__PURE__ */ import_react87.default.createElement(ContactGoto_default, {
     icon: ic_slack_default,
     text: "Slack us at",
     goto: "#wize-q-support",
     dir: "https://wizeline.slack.com/messages/C6M652THT"
-  }))), /* @__PURE__ */ import_react83.default.createElement(ContactInputDiv, null, (() => state.isSubmitted ? state.isSubmitted ? renderSuccessMessage() : null : renderContactForm())()), /* @__PURE__ */ import_react83.default.createElement(Footer_default, null));
+  }))), /* @__PURE__ */ import_react87.default.createElement(ContactInputDiv, null, (() => state.isSubmitted ? state.isSubmitted ? renderSuccessMessage() : null : renderContactForm())()), /* @__PURE__ */ import_react87.default.createElement(Footer_default, null));
 }
 Contact.propTypes = {
-  sendContact: import_prop_types48.default.func.isRequired,
-  warningAlert: import_prop_types48.default.func.isRequired
+  sendContact: import_prop_types51.default.func.isRequired,
+  warningAlert: import_prop_types51.default.func.isRequired
 };
 var contact_default = Contact;
 
@@ -21941,7 +22811,7 @@ __export(example_exports, {
   default: () => example_default
 });
 init_react();
-var import_react84 = __toESM(require("react")), import_styled_components46 = __toESM(require("styled-components")), ChatbotContainer2 = import_styled_components46.default.div`
+var import_react88 = __toESM(require("react")), import_styled_components49 = __toESM(require("styled-components")), ChatbotContainer2 = import_styled_components49.default.div`
   position: fixed;
   bottom: 0px;
   right: 0px;
@@ -21954,7 +22824,7 @@ var import_react84 = __toESM(require("react")), import_styled_components46 = __t
   display: flex;
   flex-direction: column;
   visibility: ${(props) => props.visible ? "visible" : "hidden"};
-`, ChatbotHeader2 = import_styled_components46.default.div`
+`, ChatbotHeader2 = import_styled_components49.default.div`
   background-color: #213246;
   height: 40px;
   border-top-left-radius: 20px;
@@ -21963,7 +22833,7 @@ var import_react84 = __toESM(require("react")), import_styled_components46 = __t
   justify-content: space-between;
   align-items: center;
   padding: 0 47.5px;
-`, IconBot2 = import_styled_components46.default.img`
+`, IconBot2 = import_styled_components49.default.img`
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -21976,7 +22846,7 @@ var import_react84 = __toESM(require("react")), import_styled_components46 = __t
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
   left: 5%;
   margin: 5px 0px;
-`, IconUser2 = import_styled_components46.default.img`
+`, IconUser2 = import_styled_components49.default.img`
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -21985,13 +22855,13 @@ var import_react84 = __toESM(require("react")), import_styled_components46 = __t
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.5);
   margin-right: 10px;
   margin: 5px 0px;
-`, BotName2 = import_styled_components46.default.div`
+`, BotName2 = import_styled_components49.default.div`
   display: flex;
   align-items: center;
   font-weight: bold;
   color: #fff;
   padding: 0 85px;
-`, CloseButton3 = import_styled_components46.default.button`
+`, CloseButton3 = import_styled_components49.default.button`
   color: #fff;
   font-size: 15px;
   background-color: transparent;
@@ -22003,14 +22873,14 @@ var import_react84 = __toESM(require("react")), import_styled_components46 = __t
     transform: scale(1.4);
   }
 
-`, ChatbotMessages2 = import_styled_components46.default.div`
+`, ChatbotMessages2 = import_styled_components49.default.div`
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-`, ChatbotRowMessage2 = import_styled_components46.default.div`
+`, ChatbotRowMessage2 = import_styled_components49.default.div`
   display: flex;
   alignItems: center;
-`, Message2 = import_styled_components46.default.div`
+`, Message2 = import_styled_components49.default.div`
   padding: 5px 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -22032,17 +22902,17 @@ var import_react84 = __toESM(require("react")), import_styled_components46 = __t
     color: #fff;
   }
 
-`, ChatbotInput2 = import_styled_components46.default.form`
+`, ChatbotInput2 = import_styled_components49.default.form`
   display: flex;
   align-items: center;
   width: 330px;
   background-color: #fff;
-`, Input4 = import_styled_components46.default.input`
+`, Input4 = import_styled_components49.default.input`
   flex: 1;
   padding: 10px;
   border: none;
   outline: none;
-`, Button3 = import_styled_components46.default.button`
+`, Button4 = import_styled_components49.default.button`
   width: 30px;
   height: 30px;
   border-radius: 25%;
@@ -22060,7 +22930,7 @@ var import_react84 = __toESM(require("react")), import_styled_components46 = __t
   }
 `;
 function Chatbot() {
-  let messagesEndRef = (0, import_react84.useRef)(null), [messages, setMessages] = (0, import_react84.useState)([
+  let messagesEndRef = (0, import_react88.useRef)(null), [messages, setMessages] = (0, import_react88.useState)([
     { text: "Hola", user: !1 },
     { text: "Hola, \xBFc\xF3mo est\xE1s?", user: !0 },
     { text: "Estoy bien, gracias. \xBFY t\xFA?", user: !1 },
@@ -22073,43 +22943,43 @@ function Chatbot() {
     let input = e.target.querySelector("input"), message = input.value;
     setMessages([...messages, { text: message, user: !0 }]), input.value = "";
   };
-  (0, import_react84.useEffect)(() => {
+  (0, import_react88.useEffect)(() => {
     (() => {
       messagesEndRef.current && messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     })(), messagesEndRef.current && messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-  let [chatbotVisible, setChatbotVisible] = (0, import_react84.useState)(!1), handleChatbotToggle = () => {
+  let [chatbotVisible, setChatbotVisible] = (0, import_react88.useState)(!1), handleChatbotToggle = () => {
     setChatbotVisible(!chatbotVisible);
   };
-  return /* @__PURE__ */ import_react84.default.createElement("div", null, /* @__PURE__ */ import_react84.default.createElement("button", {
+  return /* @__PURE__ */ import_react88.default.createElement("div", null, /* @__PURE__ */ import_react88.default.createElement("button", {
     type: "button",
     onClick: handleChatbotToggle
-  }, " Mostrar chatbot "), /* @__PURE__ */ import_react84.default.createElement(ChatbotContainer2, {
+  }, " Mostrar chatbot "), /* @__PURE__ */ import_react88.default.createElement(ChatbotContainer2, {
     visible: chatbotVisible
-  }, /* @__PURE__ */ import_react84.default.createElement(ChatbotHeader2, null, /* @__PURE__ */ import_react84.default.createElement(IconBot2, {
+  }, /* @__PURE__ */ import_react88.default.createElement(ChatbotHeader2, null, /* @__PURE__ */ import_react88.default.createElement(IconBot2, {
     style: { position: "absolute" }
-  }), /* @__PURE__ */ import_react84.default.createElement(BotName2, null, " AnswerBot "), /* @__PURE__ */ import_react84.default.createElement(CloseButton3, {
+  }), /* @__PURE__ */ import_react88.default.createElement(BotName2, null, " AnswerBot "), /* @__PURE__ */ import_react88.default.createElement(CloseButton3, {
     onClick: handleChatbotToggle
-  }, " \u2715 ")), /* @__PURE__ */ import_react84.default.createElement(ChatbotMessages2, null, messages.map((message) => message.user ? /* @__PURE__ */ import_react84.default.createElement(ChatbotRowMessage2, {
+  }, " \u2715 ")), /* @__PURE__ */ import_react88.default.createElement(ChatbotMessages2, null, messages.map((message) => message.user ? /* @__PURE__ */ import_react88.default.createElement(ChatbotRowMessage2, {
     style: { justifyContent: "flex-end" }
-  }, /* @__PURE__ */ import_react84.default.createElement(Message2, {
+  }, /* @__PURE__ */ import_react88.default.createElement(Message2, {
     key: `message ${message.id}`,
     className: "user",
     ref: messagesEndRef
-  }, " ", message.text, " "), /* @__PURE__ */ import_react84.default.createElement(IconUser2, {
+  }, " ", message.text, " "), /* @__PURE__ */ import_react88.default.createElement(IconUser2, {
     src: "/build/_assets/placeholder_user_img-ZWAQNLBE.png"
-  })) : /* @__PURE__ */ import_react84.default.createElement(ChatbotRowMessage2, {
+  })) : /* @__PURE__ */ import_react88.default.createElement(ChatbotRowMessage2, {
     style: { justifyContent: "flex-start" }
-  }, /* @__PURE__ */ import_react84.default.createElement(IconBot2, null), /* @__PURE__ */ import_react84.default.createElement(Message2, {
+  }, /* @__PURE__ */ import_react88.default.createElement(IconBot2, null), /* @__PURE__ */ import_react88.default.createElement(Message2, {
     key: `message ${message.id}`,
     className: "bot",
     ref: messagesEndRef
-  }, " ", message.text, " ")))), /* @__PURE__ */ import_react84.default.createElement(ChatbotInput2, {
+  }, " ", message.text, " ")))), /* @__PURE__ */ import_react88.default.createElement(ChatbotInput2, {
     onSubmit: handleInput
-  }, /* @__PURE__ */ import_react84.default.createElement(Input4, {
+  }, /* @__PURE__ */ import_react88.default.createElement(Input4, {
     type: "text",
     placeholder: "Enter your question..."
-  }), /* @__PURE__ */ import_react84.default.createElement(Button3, {
+  }), /* @__PURE__ */ import_react88.default.createElement(Button4, {
     type: "submit"
   }))));
 }
@@ -22119,29 +22989,29 @@ var example_default = Chatbot;
 var logout_exports = {};
 __export(logout_exports, {
   action: () => action4,
-  loader: () => loader8
+  loader: () => loader9
 });
 init_react();
-var import_node7 = require("@remix-run/node");
-var action4 = async ({ request }) => logout(request), loader8 = async () => (0, import_node7.redirect)("/logout");
+var import_node8 = require("@remix-run/node");
+var action4 = async ({ request }) => logout(request), loader9 = async () => (0, import_node8.redirect)("/logout");
 
 // app/routes/about.jsx
 var about_exports = {};
 __export(about_exports, {
   default: () => about_default,
-  loader: () => loader9
+  loader: () => loader10
 });
 init_react();
-var import_react85 = __toESM(require("react")), import_node8 = require("@remix-run/node");
+var import_react89 = __toESM(require("react")), import_node9 = require("@remix-run/node");
 
 // app/styles/About.Styled.jsx
 init_react();
-var import_styled_components47 = __toESM(require("styled-components")), colorDark50 = "#4E5154", colorSecondary = "#00A7E5", About = import_styled_components47.default.div`
+var import_styled_components50 = __toESM(require("styled-components")), colorDark50 = "#4E5154", colorSecondary = "#00A7E5", About = import_styled_components50.default.div`
   background-color: #fff;
   color: ${colorDark50};
   line-height: 1.71;
   text-align: center;
-`, AboutBody = import_styled_components47.default.div`
+`, AboutBody = import_styled_components50.default.div`
   margin: auto;
   max-width: 65%;
   padding: 0 20px;
@@ -22229,12 +23099,12 @@ var import_styled_components47 = __toESM(require("styled-components")), colorDar
       left: 32px;
     }
   }
-`, BoxWrapper = import_styled_components47.default.div`
+`, BoxWrapper = import_styled_components50.default.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-`, BoxContainer = import_styled_components47.default.div`
+`, BoxContainer = import_styled_components50.default.div`
     padding: 16px;
     
     @media screen and (min-width: 1025px){
@@ -22244,18 +23114,18 @@ var import_styled_components47 = __toESM(require("styled-components")), colorDar
     @media (max-width: 767px) {
       left: 32px;
     }
-`, BoxImageContainer = import_styled_components47.default.div`
+`, BoxImageContainer = import_styled_components50.default.div`
 display: inline-block;
 height: 48px;
 margin-right: 8px;
-`, BoxImage = import_styled_components47.default.img`
+`, BoxImage = import_styled_components50.default.img`
   float: left;
   margin: 28px;
 
   @media (max-width: 767px) {
     margin-top: 0px;
   }
-`, BoxBoldText = import_styled_components47.default.div`
+`, BoxBoldText = import_styled_components50.default.div`
   color: ${colorDark50};
   font-family: "NunitoSans Semibold";
   margin-top: 44px;
@@ -22265,17 +23135,17 @@ margin-right: 8px;
   @media (max-width: 767px)  {
     margin-top: 0px;
   }
-`, BoxMetadata = import_styled_components47.default.div`
+`, BoxMetadata = import_styled_components50.default.div`
   margin: 28px;
   text-align: left;
-`, AboutMetadata = import_styled_components47.default.div`
+`, AboutMetadata = import_styled_components50.default.div`
   @media (max-width: 767px)  {
     margin-top: 24px;
   }
-`, AboutWhatElseContainer = import_styled_components47.default.div`
+`, AboutWhatElseContainer = import_styled_components50.default.div`
   margin-bottom: 28px;
   margin-top: 28px;
-`, AboutWhatElseImg = import_styled_components47.default.img`
+`, AboutWhatElseImg = import_styled_components50.default.img`
   float: right;
   margin-left: 100px;
   margin-right: 28px;
@@ -22284,7 +23154,7 @@ margin-right: 8px;
     float: none;
     margin: auto;
   }
-`, AboutWHatElseText = import_styled_components47.default.div`
+`, AboutWHatElseText = import_styled_components50.default.div`
   margin-top: 44px;
   text-align: left;
   width: 70%;
@@ -22292,16 +23162,16 @@ margin-right: 8px;
   @media (max-width: 767px) {
     width: 100%;
   }
-`, AboutWHatElseBold = import_styled_components47.default.div`
+`, AboutWHatElseBold = import_styled_components50.default.div`
   color: ${colorDark50};
   font-family: "NunitoSans Semibold";
   margin-top: 44px;
   margin: 28px;
   text-align: left;
-`, AboutWhatElseMetadata = import_styled_components47.default.div`
+`, AboutWhatElseMetadata = import_styled_components50.default.div`
   margin: 28px;
   text-align: left;
-`, AboutFooter = import_styled_components47.default.div`
+`, AboutFooter = import_styled_components50.default.div`
   padding: 50px 0;
 
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -22340,23 +23210,23 @@ var ic_dialogue_default = "/build/_assets/ic_dialogue-IMAMZON2.svg";
 var ic_anonymous_default = "/build/_assets/ic_anonymous-YCAN6UEP.svg";
 
 // app/routes/about.jsx
-var loader9 = async ({ request }) => (await requireAuth(request), (0, import_node8.json)({}));
+var loader10 = async ({ request }) => (await requireAuth(request), (0, import_node9.json)({}));
 function About2() {
-  return /* @__PURE__ */ import_react85.default.createElement(About, null, /* @__PURE__ */ import_react85.default.createElement(AboutBody, null, /* @__PURE__ */ import_react85.default.createElement("h1", null, "About Us"), /* @__PURE__ */ import_react85.default.createElement("h2", null, "This is Wizeline Questions"), /* @__PURE__ */ import_react85.default.createElement("p", null, /* @__PURE__ */ import_react85.default.createElement("strong", null, "Wizeline Questions (WizeQ)"), " ", "is a communication space where you can express your ideas, learn more about Wizeline, and ask all kinds of questions."), /* @__PURE__ */ import_react85.default.createElement("p", null, "Wizeline Questions is a knowledge base where you can ask for information to a specific department and allow other Wizeliners to benefit from it. For example:"), /* @__PURE__ */ import_react85.default.createElement(BoxWrapper, null, /* @__PURE__ */ import_react85.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react85.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react85.default.createElement(BoxImage, {
+  return /* @__PURE__ */ import_react89.default.createElement(About, null, /* @__PURE__ */ import_react89.default.createElement(AboutBody, null, /* @__PURE__ */ import_react89.default.createElement("h1", null, "About Us"), /* @__PURE__ */ import_react89.default.createElement("h2", null, "This is Wizeline Questions"), /* @__PURE__ */ import_react89.default.createElement("p", null, /* @__PURE__ */ import_react89.default.createElement("strong", null, "Wizeline Questions (WizeQ)"), " ", "is a communication space where you can express your ideas, learn more about Wizeline, and ask all kinds of questions."), /* @__PURE__ */ import_react89.default.createElement("p", null, "Wizeline Questions is a knowledge base where you can ask for information to a specific department and allow other Wizeliners to benefit from it. For example:"), /* @__PURE__ */ import_react89.default.createElement(BoxWrapper, null, /* @__PURE__ */ import_react89.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImage, {
     src: ic_meeting_default
-  }), /* @__PURE__ */ import_react85.default.createElement(BoxBoldText, null, "Are you still having problems with Zoom for your next meeting?")), /* @__PURE__ */ import_react85.default.createElement(BoxMetadata, null, "Check Wizeline Questions, someone might have already asked IT the same question. If that is not the case, this is your chance to shine!")), /* @__PURE__ */ import_react85.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react85.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react85.default.createElement(BoxImage, {
+  }), /* @__PURE__ */ import_react89.default.createElement(BoxBoldText, null, "Are you still having problems with Zoom for your next meeting?")), /* @__PURE__ */ import_react89.default.createElement(BoxMetadata, null, "Check Wizeline Questions, someone might have already asked IT the same question. If that is not the case, this is your chance to shine!")), /* @__PURE__ */ import_react89.default.createElement(BoxContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImageContainer, null, /* @__PURE__ */ import_react89.default.createElement(BoxImage, {
     src: ic_saving_fund_default
-  }), /* @__PURE__ */ import_react85.default.createElement(BoxBoldText, null, "Do you want to know more about the savings fund?")), /* @__PURE__ */ import_react85.default.createElement(BoxMetadata, null, "Tag People Ops in your question, other Wizeliners will be glad to learn about that same topic, for sure!"))), /* @__PURE__ */ import_react85.default.createElement(AboutMetadata, null, /* @__PURE__ */ import_react85.default.createElement("p", null, "Information can be easily lost in the flood of comments and pinged posts on Slack. Do you need information to persist?", " ", /* @__PURE__ */ import_react85.default.createElement("strong", null, "Use Wizeline Questions instead!"))), /* @__PURE__ */ import_react85.default.createElement("h3", null, "What else?"), /* @__PURE__ */ import_react85.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react85.default.createElement(AboutWhatElseImg, {
+  }), /* @__PURE__ */ import_react89.default.createElement(BoxBoldText, null, "Do you want to know more about the savings fund?")), /* @__PURE__ */ import_react89.default.createElement(BoxMetadata, null, "Tag People Ops in your question, other Wizeliners will be glad to learn about that same topic, for sure!"))), /* @__PURE__ */ import_react89.default.createElement(AboutMetadata, null, /* @__PURE__ */ import_react89.default.createElement("p", null, "Information can be easily lost in the flood of comments and pinged posts on Slack. Do you need information to persist?", " ", /* @__PURE__ */ import_react89.default.createElement("strong", null, "Use Wizeline Questions instead!"))), /* @__PURE__ */ import_react89.default.createElement("h3", null, "What else?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseImg, {
     src: ic_dialogue_default
-  }), /* @__PURE__ */ import_react85.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react85.default.createElement(AboutWHatElseBold, null, "Start a conversation. Is there a topic you want to discuss with other Wizeliners?"), /* @__PURE__ */ import_react85.default.createElement(AboutWhatElseMetadata, null, "This is the place!. You can reply to a question and also hold interesting conversations with other Wizeliners.  Use it as a discussion forum, suggestion what-else, or simply visit to say hello! Help us to keep Wizeline an amazing place!"))), /* @__PURE__ */ import_react85.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react85.default.createElement(AboutWhatElseImg, {
+  }), /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseBold, null, "Start a conversation. Is there a topic you want to discuss with other Wizeliners?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseMetadata, null, "This is the place!. You can reply to a question and also hold interesting conversations with other Wizeliners.  Use it as a discussion forum, suggestion what-else, or simply visit to say hello! Help us to keep Wizeline an amazing place!"))), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseContainer, null, /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseImg, {
     src: ic_anonymous_default
-  }), /* @__PURE__ */ import_react85.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react85.default.createElement(AboutWHatElseBold, null, "Is there a sensitive question you want to ask anonymously?"), /* @__PURE__ */ import_react85.default.createElement(AboutWhatElseMetadata, null, "Ask on Wizeline Questions! To promote ownership and open communication, it displays your user name by default when you post a new question. But you can always opt for anonymity."))), /* @__PURE__ */ import_react85.default.createElement("h3", null, "Things to Keep in Mind When Asking a Question"), /* @__PURE__ */ import_react85.default.createElement("span", null, /* @__PURE__ */ import_react85.default.createElement("p", null, "We value your ideas, questions, suggestions, and comments. Therefore, we encourage you to use this communication space. Please, when writing a new question or a comment follow these recommendations:"), /* @__PURE__ */ import_react85.default.createElement("div", {
+  }), /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseText, null, /* @__PURE__ */ import_react89.default.createElement(AboutWHatElseBold, null, "Is there a sensitive question you want to ask anonymously?"), /* @__PURE__ */ import_react89.default.createElement(AboutWhatElseMetadata, null, "Ask on Wizeline Questions! To promote ownership and open communication, it displays your user name by default when you post a new question. But you can always opt for anonymity."))), /* @__PURE__ */ import_react89.default.createElement("h3", null, "Things to Keep in Mind When Asking a Question"), /* @__PURE__ */ import_react89.default.createElement("span", null, /* @__PURE__ */ import_react89.default.createElement("p", null, "We value your ideas, questions, suggestions, and comments. Therefore, we encourage you to use this communication space. Please, when writing a new question or a comment follow these recommendations:"), /* @__PURE__ */ import_react89.default.createElement("div", {
     style: { textAlign: "justify" }
-  }, /* @__PURE__ */ import_react85.default.createElement("ul", null, /* @__PURE__ */ import_react85.default.createElement("li", null, "Strive for constructive open communication. Avoid vagueness."), /* @__PURE__ */ import_react85.default.createElement("li", null, "Do not demean or degrade others because of their gender, race, age, religion, etc."), /* @__PURE__ */ import_react85.default.createElement("li", null, "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity."), /* @__PURE__ */ import_react85.default.createElement("li", null, "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."))))), /* @__PURE__ */ import_react85.default.createElement(AboutFooter, null, /* @__PURE__ */ import_react85.default.createElement("p", null, /* @__PURE__ */ import_react85.default.createElement("strong", null, "We need your help!"), " ", "Wizeline Questions is an internal project and everyone can contribute. Come aboard and meet the team at", /* @__PURE__ */ import_react85.default.createElement("a", {
+  }, /* @__PURE__ */ import_react89.default.createElement("ul", null, /* @__PURE__ */ import_react89.default.createElement("li", null, "Strive for constructive open communication. Avoid vagueness."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Do not demean or degrade others because of their gender, race, age, religion, etc."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Avoid posting questions that include sexually explicit comments, hate speech, prejudicial remarks, and profanity."), /* @__PURE__ */ import_react89.default.createElement("li", null, "Do not mock other members, their comments, profiles, threads, or experiences. Remember, what is funny for you may be offensive to others."))))), /* @__PURE__ */ import_react89.default.createElement(AboutFooter, null, /* @__PURE__ */ import_react89.default.createElement("p", null, /* @__PURE__ */ import_react89.default.createElement("strong", null, "We need your help!"), " ", "Wizeline Questions is an internal project and everyone can contribute. Come aboard and meet the team at", /* @__PURE__ */ import_react89.default.createElement("a", {
     href: "https://wizeline.slack.com/archives/C031D9DP7C2",
     target: "_blank",
     rel: "noopener noreferrer"
-  }, "#wize-q-2022"), ". You can take a look at our", /* @__PURE__ */ import_react85.default.createElement("a", {
+  }, "#wize-q-2022"), ". You can take a look at our", /* @__PURE__ */ import_react89.default.createElement("a", {
     href: "https://github.com/wizeline/wize-q-remix"
   }, "source code"), " ", "on GitHub.")));
 }
@@ -22368,14 +23238,14 @@ __export(admin_exports, {
   CatchBoundary: () => CatchBoundary,
   action: () => action5,
   default: () => admin_default2,
-  loader: () => loader10
+  loader: () => loader11
 });
 init_react();
-var import_react94 = __toESM(require("react")), import_node9 = require("@remix-run/node"), import_react95 = require("@remix-run/react");
+var import_react98 = __toESM(require("react")), import_node10 = require("@remix-run/node"), import_react99 = require("@remix-run/react");
 
 // app/styles/Admin.Styled.jsx
 init_react();
-var import_styled_components48 = __toESM(require("styled-components")), Container4 = import_styled_components48.default.div`
+var import_styled_components51 = __toESM(require("styled-components")), Container4 = import_styled_components51.default.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -22397,17 +23267,17 @@ init_react();
 
 // app/components/AdminUsersTable/AdminUsersTable.jsx
 init_react();
-var import_react89 = __toESM(require("react")), import_prop_types50 = __toESM(require("prop-types"));
+var import_react93 = __toESM(require("react")), import_prop_types53 = __toESM(require("prop-types"));
 
 // app/images/logomark_medium.png
 var logomark_medium_default = "/build/_assets/logomark_medium-U2FGMSIX.png";
 
 // app/components/AdminUsersTable/AdminUsersTable.jsx
-var import_react90 = require("@remix-run/react");
+var import_react94 = require("@remix-run/react");
 
 // app/utils/hooks/usePagination.js
 init_react();
-var import_react86 = require("react"), DOTS = "...", range = (start, end) => {
+var import_react90 = require("react"), DOTS = "...", range = (start, end) => {
   let length = end - start;
   return Array.from({ length }, (_, idx) => idx + start);
 };
@@ -22415,7 +23285,7 @@ function usePagination({
   currentPage,
   totalPages
 }) {
-  return (0, import_react86.useMemo)(() => {
+  return (0, import_react90.useMemo)(() => {
     let totalPageCount = totalPages, sibilingCount = 1;
     if (2 + sibilingCount > totalPageCount)
       return range(1, totalPageCount);
@@ -22435,7 +23305,7 @@ function usePagination({
 
 // app/components/AdminUsersTable/AdminUsersTable.Styled.jsx
 init_react();
-var import_styled_components49 = __toESM(require("styled-components")), import_react_bootstrap11 = require("react-bootstrap"), TableContainer = import_styled_components49.default.div`
+var import_styled_components52 = __toESM(require("styled-components")), import_react_bootstrap12 = require("react-bootstrap"), TableContainer = import_styled_components52.default.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22453,7 +23323,7 @@ var import_styled_components49 = __toESM(require("styled-components")), import_r
       outline: none;
     }
   }
-`, UserTable = import_styled_components49.default.table`
+`, UserTable = import_styled_components52.default.table`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22468,7 +23338,7 @@ var import_styled_components49 = __toESM(require("styled-components")), import_r
       display: none;
     }
   }
-`, RowTable = import_styled_components49.default.tr`
+`, RowTable = import_styled_components52.default.tr`
   padding: 0.5rem 0;
   border: 1px solid #f2efed;
   .row-btn {
@@ -22525,7 +23395,7 @@ var import_styled_components49 = __toESM(require("styled-components")), import_r
       flex-direction: row;
     }
   }
-`, HeaderTable = import_styled_components49.default.tr`
+`, HeaderTable = import_styled_components52.default.tr`
   background-color: #f4f7f9;
   padding: 1rem 0;
   th {
@@ -22553,7 +23423,7 @@ var import_styled_components49 = __toESM(require("styled-components")), import_r
       overflow-wrap: break-word;
     }
   }
-`, PaginationContainer = import_styled_components49.default.div`
+`, PaginationContainer = import_styled_components52.default.div`
   display: flex;
   justify-content: space-between;
   margin: 0.5rem auto;
@@ -22563,7 +23433,7 @@ var import_styled_components49 = __toESM(require("styled-components")), import_r
   @media (max-width: 767px) {
     flex-direction: column;
   }
-`, FilterDropdown = (0, import_styled_components49.default)(import_react_bootstrap11.DropdownButton)`
+`, FilterDropdown = (0, import_styled_components52.default)(import_react_bootstrap12.DropdownButton)`
   background: transparent;
   border: none;
   font-size: 1.5rem;
@@ -22572,9 +23442,9 @@ var import_styled_components49 = __toESM(require("styled-components")), import_r
   :hover {
     background: transparent;
   }
-`, TablePagination = (0, import_styled_components49.default)(import_react_bootstrap11.Pagination)`
+`, TablePagination = (0, import_styled_components52.default)(import_react_bootstrap12.Pagination)`
  background-color: white;  
-`, Alert2 = import_styled_components49.default.div`
+`, Alert2 = import_styled_components52.default.div`
   display: flex;
   color: var(--color-secondary-active);
   align-items: center;
@@ -22597,11 +23467,11 @@ var import_styled_components49 = __toESM(require("styled-components")), import_r
 
 // app/components/Modals/EditUserModal/EditUserModal.jsx
 init_react();
-var import_react87 = __toESM(require("react")), import_prop_types49 = __toESM(require("prop-types")), import_react88 = require("@remix-run/react");
+var import_react91 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types")), import_react92 = require("@remix-run/react");
 
 // app/components/Modals/EditUserModal/EditUserModal.Styled.jsx
 init_react();
-var import_styled_components50 = __toESM(require("styled-components")), Wrapper = import_styled_components50.default.div`
+var import_styled_components53 = __toESM(require("styled-components")), Wrapper = import_styled_components53.default.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 50%;
@@ -22613,7 +23483,7 @@ var import_styled_components50 = __toESM(require("styled-components")), Wrapper 
   justify-content: center;
   align-items: center;
   z-index: 1050;
-`, Container5 = import_styled_components50.default.div`
+`, Container5 = import_styled_components53.default.div`
   font-family: "Nunito", sans-serif;
   font-size: 14px;
   border-radius: 15px;
@@ -22631,7 +23501,7 @@ var import_styled_components50 = __toESM(require("styled-components")), Wrapper 
   span {
     margin: 6px 0;
   }
-`, User = import_styled_components50.default.div`
+`, User = import_styled_components53.default.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22642,7 +23512,7 @@ var import_styled_components50 = __toESM(require("styled-components")), Wrapper 
     flex-direction: column;
     justify-content: center;
   }
-`, UserInfo = import_styled_components50.default.div`
+`, UserInfo = import_styled_components53.default.div`
   margin-left: 20px;
   display: flex;
   flex-direction: column;
@@ -22651,16 +23521,16 @@ var import_styled_components50 = __toESM(require("styled-components")), Wrapper 
   @media (max-width: 576px) {
     text-align: center;
   }
-`, Roles = import_styled_components50.default.div`
+`, Roles = import_styled_components53.default.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 15px 25px;
-`, RolesTable = import_styled_components50.default.div`
+`, RolesTable = import_styled_components53.default.div`
   border-radius: 15px;
   border: 1px solid #d8d8d8;
   margin: 10px 0 0;
-`, TableRow = import_styled_components50.default.ul`
+`, TableRow = import_styled_components53.default.ul`
   border-top: ${(props) => props.noBorder ? "none" : "1px solid #d8d8d8"};
   list-style: none;
   margin: 0;
@@ -22678,7 +23548,7 @@ var import_styled_components50 = __toESM(require("styled-components")), Wrapper 
     max-width: calc(100% - 4px);
     padding: 5px 2px;
   }
-`, ButtonContainer = import_styled_components50.default.div`
+`, ButtonContainer = import_styled_components53.default.div`
   margin-top: 25px;
   display: flex;
   flex-direction: row;
@@ -22693,22 +23563,22 @@ var import_styled_components50 = __toESM(require("styled-components")), Wrapper 
 
 // app/components/Modals/EditUserModal/EditUserModal.jsx
 function EditUserModal({ user, onClose }) {
-  let [uAdmin, setUAdmin] = (0, import_react87.useState)(user.is_admin), [uJobTitle, setUJobTitle] = (0, import_react87.useState)(user.job_title);
-  return /* @__PURE__ */ import_react87.default.createElement(Wrapper, null, /* @__PURE__ */ import_react87.default.createElement(import_react88.Form, {
+  let [uAdmin, setUAdmin] = (0, import_react91.useState)(user.is_admin), [uJobTitle, setUJobTitle] = (0, import_react91.useState)(user.job_title);
+  return /* @__PURE__ */ import_react91.default.createElement(Wrapper, null, /* @__PURE__ */ import_react91.default.createElement(import_react92.Form, {
     method: "post"
-  }, /* @__PURE__ */ import_react87.default.createElement(Container5, null, /* @__PURE__ */ import_react87.default.createElement(User, null, /* @__PURE__ */ import_react87.default.createElement(UserImage_default, {
+  }, /* @__PURE__ */ import_react91.default.createElement(Container5, null, /* @__PURE__ */ import_react91.default.createElement(User, null, /* @__PURE__ */ import_react91.default.createElement(UserImage_default, {
     src: user.profile_picture,
     size: "extra big"
-  }), /* @__PURE__ */ import_react87.default.createElement(UserInfo, null, /* @__PURE__ */ import_react87.default.createElement("h2", null, user.full_name), /* @__PURE__ */ import_react87.default.createElement("span", null, /* @__PURE__ */ import_react87.default.createElement("b", null, user.job_title !== null ? user.job_title : "")), /* @__PURE__ */ import_react87.default.createElement("span", null, user.email))), /* @__PURE__ */ import_react87.default.createElement(Roles, null, /* @__PURE__ */ import_react87.default.createElement("h3", null, "Roles"), /* @__PURE__ */ import_react87.default.createElement("span", null, "Edit roles for this user"), /* @__PURE__ */ import_react87.default.createElement(RolesTable, null, /* @__PURE__ */ import_react87.default.createElement(TableRow, {
+  }), /* @__PURE__ */ import_react91.default.createElement(UserInfo, null, /* @__PURE__ */ import_react91.default.createElement("h2", null, user.full_name), /* @__PURE__ */ import_react91.default.createElement("span", null, /* @__PURE__ */ import_react91.default.createElement("b", null, user.job_title !== null ? user.job_title : "")), /* @__PURE__ */ import_react91.default.createElement("span", null, user.email))), /* @__PURE__ */ import_react91.default.createElement(Roles, null, /* @__PURE__ */ import_react91.default.createElement("h3", null, "Roles"), /* @__PURE__ */ import_react91.default.createElement("span", null, "Edit roles for this user"), /* @__PURE__ */ import_react91.default.createElement(RolesTable, null, /* @__PURE__ */ import_react91.default.createElement(TableRow, {
     noBorder: !0
-  }, /* @__PURE__ */ import_react87.default.createElement("li", null, /* @__PURE__ */ import_react87.default.createElement("b", null, "Name")), /* @__PURE__ */ import_react87.default.createElement("li", null, /* @__PURE__ */ import_react87.default.createElement("b", null, "Action"))), /* @__PURE__ */ import_react87.default.createElement(TableRow, null, /* @__PURE__ */ import_react87.default.createElement("li", null, "Job Title"), /* @__PURE__ */ import_react87.default.createElement("li", null, /* @__PURE__ */ import_react87.default.createElement("input", {
+  }, /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("b", null, "Name")), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("b", null, "Action"))), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Job Title"), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("input", {
     name: "job_title",
     type: "text",
     value: uJobTitle,
     onChange: (e) => {
       setUJobTitle(e.target.value);
     }
-  }))), /* @__PURE__ */ import_react87.default.createElement(TableRow, null, /* @__PURE__ */ import_react87.default.createElement("li", null, "Role Title"), /* @__PURE__ */ import_react87.default.createElement("li", null, "Employee", user.is_admin && ", Admin")), /* @__PURE__ */ import_react87.default.createElement(TableRow, null, /* @__PURE__ */ import_react87.default.createElement("li", null, "Admin"), /* @__PURE__ */ import_react87.default.createElement("li", null, /* @__PURE__ */ import_react87.default.createElement("input", {
+  }))), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Role Title"), /* @__PURE__ */ import_react91.default.createElement("li", null, "Employee", user.is_admin && ", Admin")), /* @__PURE__ */ import_react91.default.createElement(TableRow, null, /* @__PURE__ */ import_react91.default.createElement("li", null, "Admin"), /* @__PURE__ */ import_react91.default.createElement("li", null, /* @__PURE__ */ import_react91.default.createElement("input", {
     name: "is_admin",
     type: "checkbox",
     checked: uAdmin,
@@ -22716,29 +23586,29 @@ function EditUserModal({ user, onClose }) {
       setUAdmin(e.target.checked);
     },
     disabled: user.is_admin
-  })))), /* @__PURE__ */ import_react87.default.createElement(ButtonContainer, null, /* @__PURE__ */ import_react87.default.createElement(Button_default, {
+  })))), /* @__PURE__ */ import_react91.default.createElement(ButtonContainer, null, /* @__PURE__ */ import_react91.default.createElement(Button_default, {
     category: SECONDARY_BUTTON,
     onClick: onClose
-  }, "Cancel"), /* @__PURE__ */ import_react87.default.createElement(Button_default, {
+  }, "Cancel"), /* @__PURE__ */ import_react91.default.createElement(Button_default, {
     category: PRIMARY_BUTTON,
     type: "submit"
-  }, "Save")))), /* @__PURE__ */ import_react87.default.createElement("input", {
+  }, "Save")))), /* @__PURE__ */ import_react91.default.createElement("input", {
     type: "hidden",
     name: "employee_id",
     value: user.employee_id
   })));
 }
 EditUserModal.propTypes = {
-  user: import_prop_types49.default.shape({
-    employee_id: import_prop_types49.default.number,
-    full_name: import_prop_types49.default.string,
-    email: import_prop_types49.default.string,
-    job_title: import_prop_types49.default.string,
-    is_admin: import_prop_types49.default.bool,
-    profile_picture: import_prop_types49.default.node,
-    departments: import_prop_types49.default.shape([])
+  user: import_prop_types52.default.shape({
+    employee_id: import_prop_types52.default.number,
+    full_name: import_prop_types52.default.string,
+    email: import_prop_types52.default.string,
+    job_title: import_prop_types52.default.string,
+    is_admin: import_prop_types52.default.bool,
+    profile_picture: import_prop_types52.default.node,
+    departments: import_prop_types52.default.shape([])
   }),
-  onClose: import_prop_types49.default.func
+  onClose: import_prop_types52.default.func
 };
 EditUserModal.defaultProps = {
   user: {
@@ -22761,11 +23631,11 @@ function AdminUsersTable({
   isLoading,
   size
 }) {
-  let [modal, setModal] = (0, import_react89.useState)(!1), [currentUser, setCurrenUser] = (0, import_react89.useState)({}), quantityRef = (0, import_react89.useRef)(0), paginationRange = usePagination({
+  let [modal, setModal] = (0, import_react93.useState)(!1), [currentUser, setCurrenUser] = (0, import_react93.useState)({}), quantityRef = (0, import_react93.useRef)(0), paginationRange = usePagination({
     currentPage: currentPage === 0 ? 1 : currentPage + 1,
     totalPages
-  }), [, setSearchParams] = (0, import_react90.useSearchParams)(), data = (0, import_react90.useActionData)();
-  (0, import_react89.useEffect)(() => {
+  }), [, setSearchParams] = (0, import_react94.useSearchParams)(), data = (0, import_react94.useActionData)();
+  (0, import_react93.useEffect)(() => {
     data && data.successMessage && setModal(!1);
   }, [users, data]);
   let handleModal = (u2) => {
@@ -22785,75 +23655,75 @@ function AdminUsersTable({
       size,
       page: currentPage - 1
     });
-  }, createPaginationItem = (i, idx) => /* @__PURE__ */ import_react89.default.createElement(TablePagination.Item, {
+  }, createPaginationItem = (i, idx) => /* @__PURE__ */ import_react93.default.createElement(TablePagination.Item, {
     key: idx,
     onClick: () => changePage(i),
     active: i === currentPage
-  }, i), paginationItems = (() => [...paginationRange.map((__page, idx) => __page === DOTS ? /* @__PURE__ */ import_react89.default.createElement(TablePagination.Ellipsis, {
+  }, i), paginationItems = (() => [...paginationRange.map((__page, idx) => __page === DOTS ? /* @__PURE__ */ import_react93.default.createElement(TablePagination.Ellipsis, {
     key: idx
-  }) : createPaginationItem(__page, idx))])(), renderHeader = () => /* @__PURE__ */ import_react89.default.createElement("thead", null, /* @__PURE__ */ import_react89.default.createElement(HeaderTable, null, /* @__PURE__ */ import_react89.default.createElement("th", null, "Name"), /* @__PURE__ */ import_react89.default.createElement("th", {
+  }) : createPaginationItem(__page, idx))])(), renderHeader = () => /* @__PURE__ */ import_react93.default.createElement("thead", null, /* @__PURE__ */ import_react93.default.createElement(HeaderTable, null, /* @__PURE__ */ import_react93.default.createElement("th", null, "Name"), /* @__PURE__ */ import_react93.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Email"), /* @__PURE__ */ import_react89.default.createElement("th", {
+  }, "Email"), /* @__PURE__ */ import_react93.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Job Title"), /* @__PURE__ */ import_react89.default.createElement("th", {
+  }, "Job Title"), /* @__PURE__ */ import_react93.default.createElement("th", {
     className: "table-desktop-view"
-  }, "Roles"), /* @__PURE__ */ import_react89.default.createElement("th", null, "Action"))), setQTY = (value) => {
+  }, "Roles"), /* @__PURE__ */ import_react93.default.createElement("th", null, "Action"))), setQTY = (value) => {
     setSearchParams({
       size: value,
       page: currentPage
     });
   };
-  return !users.length && !isLoading ? /* @__PURE__ */ import_react89.default.createElement(Alert2, null, /* @__PURE__ */ import_react89.default.createElement("span", {
+  return !users.length && !isLoading ? /* @__PURE__ */ import_react93.default.createElement(Alert2, null, /* @__PURE__ */ import_react93.default.createElement("span", {
     className: "message"
-  }, "There are no results to show")) : /* @__PURE__ */ import_react89.default.createElement("div", null, /* @__PURE__ */ import_react89.default.createElement(TableContainer, null, "Select the number of results", /* @__PURE__ */ import_react89.default.createElement("select", {
+  }, "There are no results to show")) : /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement(TableContainer, null, "Select the number of results", /* @__PURE__ */ import_react93.default.createElement("select", {
     ref: quantityRef,
     onChange: (e) => setQTY(e.target.value),
     defaultValue: size
-  }, /* @__PURE__ */ import_react89.default.createElement("option", {
+  }, /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "5"
-  }, "5"), /* @__PURE__ */ import_react89.default.createElement("option", {
+  }, "5"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "10"
-  }, "10"), /* @__PURE__ */ import_react89.default.createElement("option", {
+  }, "10"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "15"
-  }, "15"), /* @__PURE__ */ import_react89.default.createElement("option", {
+  }, "15"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "20"
-  }, "20"), /* @__PURE__ */ import_react89.default.createElement("option", {
+  }, "20"), /* @__PURE__ */ import_react93.default.createElement("option", {
     value: "25"
-  }, "25")), isLoading ? /* @__PURE__ */ import_react89.default.createElement("div", null, /* @__PURE__ */ import_react89.default.createElement(UserTable, null, renderHeader()), /* @__PURE__ */ import_react89.default.createElement(Loader_default, {
+  }, "25")), isLoading ? /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement(UserTable, null, renderHeader()), /* @__PURE__ */ import_react93.default.createElement(Loader_default, {
     src: logomark_medium_default,
     size: LSPIN_MEDIUM
-  })) : /* @__PURE__ */ import_react89.default.createElement(UserTable, null, renderHeader(), /* @__PURE__ */ import_react89.default.createElement("tbody", null, users.map((user) => /* @__PURE__ */ import_react89.default.createElement(RowTable, {
+  })) : /* @__PURE__ */ import_react93.default.createElement(UserTable, null, renderHeader(), /* @__PURE__ */ import_react93.default.createElement("tbody", null, users.map((user) => /* @__PURE__ */ import_react93.default.createElement(RowTable, {
     key: user.employee_id
-  }, /* @__PURE__ */ import_react89.default.createElement("td", null, /* @__PURE__ */ import_react89.default.createElement("div", null, /* @__PURE__ */ import_react89.default.createElement("img", {
+  }, /* @__PURE__ */ import_react93.default.createElement("td", null, /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement("img", {
     src: user.profile_picture,
     alt: ""
-  }), user.full_name)), /* @__PURE__ */ import_react89.default.createElement("td", {
+  }), user.full_name)), /* @__PURE__ */ import_react93.default.createElement("td", {
     className: "table-desktop-view"
-  }, user.email), /* @__PURE__ */ import_react89.default.createElement("td", {
+  }, user.email), /* @__PURE__ */ import_react93.default.createElement("td", {
     className: "table-desktop-view"
-  }, user.job_title), /* @__PURE__ */ import_react89.default.createElement("td", {
+  }, user.job_title), /* @__PURE__ */ import_react93.default.createElement("td", {
     className: "table-desktop-view"
-  }, "Employee", user.is_admin && ", Admin"), /* @__PURE__ */ import_react89.default.createElement("td", null, /* @__PURE__ */ import_react89.default.createElement(Button_default, {
+  }, "Employee", user.is_admin && ", Admin"), /* @__PURE__ */ import_react93.default.createElement("td", null, /* @__PURE__ */ import_react93.default.createElement(Button_default, {
     category: PRIMARY_BUTTON,
     onClick: () => handleModal(user),
     className: "row-btn"
-  }, "Edit roles")))))), !isLoading && /* @__PURE__ */ import_react89.default.createElement(PaginationContainer, null, /* @__PURE__ */ import_react89.default.createElement("div", null, "Page", " ", currentPage, " ", "of", " ", totalPages), /* @__PURE__ */ import_react89.default.createElement(TablePagination, {
+  }, "Edit roles")))))), !isLoading && /* @__PURE__ */ import_react93.default.createElement(PaginationContainer, null, /* @__PURE__ */ import_react93.default.createElement("div", null, "Page", " ", currentPage, " ", "of", " ", totalPages), /* @__PURE__ */ import_react93.default.createElement(TablePagination, {
     boundarylinks: "true"
-  }, currentPage > 1 && /* @__PURE__ */ import_react89.default.createElement(TablePagination.Prev, {
+  }, currentPage > 1 && /* @__PURE__ */ import_react93.default.createElement(TablePagination.Prev, {
     onClick: prevPageHandler
-  }), paginationItems, currentPage < totalPages && /* @__PURE__ */ import_react89.default.createElement(TablePagination.Next, {
+  }), paginationItems, currentPage < totalPages && /* @__PURE__ */ import_react93.default.createElement(TablePagination.Next, {
     onClick: nextPageHandler
-  }))), modal ? /* @__PURE__ */ import_react89.default.createElement(EditUserModal_default, {
+  }))), modal ? /* @__PURE__ */ import_react93.default.createElement(EditUserModal_default, {
     user: currentUser,
     onClose: () => handleModal()
   }) : null));
 }
 AdminUsersTable.propTypes = {
-  users: import_prop_types50.default.arrayOf(import_prop_types50.default.shape()),
-  currentPage: import_prop_types50.default.number.isRequired,
-  totalPages: import_prop_types50.default.number.isRequired,
-  isLoading: import_prop_types50.default.bool.isRequired,
-  size: import_prop_types50.default.number.isRequired
+  users: import_prop_types53.default.arrayOf(import_prop_types53.default.shape()),
+  currentPage: import_prop_types53.default.number.isRequired,
+  totalPages: import_prop_types53.default.number.isRequired,
+  isLoading: import_prop_types53.default.bool.isRequired,
+  size: import_prop_types53.default.number.isRequired
 };
 AdminUsersTable.defaultProps = {
   users: []
@@ -22865,11 +23735,11 @@ init_react();
 
 // app/components/UserSearchBar/UserSearchBar.jsx
 init_react();
-var import_prop_types51 = __toESM(require("prop-types")), import_react91 = __toESM(require("react"));
+var import_prop_types54 = __toESM(require("prop-types")), import_react95 = __toESM(require("react"));
 
 // app/components/UserSearchBar/UserSearchBar.Styled.jsx
 init_react();
-var import_styled_components51 = __toESM(require("styled-components")), import_md7 = require("react-icons/md"), import_ai3 = require("react-icons/ai"), SearchField2 = import_styled_components51.default.div`
+var import_styled_components54 = __toESM(require("styled-components")), import_md7 = require("react-icons/md"), import_ai3 = require("react-icons/ai"), SearchField2 = import_styled_components54.default.div`
   align-items: center;
   display: flex;
   background-color: #fff;
@@ -22881,7 +23751,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_m
   position: relative;
   width: 100%;
   transition: all 0.5s ease;
-`, IconWrapper3 = import_styled_components51.default.div`
+`, IconWrapper3 = import_styled_components54.default.div`
   left: 10px;
   top: auto;
   width: 22px;
@@ -22889,7 +23759,7 @@ var import_styled_components51 = __toESM(require("styled-components")), import_m
   display: flex;
   align-items: center;
   justify-content: center;
-`, Input5 = import_styled_components51.default.input`
+`, Input5 = import_styled_components54.default.input`
   background-color: transparent;
   border: none;
   font-size: 14px;
@@ -22904,10 +23774,10 @@ var import_styled_components51 = __toESM(require("styled-components")), import_m
     color: rgba(78, 81, 84, 0.65);
     font-family: "Nunito", sans-serif;
   }
-`, SearchIcon3 = (0, import_styled_components51.default)(import_ai3.AiOutlineSearch)`
+`, SearchIcon3 = (0, import_styled_components54.default)(import_ai3.AiOutlineSearch)`
   font-size: 30px;
   color: rgba(78, 81, 84, 0.65);
-`, ClearIcon2 = (0, import_styled_components51.default)(import_md7.MdClose)`
+`, ClearIcon2 = (0, import_styled_components54.default)(import_md7.MdClose)`
   font-size: 28px;
   color: rgba(78, 81, 84, 0.65);
   padding: 5px;
@@ -22919,8 +23789,8 @@ var import_styled_components51 = __toESM(require("styled-components")), import_m
 
 // app/components/UserSearchBar/UserSearchBar.jsx
 function UserSearchBar({ onSearch }) {
-  let [search2, setSearch] = (0, import_react91.useState)("");
-  return /* @__PURE__ */ import_react91.default.createElement(SearchField2, null, /* @__PURE__ */ import_react91.default.createElement(IconWrapper3, null, /* @__PURE__ */ import_react91.default.createElement(SearchIcon3, null)), /* @__PURE__ */ import_react91.default.createElement(Input5, {
+  let [search2, setSearch] = (0, import_react95.useState)("");
+  return /* @__PURE__ */ import_react95.default.createElement(SearchField2, null, /* @__PURE__ */ import_react95.default.createElement(IconWrapper3, null, /* @__PURE__ */ import_react95.default.createElement(SearchIcon3, null)), /* @__PURE__ */ import_react95.default.createElement(Input5, {
     type: "search",
     value: search2,
     onChange: (e) => {
@@ -22930,7 +23800,7 @@ function UserSearchBar({ onSearch }) {
     onKeyDown: (event) => {
       search2 && event.key === "Enter" && onSearch(search2);
     }
-  }), search2 && /* @__PURE__ */ import_react91.default.createElement(Button_default, {
+  }), search2 && /* @__PURE__ */ import_react95.default.createElement(Button_default, {
     type: "button",
     className: "clear-button",
     title: "Clear",
@@ -22938,10 +23808,10 @@ function UserSearchBar({ onSearch }) {
     onClick: () => {
       setSearch("");
     }
-  }, /* @__PURE__ */ import_react91.default.createElement(ClearIcon2, null)));
+  }, /* @__PURE__ */ import_react95.default.createElement(ClearIcon2, null)));
 }
 UserSearchBar.propTypes = {
-  onSearch: import_prop_types51.default.func.isRequired
+  onSearch: import_prop_types54.default.func.isRequired
 };
 
 // app/controllers/users/list.js
@@ -22970,18 +23840,18 @@ var getPagination = (page, size) => {
     totalPages,
     users
   };
-}, list_default6 = listUsers;
+}, list_default7 = listUsers;
 
 // app/controllers/users/update.js
 init_react();
-var import_constants70 = __toESM(require_constants());
+var import_constants75 = __toESM(require_constants());
 
 // app/utils/backend/validators/admin.js
 init_react();
-var import_joi8 = __toESM(require("joi")), import_joiConstants7 = __toESM(require_joiConstants()), updateUserSchema = import_joi8.default.object({
+var import_joi9 = __toESM(require("joi")), import_joiConstants7 = __toESM(require_joiConstants()), updateUserSchema = import_joi9.default.object({
   employee_id: import_joiConstants7.JOI_ID_VALIDATION,
-  job_title: import_joi8.default.string().max(255).allow(""),
-  is_admin: import_joi8.default.boolean()
+  job_title: import_joi9.default.string().max(255).allow(""),
+  is_admin: import_joi9.default.boolean()
 }), admin_default = updateUserSchema;
 
 // app/controllers/users/update.js
@@ -22991,7 +23861,7 @@ var updateUser = async (query) => {
     return {
       errors: [
         {
-          message: import_constants70.DEFAULT_ERROR_MESSAGE,
+          message: import_constants75.DEFAULT_ERROR_MESSAGE,
           detail: error.details
         }
       ]
@@ -23017,20 +23887,20 @@ __export(__exports, {
   default: () => __default2
 });
 init_react();
-var import_react93 = __toESM(require("react"));
+var import_react97 = __toESM(require("react"));
 
 // app/images/404.svg
 var __default = "/build/_assets/404-HJIPXGIH.svg";
 
 // app/styles/NotFound.Styled.jsx
 init_react();
-var import_styled_components52 = __toESM(require("styled-components")), import_react92 = require("@remix-run/react");
+var import_styled_components55 = __toESM(require("styled-components")), import_react96 = require("@remix-run/react");
 
 // app/images/header-background-dots-pattern.svg
 var header_background_dots_pattern_default = "/build/_assets/header-background-dots-pattern-M2TDWK6C.svg";
 
 // app/styles/NotFound.Styled.jsx
-var BackgroundDiv = import_styled_components52.default.div`
+var BackgroundDiv = import_styled_components55.default.div`
     background-image: url(${header_background_dots_pattern_default});
     background-size: cover;
     position: absolute;
@@ -23041,14 +23911,14 @@ var BackgroundDiv = import_styled_components52.default.div`
     height: 100%;
     width: 100%;
     z-index: -1;
-`, MainDiv = import_styled_components52.default.div`
+`, MainDiv = import_styled_components55.default.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60rem;
     margin-top: 3.5rem;
     width: 100%;
-`, Container6 = import_styled_components52.default.div`
+`, Container6 = import_styled_components55.default.div`
     align-items: center;
     margin: 0 auto;
     width: 70.4rem;
@@ -23063,18 +23933,18 @@ var BackgroundDiv = import_styled_components52.default.div`
     @media (max-width: 767px) {
         width: 288px;
     }
-`, Img = import_styled_components52.default.img`
+`, Img = import_styled_components55.default.img`
     display: block;
     height: 12.5rem;
     margin-bottom: 5rem;
     max-width: 100%
-`, Title = import_styled_components52.default.h2`
+`, Title2 = import_styled_components55.default.h2`
     font-size: 4rem;
     font-weight: bold;
     line-height: 1.25;
     text-align: center;
     margin: 0 0 5rem 0;
-`, SLink = (0, import_styled_components52.default)(import_react92.Link)`
+`, SLink = (0, import_styled_components55.default)(import_react96.Link)`
     color: #fff;
     background-color: var(--color-secondary);
     border-radius: 5px;
@@ -23096,19 +23966,19 @@ var BackgroundDiv = import_styled_components52.default.div`
 
 // app/routes/$.jsx
 function NotFound() {
-  return /* @__PURE__ */ import_react93.default.createElement("div", null, /* @__PURE__ */ import_react93.default.createElement(BackgroundDiv, null), /* @__PURE__ */ import_react93.default.createElement(MainDiv, null, /* @__PURE__ */ import_react93.default.createElement(Container6, null, /* @__PURE__ */ import_react93.default.createElement(Img, {
+  return /* @__PURE__ */ import_react97.default.createElement("div", null, /* @__PURE__ */ import_react97.default.createElement(BackgroundDiv, null), /* @__PURE__ */ import_react97.default.createElement(MainDiv, null, /* @__PURE__ */ import_react97.default.createElement(Container6, null, /* @__PURE__ */ import_react97.default.createElement(Img, {
     src: __default,
     alt: "404"
-  }), /* @__PURE__ */ import_react93.default.createElement(Title, null, "Sorry! The page you were looking for doesn\u2019t exist."), /* @__PURE__ */ import_react93.default.createElement(SLink, {
+  }), /* @__PURE__ */ import_react97.default.createElement(Title2, null, "Sorry! The page you were looking for doesn\u2019t exist."), /* @__PURE__ */ import_react97.default.createElement(SLink, {
     to: "/"
   }, "Go back"))));
 }
 var __default2 = NotFound;
 
 // app/routes/admin.jsx
-var loader10 = async ({ request }) => {
+var loader11 = async ({ request }) => {
   await requireAdminAuth(request);
-  let url = new URL(request.url), currentPage = url.searchParams.get("page") ?? 1, size = url.searchParams.get("size") ?? 10, search2 = url.searchParams.get("search") ?? void 0, data = await list_default6({
+  let url = new URL(request.url), currentPage = url.searchParams.get("page") ?? 1, size = url.searchParams.get("size") ?? 10, search2 = url.searchParams.get("search") ?? void 0, data = await list_default7({
     page: currentPage,
     search: search2,
     size
@@ -23123,7 +23993,7 @@ var loader10 = async ({ request }) => {
     job_title: formData.get("job_title"),
     employee_id: formData.get("employee_id")
   }, result = await update_default3(payload);
-  return (0, import_node9.json)(result);
+  return (0, import_node10.json)(result);
 };
 function Admin() {
   let {
@@ -23131,14 +24001,14 @@ function Admin() {
     totalPages,
     currentPage,
     size
-  } = (0, import_react95.useLoaderData)(), [, setSearchParams] = (0, import_react95.useSearchParams)();
-  return /* @__PURE__ */ import_react94.default.createElement("div", null, /* @__PURE__ */ import_react94.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react94.default.createElement(Container4, null, /* @__PURE__ */ import_react94.default.createElement("h2", null, "Admin page"), /* @__PURE__ */ import_react94.default.createElement(UserSearchBar, {
+  } = (0, import_react99.useLoaderData)(), [, setSearchParams] = (0, import_react99.useSearchParams)();
+  return /* @__PURE__ */ import_react98.default.createElement("div", null, /* @__PURE__ */ import_react98.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react98.default.createElement(Container4, null, /* @__PURE__ */ import_react98.default.createElement("h2", null, "Admin page"), /* @__PURE__ */ import_react98.default.createElement(UserSearchBar, {
     onSearch: (search2) => {
       setSearchParams({
         search: search2
       });
     }
-  })), /* @__PURE__ */ import_react94.default.createElement(AdminUsersTable_default, {
+  })), /* @__PURE__ */ import_react98.default.createElement(AdminUsersTable_default, {
     users,
     currentPage,
     totalPages,
@@ -23146,7 +24016,7 @@ function Admin() {
   }));
 }
 function CatchBoundary() {
-  return /* @__PURE__ */ import_react94.default.createElement(__default2, null);
+  return /* @__PURE__ */ import_react98.default.createElement(__default2, null);
 }
 var admin_default2 = Admin;
 
@@ -23155,14 +24025,14 @@ var routes_exports = {};
 __export(routes_exports, {
   action: () => action6,
   default: () => Index,
-  loader: () => loader11
+  loader: () => loader12
 });
 init_react();
-var import_node10 = require("@remix-run/node"), import_react107 = require("@remix-run/react"), import_react108 = __toESM(require("react"));
+var import_node11 = require("@remix-run/node"), import_react111 = require("@remix-run/react"), import_react112 = __toESM(require("react"));
 
 // app/styles/Home.Styled.jsx
 init_react();
-var import_styled_components53 = __toESM(require("styled-components")), Container7 = import_styled_components53.default.div`
+var import_styled_components56 = __toESM(require("styled-components")), Container7 = import_styled_components56.default.div`
 background-color: #f4f7f9;
 `;
 
@@ -23171,11 +24041,11 @@ init_react();
 
 // app/components/ListQuestions/ListQuestions.jsx
 init_react();
-var import_react105 = __toESM(require("react")), import_react106 = require("@remix-run/react"), import_prop_types57 = __toESM(require("prop-types"));
+var import_react109 = __toESM(require("react")), import_react110 = require("@remix-run/react"), import_prop_types60 = __toESM(require("prop-types"));
 
 // app/components/ListQuestions/ListQuestions.Styled.jsx
 init_react();
-var import_react96 = require("@remix-run/react"), import_styled_components54 = __toESM(require("styled-components")), Container8 = import_styled_components54.default.div`
+var import_react100 = require("@remix-run/react"), import_styled_components57 = __toESM(require("styled-components")), Container8 = import_styled_components57.default.div`
   display: flex;
   background-color: #f4f7f9;
   margin: 0 auto;
@@ -23189,13 +24059,13 @@ var import_react96 = require("@remix-run/react"), import_styled_components54 = _
   @media (max-width: 768px) {
     padding-top: 20px;
   }
-`, LeftWrapper = import_styled_components54.default.div`
+`, LeftWrapper = import_styled_components57.default.div`
   flex: 1;
-`, CenterWrapper = import_styled_components54.default.div`
+`, CenterWrapper = import_styled_components57.default.div`
   flex: 2;
   display: flex;
   justify-content: center;
-`, RightWrapper2 = import_styled_components54.default.div`
+`, RightWrapper2 = import_styled_components57.default.div`
   flex: 1;
   display: flex;
   @media (max-width: 1025px) {
@@ -23206,32 +24076,32 @@ var import_react96 = require("@remix-run/react"), import_styled_components54 = _
   @media (min-width: 1440px) {
     overflow: auto;
   }
-`, SloganWrapper = import_styled_components54.default.div`
+`, SloganWrapper = import_styled_components57.default.div`
   max-width: 425px;
   
   @media (max-width: 1025px) {
     display: none;
   }
-`, QuestionsWrapper = import_styled_components54.default.div`
+`, QuestionsWrapper = import_styled_components57.default.div`
   max-width: 650px;
   width: 100%;
-`, AskQuestionButtonWrapper = import_styled_components54.default.div`
+`, AskQuestionButtonWrapper = import_styled_components57.default.div`
   padding-right: 10px;
   padding-left: 10px;
   flex-direction: row;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-`, QuestionsTitle = import_styled_components54.default.div`
+`, QuestionsTitle = import_styled_components57.default.div`
   align-items: center;
   display: flex;
   font-family: "Nunito", sans-serif;
   font-size: 20px;
   letter-spacing: 0.6px;
-`, QuestionList = import_styled_components54.default.div`
+`, QuestionList = import_styled_components57.default.div`
   margin: 5px 0 10px;
   padding-left: 0;
-`, Alert3 = import_styled_components54.default.div`
+`, Alert3 = import_styled_components57.default.div`
   border-radius: 3px;
   margin: 0 auto;
   max-width: 592px;
@@ -23240,7 +24110,7 @@ var import_react96 = require("@remix-run/react"), import_styled_components54 = _
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 100%;
   }
-`, FiltersWrapper = import_styled_components54.default.div`
+`, FiltersWrapper = import_styled_components57.default.div`
   width: 100%;
   max-width: 300px;
   @media (max-width: 1024px) {
@@ -23258,7 +24128,7 @@ var import_react96 = require("@remix-run/react"), import_styled_components54 = _
     position: sticky;
     top: 0;
   }
-`, AskButton = (0, import_styled_components54.default)(import_react96.Link)`
+`, AskButton = (0, import_styled_components57.default)(import_react100.Link)`
   align-items: center;
   background: var(--color-secondary);
   border: solid 1px transparent;
@@ -23286,7 +24156,7 @@ init_react();
 
 // app/components/QuestionCard/QuestionCard.jsx
 init_react();
-var import_react97 = __toESM(require("react")), import_prop_types52 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
+var import_react101 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types")), import_react_router_dom3 = require("react-router-dom");
 
 // app/images/ic_comment_non-selected.svg
 var ic_comment_non_selected_default = "/build/_assets/ic_comment_non-selected-KYYD5WEF.svg";
@@ -23316,10 +24186,10 @@ function QuestionCard(props) {
     isAnswer: !0
   }, hasAnswer = question.Answers.length > 0, navigate = (0, import_react_router_dom3.useNavigate)(), renderButtons = () => {
     let icon = question.hasLike ? ic_like_pressed_default : ic_like_default, dislikeicon = question.hasDislike ? ic_dislike_pressed_default : ic_dislike_default;
-    return /* @__PURE__ */ import_react97.default.createElement(CounterButtonsWrapper, {
+    return /* @__PURE__ */ import_react101.default.createElement(CounterButtonsWrapper, {
       isAdmin: !1,
       hasAnswer
-    }, /* @__PURE__ */ import_react97.default.createElement(CounterButton_default, {
+    }, /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
       id: `like-button-${question.question_id}`,
       selected: question.hasLike,
       icon,
@@ -23327,7 +24197,7 @@ function QuestionCard(props) {
       onClick: () => onVoteClick(!0),
       processingFormSubmission,
       isDisabled: question.hasDislike
-    }), /* @__PURE__ */ import_react97.default.createElement(CounterButton_default, {
+    }), /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
       id: `like-button-${question.question_id}`,
       selected: question.hasDislike,
       icon: dislikeicon,
@@ -23335,7 +24205,7 @@ function QuestionCard(props) {
       onClick: () => onVoteClick(!1),
       processingFormSubmission,
       isDisabled: question.hasLike
-    }), /* @__PURE__ */ import_react97.default.createElement(CounterButton_default, {
+    }), /* @__PURE__ */ import_react101.default.createElement(CounterButton_default, {
       id: `comments-button-${question.question_id}`,
       icon: ic_comment_non_selected_default,
       count: question.numComments,
@@ -23352,7 +24222,7 @@ function QuestionCard(props) {
       commentAsAnswer = question.Comments.find((comment) => comment.id === communityAnswerCommentId);
     }
     if (commentAsAnswer)
-      return /* @__PURE__ */ import_react97.default.createElement(AnswerRow_default, {
+      return /* @__PURE__ */ import_react101.default.createElement(AnswerRow_default, {
         answer_text: commentAsAnswer.comment,
         user: commentAsAnswer.User,
         answered_at: commentAsAnswer.createdAt,
@@ -23366,46 +24236,46 @@ function QuestionCard(props) {
         approver: commentAsAnswer.Approver
       });
   };
-  return /* @__PURE__ */ import_react97.default.createElement(QuestionCardContainer, null, /* @__PURE__ */ import_react97.default.createElement(QuestionCardWrapper, null, /* @__PURE__ */ import_react97.default.createElement(QuestionCardBorder, null, /* @__PURE__ */ import_react97.default.createElement(QuestionRow_default, {
+  return /* @__PURE__ */ import_react101.default.createElement(QuestionCardContainer, null, /* @__PURE__ */ import_react101.default.createElement(QuestionCardWrapper, null, /* @__PURE__ */ import_react101.default.createElement(QuestionCardBorder, null, /* @__PURE__ */ import_react101.default.createElement(QuestionRow_default, {
     question,
     isQuestionModalOpen: !1,
     hasAnswer
-  }), /* @__PURE__ */ import_react97.default.createElement(QuestionCardActions, {
+  }), /* @__PURE__ */ import_react101.default.createElement(QuestionCardActions, {
     hasAnswer,
     isQuestionModalOpen: !1
   }, renderButtons()))), renderAnswer(renderAnswerProps), renderCommentAnswer());
 }
 QuestionCard.propTypes = {
-  question: import_prop_types52.default.shape({
-    question_id: import_prop_types52.default.number.isRequired,
-    question: import_prop_types52.default.string.isRequired,
-    user_hash: import_prop_types52.default.string,
-    can_edit: import_prop_types52.default.bool,
-    created_by_user: import_prop_types52.default.shape({
-      email: import_prop_types52.default.string,
-      employee_id: import_prop_types52.default.number,
-      full_name: import_prop_types52.default.string,
-      is_admin: import_prop_types52.default.bool,
-      job_title: import_prop_types52.default.string,
-      profile_picture: import_prop_types52.default.string
+  question: import_prop_types55.default.shape({
+    question_id: import_prop_types55.default.number.isRequired,
+    question: import_prop_types55.default.string.isRequired,
+    user_hash: import_prop_types55.default.string,
+    can_edit: import_prop_types55.default.bool,
+    created_by_user: import_prop_types55.default.shape({
+      email: import_prop_types55.default.string,
+      employee_id: import_prop_types55.default.number,
+      full_name: import_prop_types55.default.string,
+      is_admin: import_prop_types55.default.bool,
+      job_title: import_prop_types55.default.string,
+      profile_picture: import_prop_types55.default.string
     }),
-    Answers: import_prop_types52.default.arrayOf(import_prop_types52.default.shape()),
-    createdAt: import_prop_types52.default.string.isRequired,
-    location: import_prop_types52.default.string.isRequired,
-    numComments: import_prop_types52.default.number.isRequired,
-    hasVoted: import_prop_types52.default.bool.isRequired,
-    hasCommentApproved: import_prop_types52.default.bool.isRequired,
-    hasCommunityAnswer: import_prop_types52.default.bool.isRequired,
-    Comments: import_prop_types52.default.arrayOf(import_prop_types52.default.shape()),
-    numLikes: import_prop_types52.default.number.isRequired,
-    numDisklike: import_prop_types52.default.number.isRequired,
-    hasLike: import_prop_types52.default.bool.isRequired,
-    hasDislike: import_prop_types52.default.bool.isRequired
+    Answers: import_prop_types55.default.arrayOf(import_prop_types55.default.shape()),
+    createdAt: import_prop_types55.default.string.isRequired,
+    location: import_prop_types55.default.string.isRequired,
+    numComments: import_prop_types55.default.number.isRequired,
+    hasVoted: import_prop_types55.default.bool.isRequired,
+    hasCommentApproved: import_prop_types55.default.bool.isRequired,
+    hasCommunityAnswer: import_prop_types55.default.bool.isRequired,
+    Comments: import_prop_types55.default.arrayOf(import_prop_types55.default.shape()),
+    numLikes: import_prop_types55.default.number.isRequired,
+    numDisklike: import_prop_types55.default.number.isRequired,
+    hasLike: import_prop_types55.default.bool.isRequired,
+    hasDislike: import_prop_types55.default.bool.isRequired
   }).isRequired,
-  onVoteClick: import_prop_types52.default.func.isRequired,
-  currentUserEmail: import_prop_types52.default.string,
-  searchTerm: import_prop_types52.default.string,
-  processingFormSubmission: import_prop_types52.default.bool
+  onVoteClick: import_prop_types55.default.func.isRequired,
+  currentUserEmail: import_prop_types55.default.string,
+  searchTerm: import_prop_types55.default.string,
+  processingFormSubmission: import_prop_types55.default.bool
 };
 QuestionCard.defaultProps = {
   currentUserEmail: "",
@@ -23419,11 +24289,11 @@ init_react();
 
 // app/components/GoToTopButton/GoToTopButton.jsx
 init_react();
-var import_react99 = __toESM(require("react"));
+var import_react103 = __toESM(require("react"));
 
 // app/components/GoToTopButton/GoToTopButton.Styled.jsx
 init_react();
-var import_styled_components55 = __toESM(require("styled-components")), Button4 = import_styled_components55.default.button`
+var import_styled_components58 = __toESM(require("styled-components")), Button5 = import_styled_components58.default.button`
   all: unset;
   align-items: center;
   background-color: var(--color-secondary);
@@ -23450,7 +24320,7 @@ var import_styled_components55 = __toESM(require("styled-components")), Button4 
   svg {
     align-self: center;
   }
-`, Span = import_styled_components55.default.span`
+`, Span = import_styled_components58.default.span`
   color: #ffffff;
   font-family: 'Nunito', sans-serif;
   font-size: 14px;
@@ -23465,9 +24335,9 @@ init_react();
 
 // app/components/Atoms/ArrowIcon/ArrowIcon.jsx
 init_react();
-var import_react98 = __toESM(require("react"));
+var import_react102 = __toESM(require("react"));
 function ArrowIcon(props) {
-  return /* @__PURE__ */ import_react98.default.createElement("svg", __spreadValues({
+  return /* @__PURE__ */ import_react102.default.createElement("svg", __spreadValues({
     color: "white",
     fill: "currentColor",
     fillRule: "nonzero",
@@ -23478,7 +24348,7 @@ function ArrowIcon(props) {
     viewBox: "0 0 23 27",
     width: 10,
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ import_react98.default.createElement("path", {
+  }, props), /* @__PURE__ */ import_react102.default.createElement("path", {
     transform: "translate(-18.000000, -17.000000)",
     d: "M30.6301904,20.6966946 C30.6304384,20.705609 30.6305632,20.7145536 30.6305632,20.7235269 L30.6305632,41.9301705 C30.6305632,42.462539 30.1912987,42.8941089 29.6494386,42.8941089 C29.1075784,42.8941089 28.6683139,42.462539 28.6683139,41.9301705 L28.6683139,20.7235269 C28.6683139,20.6823753 28.6709386,20.6418259 28.6760325,20.6020316 L20.2797113,28.5838228 C19.9872058,28.8618871 19.5118845,28.8618871 19.2193791,28.5838228 C18.9268736,28.3057585 18.9268736,27.853904 19.2193791,27.5758396 L29.0731557,18.2085482 C29.3656611,17.9304839 29.8409825,17.9304839 30.1334879,18.2085482 L39.9872645,27.5758396 C40.1335172,27.7148718 40.2066436,27.888662 40.2066436,28.0798312 C40.2066436,28.2710004 40.1335172,28.4447906 39.9872645,28.5838228 C39.6947591,28.8618871 39.2194378,28.8618871 38.9269323,28.5838228 L30.6301904,20.6966946 Z M29.6444293,19.7596009 L29.6033218,19.7205229 L29.5578693,19.7637314 C29.5863864,19.7611383 29.6152573,19.7597442 29.6444293,19.7596009 Z"
   }));
@@ -23487,12 +24357,12 @@ var ArrowIcon_default = ArrowIcon;
 
 // app/components/GoToTopButton/GoToTopButton.jsx
 function GoToTopButton() {
-  let [show, setShow] = (0, import_react99.useState)(!1);
-  return (0, import_react99.useEffect)(() => {
+  let [show, setShow] = (0, import_react103.useState)(!1);
+  return (0, import_react103.useEffect)(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 500 ? setShow(!0) : setShow(!1);
     });
-  }, []), /* @__PURE__ */ import_react99.default.createElement(Button4, {
+  }, []), /* @__PURE__ */ import_react103.default.createElement(Button5, {
     id: "go-to-top-button",
     display: show,
     onClick: () => {
@@ -23501,7 +24371,7 @@ function GoToTopButton() {
         behavior: "auto"
       });
     }
-  }, /* @__PURE__ */ import_react99.default.createElement(ArrowIcon_default, null), /* @__PURE__ */ import_react99.default.createElement(Span, null, BACK_TO_TOP));
+  }, /* @__PURE__ */ import_react103.default.createElement(ArrowIcon_default, null), /* @__PURE__ */ import_react103.default.createElement(Span, null, BACK_TO_TOP));
 }
 var GoToTopButton_default = GoToTopButton;
 
@@ -23510,24 +24380,24 @@ init_react();
 
 // app/components/Atoms/InfiniteScrollList/InfiniteScrollList.jsx
 init_react();
-var import_react100 = __toESM(require("react")), import_prop_types53 = __toESM(require("prop-types"));
+var import_react104 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
 function InfiniteScrollList({ onFetch, children }) {
-  let endOfListRef = (0, import_react100.useRef)(), scrollContainer = null, fetchScrollLimit = 500, onScroll = ([entity]) => {
+  let endOfListRef = (0, import_react104.useRef)(), scrollContainer = null, fetchScrollLimit = 500, onScroll = ([entity]) => {
     entity.isIntersecting && onFetch();
-  }, observer = (0, import_react100.useRef)();
-  return (0, import_react100.useEffect)(() => (observer.current = new IntersectionObserver(onScroll, {
+  }, observer = (0, import_react104.useRef)();
+  return (0, import_react104.useEffect)(() => (observer.current = new IntersectionObserver(onScroll, {
     root: scrollContainer,
     rootMargin: `${fetchScrollLimit}px`,
     threshold: 0
   }), endOfListRef && endOfListRef.current && observer.current.observe(endOfListRef.current), () => {
     endOfListRef && endOfListRef.current && observer.current.unobserve(endOfListRef.current);
-  }), [children.props.children.length]), /* @__PURE__ */ import_react100.default.createElement("div", null, children, /* @__PURE__ */ import_react100.default.createElement("div", {
+  }), [children.props.children.length]), /* @__PURE__ */ import_react104.default.createElement("div", null, children, /* @__PURE__ */ import_react104.default.createElement("div", {
     ref: endOfListRef
   }));
 }
 InfiniteScrollList.propTypes = {
-  onFetch: import_prop_types53.default.func.isRequired,
-  children: import_prop_types53.default.node
+  onFetch: import_prop_types56.default.func.isRequired,
+  children: import_prop_types56.default.node
 };
 InfiniteScrollList.defaultProps = {
   children: null
@@ -23539,14 +24409,14 @@ init_react();
 
 // app/components/Filters/Filters.jsx
 init_react();
-var import_react102 = __toESM(require("react")), import_prop_types55 = __toESM(require("prop-types")), import_react103 = require("@remix-run/react");
+var import_react106 = __toESM(require("react")), import_prop_types58 = __toESM(require("prop-types")), import_react107 = require("@remix-run/react");
 
 // app/images/ic_filter.svg
 var ic_filter_default = "/build/_assets/ic_filter-UC4LYVWR.svg";
 
 // app/components/Filters/Filters.Styled.jsx
 init_react();
-var import_styled_components56 = __toESM(require("styled-components")), Filters = import_styled_components56.default.div`
+var import_styled_components59 = __toESM(require("styled-components")), Filters = import_styled_components59.default.div`
   background-color: transparent;
   margin: 0 11px;
   position: -webkit-sticky;
@@ -23564,15 +24434,15 @@ var import_styled_components56 = __toESM(require("styled-components")), Filters 
     padding: 20px 0 5px;
     position: relative;
   }
-`, Icon = import_styled_components56.default.img`
+`, Icon = import_styled_components59.default.img`
   height: 20px;
   margin-right: 10px;
   width: 17px;
-`, FiltersLine = import_styled_components56.default.hr`
+`, FiltersLine = import_styled_components59.default.hr`
   border-top: 1px solid #e6e6e6;
   margin: 16px 0 24px;
   display: ${(props) => props.visibility};
-  ${(props) => props.secondary && import_styled_components56.css`
+  ${(props) => props.secondary && import_styled_components59.css`
     margin: 0;
   `}
   
@@ -23582,7 +24452,7 @@ var import_styled_components56 = __toESM(require("styled-components")), Filters 
   @media (max-width: 767px){
    display: block;
   }
-`, FiltersWrapper2 = import_styled_components56.default.div`
+`, FiltersWrapper2 = import_styled_components59.default.div`
   flex-grow: 1;
   transition: box-shadow 300ms;
   width: 100%;
@@ -23605,9 +24475,9 @@ var import_styled_components56 = __toESM(require("styled-components")), Filters 
     height: 56px;
     width: 100%;
   }
-`, FiltersContainer = import_styled_components56.default.div`
+`, FiltersContainer = import_styled_components59.default.div`
   display: unset;
-`, FiltersBlock = import_styled_components56.default.div``, FiltersLabel = import_styled_components56.default.div`
+`, FiltersBlock = import_styled_components59.default.div``, FiltersLabel = import_styled_components59.default.div`
   font-size: 12px;
   margin: 8px 0 4px;
   width: auto;
@@ -23620,7 +24490,7 @@ var import_styled_components56 = __toESM(require("styled-components")), Filters 
     border: none;
     padding: 0!important;
   }
-`, FiltersField = import_styled_components56.default.div`
+`, FiltersField = import_styled_components59.default.div`
   border-color: transparent;
   display: flex;
   flex-wrap: wrap;
@@ -23659,7 +24529,7 @@ var import_styled_components56 = __toESM(require("styled-components")), Filters 
     padding: 5px 0 8.9px;
     position: unset;
   }
-  ${(props) => props.departments && import_styled_components56.css`
+  ${(props) => props.departments && import_styled_components59.css`
       .dropdown-menu li:nth-child(2) a label {
         border-bottom: 1px solid #e6e6e6;
         padding-bottom: 12px;
@@ -23672,11 +24542,11 @@ init_react();
 
 // app/components/CustomDropdown/CustomDropdown.jsx
 init_react();
-var import_react101 = __toESM(require("react")), import_prop_types54 = __toESM(require("prop-types"));
+var import_react105 = __toESM(require("react")), import_prop_types57 = __toESM(require("prop-types"));
 
 // app/components/CustomDropdown/CustomDropdown.Styled.jsx
 init_react();
-var import_styled_components57 = __toESM(require("styled-components")), import_react_bootstrap12 = require("react-bootstrap"), CDropdown = (0, import_styled_components57.default)(import_react_bootstrap12.Dropdown)`
+var import_styled_components60 = __toESM(require("styled-components")), import_react_bootstrap13 = require("react-bootstrap"), CDropdown = (0, import_styled_components60.default)(import_react_bootstrap13.Dropdown)`
   .dropdown-menu {
     top: 98%;
     background-color: transparent;
@@ -23742,7 +24612,7 @@ var import_styled_components57 = __toESM(require("styled-components")), import_r
     font-size: 14px;
     font-weight: unset;
   }
-`, CDropdownText = import_styled_components57.default.p`
+`, CDropdownText = import_styled_components60.default.p`
   color: var(--color-secondary);
   float: left;
   font-size: 12px;
@@ -23751,7 +24621,7 @@ var import_styled_components57 = __toESM(require("styled-components")), import_r
     font-size: 14px;
     font-weight: unset;
   }
-`, CMenuItem = (0, import_styled_components57.default)(import_react_bootstrap12.MenuItem)`
+`, CMenuItem = (0, import_styled_components60.default)(import_react_bootstrap13.MenuItem)`
   .custom-dropdown {
     cursor: pointer;
     display: block;
@@ -23784,53 +24654,53 @@ var import_styled_components57 = __toESM(require("styled-components")), import_r
 
 // app/components/CustomDropdown/CustomDropdown.jsx
 function CustomDropdown(props) {
-  let { accessValueName, selectedValue } = props, renderElements = (elements) => elements.map((element) => /* @__PURE__ */ import_react101.default.createElement(CMenuItem, {
+  let { accessValueName, selectedValue } = props, renderElements = (elements) => elements.map((element) => /* @__PURE__ */ import_react105.default.createElement(CMenuItem, {
     eventKey: element,
     key: element[accessValueName]
-  }, /* @__PURE__ */ import_react101.default.createElement("label", {
+  }, /* @__PURE__ */ import_react105.default.createElement("label", {
     className: "custom-dropdown",
     htmlFor: element[accessValueName]
-  }, element.name, /* @__PURE__ */ import_react101.default.createElement("input", {
+  }, element.name, /* @__PURE__ */ import_react105.default.createElement("input", {
     type: "radio",
     className: "custom-dropdown--radio",
     checked: selectedValue === element[accessValueName],
     readOnly: !0,
     id: element[accessValueName]
-  }), /* @__PURE__ */ import_react101.default.createElement("span", {
+  }), /* @__PURE__ */ import_react105.default.createElement("span", {
     className: "custom-dropdown--span"
-  })))), renderSelected = () => props.showSelected && /* @__PURE__ */ import_react101.default.createElement("p", {
+  })))), renderSelected = () => props.showSelected && /* @__PURE__ */ import_react105.default.createElement("p", {
     className: "custom-dropdown-selected"
   }, props.text);
-  return /* @__PURE__ */ import_react101.default.createElement(CDropdown, {
+  return /* @__PURE__ */ import_react105.default.createElement(CDropdown, {
     className: props.dropdownClass,
     onSelect: props.onSelectFunc,
     id: props.dropdownClass,
     disabled: props.disabled
-  }, /* @__PURE__ */ import_react101.default.createElement(CDropdown.Toggle, {
+  }, /* @__PURE__ */ import_react105.default.createElement(CDropdown.Toggle, {
     onClick: props.onClickFunc,
     className: `toggle ${props.isHighlighted ? "highlighted" : ""}`
-  }, /* @__PURE__ */ import_react101.default.createElement("p", {
+  }, /* @__PURE__ */ import_react105.default.createElement("p", {
     className: `dropdown-text ${props.showSelected ? "" : "first"}`
-  }, props.label), renderSelected()), /* @__PURE__ */ import_react101.default.createElement(CDropdown.Menu, {
+  }, props.label), renderSelected()), /* @__PURE__ */ import_react105.default.createElement(CDropdown.Menu, {
     className: props.menuClass
   }, props.elements.length > 0 && renderElements(props.elements)));
 }
 CustomDropdown.propTypes = {
-  elements: import_prop_types54.default.arrayOf().isRequired,
-  text: import_prop_types54.default.string,
-  label: import_prop_types54.default.string.isRequired,
-  dropdownClass: import_prop_types54.default.string,
-  menuClass: import_prop_types54.default.string,
-  onClickFunc: import_prop_types54.default.func,
-  onSelectFunc: import_prop_types54.default.func,
-  selectedValue: import_prop_types54.default.oneOfType([
-    import_prop_types54.default.number,
-    import_prop_types54.default.string
+  elements: import_prop_types57.default.arrayOf().isRequired,
+  text: import_prop_types57.default.string,
+  label: import_prop_types57.default.string.isRequired,
+  dropdownClass: import_prop_types57.default.string,
+  menuClass: import_prop_types57.default.string,
+  onClickFunc: import_prop_types57.default.func,
+  onSelectFunc: import_prop_types57.default.func,
+  selectedValue: import_prop_types57.default.oneOfType([
+    import_prop_types57.default.number,
+    import_prop_types57.default.string
   ]),
-  isHighlighted: import_prop_types54.default.bool,
-  showSelected: import_prop_types54.default.bool,
-  accessValueName: import_prop_types54.default.string.isRequired,
-  disabled: import_prop_types54.default.bool
+  isHighlighted: import_prop_types57.default.bool,
+  showSelected: import_prop_types57.default.bool,
+  accessValueName: import_prop_types57.default.string.isRequired,
+  disabled: import_prop_types57.default.bool
 };
 CustomDropdown.defaultProps = {
   text: "",
@@ -23847,7 +24717,7 @@ var CustomDropdown_default = CustomDropdown;
 
 // app/components/Filters/Filters.jsx
 function Filters2(props) {
-  let { modifyQuery, clearFilters } = props, { departments, locations } = (0, import_react103.useLoaderData)(), [searchParams] = (0, import_react103.useSearchParams)(), getDefaultStatus = () => {
+  let { modifyQuery, clearFilters } = props, { departments, locations } = (0, import_react107.useLoaderData)(), [searchParams] = (0, import_react107.useSearchParams)(), getDefaultStatus = () => {
     let searchParam = searchParams.get("status");
     if (searchParam) {
       let found = STATUS_OPTIONS.find((status) => status.value === searchParam);
@@ -23890,8 +24760,8 @@ function Filters2(props) {
         return foundInData;
     }
     return DEFAULT_LOCATION_OPT;
-  }, [selectedOrderBy, setSelectedOrderBy] = (0, import_react102.useState)(getDefaultSortOption()), [selectedDateRange, setSelectedDateRange] = (0, import_react102.useState)(getDefaultDateRangeOption()), [selectedStatus, setSelectedStatus] = (0, import_react102.useState)(getDefaultStatus()), [selectedDepartment, setSelectedDepartment] = (0, import_react102.useState)(getDefaultDepartmentOption()), [selectedLocation, setSelectedLocation] = (0, import_react102.useState)(getDefaultLocationOption()), [showClearButton, setShowClearButton] = (0, import_react102.useState)(!1), [showFilters, setShowFilters] = (0, import_react102.useState)(!1), [filtersButtonName, setFiltersButtonName] = (0, import_react102.useState)("Show filters");
-  (0, import_react102.useEffect)(() => {
+  }, [selectedOrderBy, setSelectedOrderBy] = (0, import_react106.useState)(getDefaultSortOption()), [selectedDateRange, setSelectedDateRange] = (0, import_react106.useState)(getDefaultDateRangeOption()), [selectedStatus, setSelectedStatus] = (0, import_react106.useState)(getDefaultStatus()), [selectedDepartment, setSelectedDepartment] = (0, import_react106.useState)(getDefaultDepartmentOption()), [selectedLocation, setSelectedLocation] = (0, import_react106.useState)(getDefaultLocationOption()), [showClearButton, setShowClearButton] = (0, import_react106.useState)(!1), [showFilters, setShowFilters] = (0, import_react106.useState)(!1), [filtersButtonName, setFiltersButtonName] = (0, import_react106.useState)("Show filters");
+  (0, import_react106.useEffect)(() => {
     selectedLocation != null && (selectedDateRange.name === DEFAULT_DATE_RANGE_OPT.name && selectedDepartment.name === DEFAULT_DEPARTMENT_OPT.name && selectedStatus.name === DEFAULT_STATUS_OPT.name && selectedLocation.code === DEFAULT_LOCATION ? setShowClearButton(!1) : setShowClearButton(!0));
   }, [selectedDateRange, selectedStatus, selectedDepartment, selectedLocation]);
   let selectOrderByFilter = (selectOrderBy) => {
@@ -23959,29 +24829,29 @@ function Filters2(props) {
     isHihlighted: selectedStatus !== DEFAULT_STATUS_OPT,
     accessValueName: STATUS_ACCESS_VALUE
   };
-  return /* @__PURE__ */ import_react102.default.createElement(Filters, null, /* @__PURE__ */ import_react102.default.createElement(Button_default, {
+  return /* @__PURE__ */ import_react106.default.createElement(Filters, null, /* @__PURE__ */ import_react106.default.createElement(Button_default, {
     type: "button",
     category: TEXT_BUTTON,
     className: "show-filters-button",
     onClick: selectFilters
-  }, /* @__PURE__ */ import_react102.default.createElement(Icon, {
+  }, /* @__PURE__ */ import_react106.default.createElement(Icon, {
     src: ic_filter_default,
     alt: "Icon"
-  }), /* @__PURE__ */ import_react102.default.createElement("span", null, filtersButtonName)), /* @__PURE__ */ import_react102.default.createElement(FiltersLine, {
+  }), /* @__PURE__ */ import_react106.default.createElement("span", null, filtersButtonName)), /* @__PURE__ */ import_react106.default.createElement(FiltersLine, {
     secondary: !0,
     visibility: "none"
-  }), /* @__PURE__ */ import_react102.default.createElement(FiltersWrapper2, {
+  }), /* @__PURE__ */ import_react106.default.createElement(FiltersWrapper2, {
     hideComponent: showFilters ? "block" : "none"
-  }, /* @__PURE__ */ import_react102.default.createElement(FiltersContainer, null, /* @__PURE__ */ import_react102.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react102.default.createElement(FiltersLabel, null, "Order by:"), /* @__PURE__ */ import_react102.default.createElement(FiltersField, null, /* @__PURE__ */ import_react102.default.createElement(CustomDropdown_default, __spreadValues({}, orderByDropdownConfig)))), /* @__PURE__ */ import_react102.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react102.default.createElement(FiltersLabel, null, "Filter by:", " ", showClearButton && /* @__PURE__ */ import_react102.default.createElement("button", {
+  }, /* @__PURE__ */ import_react106.default.createElement(FiltersContainer, null, /* @__PURE__ */ import_react106.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react106.default.createElement(FiltersLabel, null, "Order by:"), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, orderByDropdownConfig)))), /* @__PURE__ */ import_react106.default.createElement(FiltersBlock, null, /* @__PURE__ */ import_react106.default.createElement(FiltersLabel, null, "Filter by:", " ", showClearButton && /* @__PURE__ */ import_react106.default.createElement("button", {
     type: "button",
     onClick: clearAllFilters
-  }, "Clear All Filters")), /* @__PURE__ */ import_react102.default.createElement(FiltersField, null, /* @__PURE__ */ import_react102.default.createElement(CustomDropdown_default, __spreadValues({}, dateRangeFilterConfig))), /* @__PURE__ */ import_react102.default.createElement(FiltersField, null, /* @__PURE__ */ import_react102.default.createElement(CustomDropdown_default, __spreadValues({}, statusFilterConfig))), /* @__PURE__ */ import_react102.default.createElement(FiltersField, {
+  }, "Clear All Filters")), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, dateRangeFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, statusFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, {
     departments: !0
-  }, /* @__PURE__ */ import_react102.default.createElement(CustomDropdown_default, __spreadValues({}, departmentFilterConfig))), /* @__PURE__ */ import_react102.default.createElement(FiltersField, null, /* @__PURE__ */ import_react102.default.createElement(CustomDropdown_default, __spreadValues({}, getLocationFilterConfig())))))));
+  }, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, departmentFilterConfig))), /* @__PURE__ */ import_react106.default.createElement(FiltersField, null, /* @__PURE__ */ import_react106.default.createElement(CustomDropdown_default, __spreadValues({}, getLocationFilterConfig())))))));
 }
 Filters2.propTypes = {
-  clearFilters: import_prop_types55.default.func.isRequired,
-  modifyQuery: import_prop_types55.default.func.isRequired
+  clearFilters: import_prop_types58.default.func.isRequired,
+  modifyQuery: import_prop_types58.default.func.isRequired
 };
 var Filters_default = Filters2;
 
@@ -24006,11 +24876,11 @@ function getCookie(name) {
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.jsx
 init_react();
-var import_react104 = __toESM(require("react")), import_prop_types56 = __toESM(require("prop-types"));
+var import_react108 = __toESM(require("react")), import_prop_types59 = __toESM(require("prop-types"));
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.Styled.jsx
 init_react();
-var import_styled_components58 = __toESM(require("styled-components")), Modal4 = import_styled_components58.default.div`
+var import_styled_components61 = __toESM(require("styled-components")), Modal4 = import_styled_components61.default.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -24024,7 +24894,7 @@ var import_styled_components58 = __toESM(require("styled-components")), Modal4 =
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-`, ModalDialog4 = import_styled_components58.default.div`
+`, ModalDialog4 = import_styled_components61.default.div`
     position: relative;
     border-radius: 5px;
     border: 0;
@@ -24044,7 +24914,7 @@ var import_styled_components58 = __toESM(require("styled-components")), Modal4 =
         max-width: 100%;
         height: 100%;
     }
-`, ModalBody5 = import_styled_components58.default.div`
+`, ModalBody5 = import_styled_components61.default.div`
     display: block;
     font-size: 15px;
     background-color: #fff;
@@ -24053,7 +24923,7 @@ var import_styled_components58 = __toESM(require("styled-components")), Modal4 =
     padding: 15px;
     box-sizing: border-box;
     text-align: justify;
-`, ModalFooter6 = import_styled_components58.default.div`
+`, ModalFooter6 = import_styled_components61.default.div`
     border-top: none;
     background-color: #fff;
     border-bottom: none;
@@ -24065,7 +24935,7 @@ var import_styled_components58 = __toESM(require("styled-components")), Modal4 =
     ${(props) => props.variant === "logout" ? `border-top: 1px solid #e5e5e5;
     padding: 15px;
     text-align: right;` : "border-bottom: none;"}
-`, ModalHeader6 = import_styled_components58.default.div`
+`, ModalHeader6 = import_styled_components61.default.div`
     overflow-y: hidden;
     padding: 15px;
     box-sizing: border-box;
@@ -24073,56 +24943,56 @@ var import_styled_components58 = __toESM(require("styled-components")), Modal4 =
     font-size: 14px;
     ${(props) => props.variant === "logout" ? `border-bottom: 1px solid #e5e5e5;
         padding: 15px;` : "border-bottom: none;"}
-`, ModalTitle5 = import_styled_components58.default.div`
+`, ModalTitle5 = import_styled_components61.default.div`
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
     letter-spacing: normal;
     margin-bottom: 8px;
-`, ModalSubtitle3 = import_styled_components58.default.div`
+`, ModalSubtitle3 = import_styled_components61.default.div`
     font-size: 16px;
     font-weight: normal;
     letter-spacing: 0.6px;
     line-height: 1.71;
-`, ValueText = import_styled_components58.default.span`
+`, ValueText = import_styled_components61.default.span`
     color: ${(props) => props.color};
     font-weight: 600;
     font-size: 16px;
     text-decoration:  ${(props) => props.color} underline overline;
-`, ValuesInformation = import_styled_components58.default.div`
+`, ValuesInformation = import_styled_components61.default.div`
     margin: 20px 0 20px 20px;
 `;
 
 // app/components/Modals/ValuesMessageModal/ValuesMessageModal.jsx
 var import_bs6 = require("react-icons/bs");
 function ValuesMessageModal({ show, onClose }) {
-  let profile = useUser_default(), renderBulletPoint = (color2) => /* @__PURE__ */ import_react104.default.createElement(import_bs6.BsCircleFill, {
+  let profile = useUser_default(), renderBulletPoint = (color2) => /* @__PURE__ */ import_react108.default.createElement(import_bs6.BsCircleFill, {
     color: color2,
     size: "7px",
     style: { marginTop: "3px", marginRight: "10px" }
   });
-  return show ? /* @__PURE__ */ import_react104.default.createElement("div", {
+  return show ? /* @__PURE__ */ import_react108.default.createElement("div", {
     onClick: onClose
-  }, /* @__PURE__ */ import_react104.default.createElement(Modal4, {
+  }, /* @__PURE__ */ import_react108.default.createElement(Modal4, {
     onClick: onClose
-  }, /* @__PURE__ */ import_react104.default.createElement(ModalDialog4, {
+  }, /* @__PURE__ */ import_react108.default.createElement(ModalDialog4, {
     show: !0,
     hide: onClose
-  }, /* @__PURE__ */ import_react104.default.createElement(ModalHeader6, null, /* @__PURE__ */ import_react104.default.createElement(ModalTitle5, null, "Hello", " ", profile.full_name, " ", "!"), /* @__PURE__ */ import_react104.default.createElement(ModalSubtitle3, null, "Welcome to Wize Q!")), /* @__PURE__ */ import_react104.default.createElement(ModalBody5, null, /* @__PURE__ */ import_react104.default.createElement("p", null, "We want to share a few simple guidelines before you start. Remember that Wize Q is a space for asking questions and providing answers that are helpful to our community."), /* @__PURE__ */ import_react104.default.createElement("p", null, "Please practice our values when using Wize Q: "), /* @__PURE__ */ import_react104.default.createElement(ValuesInformation, null, /* @__PURE__ */ import_react104.default.createElement("p", null, renderBulletPoint("var(--color-primary)"), /* @__PURE__ */ import_react104.default.createElement(ValueText, {
+  }, /* @__PURE__ */ import_react108.default.createElement(ModalHeader6, null, /* @__PURE__ */ import_react108.default.createElement(ModalTitle5, null, "Hello", " ", profile.full_name, " ", "!"), /* @__PURE__ */ import_react108.default.createElement(ModalSubtitle3, null, "Welcome to Wize Q!")), /* @__PURE__ */ import_react108.default.createElement(ModalBody5, null, /* @__PURE__ */ import_react108.default.createElement("p", null, "We want to share a few simple guidelines before you start. Remember that Wize Q is a space for asking questions and providing answers that are helpful to our community."), /* @__PURE__ */ import_react108.default.createElement("p", null, "Please practice our values when using Wize Q: "), /* @__PURE__ */ import_react108.default.createElement(ValuesInformation, null, /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("var(--color-primary)"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
     color: "var(--color-primary)"
-  }, "Ownership"), "\u2013 See if you can find the answer to your question before posting on Wize Q. And if you know the answer to a question or how to find it, be sure to reply \u2014 anyone can!"), /* @__PURE__ */ import_react104.default.createElement("p", null, renderBulletPoint("var(--color-secondary)"), /* @__PURE__ */ import_react104.default.createElement(ValueText, {
+  }, "Ownership"), "\u2013 See if you can find the answer to your question before posting on Wize Q. And if you know the answer to a question or how to find it, be sure to reply \u2014 anyone can!"), /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("var(--color-secondary)"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
     color: "var(--color-secondary)"
-  }, "Innovation"), "\u2013 When someone shares a concern or challenge, let\u2019s be innovative \u2014 propose a solution or offer support!"), /* @__PURE__ */ import_react104.default.createElement("p", null, renderBulletPoint("#E5C8A6"), /* @__PURE__ */ import_react104.default.createElement(ValueText, {
+  }, "Innovation"), "\u2013 When someone shares a concern or challenge, let\u2019s be innovative \u2014 propose a solution or offer support!"), /* @__PURE__ */ import_react108.default.createElement("p", null, renderBulletPoint("#E5C8A6"), /* @__PURE__ */ import_react108.default.createElement(ValueText, {
     color: "#E5C8A6"
-  }, "Community"), "\u2013 Remember to treat everyone with dignity and respect. Assume others have good intentions. Always be honest and constructive. Let\u2019s make Wizeline a community where everyone can thrive.")), /* @__PURE__ */ import_react104.default.createElement("p", null, "Consider that other channels: (ticketing portal, Slack, your manager or people partner) might be more effective for finding the right answer quickly."), /* @__PURE__ */ import_react104.default.createElement("p", null, "Thanks for being a valuable contributor to our community! "), /* @__PURE__ */ import_react104.default.createElement("p", null, "The Wize Q Team")), /* @__PURE__ */ import_react104.default.createElement(ModalFooter6, null, /* @__PURE__ */ import_react104.default.createElement(Button_default, {
+  }, "Community"), "\u2013 Remember to treat everyone with dignity and respect. Assume others have good intentions. Always be honest and constructive. Let\u2019s make Wizeline a community where everyone can thrive.")), /* @__PURE__ */ import_react108.default.createElement("p", null, "Consider that other channels: (ticketing portal, Slack, your manager or people partner) might be more effective for finding the right answer quickly."), /* @__PURE__ */ import_react108.default.createElement("p", null, "Thanks for being a valuable contributor to our community! "), /* @__PURE__ */ import_react108.default.createElement("p", null, "The Wize Q Team")), /* @__PURE__ */ import_react108.default.createElement(ModalFooter6, null, /* @__PURE__ */ import_react108.default.createElement(Button_default, {
     id: "btnAccept",
     category: SECONDARY_BUTTON,
     onClick: onClose
   }, "Accept"))))) : null;
 }
 ValuesMessageModal.propTypes = {
-  onClose: import_prop_types56.default.func.isRequired,
-  show: import_prop_types56.default.bool.isRequired
+  onClose: import_prop_types59.default.func.isRequired,
+  show: import_prop_types59.default.bool.isRequired
 };
 var ValuesMessageModal_default = ValuesMessageModal;
 
@@ -24131,7 +25001,7 @@ function ListQuestions({
   questions,
   onFetchMore
 }) {
-  let submit = (0, import_react106.useSubmit)(), transition = (0, import_react106.useTransition)(), voteQuestionForm = (0, import_react105.useRef)(), profile = useUser_default(), [showValuesMessage, setShowValueMessage] = (0, import_react105.useState)(getCookie("showValueMessage")), [searchParams, setSearchParams] = (0, import_react106.useSearchParams)(), [title, setTitle] = (0, import_react105.useState)("Newest Questions"), valuesMessageModal = showValuesMessage === "true" && /* @__PURE__ */ import_react105.default.createElement(ValuesMessageModal_default, {
+  let submit = (0, import_react110.useSubmit)(), transition = (0, import_react110.useTransition)(), voteQuestionForm = (0, import_react109.useRef)(), profile = useUser_default(), [showValuesMessage, setShowValueMessage] = (0, import_react109.useState)(getCookie("showValueMessage")), [searchParams, setSearchParams] = (0, import_react110.useSearchParams)(), [title, setTitle] = (0, import_react109.useState)("Newest Questions"), valuesMessageModal = showValuesMessage === "true" && /* @__PURE__ */ import_react109.default.createElement(ValuesMessageModal_default, {
     show: showValuesMessage,
     onClose: () => {
       setShowValueMessage(!1), setCookie("showValueMessage", !1);
@@ -24156,7 +25026,7 @@ function ListQuestions({
         actionUrl += value ? `&${key}=${value}` : "";
       }), submit(data, { method: "post", action: actionUrl, replace: !0 });
     };
-    return questions.length === 0 ? null : questions.map((question, index2) => /* @__PURE__ */ import_react105.default.createElement(QuestionCard_default, {
+    return questions.length === 0 ? null : questions.map((question, index2) => /* @__PURE__ */ import_react109.default.createElement(QuestionCard_default, {
       key: question.question_id,
       question: decorateQuestion(question),
       isAdmin: profile.is_admin,
@@ -24168,56 +25038,29 @@ function ListQuestions({
       processingFormSubmission: transition.state !== "idle"
     }));
   }, renderNoResultMessage = () => questions ? "There are no questions yet, how about asking one?" : "Loading questions...";
-  return /* @__PURE__ */ import_react105.default.createElement(Container8, null, /* @__PURE__ */ import_react105.default.createElement(LeftWrapper, null, /* @__PURE__ */ import_react105.default.createElement(SloganWrapper, null, /* @__PURE__ */ import_react105.default.createElement(Slogan_default, null))), /* @__PURE__ */ import_react105.default.createElement(CenterWrapper, null, /* @__PURE__ */ import_react105.default.createElement(QuestionsWrapper, null, /* @__PURE__ */ import_react105.default.createElement(AskQuestionButtonWrapper, null, /* @__PURE__ */ import_react105.default.createElement(QuestionsTitle, null, title), (() => /* @__PURE__ */ import_react105.default.createElement(AskButton, {
+  return /* @__PURE__ */ import_react109.default.createElement(Container8, null, /* @__PURE__ */ import_react109.default.createElement(LeftWrapper, null, /* @__PURE__ */ import_react109.default.createElement(SloganWrapper, null, /* @__PURE__ */ import_react109.default.createElement(Slogan_default, null))), /* @__PURE__ */ import_react109.default.createElement(CenterWrapper, null, /* @__PURE__ */ import_react109.default.createElement(QuestionsWrapper, null, /* @__PURE__ */ import_react109.default.createElement(AskQuestionButtonWrapper, null, /* @__PURE__ */ import_react109.default.createElement(QuestionsTitle, null, title), (() => /* @__PURE__ */ import_react109.default.createElement(AskButton, {
     to: "/questions/new",
     id: "ask-button"
-  }, "Ask Question"))()), questions.length === 0 ? /* @__PURE__ */ import_react105.default.createElement(Alert3, null, renderNoResultMessage()) : /* @__PURE__ */ import_react105.default.createElement(InfiniteScrollList_default, {
+  }, "Ask Question"))()), questions.length === 0 ? /* @__PURE__ */ import_react109.default.createElement(Alert3, null, renderNoResultMessage()) : /* @__PURE__ */ import_react109.default.createElement(InfiniteScrollList_default, {
     onFetch: onFetchMore
-  }, /* @__PURE__ */ import_react105.default.createElement(QuestionList, {
+  }, /* @__PURE__ */ import_react109.default.createElement(QuestionList, {
     id: "questions-list"
-  }, renderQuestionsList(questions))))), /* @__PURE__ */ import_react105.default.createElement(RightWrapper2, null, /* @__PURE__ */ import_react105.default.createElement(FiltersWrapper, null, /* @__PURE__ */ import_react105.default.createElement(Filters_default, {
+  }, renderQuestionsList(questions))))), /* @__PURE__ */ import_react109.default.createElement(RightWrapper2, null, /* @__PURE__ */ import_react109.default.createElement(FiltersWrapper, null, /* @__PURE__ */ import_react109.default.createElement(Filters_default, {
     modifyQuery,
     clearFilters
-  }))), /* @__PURE__ */ import_react105.default.createElement(GoToTopButton_default, null), valuesMessageModal);
+  }))), /* @__PURE__ */ import_react109.default.createElement(GoToTopButton_default, null), valuesMessageModal);
 }
 ListQuestions.propTypes = {
-  questions: import_prop_types57.default.arrayOf(import_prop_types57.default.shape()),
-  onFetchMore: import_prop_types57.default.func.isRequired
+  questions: import_prop_types60.default.arrayOf(import_prop_types60.default.shape()),
+  onFetchMore: import_prop_types60.default.func.isRequired
 };
 ListQuestions.defaultProps = {
   questions: []
 };
 var ListQuestions_default = ListQuestions;
 
-// app/utils/dateRangeConversion.js
-init_react();
-var dateRangeConversion = (range2) => {
-  let startDate, endDate;
-  switch (range2) {
-    case "today":
-      return startDate = new Date(), startDate.setHours(0, 0, 0, 0), {
-        startDate,
-        endDate: new Date()
-      };
-    case "this_week":
-      let curr = new Date(), first = curr.getDate() - curr.getDay();
-      return startDate = new Date(curr.setDate(first)), startDate.setHours(0, 0, 0, 0), endDate = new Date(), {
-        startDate,
-        endDate
-      };
-    case "this_month":
-      let now = new Date();
-      return startDate = new Date(now.getFullYear(), now.getMonth(), 1), endDate = new Date(), {
-        startDate,
-        endDate
-      };
-    default:
-      return;
-  }
-}, dateRangeConversion_default = dateRangeConversion;
-
 // app/routes/index.jsx
-var loader11 = async ({ request }) => {
+var loader12 = async ({ request }) => {
   await requireAuth(request);
   let user = await getAuthenticatedUser(request), url = new URL(request.url), order2 = url.searchParams.get("order"), status = url.searchParams.get("status"), department = Number.parseInt(url.searchParams.get("department"), 10), location = url.searchParams.get("location"), dateRange = dateRangeConversion_default(url.searchParams.get("dateRange")), page = url.searchParams.get("page") ?? 1, questions = await list_default({
     user,
@@ -24228,13 +25071,13 @@ var loader11 = async ({ request }) => {
     dateRange,
     offset: (page - 1) * PAGE_QUESTIONS_LIMIT
   }), locations = await list_default3(), departments = await list_default5();
-  return (0, import_node10.json)({
+  return (0, import_node11.json)({
     questions,
     locations,
     departments
   });
 }, action6 = async ({ request }) => {
-  let formData = await request.formData(), formAction = formData.get("action"), response, questionId;
+  let formData = await request.formData(), formAction = formData.get("action"), user = await getAuthenticatedUser(request), form = Object.fromEntries(formData.entries()), { assignedDepartment } = form, parsedDepartment = parseInt(assignedDepartment, 10), response, payload, questionId;
   switch (formAction) {
     case actions_default.PINNIN:
       questionId = parseInt(formData.get("questionId"), 10);
@@ -24250,27 +25093,106 @@ var loader11 = async ({ request }) => {
       let enabledValue = formData.get("enabledValue") !== "false";
       response = await modifyEnableStatus_default(questionId, enabledValue);
       break;
+    case actions_default.CREATE_QUESTION_ANSWERBOT:
+      if (payload = {
+        question_by_user: form.question_by_user,
+        answer_by_bot: form.answer_by_bot,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        user_id: user.employee_id
+      }, response = await create_default5(payload), response.successMessage) {
+        let session = await getSession(request), { successMessage } = response;
+        return session.flash("globalSuccess", successMessage), (0, import_node11.redirect)("/?index", {
+          headers: {
+            "Set-Cookie": await commitSession(session)
+          }
+        });
+      }
+      break;
+    case actions_default.UPDATE_FEEDBACK_ANSWERBOT:
+      if (payload = {
+        question_by_user: form.question_by_user,
+        answer_by_bot: form.answer_by_bot,
+        answerFeedback: form.answerFeedback,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        user_id: user.employee_id
+      }, response = await modifyFeedback_default(payload), response.successMessage) {
+        let session = await getSession(request), { successMessage } = response;
+        return session.flash("globalSuccess", successMessage), (0, import_node11.redirect)("/?index", {
+          headers: {
+            "Set-Cookie": await commitSession(session)
+          }
+        });
+      }
+      break;
+    case actions_default.UPDATE_POST_ANSWERBOT:
+      if (payload = {
+        question: form.question,
+        created_by_employee_id: user.employee_id,
+        is_anonymous: !1,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        assigned_to_employee_id: null,
+        bot_enabled: !0,
+        location: DEFAULT_LOCATION,
+        accessToken: user.accessToken
+      }, response = await create_default4(payload), response.successMessage && (payload = {
+        postQuestionID: response.question.question_id,
+        question_by_user: form.question,
+        answer_by_bot: form.answer,
+        assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
+        user_id: user.employee_id
+      }, response = await modifyIDQuestion_default(payload), response.successMessage)) {
+        let session = await getSession(request), { successMessage } = response;
+        return session.flash("globalSuccess", successMessage), (0, import_node11.redirect)("/?index", {
+          headers: {
+            "Set-Cookie": await commitSession(session)
+          }
+        });
+      }
+      break;
     default:
       break;
   }
-  return (0, import_node10.json)(response);
+  return (0, import_node11.json)(response);
 };
 function Index() {
-  let { questions: initialQuestions } = (0, import_react107.useLoaderData)(), [questions, setQuestions] = (0, import_react108.useState)(initialQuestions), fetcher = (0, import_react107.useFetcher)(), [shouldFetch, setShouldFetch] = (0, import_react108.useState)(!0), [page, setPage] = (0, import_react108.useState)(2), [searchParams] = (0, import_react107.useSearchParams)(), onFetchMore = () => {
+  let { questions: initialQuestions, departments } = (0, import_react111.useLoaderData)(), [questions, setQuestions] = (0, import_react112.useState)(initialQuestions), fetcher = (0, import_react111.useFetcher)(), submit = (0, import_react111.useSubmit)(), formRef = (0, import_react112.useRef)(), [shouldFetch, setShouldFetch] = (0, import_react112.useState)(!0), [page, setPage] = (0, import_react112.useState)(2), [searchParams] = (0, import_react111.useSearchParams)(), onFetchMore = () => {
     !shouldFetch || fetcher.load(`/?index&${searchParams.toString()}&page=${page}`);
   };
-  return (0, import_react108.useEffect)(() => {
+  return (0, import_react112.useEffect)(() => {
     if (fetcher.data && fetcher.data.questions && fetcher.data.questions.length === 0) {
       setShouldFetch(!1);
       return;
     }
     fetcher.data && fetcher.data.questions && fetcher.data.questions.length > 0 && (setQuestions((prevQuestions) => [...prevQuestions, ...fetcher.data.questions]), setPage((prevPage) => prevPage + 1), setShouldFetch(!0));
-  }, [fetcher.data]), (0, import_react108.useEffect)(() => {
+  }, [fetcher.data]), (0, import_react112.useEffect)(() => {
     setQuestions(initialQuestions), setPage(2), setShouldFetch(!0);
-  }, [initialQuestions, searchParams]), /* @__PURE__ */ import_react108.default.createElement(import_react108.default.Fragment, null, /* @__PURE__ */ import_react108.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react108.default.createElement(Container7, null, /* @__PURE__ */ import_react108.default.createElement(ListQuestions_default, {
+  }, [initialQuestions, searchParams]), /* @__PURE__ */ import_react112.default.createElement(import_react112.default.Fragment, null, /* @__PURE__ */ import_react112.default.createElement(Notifications_default, null), /* @__PURE__ */ import_react112.default.createElement(Container7, null, /* @__PURE__ */ import_react112.default.createElement(ListQuestions_default, {
     type: "all",
     questions,
     onFetchMore
+  }), /* @__PURE__ */ import_react112.default.createElement(AnswerBot_default, {
+    postAnswerBotQuestion: (question) => {
+      let data = new FormData(formRef.current);
+      data.set("action", actions_default.CREATE_QUESTION_ANSWERBOT);
+      for (let [key, value] of Object.entries(question))
+        data.set(key, value);
+      submit(data, { method: "post", action: "/?index" });
+    },
+    updateAnswerBotFeedback: (question) => {
+      let data = new FormData(formRef.current);
+      data.set("action", actions_default.UPDATE_FEEDBACK_ANSWERBOT);
+      for (let [key, value] of Object.entries(question))
+        data.set(key, value);
+      submit(data, { method: "post", action: "/?index" });
+    },
+    updateAnswerBotPostID: (question) => {
+      let data = new FormData(formRef.current);
+      data.set("action", actions_default.UPDATE_POST_ANSWERBOT);
+      for (let [key, value] of Object.entries(question))
+        data.set(key, value);
+      submit(data, { method: "post", action: "/?index" });
+    },
+    departments
   })));
 }
 
@@ -24278,19 +25200,19 @@ function Index() {
 var login_exports = {};
 __export(login_exports, {
   default: () => login_default,
-  loader: () => loader12
+  loader: () => loader13
 });
 init_react();
-var import_react111 = __toESM(require("react")), import_node11 = require("@remix-run/node");
+var import_react115 = __toESM(require("react")), import_node12 = require("@remix-run/node");
 
 // app/components/Login/LoginContainer.jsx
 init_react();
-var import_react109 = __toESM(require("react")), import_react110 = require("@remix-run/react");
+var import_react113 = __toESM(require("react")), import_react114 = require("@remix-run/react");
 
 // app/components/Login/LoginContainer.Styled.jsx
 init_react();
-var import_styled_components59 = __toESM(require("styled-components"));
-var LoginDiv = import_styled_components59.default.div`
+var import_styled_components62 = __toESM(require("styled-components"));
+var LoginDiv = import_styled_components62.default.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -24299,7 +25221,7 @@ var LoginDiv = import_styled_components59.default.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`, LoginSubDiv = import_styled_components59.default.div`
+`, LoginSubDiv = import_styled_components62.default.div`
   display: flex;
   width: 100%;
   height: 100%;
@@ -24307,7 +25229,7 @@ var LoginDiv = import_styled_components59.default.div`
   @media (max-width: 768px) {
     flex-direction: column-reverse;
   }
-`, SH3 = import_styled_components59.default.h3`
+`, SH3 = import_styled_components62.default.h3`
   text-align: center;
   color: #646464;
   margin-bottom: 50px;
@@ -24315,9 +25237,9 @@ var LoginDiv = import_styled_components59.default.div`
   font-size: 25px;
   letter-spacing: 0.4px;
   font-weight: 700;
-`, Span2 = import_styled_components59.default.span`
+`, Span2 = import_styled_components62.default.span`
   ${(props) => (props.variant === "bold", 'font-family: "Nunito";')}
-`, Paragraph = import_styled_components59.default.p`
+`, Paragraph = import_styled_components62.default.p`
   text-align: center;
   color: #646464;
   font-family: "Nunito";
@@ -24325,7 +25247,7 @@ var LoginDiv = import_styled_components59.default.div`
   letter-spacing: 0.7px;
   margin-top: 50px;
   width: 350px;
-`, LeftDiv = import_styled_components59.default.div`
+`, LeftDiv = import_styled_components62.default.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24337,7 +25259,7 @@ var LoginDiv = import_styled_components59.default.div`
     width: 100%;
     height: 100%;
   }
-`, RightDiv = import_styled_components59.default.div`
+`, RightDiv = import_styled_components62.default.div`
   display: flex;
   width: 55%;
   align-items: center;
@@ -24360,7 +25282,7 @@ var LoginDiv = import_styled_components59.default.div`
       margin-bottom: 0;
     }
   }
-`, Slogan2 = import_styled_components59.default.div`
+`, Slogan2 = import_styled_components62.default.div`
   width: 320px;
 
   ${SloganContainer} {
@@ -24375,19 +25297,19 @@ var LoginDiv = import_styled_components59.default.div`
   @media (max-width: 768px) {
     display: none;
   }
-`, RedDiv = import_styled_components59.default.div`
+`, RedDiv = import_styled_components62.default.div`
   width: 20px;
   background-color: var(--color-primary);
   position: absolute;
   height: 100%;
   left: 0;
-`, GoldDiv = import_styled_components59.default.div`
+`, GoldDiv = import_styled_components62.default.div`
   width: 20px;
   background-color: #e5c8a6;
   position: absolute;
   height: 100%;
   left: 20px;
-`, AdviceContainer = import_styled_components59.default.div`
+`, AdviceContainer = import_styled_components62.default.div`
   color: white;
   font-size: 15px;
 
@@ -24409,42 +25331,42 @@ var LoginDiv = import_styled_components59.default.div`
 // app/components/Login/LoginContainer.jsx
 function LoginContainer() {
   let redirectTo = "/";
-  return (0, import_react109.useEffect)(() => {
+  return (0, import_react113.useEffect)(() => {
     setCookie("showValueMessage", !0);
-  }, []), /* @__PURE__ */ import_react109.default.createElement(LoginDiv, null, /* @__PURE__ */ import_react109.default.createElement(LoginSubDiv, null, /* @__PURE__ */ import_react109.default.createElement(LeftDiv, null, /* @__PURE__ */ import_react109.default.createElement(SH3, null, "Welcome Wizeliner!"), /* @__PURE__ */ import_react109.default.createElement(import_react110.Form, {
+  }, []), /* @__PURE__ */ import_react113.default.createElement(LoginDiv, null, /* @__PURE__ */ import_react113.default.createElement(LoginSubDiv, null, /* @__PURE__ */ import_react113.default.createElement(LeftDiv, null, /* @__PURE__ */ import_react113.default.createElement(SH3, null, "Welcome Wizeliner!"), /* @__PURE__ */ import_react113.default.createElement(import_react114.Form, {
     action: "/auth/auth0",
     method: "POST"
-  }, /* @__PURE__ */ import_react109.default.createElement("input", {
+  }, /* @__PURE__ */ import_react113.default.createElement("input", {
     type: "hidden",
     name: "redirectTo",
     value: redirectTo
-  }), /* @__PURE__ */ import_react109.default.createElement(Button_default, {
+  }), /* @__PURE__ */ import_react113.default.createElement(Button_default, {
     type: "submit",
     category: PRIMARY_BUTTON,
     className: "login-button"
-  }, "Log in with your Wizeline account")), /* @__PURE__ */ import_react109.default.createElement(Paragraph, null, /* @__PURE__ */ import_react109.default.createElement(Span2, null, "Wizeline Questions"), /* @__PURE__ */ import_react109.default.createElement(Span2, {
+  }, "Log in with your Wizeline account")), /* @__PURE__ */ import_react113.default.createElement(Paragraph, null, /* @__PURE__ */ import_react113.default.createElement(Span2, null, "Wizeline Questions"), /* @__PURE__ */ import_react113.default.createElement(Span2, {
     variant: "bold"
-  }, " DOES NOT "), /* @__PURE__ */ import_react109.default.createElement(Span2, null, "store any personal information so that you can ask anything."))), /* @__PURE__ */ import_react109.default.createElement(RightDiv, null, /* @__PURE__ */ import_react109.default.createElement(RedDiv, null), /* @__PURE__ */ import_react109.default.createElement(GoldDiv, null), /* @__PURE__ */ import_react109.default.createElement("img", {
+  }, " DOES NOT "), /* @__PURE__ */ import_react113.default.createElement(Span2, null, "store any personal information so that you can ask anything."))), /* @__PURE__ */ import_react113.default.createElement(RightDiv, null, /* @__PURE__ */ import_react113.default.createElement(RedDiv, null), /* @__PURE__ */ import_react113.default.createElement(GoldDiv, null), /* @__PURE__ */ import_react113.default.createElement("img", {
     src: logo_white_default,
     alt: "logo"
-  }), /* @__PURE__ */ import_react109.default.createElement(Slogan2, null, /* @__PURE__ */ import_react109.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react109.default.createElement(AdviceContainer, null, /* @__PURE__ */ import_react109.default.createElement("p", null, "Before asking a question verify if you can get the information you need from these resources."), /* @__PURE__ */ import_react109.default.createElement("ul", null, /* @__PURE__ */ import_react109.default.createElement("li", null, /* @__PURE__ */ import_react109.default.createElement("a", {
+  }), /* @__PURE__ */ import_react113.default.createElement(Slogan2, null, /* @__PURE__ */ import_react113.default.createElement(Slogan_default, null), /* @__PURE__ */ import_react113.default.createElement(AdviceContainer, null, /* @__PURE__ */ import_react113.default.createElement("p", null, "Before asking a question verify if you can get the information you need from these resources."), /* @__PURE__ */ import_react113.default.createElement("ul", null, /* @__PURE__ */ import_react113.default.createElement("li", null, /* @__PURE__ */ import_react113.default.createElement("a", {
     href: "https://wizeline.slack.com/archives/C1UDJCL9E"
-  }, " #Questions "), "- Slack Channel"), /* @__PURE__ */ import_react109.default.createElement("li", null, /* @__PURE__ */ import_react109.default.createElement("a", {
+  }, " #Questions "), "- Slack Channel"), /* @__PURE__ */ import_react113.default.createElement("li", null, /* @__PURE__ */ import_react113.default.createElement("a", {
     href: "https://ticketing.wizeline.com/ticketing.html"
   }, " Ticketing"))))))));
 }
 var LoginContainer_default = LoginContainer;
 
 // app/routes/login.jsx
-var loader12 = async ({ request }) => await getAuthenticatedUser(request) ? (0, import_node11.redirect)("/") : (0, import_node11.json)({});
+var loader13 = async ({ request }) => await getAuthenticatedUser(request) ? (0, import_node12.redirect)("/") : (0, import_node12.json)({});
 function Login() {
-  return /* @__PURE__ */ import_react111.default.createElement(LoginContainer_default, null);
+  return /* @__PURE__ */ import_react115.default.createElement(LoginContainer_default, null);
 }
 var login_default = Login;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
 init_react();
-var assets_manifest_default = { version: "d67f9d1c", entry: { module: "/build/entry.client-R6DHZFIR.js", imports: ["/build/_shared/chunk-AOIRIE2A.js", "/build/_shared/chunk-CA4B4QDL.js", "/build/_shared/chunk-3WZ3CGWF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-WFV64GMC.js", imports: ["/build/_shared/chunk-UK7JQ2MH.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-5M22U5RX.js", "/build/_shared/chunk-NG3NZK5E.js", "/build/_shared/chunk-HZDGKNSJ.js", "/build/_shared/chunk-A27YXTH3.js", "/build/_shared/chunk-U2RNYPEX.js", "/build/_shared/chunk-P7BYWKM6.js", "/build/_shared/chunk-UBEID7IU.js", "/build/_shared/chunk-VKNNRTVS.js", "/build/_shared/chunk-DTXDYIFC.js", "/build/_shared/chunk-UPCFJQSK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-LV76AEPG.js", imports: ["/build/_shared/chunk-ZJYHTA2X.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-PCU3UQVH.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-24LLYGEO.js", imports: ["/build/_shared/chunk-ZJYHTA2X.js", "/build/_shared/chunk-RPQVA7VX.js", "/build/_shared/chunk-LPRAY2OV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-KBQ2S7BZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-CN5UOKJC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-4IVMWMK7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-BTD55P6L.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/example": { id: "routes/example", parentId: "root", path: "example", index: void 0, caseSensitive: void 0, module: "/build/routes/example-KIWW2AVD.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-2RKIAF5P.js", imports: ["/build/_shared/chunk-J3GNERB6.js", "/build/_shared/chunk-HTQHSLSB.js", "/build/_shared/chunk-RVRN3YQ7.js", "/build/_shared/chunk-DKUFPYEM.js", "/build/_shared/chunk-LPRAY2OV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-M2ATOCNO.js", imports: ["/build/_shared/chunk-J3GNERB6.js", "/build/_shared/chunk-RVRN3YQ7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-4LBXPPXN.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-JYWUKAN5.js", imports: ["/build/_shared/chunk-RPQVA7VX.js", "/build/_shared/chunk-HTQHSLSB.js", "/build/_shared/chunk-LBDFOG4Y.js", "/build/_shared/chunk-DKUFPYEM.js", "/build/_shared/chunk-LPRAY2OV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-XQFADXK5.js", imports: ["/build/_shared/chunk-RVRN3YQ7.js", "/build/_shared/chunk-LBDFOG4Y.js", "/build/_shared/chunk-DKUFPYEM.js", "/build/_shared/chunk-LPRAY2OV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-D67F9D1C.js" };
+var assets_manifest_default = { version: "ae9988da", entry: { module: "/build/entry.client-WVOK65CE.js", imports: ["/build/_shared/chunk-IT4B5LWP.js", "/build/_shared/chunk-CA4B4QDL.js", "/build/_shared/chunk-3WZ3CGWF.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-4YS5CAKR.js", imports: ["/build/_shared/chunk-KWDBJDLQ.js", "/build/_shared/chunk-CHRNTAPK.js", "/build/_shared/chunk-5M22U5RX.js", "/build/_shared/chunk-4CYKQU6R.js", "/build/_shared/chunk-G3X6XPVQ.js", "/build/_shared/chunk-P7BYWKM6.js", "/build/_shared/chunk-CJWDOHQ3.js", "/build/_shared/chunk-UBEID7IU.js", "/build/_shared/chunk-C4H7A3DG.js", "/build/_shared/chunk-KIKUJAUP.js", "/build/_shared/chunk-ZKETJUKF.js", "/build/_shared/chunk-2FVL2P6G.js", "/build/_shared/chunk-DTXDYIFC.js", "/build/_shared/chunk-UPCFJQSK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-LV76AEPG.js", imports: ["/build/_shared/chunk-ZJYHTA2X.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-PCU3UQVH.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/admin": { id: "routes/admin", parentId: "root", path: "admin", index: void 0, caseSensitive: void 0, module: "/build/routes/admin-N7SMPOX4.js", imports: ["/build/_shared/chunk-ZJYHTA2X.js", "/build/_shared/chunk-SD6HPIQU.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/auth/auth0": { id: "routes/auth/auth0", parentId: "root", path: "auth/auth0", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0-KBQ2S7BZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/auth/auth0/callback": { id: "routes/auth/auth0/callback", parentId: "routes/auth/auth0", path: "callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth/auth0/callback-CN5UOKJC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-F43WT5EB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/dashboard": { id: "routes/dashboard", parentId: "root", path: "dashboard", index: void 0, caseSensitive: void 0, module: "/build/routes/dashboard-FKN25DVC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/employees/getByDeparment/$id": { id: "routes/employees/getByDeparment/$id", parentId: "root", path: "employees/getByDeparment/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/employees/getByDeparment/$id-BTD55P6L.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/example": { id: "routes/example", parentId: "root", path: "example", index: void 0, caseSensitive: void 0, module: "/build/routes/example-KIWW2AVD.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-TSDVGYHL.js", imports: ["/build/_shared/chunk-J3GNERB6.js", "/build/_shared/chunk-DJQ7DVF2.js", "/build/_shared/chunk-BNBGJ5QY.js", "/build/_shared/chunk-RVRN3YQ7.js", "/build/_shared/chunk-Y5RV5S54.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-CKXMB22W.js", imports: ["/build/_shared/chunk-J3GNERB6.js", "/build/_shared/chunk-RVRN3YQ7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-4LBXPPXN.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/$questionId": { id: "routes/questions/$questionId", parentId: "root", path: "questions/:questionId", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/$questionId-ESYGSGMK.js", imports: ["/build/_shared/chunk-SD6HPIQU.js", "/build/_shared/chunk-DJQ7DVF2.js", "/build/_shared/chunk-T276QUSN.js", "/build/_shared/chunk-Y5RV5S54.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/questions/new": { id: "routes/questions/new", parentId: "root", path: "questions/new", index: void 0, caseSensitive: void 0, module: "/build/routes/questions/new-ZNSYPZYX.js", imports: ["/build/_shared/chunk-BNBGJ5QY.js", "/build/_shared/chunk-RVRN3YQ7.js", "/build/_shared/chunk-T276QUSN.js", "/build/_shared/chunk-Y5RV5S54.js", "/build/_shared/chunk-ZPLY5QIU.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-AE9988DA.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public\\build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -24495,6 +25417,14 @@ var assetsBuildDirectory = "public\\build", publicPath = "/build/", entry = { mo
     index: void 0,
     caseSensitive: void 0,
     module: callback_exports
+  },
+  "routes/dashboard": {
+    id: "routes/dashboard",
+    parentId: "root",
+    path: "dashboard",
+    index: void 0,
+    caseSensitive: void 0,
+    module: dashboard_exports
   },
   "routes/contact": {
     id: "routes/contact",

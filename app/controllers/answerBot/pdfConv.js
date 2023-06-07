@@ -6,7 +6,10 @@ const pdfConv = async (conversation) => fetch('http://3.213.188.151:4000/api/pdf
   },
 })
   .then((response) => response.json())
-  .then((data) => ({ text: data[data.length - 1].content }))
+  .then((data) => ({
+    text: data.conversation[data.conversation.length - 1].content,
+    department: data.department,
+  }))
   .catch((error) => {
     throw new Error(`There was an error making the API call: ${error.message}`);
   });

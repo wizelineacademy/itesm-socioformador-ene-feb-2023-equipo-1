@@ -8,6 +8,36 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from tqdm.auto import tqdm
 
+keywords = {
+    'Founders': ['startup', 'entrepreneurship', 'incubator', 'funding'],
+    'Academy': ['education', 'curriculum', 'learning', 'teaching', 'training', 'certification'],
+    'Business Operations': ['process', 'improvement', 'efficiency', 'management', 'control'],
+    'Engineering': ['CAD', 'development', 'system', 'engineering'],
+    'Facilities': ['maintenance', 'building', 'efficiency', 'security', 'planning'],
+    'Finance & Accounting': ['financial', 'budgeting', 'forecasting', 'taxation'],
+    'Marketing': ['advertising', 'branding', 'content', 'market'],
+    'People Operations': ['recruitment', 'employee', 'onboarding', 'talent'],
+    'Product': ['product', 'innovation', 'prototyping', 'features'],
+    'Sales': ['prospecting', 'networking', 'closing', 'pipeline'],
+    'UX Design': ['wireframes', 'prototyping', 'interface', 'aesthetics'],
+    'IT & Security Engineering': ['cybersecurity', 'network', 'encryption', 'authentication'],
+    'CEO / Exec Staff': ['leadership', 'strategy', 'vision', 'growth'],
+    'Delivery': ['supply-chain', 'inventory', 'shipping', 'distribution'],
+    'Solutions': ['integration', 'customization', 'automation', 'optimization'],
+    'User Experience': ['usability', 'accessibility', 'interaction', 'persona'],
+    'Wizeline Questions Staff': ['feedback', 'satisfaction', 'performance', 'communication', 'test'],
+    'Legal': ['compliance', 'litigation', 'contracts', 'regulations'],
+}
+
+
+def find_department(query, keywords):
+    for department, kws in keywords.items():
+        for kw in kws:
+            if kw in query:
+                return department
+    return 'I don\'t know whom to assign it.'
+
+
 def preprocess(text):
     '''
     preprocess chunks
@@ -59,6 +89,7 @@ def text_to_chunks(texts, word_length=150, start_page=1):
 
 def generate_answer(conversation, model="gpt-3.5-turbo"):
     conversation.insert(0, pdf_context)
+    department = find_department(conversation[-1]["content"], keywords)
     completion = openai.ChatCompletion.create(
         model=model,
         messages=conversation,
@@ -68,7 +99,8 @@ def generate_answer(conversation, model="gpt-3.5-turbo"):
     return message
 
 def loadPDF(pdf_context, start_page=1):
-    texts = pdf_to_text("corpus.pdf", start_page=start_page)
+    absolute_path = os.path.dirname(_file_) + "/corpus.pdf"
+    texts = pdf_to_text(absolute_path, start_page=start_page)
     chunks = text_to_chunks(texts, start_page=start_page)
     pdf_context["content"] = "Context chunks: "
     for c in chunks:
@@ -86,6 +118,8 @@ application = Flask(__name__)
 
 pdf_context = {"role": "system", "content": ""}
 pdf_context = loadPDF(pdf_context)
+global department
+department = ""
 print("PDF Loaded...")
 
 @application.route('/api/pdf_conversation_gpt', methods=['POST'])
@@ -93,7 +127,8 @@ def submit_conversation():
     conversation = request.json
     conversation.append(generate_answer(conversation))
     print(conversation[-1]["content"])
-    return jsonify(conversation)
+    print(department)
+    return jsonify({'conversation': conversation, 'department': department})
 
 CORS(application)
 application.run(host='0.0.0.0',port=4000)

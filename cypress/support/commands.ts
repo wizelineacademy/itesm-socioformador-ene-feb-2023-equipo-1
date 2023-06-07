@@ -11,7 +11,20 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (email: string, password: string) => { 
+    cy.clearCookies();
+    // Landing Page
+    cy.visit('http://localhost:3000/', { failOnStatusCode: false });
+    // Login
+    cy.contains('Log in with your Wizeline account').click();
+    // Fill form and continue
+    cy.get('#username').type(email);
+    cy.get('#password').type(password).type('{enter}');
+    // Reload to correctly load the page
+    cy.reload();
+    // Close main window when login
+    cy.get('#btnAccept').click();
+ })
 //
 //
 // -- This is a child command --
