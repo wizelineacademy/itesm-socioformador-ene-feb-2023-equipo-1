@@ -14,7 +14,7 @@ export const createQuestionSchema = Joi.object().keys({
   created_by_employee_id: Joi.number().integer().min(1).allow(null),
   assigned_department: Joi.number().integer().min(1).allow(null),
   assigned_to_employee_id: Joi.number().integer().min(1).allow(null),
-  bot_enabled: Joi.boolean(),
+  botEnabled: Joi.boolean(),
 });
 
 export const modifyQuestionPinStatusParams = Joi.object().keys({

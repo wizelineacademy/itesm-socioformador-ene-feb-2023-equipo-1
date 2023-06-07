@@ -1,5 +1,6 @@
-import { DEFAULT_ERROR_MESSAGE } from 'app/utils/backend/constants';
+import { DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT } from 'app/utils/backend/constants';
 import { modifyFeedbackBotSchema } from 'app/utils/backend/validators/answerBot';
+import { POSITIVE_FEEDBACK_ANSWEBOT, NEGATIVE_FEEDBACK_ANSWEBOT } from 'app/utils/constants';
 import { db } from 'app/utils/db.server';
 
 const updateFeedback = async (body) => {
@@ -9,12 +10,10 @@ const updateFeedback = async (body) => {
   // Error and exception handling for validation.
   if (error) {
     return {
-      errors: [
-        {
-          message: DEFAULT_ERROR_MESSAGE,
-          detail: error,
-        },
-      ],
+      error: {
+        message: DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+        detail: error.message,
+      },
     };
   }
 
@@ -35,12 +34,10 @@ const updateFeedback = async (body) => {
   // Error and exception handling in case there is no record to update.
   if (!findFeed) {
     return {
-      errors: [
-        {
-          message: DEFAULT_ERROR_MESSAGE,
-          detail: 'The record to update the feedback does not exist.',
-        },
-      ],
+      error: {
+        message: DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+        detail: 'The record to update the feedback does not exist.',
+      },
     };
   }
 
@@ -56,7 +53,7 @@ const updateFeedback = async (body) => {
 
   // Returns a success message of the operation performed.
   return {
-    successMessage: 'The feedback to bot has been updated succesfully!',
+    successMessage: answerFeedback === 1 ? POSITIVE_FEEDBACK_ANSWEBOT : NEGATIVE_FEEDBACK_ANSWEBOT,
     feedback: updateFeed,
   };
 };

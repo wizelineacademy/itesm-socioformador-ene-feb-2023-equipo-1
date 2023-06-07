@@ -1,5 +1,6 @@
-import { DEFAULT_ERROR_MESSAGE } from 'app/utils/backend/constants';
+import { DEFAULT_ERROR_MESSAGE_POST_BOT } from 'app/utils/backend/constants';
 import { modifyBotPostQuestion } from 'app/utils/backend/validators/answerBot';
+import { POSTED_ANSWEBOT } from 'app/utils/constants';
 import { db } from 'app/utils/db.server';
 
 const updatePost = async (body) => {
@@ -9,12 +10,10 @@ const updatePost = async (body) => {
   // Error and exception handling for validation.
   if (error) {
     return {
-      errors: [
-        {
-          message: DEFAULT_ERROR_MESSAGE,
-          detail: error,
-        },
-      ],
+      error: {
+        message: DEFAULT_ERROR_MESSAGE_POST_BOT,
+        detail: error.message,
+      },
     };
   }
 
@@ -36,12 +35,10 @@ const updatePost = async (body) => {
   // Error and exception handling in case there is no record to update.
   if (!findQABot) {
     return {
-      errors: [
-        {
-          message: DEFAULT_ERROR_MESSAGE,
-          detail: 'The record to update the link between AnswerBot and Question does not exist.',
-        },
-      ],
+      error: {
+        message: DEFAULT_ERROR_MESSAGE_POST_BOT,
+        detail: 'The record to update the link between AnswerBot and Question does not exist.',
+      },
     };
   }
 
@@ -57,7 +54,7 @@ const updatePost = async (body) => {
 
   // Returns a success message of the operation performed.
   return {
-    successMessage: 'The question has been posted on the forum successfully!',
+    successMessage: POSTED_ANSWEBOT,
     detail: upToDate,
   };
 };
