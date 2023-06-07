@@ -10,6 +10,7 @@ import listQuestions from 'app/controllers/questions/list';
 import listDepartments from 'app/controllers/departments/list';
 import dateRangeConversion from 'app/utils/dateRangeConversion';
 import listAnswerBot from 'app/controllers/answerBot/list';
+import { StylesProvider } from 'app/styles-context';
 
 // Process and load the data.
 export const loader = async ({ request }) => {
@@ -164,7 +165,7 @@ function Dashboard() {
                           {question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
                         </Styled.Text>
                         {question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${question.id}`}> Bad </Styled.TextU>}
-                        {question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${question.id}`}> N/A </Styled.Text>}
+                        {question.answer_feedback === 0 && <Styled.TextB key={`feedbackAB-${question.id}`}> N/A </Styled.TextB>}
                         {question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${question.id}`}> Good </Styled.TextA>}
                       </tr>
                     ))}
@@ -211,14 +212,14 @@ function Dashboard() {
                         {formatDate(question.createdAt)}
                         {' '}
                       </Styled.Text>
-
+                     
                       {question.Answers.length > 0
                       || question.Comments.some((comment) => comment.approvedBy !== null)
-                        ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered by Community</Styled.TextA>
+                        ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>
                         : question.Answers.length > 0
                         || question.Comments.some((comment) => comment.CommentVote.length > 0
                           && comment.CommentVote.some((vote) => vote.value >= 10))
-                          ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>
+                          ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered by Community </Styled.TextA>
                           : <Styled.TextU key={`statusFAQ-${question.id}`}> Unanswered </Styled.TextU>}
                     </tr>
                   ))}

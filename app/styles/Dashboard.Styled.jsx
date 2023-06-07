@@ -158,10 +158,12 @@ export const TextA = styled.td`
  color: #83bb2b;
  font-weight: 400;
  letter-spacing: 1px;
+
 `;
 
+
 export const TextB = styled.td`
- color: #4766b6;
+ color: #DEC40B;
  font-weight: 400;
  letter-spacing: 1px;
 `;
