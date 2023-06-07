@@ -87,6 +87,7 @@ jobs:
             echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
             echo "*** Step: *** npm ci and build"
             npm ci # install
+            sudo npm install pm2 -g
             npm run build
 
             echo "*** Step: *** Start python service"
@@ -151,7 +152,7 @@ jobs:
         with:
           timeout: 60s
           command_timeout: 30m
-          envs: BASE_URL_PROD,PORT,DATABASE_URL_PROD,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
+          envs: BASE_URL,PORT,DATABASE_URL,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
           host: ${{ secrets.LIGHTSAIL_IP_PROD }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -175,10 +176,12 @@ jobs:
             echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
             echo "*** Step: *** npm ci and build"
             npm ci # install
+            sudo npm install pm2 -g
             npm run build
-            echo "*** Step: ** Cleanup"
-            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp
-          
-          #echo "*** Step: *** Start pm2 service"
-          #pm2 start ecosystem.config.js
-          #pm2 save
+
+            echo "*** Step: *** Start python service"
+            sudo systemctl restart answerbot.service
+            
+            echo "*** Step: *** Start pm2 service"
+            pm2 start pm2.config.js
+            pm2 save
