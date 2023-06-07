@@ -239,9 +239,9 @@ function Dashboard() {
                       && question.Comments.some((comment) => comment.CommentVote.length > 0
                       && comment.CommentVote.some((vote) => vote.value >= 10)))
                         && (
-                        <Styled.TextC key={`statusFAQ-${question.id}`}>
-                          <Styled.TextCBorder> Answered by Community </Styled.TextCBorder>
-                        </Styled.TextC>
+                        <Styled.TextB key={`statusFAQ-${question.id}`}>
+                          <Styled.TextBBorder> Answered by Community </Styled.TextBBorder>
+                        </Styled.TextB>
                         )}
 
                       {question.Answers.length <= 0

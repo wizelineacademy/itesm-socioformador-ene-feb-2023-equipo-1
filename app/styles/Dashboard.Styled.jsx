@@ -172,28 +172,12 @@ export const TextABorder = styled.span`
 `;
 
 export const TextB = styled.td`
- color: #4766b6;
- font-weight: 400;
- letter-spacing: 1px;
-`;
-
-export const TextBBorder = styled.span`
-  display: inline-block;
-  background-color: #D9E9F6;
-  border-radius: 5px;
-  padding-bottom: 2.5px;
-  padding-top: 2.5px;
-  padding-right: 10px;
-  padding-left: 10px;
-`;
-
-export const TextC = styled.td`
  color: #DE9A34;
  font-weight: 400;
  letter-spacing: 1px;
 `;
 
-export const TextCBorder = styled.span`
+export const TextBBorder = styled.span`
   display: inline-block;
   background-color: #FFEFD6;
   border-radius: 5px;
