@@ -12,7 +12,7 @@ import { sendEmail } from 'app/utils/backend/emails/emailHandler';
 
 const createQuestion = async (body) => {
   const { error, value } = createQuestionSchema.validate(body);
-  const { botEnabled } = value;
+  const { botEnabled, accessToken, ...rest } = value;
 
   if (error) {
     return {
@@ -24,8 +24,6 @@ const createQuestion = async (body) => {
       ],
     };
   }
-
-  const { accessToken, ...rest } = value;
 
   let created = await db.Questions.create({
     data: {
