@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { json } from '@remix-run/node';
 import { useSearchParams } from '@remix-run/react';
@@ -10,6 +11,7 @@ import listQuestions from 'app/controllers/questions/list';
 import listDepartments from 'app/controllers/departments/list';
 import dateRangeConversion from 'app/utils/dateRangeConversion';
 import listAnswerBot from 'app/controllers/answerBot/list';
+import { StylesProvider } from 'app/styles-context';
 
 // Process and load the data.
 export const loader = async ({ request }) => {

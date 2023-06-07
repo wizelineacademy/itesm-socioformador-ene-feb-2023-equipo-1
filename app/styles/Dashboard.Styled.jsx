@@ -159,6 +159,7 @@ export const TextA = styled.td`
  color: #83bb2b;
  font-weight: 400;
  letter-spacing: 1px;
+
 `;
 
 export const TextABorder = styled.span`

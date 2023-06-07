@@ -99,7 +99,8 @@ def generate_answer(conversation, model="gpt-3.5-turbo"):
     return message
 
 def loadPDF(pdf_context, start_page=1):
-    texts = pdf_to_text("corpus.pdf", start_page=start_page)
+    absolute_path = os.path.dirname(__file__) + "/corpus.pdf"
+    texts = pdf_to_text(absolute_path, start_page=start_page)
     chunks = text_to_chunks(texts, start_page=start_page)
     pdf_context["content"] = "Context chunks: "
     for c in chunks:
