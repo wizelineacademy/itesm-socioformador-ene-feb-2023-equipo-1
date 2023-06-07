@@ -10,7 +10,7 @@ import listQuestions from 'app/controllers/questions/list';
 import listDepartments from 'app/controllers/departments/list';
 import dateRangeConversion from 'app/utils/dateRangeConversion';
 import listAnswerBot from 'app/controllers/answerBot/list';
-import { StylesProvider } from 'app/styles-context';
+// import { StylesProvider } from 'app/styles-context';
 
 // Process and load the data.
 export const loader = async ({ request }) => {
@@ -212,7 +212,7 @@ function Dashboard() {
                         {formatDate(question.createdAt)}
                         {' '}
                       </Styled.Text>
-                     
+
                       {question.Answers.length > 0
                       || question.Comments.some((comment) => comment.approvedBy !== null)
                         ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>

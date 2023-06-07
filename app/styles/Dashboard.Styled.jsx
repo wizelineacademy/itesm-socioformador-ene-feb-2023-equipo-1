@@ -161,7 +161,6 @@ export const TextA = styled.td`
 
 `;
 
-
 export const TextB = styled.td`
  color: #DEC40B;
  font-weight: 400;
