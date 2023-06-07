@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { json } from '@remix-run/node';
 import * as Styled from 'app/styles/Dashboard.Styled.jsx';
@@ -19,7 +20,7 @@ export const loader = async ({ request }) => {
   const url = new URL(request.url);
 
   // Extract the "department" parameter from the URL.
-  const department = Number.parseInt(url.searchParams.get('department'),10);
+  const department = Number.parseInt(url.searchParams.get('department'), 10);
 
   // Gets the date range of the current month.
   const dateRange = dateRangeConversion('this_month');
@@ -210,7 +211,7 @@ function Dashboard() {
                         {formatDate(question.createdAt)}
                         {' '}
                       </Styled.Text>
-          
+
                       {question.Answers.length > 0
                       || question.Comments.some((comment) => comment.approvedBy !== null)
                         ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered by Community</Styled.TextA>
@@ -218,7 +219,7 @@ function Dashboard() {
                         || question.Comments.some((comment) => comment.CommentVote.length > 0
                           && comment.CommentVote.some((vote) => vote.value >= 10))
                           ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>
-                          :<Styled.TextU key={`statusFAQ-${question.id}`}> Unanswered </Styled.TextU>}
+                          : <Styled.TextU key={`statusFAQ-${question.id}`}> Unanswered </Styled.TextU>}
                     </tr>
                   ))}
                 </tbody>
