@@ -6,6 +6,7 @@ import * as Styled from 'app/styles/Admin.Styled';
 import AdminUsersTable from 'app/components/AdminUsersTable';
 import Notifications from 'app/components/Notifications';
 import UserSearchBar from 'app/components/UserSearchBar';
+import UploadButton from 'app/components/Atoms/UploadButton';
 import listUsers from 'app/controllers/users/list';
 import updateUser from 'app/controllers/users/update';
 import NotFound from 'app/routes/$';
@@ -68,6 +69,7 @@ function Admin() {
         totalPages={totalPages}
         size={size}
       />
+      <UploadButton />
     </div>
   );
 }

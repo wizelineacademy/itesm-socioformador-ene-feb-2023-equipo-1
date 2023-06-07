@@ -32,7 +32,7 @@ DBReader = DatabaseReader(
 )
 
 memory = ConversationBufferMemory(memory_key="chat_history") # Conversation history to make conversation memory possible
-llm=OpenAI(temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
+llm=OpenAI(model_name="text-davinci-002", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
 
 
 keywords = {
@@ -107,7 +107,7 @@ def initialize_index():
             query_engine = query_engine,
             name = "WizelineQuestions Repository", # Name of Tool
             # Description, dictates when the tool is used, the context.
-            description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company. Always use if the question starts with 'QUERY:'",
+            description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
             #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
             tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
         )
@@ -125,17 +125,36 @@ def initialize_index():
 # Helper function to upload a file and add it to the documents that feed the bot
 @app.route("/api/uploadFile", methods=["POST"])
 def upload_file():
-    global index
-    if 'file' not in request.files:
-        return "Please send a POST request with a file", 400
-        filepath = None
+    global index, agent_chain
+    files = request.files.to_dict()
     try:
-        uploaded_file = request.files["file"]
-        filename = secure_filename(uploaded_file.filename)
-        filepath = os.path.join('data', os.path.basename(filename))
-        uploaded_file.save(filepath)
-        updateIndex()
-        return "File uploaded!"
+        for key, file in files.items():
+            filename = secure_filename(file.filename)
+            filepath = os.path.join('data', os.path.basename(filename))
+            file.save(filepath)
+            document = SimpleDirectoryReader(input_files=[filepath]).load_data()[0]
+            index.insert(document)
+        query_engine = index.as_query_engine()
+        # Generate tool to feed Langchain agent
+        tool_config = IndexToolConfig(
+        query_engine = query_engine,
+        name = "WizelineQuestions Repository", # Name of Tool
+        # Description, dictates when the tool is used, the context.
+        description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
+        #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
+        tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
+        )
+        toolkit = LlamaToolkit(
+            index_configs=[tool_config],
+        )
+        # Generate agent
+        agent_chain = create_llama_chat_agent(
+            toolkit,
+            llm,
+            memory=memory,
+            verbose=True
+        )
+        return "Files uploaded!"
     except Exception as e:
         # cleanup temp file
         if filepath is not None and os.path.exists(filepath):
@@ -161,7 +180,7 @@ def updateAnswers():
         query_engine = query_engine,
         name = "WizelineQuestions Repository", # Name of Tool
         # Description, dictates when the tool is used, the context.
-        description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company. Always use if the question starts with 'QUERY:'",
+        description = "Always use it to answer any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
         #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
         tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
     )
@@ -175,7 +194,7 @@ def updateAnswers():
         memory=memory,
         verbose=True
     )
-    return "Done!"
+    return "Answer inserted into Bot Knowledge Base!"
     
 # Helper function to update the index once new information gets added
 @app.route('/api/updateIndex', methods=['GET'])
@@ -205,7 +224,7 @@ def submit_conversation():
     conversation = request.json
     userInput = conversation[-1]["content"]
     department = find_department(userInput, keywords)
-    #answer = agent_chain.run("'Query:' " + userInput + " 'WIZELINE'. Please try to give a complete answer that's not over 150 words at maximum.")
+    #answer = agent_chain.run("Please try to give a complete answer that's not over 150 words at maximum. Do not put 'Answer:' at the start of your answer, just start with the answer directly. \Remember that you are answering Wizeliners questions about the company, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. \nQuestion: " + userInput)
     answer = query_engine.query(userInput)
     answerStruct = {}
     answerStruct["content"] = answer.response
