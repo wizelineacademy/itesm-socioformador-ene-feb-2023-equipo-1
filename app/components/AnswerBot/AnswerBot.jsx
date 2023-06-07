@@ -1,6 +1,6 @@
 import * as Styled from 'app/components/AnswerBot/AnswerBot.Styled';
 import React, { useEffect, useRef, useState } from 'react';
-import pdfConv from 'app/controllers/answerBot/pdfConv';
+import {pdfConv} from 'app/controllers/answerBot/pdfConv';
 import PropTypes from 'prop-types';
 import useUser from 'app/utils/hooks/useUser';
 
@@ -13,7 +13,9 @@ function AnswerBot({
   /// ///////////// Send Question to AnswerBot ////////////////
 
   // Instrucciones (query principal)
-  const instructions = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
+  const instructions = " "
+  //Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
+  //Give all the information needed to fully understand the answer but keep the answer to the following question within 100 words and do not repeat yourself. You will be given the whole conversation in the format of a JSON, where the answers you give are done by the system role and the user questions are done by the user role, use the conversation context to be able to answer more aptly and keep conversation, only answer the last question when giving:"
 
   // The chat history in the chatbot.
   const [messages, setMessages] = useState([{ role: 'system', content: instructions }, { role: 'system', content: "Hello! Ask me any question and I'll see how I can help you." }]);
