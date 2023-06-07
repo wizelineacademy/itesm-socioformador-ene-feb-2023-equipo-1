@@ -17,6 +17,7 @@ module.exports = {
   MIN_NET_PROMOTER_SCORE: 1,
   MAX_NET_PROMOTER_SCORE: 4,
   DEFAULT_ERROR_MESSAGE: 'An unknown error has occurred with your request.',
+  DEFAULT_ERROR_MESSAGE_BOT: 'An unknown error has occurred with your request to bot.',
   DEFAULT_ERROR_MESSAGE_CREATE_BOT: 'An unknown error has occurred with your request to bot.',
   DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT: 'An unknown error has occurred while submitting feedback.',
   DEFAULT_ERROR_MESSAGE_POST_BOT: 'An unknown error has occurred while posting the question.',

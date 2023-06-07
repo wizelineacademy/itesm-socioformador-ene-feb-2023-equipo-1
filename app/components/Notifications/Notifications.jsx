@@ -8,7 +8,13 @@ import {
   NEGATIVE_FEEDBACK_ANSWEBOT,
   POSTED_ANSWEBOT,
 } from 'app/utils/constants';
-import { DEFAULT_ERROR_MESSAGE_BOT } from 'app/utils/backend/constants';
+import {
+  DEFAULT_ERROR_MESSAGE_BOT,
+  DEFAULT_ERROR_MESSAGE_CREATE_BOT,
+  DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+  DEFAULT_ERROR_MESSAGE_POST_BOT,
+
+} from 'app/utils/backend/constants';
 import useGlobalSuccessMessage from 'app/utils/hooks/useGlobalSuccessMessage';
 
 function Notifications() {
@@ -30,14 +36,20 @@ function Notifications() {
       error, errors, successMessage, warnings,
     } = data;
 
-    if (error && error !== DEFAULT_ERROR_MESSAGE_BOT) {
+    if (error
+      && error.message !== DEFAULT_ERROR_MESSAGE_CREATE_BOT
+      && error.message !== DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT
+      && error.message !== DEFAULT_ERROR_MESSAGE_POST_BOT
+    ) {
       toast.error(error.message, DEFAULT_TOAST_CONFIG);
     }
 
     if (errors && Array.isArray(errors)) {
       errors.forEach((_error) => {
-        // console.error(_error.detail);
-        toast.error(_error.message, DEFAULT_TOAST_CONFIG);
+        if (_error.message !== DEFAULT_ERROR_MESSAGE_BOT) {
+          // console.error(_error.detail);
+          toast.error(_error.message, DEFAULT_TOAST_CONFIG);
+        }
       });
     }
 

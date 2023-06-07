@@ -120,7 +120,7 @@ function Dashboard() {
                         <td>
                           <Styled.Button>
                             <Styled.ButtonText
-                              href={`http://localhost:3000/questions/${question.question_id}`}
+                              href={`/questions/${question.question_id}`}
                               key={question.id}
                               title={question.question}
                             >

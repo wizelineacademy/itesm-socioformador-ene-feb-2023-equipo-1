@@ -11,7 +11,7 @@ import {
   POSTED_ANSWEBOT,
 } from 'app/utils/constants';
 import {
-  DEFAULT_ERROR_MESSAGE_CREATE_BOT,
+  DEFAULT_ERROR_MESSAGE_BOT,
   DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
   DEFAULT_ERROR_MESSAGE_POST_BOT,
 } from 'app/utils/backend/constants';
@@ -75,7 +75,7 @@ function AnswerBot({
 
       // Create the payload.
       const newQuestion = {
-        question_by_user: 1,
+        question_by_user: message,
         answer_by_bot: answer,
         assignedDepartment: department?.department_id || 'wizeq',
       };
@@ -210,7 +210,7 @@ function AnswerBot({
           }, 2500);
 
           break;
-      
+
         // For negative feedback
         case NEGATIVE_FEEDBACK_ANSWEBOT:
           // Show thanks message.
@@ -252,22 +252,48 @@ function AnswerBot({
 
       setIndexMessage(null);
     }
+  }, [globalSuccess]);
 
+  useEffect(() => {
     if (!data) return;
 
-    const { error } = data;
+    const { error, errors } = data;
+
+    if (errors && Array.isArray(errors)) {
+      errors.forEach((_error) => {
+        if (_error.message === DEFAULT_ERROR_MESSAGE_BOT) {
+          // Show error message.
+          setShowThanksMessage((prevShowThanksMessage) => ({
+            ...prevShowThanksMessage,
+            [indexMessage]: DEFAULT_ERROR_MESSAGE_POST_BOT,
+          }));
+
+          // Set a time to fade the error message.
+          setTimeout(() => {
+            setShowThanksMessage((prevShowThanksMessage) => ({
+              ...prevShowThanksMessage,
+              [indexMessage]: 'Would you like to share your question with the community?',
+            }));
+          }, 3000);
+        }
+      });
+
+      setIndexMessage(null);
+
+      return;
+    }
 
     if (error) {
       switch (error.message) {
         // Error in feedback
         case DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT:
-          // Show thanks message.
+          // Show error message
           setShowThanksMessage((prevShowThanksMessage) => ({
             ...prevShowThanksMessage,
             [indexMessage]: DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
           }));
 
-          // Set a time to fade the gratitude message.
+          // Set a time to fade the error message
           setTimeout(() => {
             setShowThanksMessage((prevShowThanksMessage) => ({
               ...prevShowThanksMessage,
@@ -279,20 +305,19 @@ function AnswerBot({
 
         // Error in post
         case DEFAULT_ERROR_MESSAGE_POST_BOT:
-          // Show thanks message.
+          // Show error message
           setShowThanksMessage((prevShowThanksMessage) => ({
             ...prevShowThanksMessage,
             [indexMessage]: DEFAULT_ERROR_MESSAGE_POST_BOT,
           }));
 
-          // Set a time to fade the gratitude message.
+          // Set a time to fade the error message
           setTimeout(() => {
             setShowThanksMessage((prevShowThanksMessage) => ({
               ...prevShowThanksMessage,
-              [indexMessage]: 'Would you like to share your question with the community?',
+              [indexMessage]: 'na',
             }));
           }, 2500);
-
           break;
 
         default:
@@ -301,8 +326,7 @@ function AnswerBot({
 
       setIndexMessage(null);
     }
-
-  }, [data, globalSuccess]);
+  }, [data]);
 
   /// ///////////// Components ////////////////
 
