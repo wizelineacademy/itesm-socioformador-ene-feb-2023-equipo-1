@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { json } from '@remix-run/node';
+import { useSearchParams } from '@remix-run/react';
 import * as Styled from 'app/styles/Dashboard.Styled.jsx';
 import { requireAuth } from 'app/session.server';
 import AdminSideBar from 'app/components/AdminSideBar';
@@ -80,6 +81,8 @@ function Dashboard() {
   const {
     questionsFAQ, questionsOF, questionsBot, departments,
   } = useLoaderData();
+  
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // For the department selector.
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0].department_id);
@@ -87,8 +90,8 @@ function Dashboard() {
   // Change the current value of the department selector and send it to the loader.
   const handleSelectDepartment = (department) => {
     setSelectedDepartment(department);
-    const queryParams = new URLSearchParams({ department });
-    window.location.search = queryParams.toString();
+    searchParams.set('department', department);
+    setSearchParams(searchParams);
   };
 
   return (
@@ -118,15 +121,13 @@ function Dashboard() {
                             : question.question}
                         </Styled.Text>
                         <td>
-                          <Styled.Button>
-                            <Styled.ButtonText
-                              href={`/questions/${question.question_id}`}
-                              key={question.id}
-                              title={question.question}
-                            >
-                              Answer it →
-                            </Styled.ButtonText>
-                          </Styled.Button>
+                          <Styled.ButtonText
+                            href={`/questions/${question.question_id}`}
+                            key={question.id}
+                            title={question.question}
+                          >
+                            Answer it →
+                          </Styled.ButtonText>
                         </td>
                       </tr>
                     ))}
@@ -162,9 +163,24 @@ function Dashboard() {
                         >
                           {question.answer_by_bot.length > 50 ? `${question.answer_by_bot.substring(0, 50)}...` : question.answer_by_bot}
                         </Styled.Text>
-                        {question.answer_feedback === -1 && <Styled.TextU key={`feedbackAB-${question.id}`}> Bad </Styled.TextU>}
-                        {question.answer_feedback === 0 && <Styled.Text key={`feedbackAB-${question.id}`}> N/A </Styled.Text>}
-                        {question.answer_feedback === 1 && <Styled.TextA key={`feedbackAB-${question.id}`}> Good </Styled.TextA>}
+                        {question.answer_feedback === -1
+                        && (
+                        <Styled.TextU key={`feedbackAB-${question.id}`}>
+                          <Styled.TextUBorder> Bad </Styled.TextUBorder>
+                        </Styled.TextU>
+                        )}
+                        {question.answer_feedback === 0
+                        && (
+                        <Styled.TextB key={`feedbackAB-${question.id}`}>
+                          <Styled.TextBBorder> N/A </Styled.TextBBorder>
+                        </Styled.TextB>
+                        )}
+                        {question.answer_feedback === 1
+                        && (
+                        <Styled.TextA key={`feedbackAB-${question.id}`}>
+                          <Styled.TextABorder> Good </Styled.TextABorder>
+                        </Styled.TextA>
+                        )}
                       </tr>
                     ))}
                   </tbody>
@@ -210,12 +226,35 @@ function Dashboard() {
                         {formatDate(question.createdAt)}
                         {' '}
                       </Styled.Text>
-                      {question.Answers.length > 0
-                      || question.Comments.some((comment) => comment.approvedBy !== null)
-                      || question.Comments.some((comment) => comment.CommentVote.length > 0
-                        && comment.CommentVote.some((vote) => vote.value >= 10))
-                        ? <Styled.TextA key={`statusFAQ-${question.id}`}> Answered </Styled.TextA>
-                        : <Styled.TextU key={`statusFAQ-${question.id}`}> Unanswered </Styled.TextU>}
+                      {(question.Answers.length > 0
+                      || question.Comments.some((comment) => comment.approvedBy !== null))
+                        && (
+                        <Styled.TextA key={`statusFAQ-${question.id}`}>
+                          <Styled.TextABorder> Answered </Styled.TextABorder>
+                        </Styled.TextA>
+                        )}
+
+                      {(question.Answers.length <= 0
+                      && question.Comments.every((comment) => comment.approvedBy === null)
+                      && question.Comments.some((comment) => comment.CommentVote.length > 0
+                      && comment.CommentVote.some((vote) => vote.value >= 10)))
+                        && (
+                        <Styled.TextC key={`statusFAQ-${question.id}`}>
+                          <Styled.TextCBorder> Answered by Community </Styled.TextCBorder>
+                        </Styled.TextC>
+                        )}
+
+                      {question.Answers.length <= 0
+                      && (question.Comments.length === 0
+                      || (question.Comments.every((comment) => comment.approvedBy === null)
+                      && question.Comments.some((comment) => comment.CommentVote.length > 0
+                      && comment.CommentVote.every((vote) => vote.value < 10))))
+                        && (
+                        <Styled.TextU key={`statusFAQ-${question.id}`}>
+                          <Styled.TextUBorder> Unanswered </Styled.TextUBorder>
+                        </Styled.TextU>
+                        )}
+
                     </tr>
                   ))}
                 </tbody>

@@ -84,32 +84,23 @@ margin: 0;
 padding: 0;
 `;
 
-export const Button = styled.button`
+export const ButtonText = styled.a`
  background-color: #304966;
- border: none;
+ border: 1px solid #304966;
  color: white;
- padding: 0;
+ padding: 5px;
  text-align: center;
  text-decoration: none;
+ letter-spacing: 0.5px;
  display: inline-block;
  height: 30px;
  width: 100px;
- border-radius: 20px 20px 20px 20px;
+ border-radius: 20px;
  font-weight: 400;
 
  &:hover {
-  background-color: #213246;
- }
-`;
-
-export const ButtonText = styled.a`
- text-decoration: none;
- color: white;
- margin-top: 5px;
- letter-spacing: 0.5px;
- font-weight: 400;
- 
- &:hover {
+  background-color: #fff;
+  color: #304966;
   text-decoration: none;
  }
 `;
@@ -154,14 +145,60 @@ export const TextU = styled.td`
  letter-spacing: 1px;
 `;
 
+export const TextUBorder = styled.span`
+  display: inline-block;
+  background-color: #FFE6DE;
+  border-radius: 5px;
+  padding-bottom: 2.5px;
+  padding-top: 2.5px;
+  padding-right: 10px;
+  padding-left: 10px;
+`;
+
 export const TextA = styled.td`
  color: #83bb2b;
  font-weight: 400;
  letter-spacing: 1px;
 `;
 
+export const TextABorder = styled.span`
+  display: inline-block;
+  background-color: #F0F4E6;
+  border-radius: 5px;
+  padding-bottom: 2.5px;
+  padding-top: 2.5px;
+  padding-right: 10px;
+  padding-left: 10px;
+`;
+
 export const TextB = styled.td`
  color: #4766b6;
  font-weight: 400;
  letter-spacing: 1px;
+`;
+
+export const TextBBorder = styled.span`
+  display: inline-block;
+  background-color: #D9E9F6;
+  border-radius: 5px;
+  padding-bottom: 2.5px;
+  padding-top: 2.5px;
+  padding-right: 10px;
+  padding-left: 10px;
+`;
+
+export const TextC = styled.td`
+ color: #DE9A34;
+ font-weight: 400;
+ letter-spacing: 1px;
+`;
+
+export const TextCBorder = styled.span`
+  display: inline-block;
+  background-color: #FFEFD6;
+  border-radius: 5px;
+  padding-bottom: 2.5px;
+  padding-top: 2.5px;
+  padding-right: 10px;
+  padding-left: 10px;
 `;
