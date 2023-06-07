@@ -88,6 +88,14 @@ jobs:
             echo "*** Step: *** npm ci and build"
             npm ci # install
             npm run build
+
+            echo "*** Step: *** Start python service"
+            sudo systemctl restart answerbot.service
+            
+            echo "*** Step: *** Start pm2 service"
+            pm2 start pm2.config.js
+            pm2 save
+
             echo "*** Step: ** Cleanup"
             rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp
     
@@ -171,6 +179,6 @@ jobs:
             echo "*** Step: ** Cleanup"
             rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp
           
-            echo "*** Step: *** Start pm2 service"
-            pm2 start ecosystem.config.js
-            pm2 save
+          #echo "*** Step: *** Start pm2 service"
+          #pm2 start ecosystem.config.js
+          #pm2 save
