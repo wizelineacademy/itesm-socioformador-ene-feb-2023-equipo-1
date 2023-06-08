@@ -27,11 +27,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 #Database Connection
 DBReader = DatabaseReader(
     scheme = "mysql", # Database Scheme
-    host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+    host = os.getenv("DB_HOST"), # Database Host
     port = "3306", # Database Port
     user = "admin", # Database User
     password = "wizeq_password", # Database Password
-    dbname = "wizeqdb", # Database Name
+    dbname = os.getenv("DB_NAME"), # Database Name
 )
 
 memory = ConversationBufferMemory(memory_key="chat_history") # Conversation history to make conversation memory possible
@@ -102,7 +102,7 @@ def initialize_index():
         port = "3306", # Database Port
         user = "admin", # Database User
         password = "wizeq_password", # Database Password
-        dbname = "wizeqdb", # Database Name
+        dbname = os.getenv("DB_NAME"), # Database Name
 )
 
         documents = DBReader.load_data(query=query) # Add them to the documents
@@ -184,12 +184,12 @@ def updateAnswers():
     LIMIT 1;
     """
     DBReader = DatabaseReader(
-    scheme = "mysql", # Database Scheme
-    host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
-    port = "3306", # Database Port
-    user = "admin", # Database User
-    password = "wizeq_password", # Database Password
-    dbname = "wizeqdb", # Database Name
+        scheme = "mysql", # Database Scheme
+        host = os.getenv("DB_HOST"), # Database Host
+        port = "3306", # Database Port
+        user = "admin", # Database User
+        password = "wizeq_password", # Database Password
+        dbname = os.getenv("DB_NAME"), # Database Name
     )
     DBAnswer = DBReader.load_data(query=singlequery)[0] # Query the database and get the new question
     index.insert(DBAnswer)

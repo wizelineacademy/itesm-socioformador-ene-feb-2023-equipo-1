@@ -57,6 +57,7 @@ jobs:
           PUBLIC_IP: ${{ secrets.PUBLIC_IP }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
           SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
@@ -65,7 +66,7 @@ jobs:
         with:
           timeout: 60s
           command_timeout: 30m
-          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,DB_HOST,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
+          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,DB_HOST,DB_NAME,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
           host: ${{ secrets.LIGHTSAIL_IP }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -83,6 +84,7 @@ jobs:
             echo PORT="$PORT" >> .env
             echo DATABASE_URL="$DATABASE_URL" >> .env
             echo DB_HOST="$DB_HOST" >> .env
+            echo DB_NAME="$DB_NAME" >> .env
             echo SESSION_SECRET="$SESSION_SECRET" >> .env
             echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
             echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
@@ -159,6 +161,7 @@ jobs:
           PUBLIC_IP: ${{ secrets.PUBLIC_IP_PROD }}
           DATABASE_URL: ${{ secrets.DATABASE_URL_PROD }}
           DB_HOST: ${{ secrets.DB_HOST_PROD }}
+          DB_NAME: ${{ secrets.DB_NAME_PROD }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
           SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
@@ -167,7 +170,7 @@ jobs:
         with:
           timeout: 60s
           command_timeout: 30m
-          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,DB_HOST,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
+          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,DB_HOST,DB_NAME,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
           host: ${{ secrets.LIGHTSAIL_IP_PROD }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -185,6 +188,7 @@ jobs:
             echo PORT="$PORT" >> .env
             echo DATABASE_URL="$DATABASE_URL" >> .env
             echo DB_HOST="$DB_HOST" >> .env
+            echo DB_NAME="$DB_NAME" >> .env
             echo SESSION_SECRET="$SESSION_SECRET" >> .env
             echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
             echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
