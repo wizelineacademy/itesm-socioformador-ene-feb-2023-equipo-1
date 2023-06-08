@@ -80,7 +80,6 @@ jobs:
             echo "*** Step: *** Create .env file"
             echo BASE_URL="$BASE_URL" >> .env
             echo PORT="$PORT" >> .env
-            echo PUBLIC_IP="$PUBLIC_IP" >> .env
             echo DATABASE_URL="$DATABASE_URL" >> .env
             echo SESSION_SECRET="$SESSION_SECRET" >> .env
             echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
@@ -178,7 +177,6 @@ jobs:
             echo "*** Step: *** Create .env file"
             echo BASE_URL="$BASE_URL" >> .env
             echo PORT="$PORT" >> .env
-            echo PUBLIC_IP="$PUBLIC_IP" >> .env
             echo DATABASE_URL="$DATABASE_URL" >> .env
             echo SESSION_SECRET="$SESSION_SECRET" >> .env
             echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
