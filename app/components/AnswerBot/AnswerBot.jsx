@@ -1,6 +1,6 @@
 import * as Styled from 'app/components/AnswerBot/AnswerBot.Styled';
 import React, { useEffect, useRef, useState } from 'react';
-import pdfConv from 'app/controllers/answerBot/pdfConv';
+import { pdfConv } from 'app/controllers/answerBot/pdfConv';
 import PropTypes from 'prop-types';
 import useUser from 'app/utils/hooks/useUser';
 import {

@@ -1,12 +1,42 @@
 import os
-import re
-from pathlib import Path
-import fitz
 import openai
+import pickle
+import shutil
+from llama_index import SimpleDirectoryReader, GPTVectorStoreIndex, Document, ServiceContext, StorageContext, load_index_from_storage, download_loader, LLMPredictor
+from llama_index.langchain_helpers.agents import LlamaToolkit, create_llama_chat_agent, IndexToolConfig
+from langchain.chat_models import ChatOpenAI
+from langchain.chains.conversation.memory import ConversationBufferMemory
+from langchain.agents import initialize_agent
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from pathlib import Path
+from werkzeug.utils import secure_filename
+from flask import Flask, request, jsonify
 from flask_cors import CORS
-from tqdm.auto import tqdm
+from llama_index.readers.database import DatabaseReader
+
+
+app = Flask(__name__)
+CORS(app)
+
+# Get the OpenAI Key from the Env
+dotenv_path = Path('../.env')
+load_dotenv(dotenv_path=dotenv_path)
+os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+#Database Connection
+DBReader = DatabaseReader(
+    scheme = "mysql", # Database Scheme
+    host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+    port = "3306", # Database Port
+    user = "admin", # Database User
+    password = "wizeq_password", # Database Password
+    dbname = "wizeqdb", # Database Name
+)
+
+memory = ConversationBufferMemory(memory_key="chat_history") # Conversation history to make conversation memory possible
+llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
+
 
 keywords = {
     'Founders': ['startup', 'entrepreneurship', 'incubator', 'funding'],
@@ -37,98 +67,191 @@ def find_department(query, keywords):
                 return department
     return 'I don\'t know whom to assign it.'
 
+# Create a new global index, or load one from the pre-set path
+def initialize_index():
+    global stored_docs, index, agent_chain, query_engine
+    if os.path.exists('./storage'): # If index exists just load it.
+        service_context = ServiceContext.from_defaults(chunk_size_limit=256)
+        index = load_index_from_storage(StorageContext.from_defaults(persist_dir='./storage'), service_context=service_context)
+        query_engine = index.as_query_engine()
+        tool_config = IndexToolConfig(
+            query_engine = query_engine,
+            name = "WizelineQuestions Repository",
+            description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company. Always use if the question starts with 'QUERY:'",
+            tool_kwargs = {"return_direct": True}, #"return_sources": True Adding this returns sources, may expand on this
+        )
+        toolkit = LlamaToolkit(
+            index_configs=[tool_config],
+        )
+        agent_chain = create_llama_chat_agent(
+            toolkit,
+            llm,
+            memory=memory,
+            verbose=True
+        )
+        print("Index Loaded!")
+    else: # Create the index from scratch.
+        # Query the database for all answers
+        query = f"""
+        SELECT a.answer_text
+        FROM Answers AS a
+        """
+        DBReader = DatabaseReader(
+        scheme = "mysql", # Database Scheme
+        host = os.getenv("DB_HOST"), # Database Host
+        port = "3306", # Database Port
+        user = "admin", # Database User
+        password = "wizeq_password", # Database Password
+        dbname = "wizeqdb", # Database Name
+)
 
-def preprocess(text):
-    '''
-    preprocess chunks
-    1. Replace new line character with whitespace.
-    2. Replace redundant whitespace with a single whitespace
-    '''
-    text = text.replace('\n', ' ')
-    text = re.sub('\s+', ' ', text)
-    return text
+        documents = DBReader.load_data(query=query) # Add them to the documents
 
-def pdf_to_text(path, start_page=1, end_page=None):
-    '''
-    convert PDF document to text
-    '''
-    doc = fitz.open(path)
-    total_pages = doc.page_count
+        documents += SimpleDirectoryReader('data').load_data() # Load all files in the "data" folder into the documents
+        index = GPTVectorStoreIndex.from_documents(documents) # Generate the index
+        index.set_index_id("vector_index")
+        index.storage_context.persist('./storage') # Store the index for faster loading in future starts of the server
 
-    if end_page is None:
-        end_page = total_pages
+        query_engine = index.as_query_engine()
+        # Generate tool to feed Langchain agent
+        tool_config = IndexToolConfig(
+            query_engine = query_engine,
+            name = "WizelineQuestions Repository", # Name of Tool
+            # Description, dictates when the tool is used, the context.
+            description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
+            #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
+            tool_kwargs = {"return_direct": True}, #"return_sources": True Adding this returns sources, may expand on this
+        )
+        toolkit = LlamaToolkit(
+            index_configs=[tool_config],
+        )
+        # Generate agent
+        agent_chain = create_llama_chat_agent(
+            toolkit,
+            llm,
+            memory=memory,
+            verbose=True
+        )
 
-    text_list = []
+# Helper function to upload a file and add it to the documents that feed the bot
+@app.route("/api/uploadFile", methods=["POST"])
+def upload_file():
+    global index, agent_chain
+    files = request.files.to_dict()
+    try:
+        for key, file in files.items():
+            filename = secure_filename(file.filename)
+            filepath = os.path.join('data', os.path.basename(filename))
+            file.save(filepath)
+            document = SimpleDirectoryReader(input_files=[filepath]).load_data()[0]
+            index.insert(document)
+        query_engine = index.as_query_engine()
+        # Generate tool to feed Langchain agent
+        tool_config = IndexToolConfig(
+        query_engine = query_engine,
+        name = "WizelineQuestions Repository", # Name of Tool
+        # Description, dictates when the tool is used, the context.
+        description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
+        #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
+        tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
+        )
+        toolkit = LlamaToolkit(
+            index_configs=[tool_config],
+        )
+        # Generate agent
+        agent_chain = create_llama_chat_agent(
+            toolkit,
+            llm,
+            memory=memory,
+            verbose=True
+        )
+        return "Files uploaded!"
+    except Exception as e:
+        # cleanup temp file
+        if filepath is not None and os.path.exists(filepath):
+            os.remove(filepath)
+        return "Error: {}".format(str(e)), 500
 
-    for i in tqdm(range(start_page-1, end_page)):
-        text = doc.load_page(i).get_text("text")
-        text = preprocess(text)
-        text_list.append(text)
-
-    doc.close()
-    return text_list
-
-def text_to_chunks(texts, word_length=150, start_page=1):
-    '''
-    convert list of texts to smaller chunks of length `word_length`
-    '''
-    text_toks = [t.split(' ') for t in texts]
-    chunks = []
-
-    for idx, words in enumerate(text_toks):
-        for i in range(0, len(words), word_length):
-            chunk = words[i:i+word_length]
-            if (i+word_length) > len(words) and (len(chunk) < word_length) and (
-                    len(text_toks) != (idx+1)):
-                text_toks[idx+1] = chunk + text_toks[idx+1]
-                continue
-            chunk = ' '.join(chunk).strip()
-            chunk = f'[{idx+start_page}]' + ' ' + '"' + chunk + '"'
-            chunks.append(chunk)
-    return chunks
-
-def generate_answer(conversation, model="gpt-3.5-turbo"):
-    conversation.insert(0, pdf_context)
-    department = find_department(conversation[-1]["content"], keywords)
-    completion = openai.ChatCompletion.create(
-        model=model,
-        messages=conversation,
-        temperature=0.2
+# Helper function to update the index once a question gets answered
+@app.route('/api/updateAnswers', methods=['GET'])
+def updateAnswers():
+    global agent_chain
+    # Get latest stored answer in the DB, as it should be the one just created.
+    singlequery = f""" 
+    SELECT answer_text
+    FROM Answers
+    ORDER BY createdAt DESC
+    LIMIT 1;
+    """
+    DBReader = DatabaseReader(
+    scheme = "mysql", # Database Scheme
+    host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+    port = "3306", # Database Port
+    user = "admin", # Database User
+    password = "wizeq_password", # Database Password
+    dbname = "wizeqdb", # Database Name
     )
-    message = completion.choices[0].message
-    return message
+    DBAnswer = DBReader.load_data(query=singlequery)[0] # Query the database and get the new question
+    index.insert(DBAnswer)
+    query_engine = index.as_query_engine()
+    # Generate tool to feed Langchain agent
+    tool_config = IndexToolConfig(
+        query_engine = query_engine,
+        name = "WizelineQuestions Repository", # Name of Tool
+        # Description, dictates when the tool is used, the context.
+        description = "Always use it to answer any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
+        #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
+        tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
+    )
+    toolkit = LlamaToolkit(
+        index_configs=[tool_config],
+    )
+    # Generate agent
+    agent_chain = create_llama_chat_agent(
+        toolkit,
+        llm,
+        memory=memory,
+        verbose=True
+    )
+    return "Answer inserted into Bot Knowledge Base!"
+    
+# Helper function to update the index once new information gets added
+@app.route('/api/updateIndex', methods=['GET'])
+def updateIndex():
+    if os.path.exists('./storage'):
+        shutil.rmtree('./storage')
+        initialize_index()
+        return "Updated the Index"
+    else:
+        initialize_index()
+        return "Created Index"
 
-def loadPDF(pdf_context, start_page=1):
-    absolute_path = os.path.dirname(__file__) + "/corpus.pdf"
-    texts = pdf_to_text(absolute_path, start_page=start_page)
-    chunks = text_to_chunks(texts, start_page=start_page)
-    pdf_context["content"] = "Context chunks: "
-    for c in chunks:
-        pdf_context["content"] += c
-    return pdf_context
+# Helper function to delete documents from the repository that the bots feeds itself from.    
+@app.route('/api/deleteDoc/<filename>', methods=['DELETE'])
+def deleteDoc(filename):
+    filepath = os.path.join('data', os.path.basename(filename))
+    os.remove(filepath)
+    if os.path.exists(filepath):
+        return "File does not exist"
+    else:
+        return "Deleted succesfully"	
 
-# ========================================= MAIN =========================================
-
-dotenv_path = Path('../.env')
-load_dotenv(dotenv_path=dotenv_path)
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-application = Flask(__name__)
-
-pdf_context = {"role": "system", "content": ""}
-pdf_context = loadPDF(pdf_context)
-global department
-department = ""
-print("PDF Loaded...")
-
-@application.route('/api/pdf_conversation_gpt', methods=['POST'])
+# Main function to answer queries, gets a JSON of the whole conversation, deconstructs it to build the answer and return it.
+@app.route('/api/pdf_conversation_gpt', methods=['POST'])
 def submit_conversation():
+    global index
     conversation = request.json
-    conversation.append(generate_answer(conversation))
-    print(conversation[-1]["content"])
-    print(department)
+    userInput = conversation[-1]["content"]
+    department = find_department(userInput, keywords)
+    answer = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
+    #answer = query_engine.query(userInput)
+    answerStruct = {}
+    answerStruct["content"] = answer
+    answerStruct["role"] = "assistant"
+    conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
 
-CORS(application)
-application.run(host='0.0.0.0',port=4000)
+CORS(app)
+if __name__ == '__main__':
+    initialize_index()
+    app.run(host='0.0.0.0',port=4000)
