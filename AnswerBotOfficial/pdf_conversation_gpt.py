@@ -3,7 +3,7 @@ import pickle
 import shutil
 from llama_index import SimpleDirectoryReader, GPTVectorStoreIndex, Document, ServiceContext, StorageContext, load_index_from_storage, download_loader, LLMPredictor
 from llama_index.langchain_helpers.agents import LlamaToolkit, create_llama_chat_agent, IndexToolConfig
-from langchain import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.chains.conversation.memory import ConversationBufferMemory
 from langchain.agents import initialize_agent
 from dotenv import load_dotenv
@@ -16,6 +16,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+# Get the OpenAI Key from the Env
 dotenv_path = Path('../.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
@@ -32,7 +33,7 @@ DBReader = DatabaseReader(
 )
 
 memory = ConversationBufferMemory(memory_key="chat_history") # Conversation history to make conversation memory possible
-llm=OpenAI(model_name="text-davinci-002", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
+llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
 
 
 keywords = {
@@ -67,15 +68,14 @@ def find_department(query, keywords):
 # Create a new global index, or load one from the pre-set path
 def initialize_index():
     global stored_docs, index, agent_chain, query_engine
-    if os.path.exists('./storage'):
-        service_context = ServiceContext.from_defaults(chunk_size_limit=512)
+    if os.path.exists('./storage'): # If index exists just load it.
+        service_context = ServiceContext.from_defaults(chunk_size_limit=256)
         index = load_index_from_storage(StorageContext.from_defaults(persist_dir='./storage'), service_context=service_context)
         query_engine = index.as_query_engine()
         tool_config = IndexToolConfig(
             query_engine = query_engine,
             name = "WizelineQuestions Repository",
             description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company. Always use if the question starts with 'QUERY:'",
-            #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
             tool_kwargs = {"return_direct": True}, #"return_sources": True Adding this returns sources, may expand on this
         )
         toolkit = LlamaToolkit(
@@ -88,12 +88,21 @@ def initialize_index():
             verbose=True
         )
         print("Index Loaded!")
-    else:
+    else: # Create the index from scratch.
         # Query the database for all answers
         query = f"""
         SELECT a.answer_text
         FROM Answers AS a
         """
+        DBReader = DatabaseReader(
+        scheme = "mysql", # Database Scheme
+        host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+        port = "3306", # Database Port
+        user = "admin", # Database User
+        password = "wizeq_password", # Database Password
+        dbname = "wizeqdb", # Database Name
+)
+
         documents = DBReader.load_data(query=query) # Add them to the documents
 
         documents += SimpleDirectoryReader('data').load_data() # Load all files in the "data" folder into the documents
@@ -109,7 +118,7 @@ def initialize_index():
             # Description, dictates when the tool is used, the context.
             description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
             #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
-            tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
+            tool_kwargs = {"return_direct": True}, #"return_sources": True Adding this returns sources, may expand on this
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -172,6 +181,14 @@ def updateAnswers():
     ORDER BY createdAt DESC
     LIMIT 1;
     """
+    DBReader = DatabaseReader(
+    scheme = "mysql", # Database Scheme
+    host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+    port = "3306", # Database Port
+    user = "admin", # Database User
+    password = "wizeq_password", # Database Password
+    dbname = "wizeqdb", # Database Name
+    )
     DBAnswer = DBReader.load_data(query=singlequery)[0] # Query the database and get the new question
     index.insert(DBAnswer)
     query_engine = index.as_query_engine()
@@ -224,10 +241,10 @@ def submit_conversation():
     conversation = request.json
     userInput = conversation[-1]["content"]
     department = find_department(userInput, keywords)
-    #answer = agent_chain.run("Please try to give a complete answer that's not over 150 words at maximum. Do not put 'Answer:' at the start of your answer, just start with the answer directly. \Remember that you are answering Wizeliners questions about the company, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. \nQuestion: " + userInput)
-    answer = query_engine.query(userInput)
+    answer = agent_chain.run("Please try to give a complete answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
+    #answer = query_engine.query(userInput)
     answerStruct = {}
-    answerStruct["content"] = answer.response
+    answerStruct["content"] = answer
     answerStruct["role"] = "assistant"
     conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
