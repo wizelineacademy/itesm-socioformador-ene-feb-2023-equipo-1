@@ -87,6 +87,12 @@ jobs:
             echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
             echo AUTH0_CLIENT_SECRET="$AUTH0_CLIENT_SECRET" >> .env
             echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
+
+            echo "*** Step: *** insert public IP js file"
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/app/AnswerBotOfficial
+            echo "$PUBLIC_IP" >> pythonURL.js
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+            
             echo "*** Step: *** npm ci and build"
             npm ci # install
             sudo npm install pm2 -g
@@ -178,6 +184,12 @@ jobs:
             echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
             echo AUTH0_CLIENT_SECRET="$AUTH0_CLIENT_SECRET" >> .env
             echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
+
+            echo "*** Step: *** insert public IP js file"
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/app/AnswerBotOfficial
+            echo "$PUBLIC_IP" >> pythonURL.js
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+
             echo "*** Step: *** npm ci and build"
             npm ci # install
             sudo npm install pm2 -g
