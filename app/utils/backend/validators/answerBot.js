@@ -50,7 +50,7 @@ export const modifyFeedbackBotSchema = Joi.object().keys({
 export const modifyBotPostQuestion = Joi.object().keys({
   postQuestionID: Joi.number().integer()
     .min(1)
-    .allow(null),
+    .required(),
   question_by_user: Joi.string()
     .min(MINIMUM_QUESTION_LENGTH)
     .max(MAXIMUM_QUESTION_LENGTH)

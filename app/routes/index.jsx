@@ -156,7 +156,7 @@ export const action = async ({ request }) => {
         is_anonymous: false,
         assigned_department: Number.isNaN(parsedDepartment) ? null : parsedDepartment,
         assigned_to_employee_id: null,
-        bot_enabled: true,
+        botEnabled: true,
         location: DEFAULT_LOCATION,
         accessToken: user.accessToken,
       };

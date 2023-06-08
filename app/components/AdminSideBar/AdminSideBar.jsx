@@ -15,6 +15,7 @@ function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
               aria-current={item.current ? 'page' : undefined}
               onClick={() => handleSelectDepartment(item.department_id)}
               selected={item.department_id === selectedDepartment}
+              className={item.department_id === selectedDepartment ? 'selected' : ''}
             >
               {item.name}
             </Styled.DepSelect>
@@ -35,7 +36,7 @@ SideBar.propTypes = {
 
 SideBar.defaultProps = {
   departments: [],
-  selectedDepartment: 0,
+  selectedDepartment: undefined,
 };
 
 export default SideBar;

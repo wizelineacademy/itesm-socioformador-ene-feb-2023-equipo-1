@@ -52,6 +52,7 @@ export const DepSelect = styled.li`
  letter-spacing: 1px;
  word-break: break-all;
 
+ &.selected,
  &:hover {
   background-color: #213246; /* Gray-700 */
   color: white;

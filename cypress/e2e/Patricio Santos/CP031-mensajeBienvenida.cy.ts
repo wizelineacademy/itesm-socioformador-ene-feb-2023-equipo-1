@@ -1,4 +1,4 @@
-import { WELCOME_MESSAGE } from '../../app/utils/constants'
+import { WELCOME_MESSAGE } from '../../../app/utils/constants'
 
 describe('CP031 - Ver el mensaje de bienvenida del AnswerBot en la página de questions/new', () => {
   it('Abrir chat', () => {

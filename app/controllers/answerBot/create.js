@@ -1,5 +1,6 @@
-import { DEFAULT_ERROR_MESSAGE } from 'app/utils/backend/constants';
+import { DEFAULT_ERROR_MESSAGE_CREATE_BOT } from 'app/utils/backend/constants';
 import { createBotSchema } from 'app/utils/backend/validators/answerBot';
+import { CREATED_ANSWEBOT } from 'app/utils/constants';
 import { db } from 'app/utils/db.server';
 
 const createAnswerByBot = async (body) => {
@@ -9,12 +10,10 @@ const createAnswerByBot = async (body) => {
   // Error and exception handling for validation.
   if (error) {
     return {
-      errors: [
-        {
-          message: DEFAULT_ERROR_MESSAGE,
-          detail: error,
-        },
-      ],
+      error: {
+        message: DEFAULT_ERROR_MESSAGE_CREATE_BOT,
+        detail: error.message,
+      },
     };
   }
 
@@ -30,7 +29,7 @@ const createAnswerByBot = async (body) => {
 
   // Returns a success message of the operation performed.
   return {
-    successMessage: 'The question to bot has been created succesfully!',
+    successMessage: CREATED_ANSWEBOT,
     question: created,
   };
 };

@@ -1,4 +1,4 @@
-import { DEFAULT_ERROR_MESSAGE } from 'app/utils/backend/constants';
+import { DEFAULT_ERROR_MESSAGE, DEFAULT_ERROR_MESSAGE_BOT } from 'app/utils/backend/constants';
 import generateSessionIdHash from 'app/utils/backend/crypto';
 import slack from 'app/utils/backend/slackNotifications';
 import { stripNewLines, truncate } from 'app/utils/backend/stringUtils';
@@ -12,23 +12,24 @@ import { sendEmail } from 'app/utils/backend/emails/emailHandler';
 
 const createQuestion = async (body) => {
   const { error, value } = createQuestionSchema.validate(body);
+  const { botEnabled, accessToken, ...rest } = value;
+
   if (error) {
     return {
       errors: [
         {
-          message: DEFAULT_ERROR_MESSAGE,
+          message: botEnabled ? DEFAULT_ERROR_MESSAGE_BOT : DEFAULT_ERROR_MESSAGE,
           detail: error,
         },
       ],
     };
   }
 
-  const { accessToken, ...rest } = value;
-
   let created = await db.Questions.create({
     data: {
       ...rest,
       question: sanitizeHTML(value.question),
+      bot_enabled: botEnabled,
     },
   });
 

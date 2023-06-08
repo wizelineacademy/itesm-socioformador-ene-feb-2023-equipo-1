@@ -1,7 +1,20 @@
 import { useActionData } from '@remix-run/react';
 import React, { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { DEFAULT_TOAST_CONFIG } from 'app/utils/constants';
+import {
+  DEFAULT_TOAST_CONFIG,
+  CREATED_ANSWEBOT,
+  POSITIVE_FEEDBACK_ANSWEBOT,
+  NEGATIVE_FEEDBACK_ANSWEBOT,
+  POSTED_ANSWEBOT,
+} from 'app/utils/constants';
+import {
+  DEFAULT_ERROR_MESSAGE_BOT,
+  DEFAULT_ERROR_MESSAGE_CREATE_BOT,
+  DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT,
+  DEFAULT_ERROR_MESSAGE_POST_BOT,
+
+} from 'app/utils/backend/constants';
 import useGlobalSuccessMessage from 'app/utils/hooks/useGlobalSuccessMessage';
 
 function Notifications() {
@@ -9,7 +22,12 @@ function Notifications() {
   const data = useActionData();
 
   useEffect(() => {
-    if (globalSuccess) {
+    if (globalSuccess
+      && globalSuccess !== CREATED_ANSWEBOT
+      && globalSuccess !== POSITIVE_FEEDBACK_ANSWEBOT
+      && globalSuccess !== NEGATIVE_FEEDBACK_ANSWEBOT
+      && globalSuccess !== POSTED_ANSWEBOT
+    ) {
       toast.success(globalSuccess, DEFAULT_TOAST_CONFIG);
     }
     if (!data) return;
@@ -18,15 +36,20 @@ function Notifications() {
       error, errors, successMessage, warnings,
     } = data;
 
-    if (error) {
-      // console.error(error.detail);
+    if (error
+      && error.message !== DEFAULT_ERROR_MESSAGE_CREATE_BOT
+      && error.message !== DEFAULT_ERROR_MESSAGE_FEEDBACK_BOT
+      && error.message !== DEFAULT_ERROR_MESSAGE_POST_BOT
+    ) {
       toast.error(error.message, DEFAULT_TOAST_CONFIG);
     }
 
     if (errors && Array.isArray(errors)) {
       errors.forEach((_error) => {
-        // console.error(_error.detail);
-        toast.error(_error.message, DEFAULT_TOAST_CONFIG);
+        if (_error.message !== DEFAULT_ERROR_MESSAGE_BOT) {
+          // console.error(_error.detail);
+          toast.error(_error.message, DEFAULT_TOAST_CONFIG);
+        }
       });
     }
 
