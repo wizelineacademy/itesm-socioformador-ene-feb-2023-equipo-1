@@ -89,7 +89,7 @@ jobs:
             echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
 
             echo "*** Step: *** insert public IP js file"
-            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/AnswerBotOfficial
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/app/controllers/answerBot
             echo "$PUBLIC_IP" >> pythonURL.js
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
 
@@ -186,7 +186,7 @@ jobs:
             echo OPENAI_API_KEY="$OPENAI_API_KEY" >> .env
 
             echo "*** Step: *** insert public IP js file"
-            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/AnswerBotOfficial
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/app/controllers/answerBot
             echo "$PUBLIC_IP" >> pythonURL.js
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
 
