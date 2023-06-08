@@ -2,7 +2,7 @@ import { FLASK_ENDPOINT } from './pythonUrl';
 
 const endpoint = `http://${FLASK_ENDPOINT}:4000/api/pdf_conversation_gpt`;
 
-const pdfConv = async (conversation) => fetch(endpoint, {
+export const pdfConv = async (conversation) => fetch(endpoint, {
   method: 'POST',
   body: JSON.stringify(conversation),
   headers: {
@@ -18,24 +18,15 @@ const pdfConv = async (conversation) => fetch(endpoint, {
     throw new Error(`There was an error making the API call: ${error.message}`);
   });
 
-export const updateAnswers = async (questionID) => fetch('http://127.0.0.1:3000/api/updateAnswers')
-.catch((error) => {
-  throw new Error(`There was an error making the API call: ${error.message}`);
-});
+export const updateAnswers = async () => fetch(`http://${FLASK_ENDPOINT}:4000/api/updateAnswers`)
+  .catch((error) => {
+    throw new Error(`There was an error making the API call: ${error.message}`);
+  });
 
-export const uploadFiles = async (formData) => fetch('http://127.0.0.1:3000/api/uploadFile', {
+export const uploadFiles = async (formData) => fetch(`http://${FLASK_ENDPOINT}:4000/api/uploadFile`, {
   method: 'POST',
-  body: formData
+  body: formData,
 })
-.then(response => {
-  if (response.ok) {
-    // File upload successful
-    console.log('Files uploaded successfully');
-  } else {
-    // File upload failed
-    console.error('File upload failed');
-  }
-})
-.catch((error) => {
-  throw new Error(`There was an error making the API call: ${error.message}`);
-});
+  .catch((error) => {
+    throw new Error(`There was an error making the API call: ${error.message}`);
+  });

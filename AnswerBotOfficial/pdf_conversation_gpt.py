@@ -1,4 +1,5 @@
 import os
+import openai
 import pickle
 import shutil
 from llama_index import SimpleDirectoryReader, GPTVectorStoreIndex, Document, ServiceContext, StorageContext, load_index_from_storage, download_loader, LLMPredictor
@@ -20,6 +21,7 @@ CORS(app)
 dotenv_path = Path('../.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 #Database Connection
 DatabaseReader = download_loader('DatabaseReader')
@@ -241,7 +243,7 @@ def submit_conversation():
     conversation = request.json
     userInput = conversation[-1]["content"]
     department = find_department(userInput, keywords)
-    answer = agent_chain.run("Please try to give a complete answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
+    answer = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
     #answer = query_engine.query(userInput)
     answerStruct = {}
     answerStruct["content"] = answer
@@ -249,7 +251,7 @@ def submit_conversation():
     conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
 
-CORS(app, origins='http://localhost:3000')
+CORS(app)
 if __name__ == '__main__':
     initialize_index()
-    app.run(port=3000,debug=True)
+    app.run(host='0.0.0.0',port=4000)

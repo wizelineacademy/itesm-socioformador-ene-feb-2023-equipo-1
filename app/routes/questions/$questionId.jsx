@@ -33,7 +33,7 @@ import assignQuestion from 'app/controllers/questions/assignQuestion';
 import listDepartments from 'app/controllers/departments/list';
 import deleteNPS from 'app/controllers/answers/nps/delete';
 import modifyEnabledValue from 'app/controllers/questions/modifyEnableStatus';
-import {updateAnswers} from 'app/controllers/answerBot/pdfConv.js'; // Update the Bots database with a recently created answer
+import { updateAnswers } from 'app/controllers/answerBot/pdfConv.js'; // Update the Bots database with a recently created answer
 
 const replacer = (key, value) => (typeof value === 'bigint' ? value.toString() : value);
 
@@ -117,7 +117,7 @@ export const action = async ({ request }) => {
         answer_text: formData.get('answer'),
       };
       response = await createAnswer(createAnswerBody);
-      updateAnswers() // Called as soon as the answer is properly registered in the DB.
+      updateAnswers(); // Called as soon as the answer is properly registered in the DB.
       break;
     case ACTIONS.UPDATE_QUESTION_ANSWER:
       const updateAnswerBody = {

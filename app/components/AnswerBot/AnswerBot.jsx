@@ -1,6 +1,6 @@
 import * as Styled from 'app/components/AnswerBot/AnswerBot.Styled';
 import React, { useEffect, useRef, useState } from 'react';
-import {pdfConv} from 'app/controllers/answerBot/pdfConv';
+import { pdfConv } from 'app/controllers/answerBot/pdfConv';
 import PropTypes from 'prop-types';
 import useUser from 'app/utils/hooks/useUser';
 import {
@@ -62,7 +62,6 @@ function AnswerBot({
       // Except the welcome message.
       const filteredMessages = chatHistory.filter((mess, index) => index !== 1);
       const response = await pdfConv(filteredMessages);
-      console.log(response)
 
       // Extract answer from bot response.
       const answer = response.text;
