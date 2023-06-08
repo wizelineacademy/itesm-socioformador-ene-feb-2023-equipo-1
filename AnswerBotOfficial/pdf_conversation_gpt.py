@@ -12,6 +12,7 @@ from pathlib import Path
 from werkzeug.utils import secure_filename
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from llama_index.readers.database import DatabaseReader
 
 
 app = Flask(__name__)
@@ -24,7 +25,6 @@ os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 #Database Connection
-DatabaseReader = download_loader('DatabaseReader')
 DBReader = DatabaseReader(
     scheme = "mysql", # Database Scheme
     host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
