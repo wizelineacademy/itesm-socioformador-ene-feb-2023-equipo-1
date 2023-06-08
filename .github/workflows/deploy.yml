@@ -90,6 +90,7 @@ jobs:
 
             echo "*** Step: *** insert public IP js file"
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/app/controllers/answerBot
+            rm pythonUrl.js
             echo "$PUBLIC_IP" >> pythonUrl.js
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
 
@@ -187,6 +188,7 @@ jobs:
 
             echo "*** Step: *** insert public IP js file"
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/app/controllers/answerBot
+            rm pythonUrl.js
             echo "$PUBLIC_IP" >> pythonUrl.js
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
 
