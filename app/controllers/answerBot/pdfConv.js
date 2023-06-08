@@ -1,4 +1,8 @@
-export const pdfConv = async (conversation) => fetch('http://127.0.0.1:3000/api/pdf_conversation_gpt', {
+import { FLASK_ENDPOINT } from './pythonUrl';
+
+const endpoint = `http://${FLASK_ENDPOINT}:4000/api/pdf_conversation_gpt`;
+
+const pdfConv = async (conversation) => fetch(endpoint, {
   method: 'POST',
   body: JSON.stringify(conversation),
   headers: {

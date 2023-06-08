@@ -1,11 +1,8 @@
 import * as Styled from 'app/components/AdminSideBar/AdminSideBar.Styled.jsx';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-function SideBar({
-  departments,
-  selectedDepartment,
-  handleSelectDepartment,
-}) {
+function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
   return (
     <Styled.MainContainer>
       <Styled.DepContainer>
@@ -18,6 +15,7 @@ function SideBar({
               aria-current={item.current ? 'page' : undefined}
               onClick={() => handleSelectDepartment(item.department_id)}
               selected={item.department_id === selectedDepartment}
+              className={item.department_id === selectedDepartment ? 'selected' : ''}
             >
               {item.name}
             </Styled.DepSelect>
@@ -38,7 +36,7 @@ SideBar.propTypes = {
 
 SideBar.defaultProps = {
   departments: [],
-  selectedDepartment: 0,
+  selectedDepartment: undefined,
 };
 
 export default SideBar;

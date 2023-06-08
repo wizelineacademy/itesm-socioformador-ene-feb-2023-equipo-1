@@ -333,3 +333,11 @@ export const INVALIDATE_VOTE_ERROR_MESSAGE = 'Error trying to invalidate the vot
 export const UPDATE_COMMENT_ERROR_MESSAGE = 'Error trying to update the comment';
 export const DELETE_COMMENT_ERROR_MESSAGE = 'Error trying to delete the comment';
 export const ENABLE_DISABLE_ERROR_MESSAGE = 'Error trying to enable/disable this question';
+
+// AnswerBot
+export const WELCOME_MESSAGE = 'Hello! Ask me any question and I\'ll see how I can help you.';
+export const CREATED_ANSWEBOT = 'The question to bot has been created succesfully!';
+export const POSITIVE_FEEDBACK_ANSWEBOT = 'The positive feedback to bot has been updated succesfully!';
+export const NEGATIVE_FEEDBACK_ANSWEBOT = 'The negative feedback to bot has been updated succesfully!';
+export const POSTED_ANSWEBOT = 'The question has been posted on the forum successfully!';
+export const INSTRUCTIONS_ANSWERBOT = "Instructions: Compose a comprehensive reply to the query using the search results given.\n If the search results mention multiple subjects\nwith the same name, create separate answers for each. Only include information found in the results and\ndon't add any additional information. Make sure the answer is correct and don't output false content.\nIf the text does not relate to the query, simply state 'Sorry, I couldn't find an answer to your question.'. Don't write 'Answer:'Directly start the answer.\n";
