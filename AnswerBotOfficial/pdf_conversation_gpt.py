@@ -24,16 +24,6 @@ load_dotenv(dotenv_path=dotenv_path)
 os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-#Database Connection
-DBReader = DatabaseReader(
-    scheme = "mysql", # Database Scheme
-    host = os.getenv("DB_HOST"), # Database Host
-    port = "3306", # Database Port
-    user = "admin", # Database User
-    password = "wizeq_password", # Database Password
-    dbname = os.getenv("DB_NAME"), # Database Name
-)
-
 memory = ConversationBufferMemory(memory_key="chat_history") # Conversation history to make conversation memory possible
 llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
 
@@ -103,10 +93,9 @@ def initialize_index():
         user = "admin", # Database User
         password = "wizeq_password", # Database Password
         dbname = os.getenv("DB_NAME"), # Database Name
-)
-
+    )
         documents = DBReader.load_data(query=query) # Add them to the documents
-
+        DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
         documents += SimpleDirectoryReader('data').load_data() # Load all files in the "data" folder into the documents
         index = GPTVectorStoreIndex.from_documents(documents) # Generate the index
         index.set_index_id("vector_index")
@@ -192,6 +181,7 @@ def updateAnswers():
         dbname = os.getenv("DB_NAME"), # Database Name
     )
     DBAnswer = DBReader.load_data(query=singlequery)[0] # Query the database and get the new question
+    DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
     index.insert(DBAnswer)
     query_engine = index.as_query_engine()
     # Generate tool to feed Langchain agent
