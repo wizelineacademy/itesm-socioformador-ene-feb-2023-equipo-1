@@ -98,7 +98,7 @@ def initialize_index():
         """
         DBReader = DatabaseReader(
         scheme = "mysql", # Database Scheme
-        host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+        host = os.getenv("DB_HOST"), # Database Host
         port = "3306", # Database Port
         user = "admin", # Database User
         password = "wizeq_password", # Database Password
