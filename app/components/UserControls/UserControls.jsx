@@ -43,7 +43,7 @@ function UserControls(props) {
       )}
       {isAdmin && (
         <LinkContainer to="/dashboard">
-          <Styled.Navitem>Dashboard</Styled.Navitem>
+          <Styled.Navitem id = "dashboard">Dashboard</Styled.Navitem>
         </LinkContainer>
       )}
       <Styled.NavLi>
