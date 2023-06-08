@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 import * as Styled from 'app/components/Atoms/UploadButton/UploadButton.Styled';
+import {uploadFiles} from 'app/controllers/answerBot/pdfConv.js'; // Update the Bots database with uploaded files by an admin.
+
 
 function UploadButton() {
   const fileInputRef = useRef(null);
@@ -16,6 +18,14 @@ function UploadButton() {
 
   const handleSendClick = () => {
     // To upload the files...
+    const formData = new FormData();
+
+    // Iterate through the selected files
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+      formData.append(`file${i + 1}`, file); // Use a dynamic key based on the index
+    }
+    uploadFiles(formData)
     setSelectedFiles([]);
   };
 
