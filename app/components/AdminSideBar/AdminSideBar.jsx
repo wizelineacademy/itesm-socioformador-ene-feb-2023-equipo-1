@@ -10,7 +10,8 @@ function SideBar({ departments, selectedDepartment, handleSelectDepartment }) {
 
         <Styled.ListDep>
           {departments.map((item, index) => (
-            <Styled.DepSelect id= {`dep-${index}`}
+            <Styled.DepSelect
+              id={`dep-${index}`}
               key={item.name}
               aria-current={item.current ? 'page' : undefined}
               onClick={() => handleSelectDepartment(item.department_id)}
