@@ -55,7 +55,7 @@ function AnswerBot({
       // Update specific variables for chatbot effects.
       setInputValue(input.value);
       setIsWaitingForResponse(true);
-      setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: '' }]);
+      setMessages([...messages, { role: 'user', content: message }, { role: 'system', content: '...' }]);
 
       // Concatenate the user's question to the chat history and send it to the bot model.
       const chatHistory = [...messages, { role: 'user', content: message }];
@@ -353,13 +353,15 @@ function AnswerBot({
             message.role === 'user' ? (
               <Styled.ChatbotRowMessage id={`msg-${index}`} style={{ justifyContent: 'flex-end' }}>
                 <Styled.Message
+                  id={`internal-msg-${index}`}
                   key={`message-${message.id}`}
                   className="user"
                   ref={messagesEndRef}
+                  isWaiting={false}
                 >
-                  {message.content}
+                  <span>{message.content}</span>
                 </Styled.Message>
-                <Styled.IconUser src={profile.profile_picture} />
+                <Styled.IconUser  id={`icon-user-${index}`} src={profile.profile_picture} />
               </Styled.ChatbotRowMessage>
             )
               : (
@@ -367,12 +369,13 @@ function AnswerBot({
                   <Styled.ChatbotRowMessage id={`msg-${index}`} style={{ justifyContent: 'flex-start' }}>
                     <Styled.IconBot />
                     <Styled.Message
+                      id={`internal-msg-${index}`}
                       key={`message-${message.id}`}
                       className="bot"
                       ref={messagesEndRef}
                       isWaiting={isWaitingForResponse && index + 2 === messages.length}
                     >
-                      {message.content}
+                      <span>{message.content}</span>
                     </Styled.Message>
                   </Styled.ChatbotRowMessage>
                   {index !== 0 && (
@@ -419,7 +422,7 @@ function AnswerBot({
             enabled={!isWaitingForResponse}
             title="Type at least 14 characters"
           />
-          <Styled.SendButton type="submit" inputLength={inputValue.length} disabled={isWaitingForResponse} />
+          <Styled.SendButton id="sendbutton" type="submit" inputLength={inputValue.length} disabled={isWaitingForResponse} />
         </Styled.ChatbotInput>
       </Styled.ChatbotContainer>
     </div>
