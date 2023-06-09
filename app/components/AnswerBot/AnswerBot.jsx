@@ -403,7 +403,7 @@ function AnswerBot({
                       </Styled.TextFeedback>
                     )}
                     {showThanksMessage[index] === 'Would you like to share your question with the community?' && (
-                      <Styled.PublishButton onClick={() => handlePublishQuestion(index)}>
+                      <Styled.PublishButton id={`publishbutton-${index}`} onClick={() => handlePublishQuestion(index)}>
                         Post question
                       </Styled.PublishButton>
                     )}
