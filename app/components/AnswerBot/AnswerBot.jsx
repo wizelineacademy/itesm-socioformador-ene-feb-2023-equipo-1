@@ -396,7 +396,7 @@ function AnswerBot({
                       </>
                     )}
                     {showThanksMessage[index] && (
-                      <Styled.TextFeedback padding={showThanksMessage[index]}>
+                      <Styled.TextFeedback id={`feedback-${index}`} padding={showThanksMessage[index]}>
                         {showThanksMessage[index] === true && ('Thanks for the feedback!')}
                         {showThanksMessage[index] === 'na' && ('')}
                         {!(showThanksMessage[index] === 'Thanks for the feedback!' || showThanksMessage[index] === 'na') && (showThanksMessage[index])}
