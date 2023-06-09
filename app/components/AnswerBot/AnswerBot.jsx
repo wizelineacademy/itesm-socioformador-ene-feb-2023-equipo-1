@@ -361,7 +361,7 @@ function AnswerBot({
                 >
                   <span>{message.content}</span>
                 </Styled.Message>
-                <Styled.IconUser  id={`icon-user-${index}`} src={profile.profile_picture} />
+                <Styled.IconUser id={`icon-user-${index}`} src={profile.profile_picture} />
               </Styled.ChatbotRowMessage>
             )
               : (
