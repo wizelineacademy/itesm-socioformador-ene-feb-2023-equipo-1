@@ -384,10 +384,12 @@ function AnswerBot({
                     && (index !== messages.length - 2 || !isWaitingForResponse) && (
                       <>
                         <Styled.LikeButton
+                          id={`like-${index}`}
                           key={`like-${message.id}`}
                           onClick={() => handleLikeClick(index)}
                         />
                         <Styled.DislikeButton
+                          id={`dislike-${index}`}
                           key={`dislike-${message.id}`}
                           onClick={() => handleDislikeClick(index)}
                         />

@@ -4,10 +4,6 @@ describe('CP012 - Mostrar el ícono del usuario en sus mensajes en la página pr
     cy.get('#answerbotbutton').click() // Open the chat
     // Check that the welcome message is displayed correctly
     cy.get("#chatbotinput").type("What should I do if I test positive?").type('{enter}') // Type question
-    cy.get("#icon-user-1").should('be.visible') // Find the user icon
+    cy.get('#icon-user-1').should('be.visible') // Find the user icon
   })
 })
-
-// - Abrir el chat del AnswerBot
-// - Mandar una pregunta
-// - Visualizar el ícono correspondiente al usuario del lado derecho del mensaje mandado.
