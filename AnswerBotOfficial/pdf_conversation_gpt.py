@@ -241,15 +241,19 @@ def submit_conversation():
     conversation = request.json
     userInput = conversation[-1]["content"]
     department = find_department(userInput, keywords)
-    answer = agent_chain.run("Please try to give a complete answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
-    #answer = query_engine.query(userInput)
+    try:
+        answer = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
+    except ValueError as e:
+        answer = str(e)
+    if not answer.startswith("Could not parse LLM output: `"):
+        raise answer
+    answer = answer.removeprefix("Could not parse LLM output: `").removesuffix("`")
     answerStruct = {}
     answerStruct["content"] = answer
     answerStruct["role"] = "assistant"
     conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
 
-CORS(app, origins='http://localhost:3000')
 if __name__ == '__main__':
     initialize_index()
     app.run(port=3000,debug=True)
