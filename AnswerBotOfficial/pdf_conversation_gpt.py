@@ -245,9 +245,9 @@ def submit_conversation():
         answer = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
     except ValueError as e:
         answer = str(e)
-    if not answer.startswith("Could not parse LLM output: `"):
-        raise answer
-    answer = answer.removeprefix("Could not parse LLM output: `").removesuffix("`")
+        if not answer.startswith("Could not parse LLM output: `"):
+            raise answer
+        answer = answer.removeprefix("Could not parse LLM output: `").removesuffix("`")
     answerStruct = {}
     answerStruct["content"] = answer
     answerStruct["role"] = "assistant"
