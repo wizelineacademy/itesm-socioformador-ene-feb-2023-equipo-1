@@ -1,4 +1,4 @@
-import pdfConv from 'app/controllers/answerBot/pdfConv';
+import { pdfConv } from 'app/controllers/answerBot/pdfConv';
 
 jest.setTimeout(20000);
 

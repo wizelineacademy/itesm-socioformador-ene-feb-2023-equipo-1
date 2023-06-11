@@ -1,4 +1,5 @@
 import os
+import openai
 import pickle
 import shutil
 from llama_index import SimpleDirectoryReader, GPTVectorStoreIndex, Document, ServiceContext, StorageContext, load_index_from_storage, download_loader, LLMPredictor
@@ -11,6 +12,7 @@ from pathlib import Path
 from werkzeug.utils import secure_filename
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from llama_index.readers.database import DatabaseReader
 
 
 app = Flask(__name__)
@@ -20,17 +22,7 @@ CORS(app)
 dotenv_path = Path('../.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ['OPENAI_API_KEY'] = os.getenv("OPENAI_API_KEY")
-
-#Database Connection
-DatabaseReader = download_loader('DatabaseReader')
-DBReader = DatabaseReader(
-    scheme = "mysql", # Database Scheme
-    host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
-    port = "3306", # Database Port
-    user = "admin", # Database User
-    password = "wizeq_password", # Database Password
-    dbname = "wizeqdb", # Database Name
-)
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 memory = ConversationBufferMemory(memory_key="chat_history") # Conversation history to make conversation memory possible
 llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
@@ -97,15 +89,14 @@ def initialize_index():
         """
         DBReader = DatabaseReader(
         scheme = "mysql", # Database Scheme
-        host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+        host = os.getenv("DB_HOST"), # Database Host
         port = "3306", # Database Port
         user = "admin", # Database User
         password = "wizeq_password", # Database Password
-        dbname = "wizeqdb", # Database Name
-)
-
+        dbname = os.getenv("DB_NAME"), # Database Name
+    )
         documents = DBReader.load_data(query=query) # Add them to the documents
-
+        DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
         documents += SimpleDirectoryReader('data').load_data() # Load all files in the "data" folder into the documents
         index = GPTVectorStoreIndex.from_documents(documents) # Generate the index
         index.set_index_id("vector_index")
@@ -185,14 +176,15 @@ def updateAnswers():
     LIMIT 1;
     """
     DBReader = DatabaseReader(
-    scheme = "mysql", # Database Scheme
-    host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
-    port = "3306", # Database Port
-    user = "admin", # Database User
-    password = "wizeq_password", # Database Password
-    dbname = "wizeqdb", # Database Name
+        scheme = "mysql", # Database Scheme
+        host = os.getenv("DB_HOST"), # Database Host
+        port = "3306", # Database Port
+        user = "admin", # Database User
+        password = "wizeq_password", # Database Password
+        dbname = os.getenv("DB_NAME"), # Database Name
     )
     DBAnswer = DBReader.load_data(query=singlequery)[0] # Query the database and get the new question
+    DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
     index.insert(DBAnswer)
     query_engine = index.as_query_engine()
     # Generate tool to feed Langchain agent
@@ -254,4 +246,4 @@ def submit_conversation():
 
 if __name__ == '__main__':
     initialize_index()
-    app.run(port=3000,debug=True)
+    app.run(host='0.0.0.0',port=4000)
