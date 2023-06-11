@@ -1,6 +1,8 @@
 node_modules
-build
-public/build
+/build
+/public/build
+
+AnswerBotOfficial/storage
 
 /.cache
 .env

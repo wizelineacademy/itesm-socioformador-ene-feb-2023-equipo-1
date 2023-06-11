@@ -77,7 +77,8 @@ def initialize_index():
             toolkit,
             llm,
             memory=memory,
-            verbose=True
+            verbose=True,
+            handle_parsing_errors= True
         )
         print("Index Loaded!")
     else: # Create the index from scratch.
@@ -119,7 +120,8 @@ def initialize_index():
             toolkit,
             llm,
             memory=memory,
-            verbose=True
+            verbose=True,
+            handle_parsing_errors=True
         )
 
 # Helper function to upload a file and add it to the documents that feed the bot
@@ -152,7 +154,8 @@ def upload_file():
             toolkit,
             llm,
             memory=memory,
-            verbose=True
+            verbose=True,
+            handle_parsing_errors=True
         )
         return "Files uploaded!"
     except Exception as e:
@@ -201,7 +204,8 @@ def updateAnswers():
         toolkit,
         llm,
         memory=memory,
-        verbose=True
+        verbose=True,
+        handle_parsing_errors=True
     )
     return "Answer inserted into Bot Knowledge Base!"
     
@@ -233,15 +237,13 @@ def submit_conversation():
     conversation = request.json
     userInput = conversation[-1]["content"]
     department = find_department(userInput, keywords)
-    answer = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
-    #answer = query_engine.query(userInput)
+    response = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
     answerStruct = {}
-    answerStruct["content"] = answer
+    answerStruct["content"] = response
     answerStruct["role"] = "assistant"
     conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
 
-CORS(app)
 if __name__ == '__main__':
     initialize_index()
     app.run(host='0.0.0.0',port=4000)
