@@ -85,7 +85,8 @@ def initialize_index():
             toolkit,
             llm,
             memory=memory,
-            verbose=True
+            verbose=True,
+            handle_parsing_errors= True
         )
         print("Index Loaded!")
     else: # Create the index from scratch.
@@ -128,7 +129,8 @@ def initialize_index():
             toolkit,
             llm,
             memory=memory,
-            verbose=True
+            verbose=True,
+            handle_parsing_errors=True
         )
 
 # Helper function to upload a file and add it to the documents that feed the bot
@@ -161,7 +163,8 @@ def upload_file():
             toolkit,
             llm,
             memory=memory,
-            verbose=True
+            verbose=True,
+            handle_parsing_errors=True
         )
         return "Files uploaded!"
     except Exception as e:
@@ -209,7 +212,8 @@ def updateAnswers():
         toolkit,
         llm,
         memory=memory,
-        verbose=True
+        verbose=True,
+        handle_parsing_errors=True
     )
     return "Answer inserted into Bot Knowledge Base!"
     
@@ -241,15 +245,9 @@ def submit_conversation():
     conversation = request.json
     userInput = conversation[-1]["content"]
     department = find_department(userInput, keywords)
-    try:
-        answer = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, so give an answer based on Wizeline Policy, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
-    except ValueError as e:
-        answer = str(e)
-        if not answer.startswith("Could not parse LLM output: `"):
-            raise answer
-        answer = answer.removeprefix("Could not parse LLM output: `").removesuffix("`")
+    response = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, never lie or make up information, always use your tool to build a proper answer. If you can't find any relevant information in the tool, please answer: 'No answer found, sorry!'. \nQuestion: " + userInput)
     answerStruct = {}
-    answerStruct["content"] = answer
+    answerStruct["content"] = response
     answerStruct["role"] = "assistant"
     conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
