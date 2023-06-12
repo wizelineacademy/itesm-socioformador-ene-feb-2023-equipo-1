@@ -4,9 +4,9 @@ export const MainContainer = styled.div`
 height: 115vh;
 background-color: #f7fafc; /* Slate-100 */
 margin: 0;
-margin-left: 18%;
+margin-left: 270px;
 @media (min-width: 1536px) {
-margin-left: 40px; /* 2xl:ml-40 */
+margin-left: 270px;
 }
 
 padding-top: 8px; /* Pt-8 */
