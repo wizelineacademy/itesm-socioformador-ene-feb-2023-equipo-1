@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/utils/hooks/useClickOutside.js"],
+  "sourcesContent": ["import { useEffect, useRef, useState } from 'react';\r\n\r\nconst useClickOutside = (exceptionState = false) => {\r\n  const wrapperRef = useRef(null);\r\n  const [state, setState] = useState(false);\r\n\r\n  const handleClickOutside = (event) => {\r\n    if (wrapperRef.current\r\n      && !wrapperRef.current.contains(event.target)\r\n      && state && !exceptionState) {\r\n      setState(false);\r\n    }\r\n  };\r\n\r\n  useEffect(() => {\r\n    document.addEventListener('mousedown', handleClickOutside);\r\n    return () => {\r\n      document.removeEventListener('mousedown', handleClickOutside);\r\n    };\r\n  }, [state, exceptionState]);\r\n\r\n  return { state, setState, wrapperRef };\r\n};\r\n\r\nexport default useClickOutside;\r\n"],
+  "mappings": ";;;;;;;AAAA;AAAA,mBAA4C;AAE5C,IAAM,kBAAkB,CAAC,iBAAiB,UAAU;AAClD,QAAM,aAAa,yBAAO;AAC1B,QAAM,CAAC,OAAO,YAAY,2BAAS;AAEnC,QAAM,qBAAqB,CAAC,UAAU;AACpC,QAAI,WAAW,WACV,CAAC,WAAW,QAAQ,SAAS,MAAM,WACnC,SAAS,CAAC,gBAAgB;AAC7B,eAAS;AAAA;AAAA;AAIb,8BAAU,MAAM;AACd,aAAS,iBAAiB,aAAa;AACvC,WAAO,MAAM;AACX,eAAS,oBAAoB,aAAa;AAAA;AAAA,KAE3C,CAAC,OAAO;AAEX,SAAO,EAAE,OAAO,UAAU;AAAA;AAG5B,IAAO,0BAAQ;",
+  "names": []
+}

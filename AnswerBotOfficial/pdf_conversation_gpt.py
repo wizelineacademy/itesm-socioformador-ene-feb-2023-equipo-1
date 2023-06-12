@@ -67,7 +67,8 @@ def initialize_index():
         tool_config = IndexToolConfig(
             query_engine = query_engine,
             name = "WizelineQuestions Repository",
-            description = "Useful for answering any question pertaining to Wizeline guidelines, policies, security, etc. If the question pertains to anything involving a Company use this tool to answer. Always use if the question starts with 'QUERY:'",
+            description = "Useful for answering any question pertaining to Wizeline guidelines, policies, security, etc. If the question pertains to anything involving a Company use this tool to answer.",
+            tool_kwargs= {"return_direct": True}
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -109,6 +110,8 @@ def initialize_index():
             # Description, dictates when the tool is used, the context.
             description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
             #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
+            tool_kwargs= {"return_direct": True}
+
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -142,6 +145,7 @@ def upload_file():
             # Description, dictates when the tool is used, the context.
             description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
             #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
+            tool_kwargs= {"return_direct": True}
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -191,6 +195,7 @@ def updateAnswers():
         # Description, dictates when the tool is used, the context.
         description = "Always use it to answer any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
         #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
+        tool_kwargs= {"return_direct": True}    
     )
     toolkit = LlamaToolkit(
         index_configs=[tool_config],
@@ -233,7 +238,7 @@ def submit_conversation():
     conversation = request.json
     userInput = conversation[-1]["content"]
     department = find_department(userInput, keywords)
-    response = agent_chain.run("Please try to give a complete and in depth answer that's not over 150 words at maximum.\nYou are answering Wizeliners questions, never lie or make up information. \QUERY: " + userInput)
+    response = agent_chain.run(userInput)
     if response == "Agent stopped due to iteration limit or time limit.":
         response = "Sorry, your questions wasn't properly processed, could you send it again?"
     answerStruct = {}
@@ -241,7 +246,7 @@ def submit_conversation():
     answerStruct["role"] = "assistant"
     conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
-
+CORS(app)
 if __name__ == '__main__':
     initialize_index()
     app.run(host='0.0.0.0',port=4000)
