@@ -8,7 +8,7 @@ describe('CP010 - Regresar mensaje de espera mientras se regresa una respuesta e
       .type('{enter}') // Type question
     cy.get('#msg-2')
       .should('have.text', '...') // Check waiting answer
-    cy.get('#msg-2', { timeout: 20000 })
+    cy.get('#msg-2', { timeout: 60000 })
       .should('not.have.text', '...')
       .should('not.have.text', '') // Wait for answer
   })

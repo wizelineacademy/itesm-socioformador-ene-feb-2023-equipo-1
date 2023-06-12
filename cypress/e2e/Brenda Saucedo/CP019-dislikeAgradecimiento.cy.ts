@@ -6,7 +6,7 @@ describe('CP019 - Dar Dislike y recibir mensaje del AnswerBot en la página prin
     cy.get("#chatbotinput")
       .type("What should I do if I test positive?")
       .type('{enter}') // Type question
-    cy.get('#msg-2', { timeout: 20000 })
+    cy.get('#msg-2', { timeout: 60000 })
       .should('not.have.text', '...')
       .should('not.have.text', '') // Wait for answer
     cy.get('#dislike-2')

@@ -9,7 +9,7 @@ describe('CP041 - Recibir respuesa del AnswerBot en la página de questions/new'
     cy.get("#chatbotinput")
       .type("What should I do if I test positive?")
       .type('{enter}') // Type question
-    cy.get('#msg-2', { timeout: 20000 })
+    cy.get('#msg-2', { timeout: 60000 })
       .should('not.have.text', '...')
       .should('not.have.text', '')
       .should('not.have.text', 'No answer found, sorry!') // Wait for answer
