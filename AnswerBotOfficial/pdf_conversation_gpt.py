@@ -124,11 +124,11 @@ def initialize_index():
         """
         DBReader = DatabaseReader(
             scheme = "mysql", # Database Scheme
-            host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+            host = os.getenv("DB_HOST"), # Database Host
             port = "3306", # Database Port
             user = "admin", # Database User
             password = "wizeq_password", # Database Password
-            dbname = "wizeqdb", # Database Name
+            dbname = os.getenv("DB_NAME"), # Database Name
         )
         documents = DBReader.load_data(query=query) # Add them to the documents
         DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
@@ -220,12 +220,11 @@ def updateAnswers():
     """
     DBReader = DatabaseReader(
         scheme = "mysql", # Database Scheme
-        host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+        host = os.getenv("DB_HOST"), # Database Host
         port = "3306", # Database Port
         user = "admin", # Database User
         password = "wizeq_password", # Database Password
-        dbname = "wizeqdb", # Database Name
-
+        dbname = os.getenv("DB_NAME"), # Database Name
     )
     DBAnswer = DBReader.load_data(query=singlequery)[0] # Query the database and get the new question
     DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
