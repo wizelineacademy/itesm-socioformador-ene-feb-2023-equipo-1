@@ -244,8 +244,7 @@ export const Message = styled.div`
           position: relative;
           overflow: hidden;
 
-          &:after {
-            content: '...';
+          > span {
             animation: ${blinkAnimation} 1s infinite alternate;
             animation-delay: ${props.index * 0.2}s;
           }

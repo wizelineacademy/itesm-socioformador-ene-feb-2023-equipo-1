@@ -56,6 +56,8 @@ jobs:
           PORT: ${{ secrets.PORT }}
           PUBLIC_IP: ${{ secrets.PUBLIC_IP }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
           SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
@@ -64,7 +66,7 @@ jobs:
         with:
           timeout: 60s
           command_timeout: 30m
-          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
+          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,DB_HOST,DB_NAME,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
           host: ${{ secrets.LIGHTSAIL_IP }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -80,8 +82,9 @@ jobs:
             echo "*** Step: *** Create .env file"
             echo BASE_URL="$BASE_URL" >> .env
             echo PORT="$PORT" >> .env
-            echo PUBLIC_IP="$PUBLIC_IP" >> .env
             echo DATABASE_URL="$DATABASE_URL" >> .env
+            echo DB_HOST="$DB_HOST" >> .env
+            echo DB_NAME="$DB_NAME" >> .env
             echo SESSION_SECRET="$SESSION_SECRET" >> .env
             echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
             echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
@@ -100,9 +103,12 @@ jobs:
             npm run build
 
             echo "*** Step: *** Start python service"
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/AnswerBotOfficial
+            rm -r storage
             sudo systemctl restart answerbot.service
             
             echo "*** Step: *** Start pm2 service"
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             pm2 start pm2.config.js
             pm2 save
 
@@ -154,6 +160,8 @@ jobs:
           PORT: ${{ secrets.PORT }}
           PUBLIC_IP: ${{ secrets.PUBLIC_IP_PROD }}
           DATABASE_URL: ${{ secrets.DATABASE_URL_PROD }}
+          DB_HOST: ${{ secrets.DB_HOST_PROD }}
+          DB_NAME: ${{ secrets.DB_NAME_PROD }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
           SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
@@ -162,7 +170,7 @@ jobs:
         with:
           timeout: 60s
           command_timeout: 30m
-          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
+          envs: BASE_URL,PORT,PUBLIC_IP,DATABASE_URL,DB_HOST,DB_NAME,AUTH0_DOMAIN,SESSION_SECRET,AUTH0_CLIENT_ID,AUTH0_CLIENT_SECRET,OPENAI_API_KEY
           host: ${{ secrets.LIGHTSAIL_IP_PROD }}
           username: ${{ secrets.LIGHTSAIL_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -178,8 +186,9 @@ jobs:
             echo "*** Step: *** Create .env file"
             echo BASE_URL="$BASE_URL" >> .env
             echo PORT="$PORT" >> .env
-            echo PUBLIC_IP="$PUBLIC_IP" >> .env
             echo DATABASE_URL="$DATABASE_URL" >> .env
+            echo DB_HOST="$DB_HOST" >> .env
+            echo DB_NAME="$DB_NAME" >> .env
             echo SESSION_SECRET="$SESSION_SECRET" >> .env
             echo AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" >> .env
             echo AUTH0_DOMAIN="$AUTH0_DOMAIN" >> .env
@@ -198,8 +207,11 @@ jobs:
             npm run build
 
             echo "*** Step: *** Start python service"
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/AnswerBotOfficial
+            rm -r storage
             sudo systemctl restart answerbot.service
             
             echo "*** Step: *** Start pm2 service"
+            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             pm2 start pm2.config.js
             pm2 save
