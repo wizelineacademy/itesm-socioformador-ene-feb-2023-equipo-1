@@ -28,6 +28,36 @@ memory = ConversationBufferMemory(memory_key="chat_history") # Conversation hist
 llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
 
 
+PREFIX = '''You're Wizeline's own Answerbot. Knowledgeable in all regarding the company and how it works. Answering any and all enquiries regarding the company and any associated topic.  
+'''
+
+FORMAT_INSTRUCTIONS = """To use a tool, please use the following format:
+'''
+Thought: Do I need to use a tool? Yes
+Action: the action to take, should be one of [WizelineQuestions Repository]
+Action Input: the input to the action
+Observation: the result of the action
+'''
+
+When you have gathered all the information needed to answer the question, just write it to user in a concise yet complete answer. If you don't have the information to answer please answer "No answer found, sorry!"
+
+'''
+Thought: Do I need to use a tool? No
+AI: [Write a max 100 word answer that gives a clear answer to the question planted]
+'''
+"""
+
+SUFFIX = '''
+
+Begin!
+
+Previous conversation history:
+{chat_history}
+
+Instructions: {input}
+{agent_scratchpad}
+'''
+
 keywords = {
     'Founders': ['startup', 'entrepreneurship', 'incubator', 'funding'],
     'Academy': ['education', 'curriculum', 'learning', 'teaching', 'training', 'certification'],
@@ -73,12 +103,17 @@ def initialize_index():
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
         )
+        # Generate agent
         agent_chain = create_llama_chat_agent(
             toolkit,
             llm,
             memory=memory,
             verbose=True,
-            handle_parsing_errors= True
+            agent_kwargs={
+                'prefix': PREFIX, 
+                'format_instructions': FORMAT_INSTRUCTIONS,
+                'suffix': SUFFIX
+            }
         )
         print("Index Loaded!")
     else: # Create the index from scratch.
@@ -88,13 +123,13 @@ def initialize_index():
         FROM Answers AS a
         """
         DBReader = DatabaseReader(
-        scheme = "mysql", # Database Scheme
-        host = os.getenv("DB_HOST"), # Database Host
-        port = "3306", # Database Port
-        user = "admin", # Database User
-        password = "wizeq_password", # Database Password
-        dbname = os.getenv("DB_NAME"), # Database Name
-    )
+            scheme = "mysql", # Database Scheme
+            host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
+            port = "3306", # Database Port
+            user = "admin", # Database User
+            password = "wizeq_password", # Database Password
+            dbname = "wizeqdb", # Database Name
+        )
         documents = DBReader.load_data(query=query) # Add them to the documents
         DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
         documents += SimpleDirectoryReader('data').load_data() # Load all files in the "data" folder into the documents
@@ -122,7 +157,11 @@ def initialize_index():
             llm,
             memory=memory,
             verbose=True,
-            handle_parsing_errors=True
+            agent_kwargs={
+                'prefix': PREFIX, 
+                'format_instructions': FORMAT_INSTRUCTIONS,
+                'suffix': SUFFIX
+            }
         )
 
 # Helper function to upload a file and add it to the documents that feed the bot
@@ -156,7 +195,11 @@ def upload_file():
             llm,
             memory=memory,
             verbose=True,
-            handle_parsing_errors=True
+            agent_kwargs={
+                'prefix': PREFIX, 
+                'format_instructions': FORMAT_INSTRUCTIONS,
+                'suffix': SUFFIX
+            }
         )
         return "Files uploaded!"
     except Exception as e:
@@ -178,11 +221,12 @@ def updateAnswers():
     """
     DBReader = DatabaseReader(
         scheme = "mysql", # Database Scheme
-        host = os.getenv("DB_HOST"), # Database Host
+        host = "wizeq-answerbot-db-dev.cih8wohssbpg.us-east-2.rds.amazonaws.com", # Database Host
         port = "3306", # Database Port
         user = "admin", # Database User
         password = "wizeq_password", # Database Password
-        dbname = os.getenv("DB_NAME"), # Database Name
+        dbname = "wizeqdb", # Database Name
+
     )
     DBAnswer = DBReader.load_data(query=singlequery)[0] # Query the database and get the new question
     DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
@@ -206,7 +250,11 @@ def updateAnswers():
         llm,
         memory=memory,
         verbose=True,
-        handle_parsing_errors=True
+        agent_kwargs={
+                'prefix': PREFIX, 
+                'format_instructions': FORMAT_INSTRUCTIONS,
+                'suffix': SUFFIX
+            }
     )
     return "Answer inserted into Bot Knowledge Base!"
     
