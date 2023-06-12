@@ -106,12 +106,12 @@ function Dashboard() {
       <Styled.MainContainer>
         <Styled.NextContainer>
           <Styled.DividerContainer>
-            <Styled.TopContainers>
+            <Styled.TopContainers id="openForums">
               <Styled.ContMargin>
                 <Styled.Title>Open Forums</Styled.Title>
                 <Table hover>
                   <tbody>
-                    {questionsOF.map((question) => (
+                    {questionsOF.map((question, index) => (
                       <tr>
                         <Styled.Text
                           key={`questionOP-${question.id}`}
@@ -123,6 +123,7 @@ function Dashboard() {
                         </Styled.Text>
                         <td>
                           <Styled.ButtonText
+                            id={`button-${index}`}
                             href={`/questions/${question.question_id}`}
                             key={question.id}
                             title={question.question}
@@ -137,7 +138,7 @@ function Dashboard() {
               </Styled.ContMargin>
             </Styled.TopContainers>
 
-            <Styled.TopContainers>
+            <Styled.TopContainers id="answerbotF">
               <Styled.ContMargin>
                 <Styled.Title>Answerbot Feedback</Styled.Title>
 
@@ -190,7 +191,7 @@ function Dashboard() {
             </Styled.TopContainers>
           </Styled.DividerContainer>
 
-          <Styled.BottomContainer>
+          <Styled.BottomContainer id="FAQs">
             <Styled.ContMargin>
               <Styled.Title>FAQs</Styled.Title>
               <Table stripped hover>
