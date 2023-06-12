@@ -12,6 +12,6 @@ describe('CP041 - Recibir respuesa del AnswerBot en la página de questions/new'
     cy.get('#msg-2', { timeout: 20000 })
       .should('not.have.text', '...')
       .should('not.have.text', '')
-      .should('not.have.tex', 'No answer found, sorry!') // Wait for answer
+      .should('not.have.text', 'No answer found, sorry!') // Wait for answer
   })
 })

@@ -75,7 +75,7 @@ jobs:
             # ignore failure on pm2 stop (first time?)
             pm2 stop all || true
             echo "*** Step: *** Replace app folders"
-            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+            sudo rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             mkdir -p ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             cp -R ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp/. ~/itesm-socioformador-ene-feb-2023-equipo-1/app/
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
@@ -179,7 +179,7 @@ jobs:
             # ignore failure on pm2 stop (first time?)
             pm2 stop all || true
             echo "*** Step: *** Replace app folders"
-            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+            sudo rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             mkdir -p ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             cp -R ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp/. ~/itesm-socioformador-ene-feb-2023-equipo-1/app/
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
