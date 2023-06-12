@@ -207,8 +207,6 @@ jobs:
             npm run build
 
             echo "*** Step: *** Start python service"
-            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/AnswerBotOfficial
-            rm -r storage
             sudo systemctl restart answerbot.service
             
             echo "*** Step: *** Start pm2 service"
