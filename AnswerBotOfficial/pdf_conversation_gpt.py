@@ -68,7 +68,6 @@ def initialize_index():
             query_engine = query_engine,
             name = "WizelineQuestions Repository",
             description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company. Always use if the question starts with 'QUERY:'",
-            tool_kwargs = {"return_direct": True}, #"return_sources": True Adding this returns sources, may expand on this
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -110,7 +109,6 @@ def initialize_index():
             # Description, dictates when the tool is used, the context.
             description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
             #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
-            tool_kwargs = {"return_direct": True}, #"return_sources": True Adding this returns sources, may expand on this
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -144,7 +142,6 @@ def upload_file():
         # Description, dictates when the tool is used, the context.
         description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
         #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
-        tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -194,7 +191,6 @@ def updateAnswers():
         # Description, dictates when the tool is used, the context.
         description = "Always use it to answer any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
         #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
-        tool_kwargs = {"return_direct": True, "return_sources": True}, #"return_sources": True Adding this returns sources, may expand on this
     )
     toolkit = LlamaToolkit(
         index_configs=[tool_config],

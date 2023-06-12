@@ -103,7 +103,8 @@ jobs:
             npm run build
 
             echo "*** Step: *** Start python service"
-            sudo systemctl restart answerbot.service
+            sudo systemctl stop answerbot.service
+            sudo systemctl start answerbot.service
             
             echo "*** Step: *** Start pm2 service"
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
@@ -205,7 +206,8 @@ jobs:
             npm run build
 
             echo "*** Step: *** Start python service"
-            sudo systemctl restart answerbot.service
+            sudo systemctl stop answerbot.service
+            sudo systemctl start answerbot.service
             
             echo "*** Step: *** Start pm2 service"
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
