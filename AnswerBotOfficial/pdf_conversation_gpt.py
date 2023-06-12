@@ -39,11 +39,11 @@ Action Input: the input to the action
 Observation: the result of the action
 '''
 
-When you have gathered all the information needed to answer the question, just write it to user in a concise yet complete answer. If you don't have the information to answer please answer "No answer found, sorry!"
+When you have gathered all the information needed to answer the question, just write it to user in a concise yet complete answer. You MUST use the following format to answer to the Human.
 
 '''
 Thought: Do I need to use a tool? No
-AI: [Write a max 100 word answer that gives a clear answer to the question planted]
+{ai_prefix}: [Write a max 100 word answer that gives a clear answer to the question planted]
 '''
 """
 
@@ -129,7 +129,7 @@ def initialize_index():
             user = "admin", # Database User
             password = "wizeq_password", # Database Password
             dbname = os.getenv("DB_NAME"), # Database Name
-        )
+        )   
         documents = DBReader.load_data(query=query) # Add them to the documents
         DBReader.sql_database.engine.dispose() # Destroys and frees the connection, freeing database resources
         documents += SimpleDirectoryReader('data').load_data() # Load all files in the "data" folder into the documents
