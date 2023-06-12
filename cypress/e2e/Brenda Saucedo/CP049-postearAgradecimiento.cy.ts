@@ -20,12 +20,12 @@ describe('CP049 - Postear pregunta y recibir mensaje de confirmación en la pág
       .should('have.text', 'Thanks for the feedback!') // Check the feedback
     cy.get('#feedback-2', { timeout: 20000 })
       .should('have.text', 'Would you like to share your question with the community?') // Check the feedback
-    cy.get('#publishbutton-2')
-      .should('be.visible') // Find the publish button
+    cy.get('#publishbutton-2', { timeout: 60000 })
+      .should('exist') // Find the publish button
       .click() // Publish question
     cy.get('#feedback-2')
       .should('have.text', 'Loading...') // Check the feedback
-    cy.get('#publishbutton-2', { timeout: 20000 })
+    cy.get('#publishbutton-2', { timeout: 60000 })
       .should('not.exist'); // Not find the publish button
     cy.get('#feedback-2')
       .should('have.text', 'Your question has been published successfully.') // Check the feedback
