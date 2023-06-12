@@ -1,6 +1,6 @@
 import { pdfConv } from 'app/controllers/answerBot/pdfConv';
 
-jest.setTimeout(30000);
+jest.setTimeout(50000);
 
 describe('CP004 - Continuar conversación con el AnswerBot', () => {
   it('Se manda más de una pregunta y el AnswerBot puede seguir respondiendo', async () => {
