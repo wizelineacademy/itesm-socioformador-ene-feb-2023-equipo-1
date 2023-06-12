@@ -75,7 +75,7 @@ jobs:
             # ignore failure on pm2 stop (first time?)
             pm2 stop all || true
             echo "*** Step: *** Replace app folders"
-            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+            sudo rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             mkdir -p ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             cp -R ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp/. ~/itesm-socioformador-ene-feb-2023-equipo-1/app/
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
@@ -103,9 +103,8 @@ jobs:
             npm run build
 
             echo "*** Step: *** Start python service"
-            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/AnswerBotOfficial
-            rm -r storage
-            sudo systemctl restart answerbot.service
+            sudo systemctl stop answerbot.service
+            sudo systemctl start answerbot.service
             
             echo "*** Step: *** Start pm2 service"
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
@@ -179,7 +178,7 @@ jobs:
             # ignore failure on pm2 stop (first time?)
             pm2 stop all || true
             echo "*** Step: *** Replace app folders"
-            rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
+            sudo rm -rf ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             mkdir -p ~/itesm-socioformador-ene-feb-2023-equipo-1/app
             cp -R ~/itesm-socioformador-ene-feb-2023-equipo-1/tmp/. ~/itesm-socioformador-ene-feb-2023-equipo-1/app/
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app
@@ -207,9 +206,8 @@ jobs:
             npm run build
 
             echo "*** Step: *** Start python service"
-            cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app/AnswerBotOfficial
-            rm -r storage
-            sudo systemctl restart answerbot.service
+            sudo systemctl stop answerbot.service
+            sudo systemctl start answerbot.service
             
             echo "*** Step: *** Start pm2 service"
             cd ~/itesm-socioformador-ene-feb-2023-equipo-1/app

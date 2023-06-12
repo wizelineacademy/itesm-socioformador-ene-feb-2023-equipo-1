@@ -111,7 +111,6 @@ def initialize_index():
             description = "Useful for answering any question pertaining to Wizeline guidelines and policies, and any other thing about the company.",
             #Use to answer any question given as it has been fed Wizeline documents and information and this bot resides in WizelineQuestions, the help forum of Wizeline. Useful if the question pertains to company policy or guidelines regarding the company.",
             tool_kwargs= {"return_direct": True}
-
         )
         toolkit = LlamaToolkit(
             index_configs=[tool_config],
@@ -246,7 +245,8 @@ def submit_conversation():
     answerStruct["role"] = "assistant"
     conversation.append(answerStruct)
     return jsonify({'conversation': conversation, 'department': department})
+  
 CORS(app)
 if __name__ == '__main__':
     initialize_index()
-    app.run(host='0.0.0.0',port=4000)
+    app.run(host='0.0.0.0',port=4000, debug=True)

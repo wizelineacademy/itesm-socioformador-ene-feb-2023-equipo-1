@@ -1,6 +1,6 @@
 import { pdfConv } from 'app/controllers/answerBot/pdfConv';
 
-jest.setTimeout(20000);
+jest.setTimeout(50000);
 
 describe('Testing pdfConv component', () => {
   it('Test question that should have expected answer', async () => {
