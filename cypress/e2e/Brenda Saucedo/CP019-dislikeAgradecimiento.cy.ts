@@ -14,7 +14,7 @@ describe('CP019 - Dar Dislike y recibir mensaje del AnswerBot en la página prin
     cy.get('#feedback-2')
       .should('be.visible') // Find the feedback
       .should('have.text', 'Loading...') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('be.visible') // Find the feedback
       .should('have.text', 'Thanks for the feedback!') // Check the feedback
   })

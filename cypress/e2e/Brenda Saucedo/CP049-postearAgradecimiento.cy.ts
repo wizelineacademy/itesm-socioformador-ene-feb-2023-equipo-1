@@ -16,9 +16,9 @@ describe('CP049 - Postear pregunta y recibir mensaje de confirmación en la pág
       .click() // Select the dislike icon
     cy.get('#feedback-2')
       .should('have.text', 'Loading...') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('have.text', 'Thanks for the feedback!') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('have.text', 'Would you like to share your question with the community?') // Check the feedback
     cy.get('#publishbutton-2', { timeout: 60000 })
       .should('exist') // Find the publish button

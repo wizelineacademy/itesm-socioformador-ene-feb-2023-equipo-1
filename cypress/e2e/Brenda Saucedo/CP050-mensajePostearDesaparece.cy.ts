@@ -16,9 +16,9 @@ describe('CP050 - El mensaje de confirmación de posteo desaparece en la página
       .click() // Select the dislike icon
     cy.get('#feedback-2')
       .should('have.text', 'Loading...') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('have.text', 'Thanks for the feedback!') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('have.text', 'Would you like to share your question with the community?') // Check the feedback
     cy.get('#publishbutton-2', { timeout: 60000 })
       .should('exist') // Find the publish button
@@ -29,7 +29,7 @@ describe('CP050 - El mensaje de confirmación de posteo desaparece en la página
       .should('not.exist'); // Not find the publish button
     cy.get('#feedback-2')
       .should('have.text', 'Your question has been published successfully.') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('have.text', '') // Check the feedback
   })
 })

@@ -65,6 +65,9 @@ jobs:
         - name: 📥 Download deps
           uses: bahmutov/npm-install@v1
 
+        - name: Allocate memory
+          run: export NODE_OPTIONS="--max_old_space_size=4096"
+
         - name: ⚙️ Build and Run
           run: npm run build
 
