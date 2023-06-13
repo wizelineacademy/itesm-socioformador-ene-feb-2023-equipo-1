@@ -27,8 +27,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 memory = ConversationBufferMemory(memory_key="chat_history") # Conversation history to make conversation memory possible
 llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0) # Define the Large Language Model as OpenAI and make sure answers are always the same through temperature = 0.
 
-
-PREFIX = '''You're Wizeline's own Answerbot. Knowledgeable in all regarding the company and how it works. Answering any and all enquiries regarding the company and any associated topic.  
+# Logic that the ChatBot follows to complete a Chain and answer a user's question.
+PREFIX = '''You're Wizeline's own Answerbot. Knowledgeable in all regarding the company and how it works. Answering any and all enquiries regarding the company and any associated topic. Extremely efficient you give concise yet complete answers to any question pertaining to Wizeline that you can answer with your tool. If you can't find an answer within your tool, just say "No answer found, sorry!" 
 '''
 
 FORMAT_INSTRUCTIONS = """To use a tool, please use the following format:
@@ -113,7 +113,8 @@ def initialize_index():
                 'prefix': PREFIX, 
                 'format_instructions': FORMAT_INSTRUCTIONS,
                 'suffix': SUFFIX
-            }
+            },
+            handle_parsing_errors=True
         )
         print("Index Loaded!")
     else: # Create the index from scratch.
@@ -160,7 +161,8 @@ def initialize_index():
                 'prefix': PREFIX, 
                 'format_instructions': FORMAT_INSTRUCTIONS,
                 'suffix': SUFFIX
-            }
+            },
+            handle_parsing_errors=True
         )
 
 # Helper function to upload a file and add it to the documents that feed the bot
@@ -198,7 +200,8 @@ def upload_file():
                 'prefix': PREFIX, 
                 'format_instructions': FORMAT_INSTRUCTIONS,
                 'suffix': SUFFIX
-            }
+            },
+            handle_parsing_errors=True
         )
         return "Files uploaded!"
     except Exception as e:
@@ -252,7 +255,8 @@ def updateAnswers():
                 'prefix': PREFIX, 
                 'format_instructions': FORMAT_INSTRUCTIONS,
                 'suffix': SUFFIX
-            }
+            },
+        handle_parsing_errors= True
     )
     return "Answer inserted into Bot Knowledge Base!"
     
