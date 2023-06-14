@@ -65,14 +65,13 @@ jobs:
         - name: 📥 Download deps
           uses: bahmutov/npm-install@v1
 
-        - name: Allocate memory
-          run: export NODE_OPTIONS="--max_old_space_size=4096"
-
         - name: ⚙️ Build and Run
           run: npm run build
 
         - name: 🌳 Cypress run
-          run: npm run test:cypress:run
+          run: |
+            export NODE_OPTIONS="--max_old_space_size=8192"
+            npm run test:cypress:run
   
   build:
     name: 🏗 Jest
