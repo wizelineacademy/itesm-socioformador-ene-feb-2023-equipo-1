@@ -31,7 +31,7 @@ function LogoutConfirmationModal({ show, onClose }) {
             </Styled.ModalBody>
             <Styled.ModalFooter variant="logout">
               <Button type="button" category={SECONDARY_BUTTON} onClick={onClose}>Cancel</Button>
-              <Button category={DANGER_BUTTON} type="submit">Logout</Button>
+              <Button id="confirmLogout" category={DANGER_BUTTON} type="submit">Logout</Button>
             </Styled.ModalFooter>
           </Styled.LogoutModalDialog>
         </Form>
