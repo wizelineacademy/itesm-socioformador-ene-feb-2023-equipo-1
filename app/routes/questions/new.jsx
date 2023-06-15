@@ -288,7 +288,7 @@ function CreateQuestion() {
           <FAQs questionsFAQ={questionsFAQ} />
         </Styled.QuestionSlogan>
         <Styled.QuestionInput>
-          <QuestionForm
+          <QuestionForm   
             maximumQuestionLength={MAXIMUM_QUESTION_LENGTH}
             minimumQuestionLength={MINIMUM_ANSWER_LENGTH}
             postQuestion={postQuestion}

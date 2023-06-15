@@ -283,7 +283,7 @@ function QuestionForm({
       <form onSubmit={onSubmit} id="question-submit-form">
         <Styled.InputContainer>
           <Styled.InputTopWrapper>
-            <InputAuthor
+            <InputAuthor id = "AskQuestion"
               dropDownTitle={state.dropDownTitle}
               profilePicture={state.profilePicture}
               selectPostingAs={selectPostingAs}
@@ -295,13 +295,13 @@ function QuestionForm({
               department={state.assignedDepartment.name}
               location={state.fullLocation}
             >
-              <DropdownMenu name="Deparment" type="Build" handler={handleDepartmentSelectChange} selectedOption={null} options={departments} />
+              <DropdownMenu id="Dep" name="Deparment" type="Build" handler={handleDepartmentSelectChange} selectedOption={null} options={departments} />
               {state.assignedDepartment.department_id !== -1
                 && <DropdownMenu name="People" type="People" handler={selectEmployeeHandler} selectedOption={null} options={state.employeesByDepartment} />}
               <DropdownMenu name="Location" type="Location" handler={onLocationChange} selectedOption={null} options={locations} />
             </Styled.Options>
-          </Styled.InputTopWrapper>
-          <QuestionInputText
+          </Styled.InputTopWrapper >
+          <QuestionInputText 
             inputValue={state.inputValue}
             editorState={editorState}
             setEditorState={setEditorState}
