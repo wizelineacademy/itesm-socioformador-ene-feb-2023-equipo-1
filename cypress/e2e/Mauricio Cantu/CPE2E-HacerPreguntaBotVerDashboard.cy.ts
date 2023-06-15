@@ -18,7 +18,7 @@ describe('CP013 - Hacer pregunta a bot, postearla al foro y verla en dashboard',
         cy.get('#publishbutton-2', { timeout: 60000 })
             .click()// Find the publish button
         cy.wait(3000)
-        cy.get('#close').click()
+        cy.get('#closechat').click()
         cy.get('#dashboard').click() // Darle click al dashboard
         cy.wait(3000)
 
