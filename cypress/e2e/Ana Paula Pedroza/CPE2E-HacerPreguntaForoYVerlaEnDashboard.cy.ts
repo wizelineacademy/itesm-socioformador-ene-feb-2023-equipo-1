@@ -1,4 +1,4 @@
-describe('CP013 - Hacer pregunta en foro y verla reflejada en dashboard', () => {
+describe('CPE2E - Hacer pregunta en foro y verla reflejada en dashboard', () => {
     it('E2E', () => {
         cy.login('ana.pau1401@gmail.com', 'Aa00830553') // Login
         cy.contains('What should I do if I test positive?')
