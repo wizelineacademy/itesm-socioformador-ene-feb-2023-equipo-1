@@ -1,4 +1,4 @@
-describe('CP013 - Hacer pregunta a bot, postearla al foro y verla en dashboard', () => {
+describe('CPE2E - Hacer pregunta a bot, postearla al foro y verla en dashboard', () => {
     it('E2E', () => {
         cy.login('ana.pau1401@gmail.com', 'Aa00830553') // Login
         cy.get('#answerbotbutton')
