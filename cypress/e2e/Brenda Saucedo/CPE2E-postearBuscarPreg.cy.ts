@@ -1,9 +1,6 @@
-describe('CP050 - El mensaje de confirmación de posteo desaparece en la página de questions/new', () => {
-  it('Mensaje de postear pregunta desaparece', () => {
+describe('CPE2E - Postear pregunta y buscarla en la página principal', () => {
+  it('Se publica la pregunta por medio del AnswerBot y se busca en la plataforma', () => {
     cy.login('pato.santos10@gmail.com', 'A01197723$') // Login
-    cy.get('#ask-button')
-      .click() // Go to New Question page
-    cy.wait(3000) // Wait for the page to load
     cy.get('#answerbotbutton')
       .click() // Open the chat
     cy.get("#chatbotinput")
@@ -29,7 +26,7 @@ describe('CP050 - El mensaje de confirmación de posteo desaparece en la página
       .should('not.exist'); // Not find the publish button
     cy.get('#feedback-2')
       .should('have.text', 'Your question has been published successfully.') // Check the feedback
-    cy.get('#feedback-2', { timeout: 60000 })
-      .should('have.text', '') // Check the feedback
+    cy.contains("What should I do if I test positive?")
+      .should('exist') // Find the question in the plataform.
   })
 })

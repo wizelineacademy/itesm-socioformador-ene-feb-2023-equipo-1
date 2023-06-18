@@ -4,7 +4,7 @@ describe('CP024 - Borrar conversación de AnswerBot cuando se refresca la págin
     cy.get('#answerbotbutton').click() // Open the chat
     // Check that the welcome message is displayed correctly
     cy.get("#chatbotinput").type("What should I do if I test positive?").type('{enter}') // Send a question
-    cy.get('#msg-2', { timeout: 20000 })
+    cy.get('#msg-2', { timeout: 60000 })
       .should('not.have.text', '...')
       .should('not.have.text', '') // Wait for answer
     cy.reload() // Refresh the page

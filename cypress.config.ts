@@ -6,6 +6,8 @@ export default defineConfig({
     experimentalSessionAndOrigin: true,
     viewportHeight: 1000,
     viewportWidth: 1280,
+    screenshotOnRunFailure: false,
+    video: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

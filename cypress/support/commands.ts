@@ -23,7 +23,11 @@ Cypress.Commands.add('login', (email: string, password: string) => {
     // Reload to correctly load the page
     cy.reload();
     // Close main window when login
-    cy.get('#btnAccept').click();
+    cy.get("body").then(($body) => {
+        if ($body.find("#btnAccept").length > 0) {
+            cy.get('#btnAccept').click();
+        }
+    })
  })
 //
 //

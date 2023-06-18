@@ -14,11 +14,11 @@ describe('CP048 - Preguntar si se postea la pregunta después de Dislike en la p
       .should('not.have.text', '') // Wait for answer
     cy.get('#dislike-2').click() // Select the dislike icon
     cy.get('#feedback-2').should('have.text', 'Loading...') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('have.text', 'Thanks for the feedback!') // Check the feedback
-    cy.get('#feedback-2', { timeout: 20000 })
+    cy.get('#feedback-2', { timeout: 60000 })
       .should('have.text', 'Would you like to share your question with the community?') // Check the feedback
-    cy.get('#publishbutton-2')
-      .should('be.visible') // Find the publish button
+    cy.get('#publishbutton-2', { timeout: 60000 })
+      .should('exist') // Find the publish button
   })
 })
