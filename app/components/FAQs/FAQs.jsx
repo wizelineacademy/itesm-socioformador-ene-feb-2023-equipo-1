@@ -4,12 +4,12 @@ import React from 'react';
 
 function FAQs({ questionsFAQ }) {
   return (
-    <Styled.FAQContainer id="FAQContainer" >
+    <Styled.FAQContainer id="FAQContainer">
 
       <Styled.FAQHeader>FAQ&apos;s</Styled.FAQHeader>
 
       {questionsFAQ.map((faq) => (
-        <Styled.FAQList id="FAQList" >
+        <Styled.FAQList id="FAQList">
           <Styled.Question id="Question" href={`/questions/${faq.question_id}`} key={faq.id} title={faq.question}>
             {faq.question}
           </Styled.Question>
