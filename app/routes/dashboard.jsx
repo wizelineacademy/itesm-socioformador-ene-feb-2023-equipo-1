@@ -249,9 +249,8 @@ function Dashboard() {
                       {question.Answers.length <= 0
                       && (question.Comments.length === 0
                       || (question.Comments.every((comment) => comment.approvedBy === null)
-                      && question.Comments.some((comment) => comment.CommentVote.length === 0
-                      || (comment.CommentVote.length > 0
-                      && comment.CommentVote.every((vote) => vote.value < 10)))))
+                      && question.Comments.some((comment) => comment.CommentVote.length > 0
+                      && comment.CommentVote.every((vote) => vote.value < 10))))
                         && (
                         <Styled.TextU key={`statusFAQ-${question.id}`}>
                           <Styled.TextUBorder> Unanswered </Styled.TextUBorder>
