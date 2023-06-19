@@ -4,12 +4,12 @@ describe('E2E - Hacer una pregunta y no estar satisfecho con la respuesta', () =
       cy.get('#answerbotbutton')
         .click() // Open the chat
       cy.get("#chatbotinput")
-        .type("Can I take snacks from the office?") // Send question
+        .type("Can I bring my mom into work?") // Send question
       cy.get("#sendbutton")
         .click()
       cy.get('#msg-2', { timeout: 60000 })
         .should('not.have.text', '...')
-        .should('not.have.text', '') // Awaiting Bot Answer
+        .should('not.have.text', '') 
       cy.get('#dislike-2')
         .click() // Dislike/Negative Feedback
       cy.get('#feedback-2')
@@ -27,7 +27,7 @@ describe('E2E - Hacer una pregunta y no estar satisfecho con la respuesta', () =
         .should('not.exist'); // Publish Button should now be gone from view
       cy.get('#feedback-2')
         .should('have.text', 'Your question has been published successfully.') // Question is now published
-      cy.contains("Can I take snacks from the office?")
+      cy.contains("Can I bring my mom into work?")
         .should('exist') // Find the question asked in the forums.
     })
   })
